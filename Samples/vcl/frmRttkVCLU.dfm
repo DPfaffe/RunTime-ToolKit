@@ -20,9 +20,14 @@ object frmRTTKVCL: TfrmRTTKVCL
     Height = 41
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 232
-    ExplicitTop = 56
-    ExplicitWidth = 185
+    object SERTTKMarshal1: TSERTTKMarshal
+      Left = 312
+      Top = 10
+      Width = 75
+      Height = 25
+      Caption = 'Marshal'
+      TabOrder = 0
+    end
   end
   object pcWorkSpace: TPageControl
     Left = 0
@@ -32,14 +37,8 @@ object frmRTTKVCL: TfrmRTTKVCL
     ActivePage = tsIfDef
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 280
-    ExplicitTop = 48
-    ExplicitWidth = 289
-    ExplicitHeight = 193
     object tsLabel: TTabSheet
       Caption = 'Label'
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object pnlFoxLabel: TPanel
         Left = 160
         Top = 108
@@ -75,8 +74,6 @@ object frmRTTKVCL: TfrmRTTKVCL
     object tsIfDef: TTabSheet
       Caption = 'If Defined'
       ImageIndex = 1
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object Label2: TLabel
         Left = 0
         Top = 0
@@ -84,8 +81,6 @@ object frmRTTKVCL: TfrmRTTKVCL
         Height = 13
         Align = alTop
         Caption = 'Label2'
-        ExplicitLeft = 376
-        ExplicitTop = 128
         ExplicitWidth = 31
       end
       object Panel1: TPanel
@@ -94,21 +89,19 @@ object frmRTTKVCL: TfrmRTTKVCL
         Width = 185
         Height = 81
         Align = alCustom
-        Caption = 'Application Help '
+        BorderStyle = bsSingle
+        Caption = 'Application Help : Disabled in  release'
         TabOrder = 0
         VerticalAlignment = taAlignTop
         object btnMarshal: TButton
           Left = 1
-          Top = 55
-          Width = 183
+          Top = 51
+          Width = 179
           Height = 25
           Align = alBottom
           Caption = 'Marshal'
           TabOrder = 0
           OnClick = btnMarshalClick
-          ExplicitLeft = 110
-          ExplicitTop = 8
-          ExplicitWidth = 75
         end
       end
     end

@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
-  FMX.Objects;
+  FMX.Objects, FMX.SERTIRT;
 
 type
   TfrmRTTKFMX = class(TForm)
@@ -20,6 +20,7 @@ type
     CalloutRectangle1: TCalloutRectangle;
     Label2: TLabel;
     btnMarshal: TButton;
+    SERTTKMarshal1: TSERTTKMarshal;
     procedure btnMarshalClick(Sender: TObject);
   private
     { Private declarations }
@@ -34,13 +35,13 @@ implementation
 
 {$R *.fmx}
 {$IFDEF DEBUG}
-uses   FMX.SE.SupportWorker;
+uses   FMX.SE.RTTK.Marshal;
 {$ENDIF}
 
 procedure TfrmRTTKFMX.btnMarshalClick(Sender: TObject);
 begin
 {$IFDEF DEBUG}
- TSESupportWorker.ShowInspector;
+ TSERTTKWorker.ShowMarshal;
  {$ENDIF}
 end;
 

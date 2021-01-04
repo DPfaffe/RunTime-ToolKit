@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
+  Vcl.SERTIRT;
 
 type
   TfrmRTTKVCL = class(TForm)
@@ -18,6 +19,7 @@ type
     btnMarshal: TButton;
     Label2: TLabel;
     Panel1: TPanel;
+    SERTTKMarshal1: TSERTTKMarshal;
     procedure btnMarshalClick(Sender: TObject);
   private
     { Private declarations }
@@ -32,14 +34,15 @@ implementation
 
 {$R *.dfm}
 {$IFDEF DEBUG}
-uses Vcl.SE.SupportWorker;
+
+uses Vcl.SE.RTTK.Marshal;
 {$ENDIF}
 
 procedure TfrmRTTKVCL.btnMarshalClick(Sender: TObject);
 begin
 {$IFDEF DEBUG}
-  TSESupportWorker.ShowInspector;
-  {$ENDIF}
+  TSERTTKWorker.ShowMarshal;
+{$ENDIF}
 end;
 
 end.

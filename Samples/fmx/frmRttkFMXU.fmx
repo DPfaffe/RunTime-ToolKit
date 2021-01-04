@@ -14,6 +14,12 @@ object frmRTTKFMX: TfrmRTTKFMX
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
+    object SERTTKMarshal1: TSERTTKMarshal
+      Position.X = 288.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 0
+      Text = 'Marshal'
+    end
   end
   object tcWorkSpace: TTabControl
     Align = Client
@@ -39,6 +45,8 @@ object frmRTTKFMX: TfrmRTTKFMX
       StyleLookup = ''
       TabOrder = 0
       Text = 'Label & Edit'
+      ExplicitSize.cx = 75.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
       object lytFoxLabel: TLayout
         Align = Center
         TabOrder = 0
@@ -74,6 +82,8 @@ object frmRTTKFMX: TfrmRTTKFMX
       StyleLookup = ''
       TabOrder = 0
       Text = 'If Defined'
+      ExplicitSize.cx = 72.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
       object CalloutRectangle1: TCalloutRectangle
         Position.X = 160.000000000000000000
         Position.Y = 56.000000000000000000
