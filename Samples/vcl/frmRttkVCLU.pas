@@ -21,6 +21,7 @@ type
     Panel1: TPanel;
     SERTTKMarshal1: TSERTTKMarshal;
     procedure btnMarshalClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,6 +44,11 @@ begin
 {$IFDEF DEBUG}
   TSERTTKWorker.ShowMarshal;
 {$ENDIF}
+end;
+
+procedure TfrmRTTKVCL.FormActivate(Sender: TObject);
+begin
+  pcWorkSpace.ActivePage := tsLabel;
 end;
 
 end.

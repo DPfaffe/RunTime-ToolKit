@@ -22,6 +22,7 @@ type
     btnMarshal: TButton;
     SERTTKMarshal1: TSERTTKMarshal;
     procedure btnMarshalClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,6 +44,11 @@ begin
 {$IFDEF DEBUG}
  TSERTTKWorker.ShowMarshal;
  {$ENDIF}
+end;
+
+procedure TfrmRTTKFMX.FormActivate(Sender: TObject);
+begin
+tcWorkSpace.ActiveTab := tiLabel;
 end;
 
 end.
