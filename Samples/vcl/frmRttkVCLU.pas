@@ -20,6 +20,7 @@ type
     Label2: TLabel;
     Panel1: TPanel;
     SERTTKMarshal1: TSERTTKMarshal;
+    ListBox1: TListBox;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
   private

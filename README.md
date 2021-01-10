@@ -3,6 +3,24 @@ The toolkit is a runtime component for inspection (RT Marshal) and a client to r
 These tools enable you to fully diagnose problems at runtime.  
 ## RT Marshal - Component inspection in Delphi
 Marshal provides tree view of your application and an object inspector to adjust settings.  
+### Feature Overview
+
+![Marshal Main Features](/images/Marshal_Main_Features.PNG)
+
+1. Tree of forms and components
+
+2. Tabs of inspected components 
+
+3. Tools by component type (all components get an object inspector)
+
+4. Tool detail area
+
+5. Path in form
+
+6. View session log
+
+7. Add session note
+
 ### Use case - Label and Edit in a panel
 In the provided demos on the label tab there is a poorly formatted aligned set of controls: panel, edit, label.  
 The problems are:  

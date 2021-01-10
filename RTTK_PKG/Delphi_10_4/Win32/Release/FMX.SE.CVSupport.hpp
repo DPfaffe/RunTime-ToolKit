@@ -21,6 +21,7 @@
 #include <FMX.TMSFNCTreeViewData.hpp>
 #include <FMX.TMSFNCHTMLText.hpp>
 #include <FMX.TMSFNCStatusBar.hpp>
+#include <FMX.Forms.hpp>
 #include <FMX.TabControl.hpp>
 #include <FMX.Types.hpp>
 #include <FMX.StdCtrls.hpp>
@@ -79,7 +80,7 @@ private:
 	
 private:
 	Fmx::Se::Layout::TSELayout* FLayout;
-	System::Classes::TComponent* FOwner;
+	Fmx::Forms::TForm* FOwner;
 	Fmx::Se::Supportrepository::TSESRepository* FRepository;
 	System::Generics::Collections::TObjectDictionary__2<Fmx::Tmsfnctreeviewdata::TTMSFNCTreeViewNode*,Fmx::Se::Cv::Detailtab::TSECVDetailTab*>* FToolList;
 	Fmx::Se::Layout::TSELayout* FlytLeft;
@@ -110,7 +111,7 @@ private:
 	void __fastcall SendStatusText(const System::UnicodeString ATextMessage, System::TObject* const Sender);
 	
 public:
-	__fastcall TSECVSupport(Fmx::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* AOwner);
+	__fastcall TSECVSupport(Fmx::Se::Layout::TSELayout* const ALayout, Fmx::Forms::TForm* AOwner);
 	__fastcall virtual ~TSECVSupport();
 };
 

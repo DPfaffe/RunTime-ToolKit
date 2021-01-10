@@ -25,6 +25,7 @@
 #include <Vcl.StdCtrls.hpp>
 #include <VCL.TMSFNCSplitter.hpp>
 #include <VCL.TMSFNCTaskDialog.hpp>
+#include <Vcl.Forms.hpp>
 #include <VCL.SE.SupportTypes.hpp>
 #include <VCL.SE.SupportRepository.hpp>
 #include <VCL.SE.DBQuery.hpp>
@@ -77,7 +78,7 @@ private:
 	
 private:
 	Vcl::Se::Layout::TSELayout* FLayout;
-	System::Classes::TComponent* FOwner;
+	Vcl::Forms::TForm* FOwner;
 	Vcl::Se::Supportrepository::TSESRepository* FRepository;
 	System::Generics::Collections::TObjectDictionary__2<Vcl::Tmsfnctreeviewdata::TTMSFNCTreeViewNode*,Vcl::Se::Cv::Detailtab::TSECVDetailTab*>* FToolList;
 	Vcl::Se::Layout::TSELayout* FlytLeft;
@@ -108,7 +109,7 @@ private:
 	void __fastcall SendStatusText(const System::UnicodeString ATextMessage, System::TObject* const Sender);
 	
 public:
-	__fastcall TSECVSupport(Vcl::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* AOwner);
+	__fastcall TSECVSupport(Vcl::Se::Layout::TSELayout* const ALayout, Vcl::Forms::TForm* AOwner);
 	__fastcall virtual ~TSECVSupport();
 };
 

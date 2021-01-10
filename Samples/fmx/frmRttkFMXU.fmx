@@ -3,7 +3,7 @@ object frmRTTKFMX: TfrmRTTKFMX
   Top = 0
   Caption = 'RTTK FMX Sample'
   ClientHeight = 480
-  ClientWidth = 640
+  ClientWidth = 318
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -11,30 +11,24 @@ object frmRTTKFMX: TfrmRTTKFMX
   DesignerMasterStyle = 0
   object lytTools: TLayout
     Align = Top
-    Size.Width = 640.000000000000000000
-    Size.Height = 50.000000000000000000
+    Size.Width = 318.000000000000000000
+    Size.Height = 24.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
-    object SERTTKMarshal1: TSERTTKMarshal
-      Position.X = 288.000000000000000000
-      Position.Y = 16.000000000000000000
-      TabOrder = 0
-      Text = 'Marshal'
-    end
   end
   object tcWorkSpace: TTabControl
     Align = Client
-    Size.Width = 640.000000000000000000
-    Size.Height = 430.000000000000000000
+    Size.Width = 318.000000000000000000
+    Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 0
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
-      640s
-      404s
-      640s
-      404s)
+      318s
+      430s
+      318s
+      430s)
     object tiLabel: TTabItem
       CustomIcon = <
         item
@@ -48,27 +42,78 @@ object frmRTTKFMX: TfrmRTTKFMX
       Text = 'Label & Edit'
       ExplicitSize.cx = 75.000000000000000000
       ExplicitSize.cy = 26.000000000000000000
-      object lytFoxLabel: TLayout
-        Align = Center
+      object ListBox1: TListBox
+        Align = Left
+        Size.Width = 200.000000000000000000
+        Size.Height = 430.000000000000000000
+        Size.PlatformDefault = False
         TabOrder = 0
-        object Label1: TLabel
-          Align = Right
-          StyledSettings = [Family, Style, FontColor]
-          Position.X = -70.000000000000000000
-          Size.Width = 120.000000000000000000
-          Size.Height = 50.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 24.000000000000000000
-          TextSettings.VertAlign = Leading
-          Text = 'Fox Jump Status'
-          TabOrder = 0
+        DisableFocusEffect = True
+        DefaultItemStyles.ItemStyle = ''
+        DefaultItemStyles.GroupHeaderStyle = ''
+        DefaultItemStyles.GroupFooterStyle = ''
+        Viewport.Width = 196.000000000000000000
+        Viewport.Height = 426.000000000000000000
+        object ListBoxGroupHeader1: TListBoxGroupHeader
+          TextSettings.Font.StyleExt = {04070000000000000004000000}
+          TextSettings.HorzAlign = Center
+          StyledSettings = [Family, Size, FontColor]
+          TabOrder = 2
+          Text = 'Label - no alignment'
         end
-        object Edit1: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Center
+        object ListBoxItem1: TListBoxItem
+          Position.Y = 19.000000000000000000
+          Size.Width = 196.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object Label1: TLabel
+            Align = Right
+            StyledSettings = [Family, Style, FontColor]
+            Position.X = 76.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 48.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 24.000000000000000000
+            TextSettings.VertAlign = Leading
+            Text = 'Fox Jump Status'
+            TabOrder = 0
+          end
+        end
+        object ListBoxGroupFooter1: TListBoxGroupFooter
+          Position.Y = 67.000000000000000000
+          Size.Width = 196.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = 'fix by setting alignment to client and adjust the font size'
+        end
+        object ListBoxGroupHeader2: TListBoxGroupHeader
+          TextSettings.Font.StyleExt = {04070000000000000004000000}
+          TextSettings.HorzAlign = Center
+          StyledSettings = [Family, Size, FontColor]
+          Position.Y = 115.000000000000000000
+          TabOrder = 3
+          Text = 'Edit too small'
+        end
+        object ListBoxItem2: TListBoxItem
+          Position.Y = 134.000000000000000000
           TabOrder = 1
-          Text = 'The Quick Brown Fox Jumped over the lazy moon'
-          TextSettings.HorzAlign = Trailing
+          object Edit1: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Center
+            TabOrder = 1
+            Text = 'The Quick Brown Fox Jumped over the lazy moon'
+            TextSettings.HorzAlign = Trailing
+          end
+        end
+        object ListBoxGroupFooter2: TListBoxGroupFooter
+          Position.Y = 153.000000000000000000
+          Size.Width = 196.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = 'Fix: Edit1.Align = Client & Listbox1.width=300'
         end
       end
     end
@@ -86,10 +131,9 @@ object frmRTTKFMX: TfrmRTTKFMX
       ExplicitSize.cx = 72.000000000000000000
       ExplicitSize.cy = 26.000000000000000000
       object CalloutRectangle1: TCalloutRectangle
-        Position.X = 160.000000000000000000
-        Position.Y = 56.000000000000000000
-        Size.Width = 281.000000000000000000
-        Size.Height = 201.000000000000000000
+        Align = Center
+        Size.Width = 160.000000000000000000
+        Size.Height = 220.000000000000000000
         Size.PlatformDefault = False
         CalloutWidth = 23.000000000000000000
         CalloutLength = 11.000000000000000000
@@ -97,7 +141,7 @@ object frmRTTKFMX: TfrmRTTKFMX
           Align = Top
           Margins.Top = 24.000000000000000000
           Position.Y = 24.000000000000000000
-          Size.Width = 281.000000000000000000
+          Size.Width = 160.000000000000000000
           Size.Height = 17.000000000000000000
           Size.PlatformDefault = False
           TextSettings.HorzAlign = Center
@@ -106,8 +150,8 @@ object frmRTTKFMX: TfrmRTTKFMX
         end
         object btnMarshal: TButton
           Align = Bottom
-          Position.Y = 179.000000000000000000
-          Size.Width = 281.000000000000000000
+          Position.Y = 198.000000000000000000
+          Size.Width = 160.000000000000000000
           Size.Height = 22.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1

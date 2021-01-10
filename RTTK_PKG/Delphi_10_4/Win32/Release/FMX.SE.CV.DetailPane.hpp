@@ -14,6 +14,7 @@
 #pragma pack(push,8)
 #include <System.hpp>
 #include <SysInit.hpp>
+#include <System.Classes.hpp>
 #include <FMX.TMSFNCPageControl.hpp>
 #include <FMX.SE.CV.DisplayBase.hpp>
 #include <FMX.SE.Layout.hpp>
@@ -33,7 +34,8 @@ namespace Detailpane
 //-- forward type declarations -----------------------------------------------
 class DELPHICLASS TSECVDetailPane;
 //-- type declarations -------------------------------------------------------
-#pragma pack(push,4)
+typedef void __fastcall (__closure *TSECVDetailPageChange)(System::TObject* Sender, Fmx::Se::Cv::Detailtab::TSECVDetailTab* const ADetailTab);
+
 class PASCALIMPLEMENTATION TSECVDetailPane : public Fmx::Se::Cv::Displaybase::TSECVDisplayBase
 {
 	typedef Fmx::Se::Cv::Displaybase::TSECVDisplayBase inherited;
@@ -42,6 +44,7 @@ private:
 	Fmx::Tmsfncpagecontrol::TTMSFNCPageControl* FPC;
 	int FPreviousPageIndex;
 	Fmx::Se::Cv::Toolfactory::TSECVToolFactory* FToolFactory;
+	TSECVDetailPageChange FDetailPageChange;
 	void __fastcall SetPageControlOptions();
 	void __fastcall PCClosePage(System::TObject* Sender, int APageIndex, Fmx::Tmsfncpagecontrol::TTMSFNCPageControlPageCloseAction ACloseAction);
 	void __fastcall PCChangePage(System::TObject* Sender, int APreviousPageIndex, int ACurrentPageIndex);
@@ -49,11 +52,11 @@ private:
 public:
 	void __fastcall ActivatePage(Fmx::Tmsfncpagecontrol::TTMSFNCPageControlPage* const APage);
 	void __fastcall AddSupPage(Fmx::Se::Cv::Detailtab::TSECVDetailTab* const ASupTab);
-	__fastcall TSECVDetailPane(Fmx::Se::Layout::TSELayout* const ALayout);
+	__property TSECVDetailPageChange OnDetailPageChange = {read=FDetailPageChange, write=FDetailPageChange};
+	__fastcall TSECVDetailPane(Fmx::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* const AOwner);
 	__fastcall virtual ~TSECVDetailPane();
 };
 
-#pragma pack(pop)
 
 //-- var, const, procedure ---------------------------------------------------
 }	/* namespace Detailpane */

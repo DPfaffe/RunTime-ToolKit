@@ -18,28 +18,35 @@ object frmRTTKVCL: TfrmRTTKVCL
     Left = 0
     Top = 0
     Width = 635
-    Height = 41
+    Height = 22
     Align = alTop
     TabOrder = 0
     object SERTTKMarshal1: TSERTTKMarshal
-      Left = 312
-      Top = 10
+      Left = 1
+      Top = 1
       Width = 75
-      Height = 25
+      Height = 20
+      Align = alLeft
       Caption = 'Marshal'
       TabOrder = 0
+      ExplicitLeft = 312
+      ExplicitTop = 10
+      ExplicitHeight = 25
     end
   end
   object pcWorkSpace: TPageControl
     Left = 0
-    Top = 41
+    Top = 22
     Width = 635
-    Height = 295
-    ActivePage = tsIfDef
+    Height = 314
+    ActivePage = tsLabel
     Align = alClient
     TabOrder = 1
+    ExplicitTop = 41
+    ExplicitHeight = 295
     object tsLabel: TTabSheet
       Caption = 'Label'
+      ExplicitHeight = 267
       object pnlFoxLabel: TPanel
         Left = 160
         Top = 108
@@ -71,10 +78,23 @@ object frmRTTKVCL: TfrmRTTKVCL
           Text = 'The Quick Brown Fox Jumped over the lazy Moon'
         end
       end
+      object ListBox1: TListBox
+        Left = 0
+        Top = 0
+        Width = 121
+        Height = 286
+        Align = alLeft
+        ItemHeight = 13
+        TabOrder = 1
+        ExplicitLeft = 256
+        ExplicitTop = 96
+        ExplicitHeight = 97
+      end
     end
     object tsIfDef: TTabSheet
       Caption = 'If Defined'
       ImageIndex = 1
+      ExplicitHeight = 267
       object Label2: TLabel
         Left = 0
         Top = 0

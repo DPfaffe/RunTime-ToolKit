@@ -57,6 +57,7 @@ private:
 	void __fastcall SubscribeToMessages();
 	
 public:
+	Fmx::Se::Supporttypes::TSESRepoRoot* __fastcall ReloadRepoRoot(Fmx::Se::Supporttypes::TSESRepoRoot* const ARepoRoot);
 	__property Fmx::Se::Supportsession::TSESSession* Session = {read=FSession};
 	__property System::TArray__1<Fmx::Se::Supporttypes::TSESRepoRoot*> Roots = {read=GetRoots};
 	__property int RootCount = {read=GetRootCount, nodefault};

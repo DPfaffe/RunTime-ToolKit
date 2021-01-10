@@ -11,7 +11,6 @@ uses
 type
   TfrmRTTKFMX = class(TForm)
     lytTools: TLayout;
-    lytFoxLabel: TLayout;
     Label1: TLabel;
     Edit1: TEdit;
     tcWorkSpace: TTabControl;
@@ -20,7 +19,13 @@ type
     CalloutRectangle1: TCalloutRectangle;
     Label2: TLabel;
     btnMarshal: TButton;
-    SERTTKMarshal1: TSERTTKMarshal;
+    ListBox1: TListBox;
+    ListBoxItem1: TListBoxItem;
+    ListBoxItem2: TListBoxItem;
+    ListBoxGroupHeader1: TListBoxGroupHeader;
+    ListBoxGroupHeader2: TListBoxGroupHeader;
+    ListBoxGroupFooter1: TListBoxGroupFooter;
+    ListBoxGroupFooter2: TListBoxGroupFooter;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
   private

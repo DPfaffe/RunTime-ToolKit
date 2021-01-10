@@ -120,7 +120,7 @@ public:
 };
 
 
-enum DECLSPEC_DENUM TSESPMOption : unsigned char { pmoShowPath, pmoGoToActive };
+enum DECLSPEC_DENUM TSESPMOption : unsigned char { pmoShowPath, pmoGoToActive, pmoRefreshRoot };
 
 class PASCALIMPLEMENTATION TSESMenuOptionBase : public System::TObject
 {
@@ -190,6 +190,7 @@ private:
 	virtual System::UnicodeString __fastcall GetText1();
 	virtual System::UnicodeString __fastcall GetText2();
 	System::UnicodeString __fastcall GetCompClassName();
+	System::UnicodeString __fastcall GetCompDisplayName();
 	
 public:
 	bool __fastcall ParentAccessible();
@@ -199,6 +200,7 @@ public:
 	__property System::Generics::Collections::TObjectList__1<TSESInspectToolBase*>* Tools = {read=FToolInfos};
 	__property System::UnicodeString AppCompParentName = {read=GetParentName};
 	__property System::UnicodeString AppCompClassName = {read=GetCompClassName};
+	__property System::UnicodeString AppCompDisplayName = {read=GetCompDisplayName};
 	__property int AppCompParentHash = {read=GetParentHash, nodefault};
 	__property System::UnicodeString AppCompPath = {read=FAppCompPath};
 	__property int AppCompLevel = {read=FCompLevel, nodefault};
@@ -296,7 +298,7 @@ public:
 };
 
 
-typedef System::StaticArray<System::UnicodeString, 2> Vcl_Se_Supporttypes__41;
+typedef System::StaticArray<System::UnicodeString, 3> Vcl_Se_Supporttypes__41;
 
 //-- var, const, procedure ---------------------------------------------------
 extern DELPHI_PACKAGE Vcl_Se_Supporttypes__41 PMOptionDisplay;

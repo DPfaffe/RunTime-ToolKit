@@ -15,9 +15,11 @@
 #include <System.hpp>
 #include <SysInit.hpp>
 #include <System.Generics.Collections.hpp>
+#include <System.Classes.hpp>
 #include <FMX.TMSFNCTreeView.hpp>
 #include <FMX.TMSFNCTreeViewData.hpp>
 #include <FMX.Menus.hpp>
+#include <FMX.SE.CV.DetailTab.hpp>
 #include <FMX.SE.CV.DisplayBase.hpp>
 #include <FMX.SE.SupportRepository.hpp>
 #include <FMX.SE.SupportProvider.hpp>
@@ -50,6 +52,7 @@ private:
 	
 private:
 	Fmx::Tmsfnctreeview::TTMSFNCTreeView* FTV;
+	System::UnicodeString __fastcall FormatClass(const System::UnicodeString AClassString);
 	void __fastcall ExpandToNode(Fmx::Tmsfnctreeviewdata::TTMSFNCTreeViewNode* const ADestNode);
 	void __fastcall NodeMouseEnter(System::TObject* Sender, Fmx::Tmsfnctreeviewdata::TTMSFNCTreeViewVirtualNode* ANode);
 	void __fastcall LoadRoot(Fmx::Se::Supporttypes::TSESRepoRoot* const ARepoRoot);
@@ -62,9 +65,10 @@ private:
 	
 public:
 	void __fastcall LoadTreeFromModel();
+	void __fastcall DetailTabChanged(System::TObject* Sender, Fmx::Se::Cv::Detailtab::TSECVDetailTab* const ADetailTab);
 	__property Fmx::Tmsfnctreeviewdata::TTMSFNCTreeViewNode* MouseOverNode = {read=FMouseOverNode};
 	__property Fmx::Tmsfnctreeview::TTMSFNCTreeView* TV = {read=FTV};
-	__fastcall TSECVNavTree(Fmx::Se::Layout::TSELayout* const ALayout);
+	__fastcall TSECVNavTree(Fmx::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* const AOwner);
 	__fastcall virtual ~TSECVNavTree();
 };
 

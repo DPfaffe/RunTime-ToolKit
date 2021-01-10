@@ -14,6 +14,7 @@
 #pragma pack(push,8)
 #include <System.hpp>
 #include <SysInit.hpp>
+#include <System.Classes.hpp>
 #include <VCL.SE.SupportRepository.hpp>
 #include <VCL.SE.Layout.hpp>
 
@@ -40,12 +41,13 @@ private:
 	
 protected:
 	Vcl::Se::Layout::TSELayout* FLayout;
+	System::Classes::TComponent* FOwner;
 	virtual void __fastcall RepositorySet(Vcl::Se::Supportrepository::TSESRepository* const ASupportRepository);
 	
 public:
 	__property Vcl::Se::Supportrepository::TSESRepository* SR = {read=RepositoryGet, write=RepositorySet};
+	__fastcall TSECVDisplayBase(Vcl::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* const AOwner);
 public:
-	/* TObject.Create */ inline __fastcall TSECVDisplayBase() : System::TObject() { }
 	/* TObject.Destroy */ inline __fastcall virtual ~TSECVDisplayBase() { }
 	
 };

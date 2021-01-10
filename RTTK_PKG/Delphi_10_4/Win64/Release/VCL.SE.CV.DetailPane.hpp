@@ -14,6 +14,7 @@
 #pragma pack(push,8)
 #include <System.hpp>
 #include <SysInit.hpp>
+#include <System.Classes.hpp>
 #include <VCL.TMSFNCPageControl.hpp>
 #include <VCL.SE.CV.DisplayBase.hpp>
 #include <VCL.SE.Layout.hpp>
@@ -33,6 +34,8 @@ namespace Detailpane
 //-- forward type declarations -----------------------------------------------
 class DELPHICLASS TSECVDetailPane;
 //-- type declarations -------------------------------------------------------
+typedef void __fastcall (__closure *TSECVDetailPageChange)(System::TObject* Sender, Vcl::Se::Cv::Detailtab::TSECVDetailTab* const ADetailTab);
+
 class PASCALIMPLEMENTATION TSECVDetailPane : public Vcl::Se::Cv::Displaybase::TSECVDisplayBase
 {
 	typedef Vcl::Se::Cv::Displaybase::TSECVDisplayBase inherited;
@@ -41,6 +44,7 @@ private:
 	Vcl::Tmsfncpagecontrol::TTMSFNCPageControl* FPC;
 	int FPreviousPageIndex;
 	Vcl::Se::Cv::Toolfactory::TSECVToolFactory* FToolFactory;
+	TSECVDetailPageChange FDetailPageChange;
 	void __fastcall SetPageControlOptions();
 	void __fastcall PCClosePage(System::TObject* Sender, int APageIndex, Vcl::Tmsfncpagecontrol::TTMSFNCPageControlPageCloseAction ACloseAction);
 	void __fastcall PCChangePage(System::TObject* Sender, int APreviousPageIndex, int ACurrentPageIndex);
@@ -48,7 +52,8 @@ private:
 public:
 	void __fastcall ActivatePage(Vcl::Tmsfncpagecontrol::TTMSFNCPageControlPage* const APage);
 	void __fastcall AddSupPage(Vcl::Se::Cv::Detailtab::TSECVDetailTab* const ASupTab);
-	__fastcall TSECVDetailPane(Vcl::Se::Layout::TSELayout* const ALayout);
+	__property TSECVDetailPageChange OnDetailPageChange = {read=FDetailPageChange, write=FDetailPageChange};
+	__fastcall TSECVDetailPane(Vcl::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* const AOwner);
 	__fastcall virtual ~TSECVDetailPane();
 };
 

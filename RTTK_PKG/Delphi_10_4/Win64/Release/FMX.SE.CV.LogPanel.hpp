@@ -15,6 +15,7 @@
 #include <System.hpp>
 #include <SysInit.hpp>
 #include <System.Generics.Collections.hpp>
+#include <System.Classes.hpp>
 #include <FMX.TMSFNCPageControl.hpp>
 #include <FMX.TMSFNCButton.hpp>
 #include <FMX.SE.CV.DisplayBase.hpp>
@@ -43,7 +44,6 @@ class PASCALIMPLEMENTATION TSECVLogPanel : public Fmx::Se::Cv::Displaybase::TSEC
 	typedef Fmx::Se::Cv::Displaybase::TSECVDisplayBase inherited;
 	
 private:
-	Fmx::Se::Layout::TSELayout* FLayout;
 	Fmx::Se::Layout::TSELayout* FpnlLog;
 	Fmx::Se::Layout::TSELayout* FlytLogMenu;
 	Fmx::Tmsfncbutton::TTMSFNCButton* FbtnClose;
@@ -61,7 +61,7 @@ protected:
 public:
 	void __fastcall LogPanelShow(System::TObject* Sender);
 	void __fastcall LogPanelHide(System::TObject* Sender);
-	__fastcall TSECVLogPanel(Fmx::Se::Layout::TSELayout* const ALayout);
+	__fastcall TSECVLogPanel(Fmx::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* const AOwner);
 	__fastcall virtual ~TSECVLogPanel();
 };
 

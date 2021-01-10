@@ -15,6 +15,7 @@
 #include <System.hpp>
 #include <SysInit.hpp>
 #include <System.Generics.Collections.hpp>
+#include <System.Classes.hpp>
 #include <VCL.TMSFNCTreeView.hpp>
 #include <VCL.TMSFNCTreeViewData.hpp>
 #include <Vcl.Menus.hpp>
@@ -23,6 +24,7 @@
 #include <VCL.SE.SupportProvider.hpp>
 #include <VCL.SE.Layout.hpp>
 #include <VCL.SE.SupportTypes.hpp>
+#include <VCL.SE.CV.DetailTab.hpp>
 #include <System.SysUtils.hpp>
 #include <System.Generics.Defaults.hpp>
 
@@ -50,6 +52,7 @@ private:
 	
 private:
 	Vcl::Tmsfnctreeview::TTMSFNCTreeView* FTV;
+	System::UnicodeString __fastcall FormatClass(const System::UnicodeString AClassString);
 	void __fastcall ExpandToNode(Vcl::Tmsfnctreeviewdata::TTMSFNCTreeViewNode* const ADestNode);
 	void __fastcall NodeMouseEnter(System::TObject* Sender, Vcl::Tmsfnctreeviewdata::TTMSFNCTreeViewVirtualNode* ANode);
 	void __fastcall LoadRoot(Vcl::Se::Supporttypes::TSESRepoRoot* const ARepoRoot);
@@ -62,9 +65,10 @@ private:
 	
 public:
 	void __fastcall LoadTreeFromModel();
+	void __fastcall DetailTabChanged(System::TObject* Sender, Vcl::Se::Cv::Detailtab::TSECVDetailTab* const ADetailTab);
 	__property Vcl::Tmsfnctreeviewdata::TTMSFNCTreeViewNode* MouseOverNode = {read=FMouseOverNode};
 	__property Vcl::Tmsfnctreeview::TTMSFNCTreeView* TV = {read=FTV};
-	__fastcall TSECVNavTree(Vcl::Se::Layout::TSELayout* const ALayout);
+	__fastcall TSECVNavTree(Vcl::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* const AOwner);
 	__fastcall virtual ~TSECVNavTree();
 };
 

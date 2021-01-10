@@ -57,6 +57,7 @@ private:
 	void __fastcall SubscribeToMessages();
 	
 public:
+	Vcl::Se::Supporttypes::TSESRepoRoot* __fastcall ReloadRepoRoot(Vcl::Se::Supporttypes::TSESRepoRoot* const ARepoRoot);
 	__property Vcl::Se::Supportsession::TSESSession* Session = {read=FSession};
 	__property System::TArray__1<Vcl::Se::Supporttypes::TSESRepoRoot*> Roots = {read=GetRoots};
 	__property int RootCount = {read=GetRootCount, nodefault};
