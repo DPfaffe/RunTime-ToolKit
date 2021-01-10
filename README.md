@@ -5,7 +5,7 @@ These tools enable you to fully diagnose problems at runtime.
 Marshal provides tree view of your application and an object inspector to adjust settings.  
 ### Feature Overview
 
-![Marshal Main Features](/images/Marshal_Main_Features.PNG)
+![Marshal Main Features](/images/Marshal_Main_Features.png)
 
 1. Tree of forms and components
 
@@ -21,13 +21,12 @@ Marshal provides tree view of your application and an object inspector to adjust
 
 7. Add session note
 
-### Use case - Label and Edit in a panel
-In the provided demos on the label tab there is a poorly formatted aligned set of controls: panel, edit, label.  
+### Use case - Label and Edit formatting
+In the provided demos on the label tab there are controls missing alignment and the listbox is not wide enough.  
 The problems are:  
-1. Panel is to narrow width needs to change
-2. Edit is to narrow width needs to change
-3. Label font is too large
-4. Edit overlaps the label, change alignment
+1. Label is not aligned to client
+2. Edit is not aligned to client
+3. list box is not wide enough
 
 ### Side by Side 
 Marshal creates its own form so that you can put it next to your application or on a second monitor.
@@ -35,20 +34,22 @@ Marshal creates its own form so that you can put it next to your application or 
 ![Marshal Side by Side view](/images/SxS_Label_Marshal_Start.PNG)
 
 #### FIX
-1. Adjust the panel (choose the panel tab and scroll down to width)
+1. Change the alignment of label1 to client
 
-![Marshal SXS fix panel width](/images/SxS_Label_Marshal_PanelWidthChange.PNG)
+![Marshal SXS fix panel width](/images/SxS_Label_Marshal_LabelAlignChange.PNG)
 
-2. Adjust the Edit width (choose the edit tab and adjust width)
-
-![Marshal SXS fix edit width](/images/SxS_Label_Marshal_EditWidthChange.PNG)
-
-3. Adjust the Label Font size
-
-![Marshal SXS fix label font](/images/SxS_Label_Marshal_LabelFontChange.PNG)
-
-4. Adjust the Edit alignment to show not overlap the label
+2. Change the alignment of Edit1 to client
 
 ![Marshal SXS fix label font](/images/SxS_Label_Marshal_EditAlignChange.PNG)
+
+3. Change the Listbox width to 300
+
+![Marshal SXS fix edit width](/images/SxS_Label_Marshal_ListboxWidthChange.PNG)
+
+4. Review the Log
+
+![Marshal SXS fix label font](/images/SxS_Label_Marshal_Log.PNG)
+
+
 
 
