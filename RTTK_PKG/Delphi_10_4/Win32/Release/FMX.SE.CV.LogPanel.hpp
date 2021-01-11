@@ -47,7 +47,6 @@ class PASCALIMPLEMENTATION TSECVLogPanel : public Fmx::Se::Cv::Displaybase::TSEC
 private:
 	Fmx::Se::Layout::TSELayout* FpnlLog;
 	Fmx::Se::Layout::TSELayout* FlytLogMenu;
-	Fmx::Tmsfncbutton::TTMSFNCButton* FbtnClose;
 	Fmx::Tmsfncbutton::TTMSFNCButton* FbtnClear;
 	Fmx::Tmsfncpagecontrol::TTMSFNCPageControl* FPageControl;
 	System::Generics::Collections::TObjectList__1<Fmx::Se::Cv::Logtoolbase::TSECVLogToolBase*>* FTools;
@@ -55,13 +54,14 @@ private:
 	void __fastcall CreateLogTab();
 	Fmx::Se::Cv::Logtoolbase::TSECVLogToolBase* __fastcall ActiveLog();
 	void __fastcall ChangePage(System::TObject* Sender, int APreviousPageIndex, int ACurrentPageIndex);
+	bool __fastcall PnlVisibleGet();
 	
 protected:
 	virtual void __fastcall RepositorySet(Fmx::Se::Supportrepository::TSESRepository* const ASupportRepository);
 	
 public:
 	void __fastcall LogPanelShow(System::TObject* Sender);
-	void __fastcall LogPanelHide(System::TObject* Sender);
+	__property bool Visible = {read=PnlVisibleGet, nodefault};
 	__fastcall TSECVLogPanel(Fmx::Se::Layout::TSELayout* const ALayout, System::Classes::TComponent* const AOwner);
 	__fastcall virtual ~TSECVLogPanel();
 };

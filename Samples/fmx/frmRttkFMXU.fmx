@@ -15,6 +15,14 @@ object frmRTTKFMX: TfrmRTTKFMX
     Size.Height = 24.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
+    object SERTTKMarshal1: TSERTTKMarshal
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Marshal'
+    end
   end
   object tcWorkSpace: TTabControl
     Align = Client

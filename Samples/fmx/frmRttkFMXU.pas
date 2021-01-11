@@ -26,6 +26,7 @@ type
     ListBoxGroupHeader2: TListBoxGroupHeader;
     ListBoxGroupFooter1: TListBoxGroupFooter;
     ListBoxGroupFooter2: TListBoxGroupFooter;
+    SERTTKMarshal1: TSERTTKMarshal;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
   private

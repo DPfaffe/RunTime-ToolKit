@@ -105,7 +105,6 @@ private:
 	void __fastcall ShowAddNote(System::TObject* Sender);
 	void __fastcall NoteAddDialogClosed(System::TObject* Sender);
 	void __fastcall NoteAddDialogResult(System::TObject* Sender, System::Uitypes::TModalResult AModalResult);
-	void __fastcall ReloadRepository(System::TObject* Sender);
 	void __fastcall tvNodeClick(System::TObject* Sender, Vcl::Tmsfnctreeviewdata::TTMSFNCTreeViewVirtualNode* ANode);
 	void __fastcall SendStatusText(const System::UnicodeString ATextMessage, System::TObject* const Sender);
 	
