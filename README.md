@@ -2,7 +2,7 @@
 The toolkit is a runtime component for inspection (RT Marshal) and a client to read and oragnize logs (RT Caddie).  
 These tools enable you to fully diagnose problems at runtime.  
 ## RT Marshal - Component Inspection @ Runtime
-Marshal provides tree view of your application and an object inspector to adjust settings.  
+Marshal provides tree view of your application and an object inspector to adjust settings.  Create a note for offline review.
 ### Feature Overview
 
 ![Marshal Main Features](/images/Marshal_Main_Features.png)
@@ -22,7 +22,11 @@ Marshal provides tree view of your application and an object inspector to adjust
 7. Add session note
 
 ## RT Caddie - Session review offline
-Caddie provides session collection and display for review after you have closed your application
+Caddie provides session collection and display for review after you have closed your application.  Logs are parsed for notes to quickly get you back to the session after you have closed your application.  Notes provide an alternative to paper on your desk and give you the option to look back at screenshots during the session. 
+#### Notes usage
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media 
 ### Feature Overview
 
 ![Caddie Main Features](/images/RT_Caddie_FeatureMap.png)
