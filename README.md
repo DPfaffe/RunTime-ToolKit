@@ -1,7 +1,7 @@
 # RunTime-ToolKit
 The toolkit is a runtime component for inspection (RT Marshal) and a client to read and oragnize logs (RT Caddie).  
 These tools enable you to fully diagnose problems at runtime.  
-## RT Marshal - Component inspection in Delphi
+## RT Marshal - Component Inspection @ Runtime
 Marshal provides tree view of your application and an object inspector to adjust settings.  
 ### Feature Overview
 
@@ -20,6 +20,22 @@ Marshal provides tree view of your application and an object inspector to adjust
 6. View session log
 
 7. Add session note
+
+## RT Caddie - Session review offline
+Caddie provides session collection and display for review after you have closed your application
+### Feature Overview
+
+![Caddie Main Features](/images/RT_Caddie_FeatureMap.png)
+
+1. Tabs of your applications
+
+2. Sessions list and notes view
+
+3. Individual sessions opened for review
+
+4. Index of notes taken in Marshal
+
+5. Notes automatically open the session they were taken in so you can review further
 
 ### Use case - Label and Edit formatting
 In the provided demos on the label tab there are controls missing alignment and the listbox is not wide enough.  
