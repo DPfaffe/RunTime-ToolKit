@@ -24,7 +24,7 @@ Bookmarks provide marking points in sessions and an optional description.
 
 6. View session log
 
-7. Add session note
+7. Add session bookmarks
 
 ## RT Caddie - Session review offline
 Caddie provides session collection and display for review after you have closed your application.  Sessions are parsed for bookmarks to quickly get you back to the session after you have closed your application.  Bookmarks provide a filter to your sessions. 
@@ -44,7 +44,7 @@ Caddie provides session collection and display for review after you have closed 
 
 4. Index of bookmarks set in Marshal
 
-5. Bookmarks automatically open the session they were taken in so you can review further
+5. Bookmarks automatically open the session so you can review further
 
 ### Use case - Label and Edit formatting
 In the provided demos on the label tab there are controls missing alignment and the listbox is not wide enough.  

@@ -52,7 +52,7 @@ private:
 	
 private:
 	Vcl::Tmsfnctreeview::TTMSFNCTreeView* FTV;
-	System::UnicodeString __fastcall FormatClass(const System::UnicodeString AClassString);
+	System::UnicodeString __fastcall FormatClass(System::UnicodeString AClassString);
 	void __fastcall ExpandToNode(Vcl::Tmsfnctreeviewdata::TTMSFNCTreeViewNode* const ADestNode);
 	void __fastcall NodeMouseEnter(System::TObject* Sender, Vcl::Tmsfnctreeviewdata::TTMSFNCTreeViewVirtualNode* ANode);
 	void __fastcall LoadRoot(Vcl::Se::Supporttypes::TSESRepoRoot* const ARepoRoot);

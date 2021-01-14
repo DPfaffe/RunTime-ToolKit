@@ -52,7 +52,7 @@ private:
 	
 private:
 	Fmx::Tmsfnctreeview::TTMSFNCTreeView* FTV;
-	System::UnicodeString __fastcall FormatClass(const System::UnicodeString AClassString);
+	System::UnicodeString __fastcall FormatClass(System::UnicodeString AClassString);
 	void __fastcall ExpandToNode(Fmx::Tmsfnctreeviewdata::TTMSFNCTreeViewNode* const ADestNode);
 	void __fastcall NodeMouseEnter(System::TObject* Sender, Fmx::Tmsfnctreeviewdata::TTMSFNCTreeViewVirtualNode* ANode);
 	void __fastcall LoadRoot(Fmx::Se::Supporttypes::TSESRepoRoot* const ARepoRoot);

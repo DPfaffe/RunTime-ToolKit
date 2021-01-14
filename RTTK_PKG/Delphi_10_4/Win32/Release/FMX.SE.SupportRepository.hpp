@@ -51,7 +51,7 @@ private:
 	System::DynamicArray<Fmx::Se::Supporttypes::TSESRepoRoot*> __fastcall GetRoots();
 	void __fastcall TransformRepo();
 	void __fastcall TransformRepoItem(Fmx::Se::Supporttypes::TSESupportRepoCompRef* const ARepoItem);
-	void __fastcall TakeScreenShots();
+	void __fastcall TakeScreenShots(const System::UnicodeString AMessage);
 	int __fastcall MessageSubscribe(const System::TClass AClass, const System::Messaging::TMessageListenerMethod AListenerMethod);
 	void __fastcall MsgOIMsgRecv(System::TObject* const Sender, System::Messaging::TMessageBase* const M);
 	void __fastcall MsgOIScreenShotRecv(System::TObject* const Sender, System::Messaging::TMessageBase* const M);

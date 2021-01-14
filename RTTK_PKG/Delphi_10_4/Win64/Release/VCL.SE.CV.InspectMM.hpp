@@ -92,15 +92,8 @@ class PASCALIMPLEMENTATION TSEOIScreenShot : public TSESupportMsg
 {
 	typedef TSESupportMsg inherited;
 	
-private:
-	System::UnicodeString FPropertyName;
-	System::UnicodeString FPropertyValue;
-	
 public:
-	System::UnicodeString __fastcall LogText();
-	__property System::UnicodeString PropertyName = {read=FPropertyName};
-	__property System::UnicodeString PropertyValue = {read=FPropertyValue};
-	__fastcall TSEOIScreenShot(const System::UnicodeString AText, const System::UnicodeString APropName, const System::UnicodeString APropValue);
+	__fastcall TSEOIScreenShot(const System::UnicodeString AMessage);
 public:
 	/* TObject.Destroy */ inline __fastcall virtual ~TSEOIScreenShot() { }
 	

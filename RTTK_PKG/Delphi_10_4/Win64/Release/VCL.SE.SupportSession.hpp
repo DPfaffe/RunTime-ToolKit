@@ -49,7 +49,7 @@ private:
 	
 public:
 	void __fastcall AddStep(const System::UnicodeString AStepMessage, const bool ASysGenerated = true);
-	void __fastcall AddScreenShot(const System::UnicodeString AScreenName, Vcl::Tmsfnctypes::TTMSFNCBitmap* const ABitmap, const bool ASysGenerated = true);
+	void __fastcall AddScreenShot(const System::UnicodeString AScreenName, Vcl::Tmsfnctypes::TTMSFNCBitmap* const ABitmap, const bool ASysGenerated = true, const System::UnicodeString AMsg = System::UnicodeString());
 	__property System::UnicodeString SessionPath = {read=SupportSessionFile, write=FRepoPath};
 	void __fastcall JSONImport(const System::UnicodeString AFileName);
 	void __fastcall JSONExport();
