@@ -10,21 +10,21 @@ Bookmarks provide marking points in sessions and an optional description.
 
 ### Feature Overview
 
-![Marshal Main Features](/images/Marshal_Main_Features.png)
+![Marshal Main Features](/images/marshal_features_map.png)
 
-1. Tree of forms and components
+1. View session log
 
-2. Tabs of inspected components 
+2. Add session bookmarks
 
-3. Tools by component type (all components get an object inspector)
+3. Tree of forms and components
 
-4. Tool detail area
+4. Tabs of inspected components 
 
-5. Path in form
+5. Tools by component type (all components get an object inspector)
 
-6. View session log
+6. Tool detail area
 
-7. Add session bookmarks
+7. Path in form
 
 ## RT Caddie - Session review offline
 Caddie provides session collection and display for review after you have closed your application.  Sessions are parsed for bookmarks to quickly get you back to the session after you have closed your application.  Bookmarks provide a filter to your sessions. 
@@ -34,17 +34,17 @@ Caddie provides session collection and display for review after you have closed 
 
 ### Feature Overview
 
-![Caddie Main Features](/images/RT_Caddie_FeatureMap.png)
+![Caddie Main Features](/images/caddie_features_map.png)
 
-1. Tabs of your applications
+1. Sessions list and bookmarks
 
-2. Sessions list and bookmarks
+2. Index of bookmarks set in Marshal
 
 3. Individual sessions opened for review
 
-4. Index of bookmarks set in Marshal
+4. Bookmarks automatically open the session so you can review further
 
-5. Bookmarks automatically open the session so you can review further
+5. Tabs of your applications
 
 ### Use case - Label and Edit formatting
 In the provided demos on the label tab there are controls missing alignment and the listbox is not wide enough.  
