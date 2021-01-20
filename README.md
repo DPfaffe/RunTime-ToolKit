@@ -50,6 +50,8 @@ Caddie provides session collection and display for review after you have closed 
 
 Delphinus-Support
 
+For Delphinus you need to edit the browse path.  Replace C:\Users\Public\Documents\Embarcadero\Studio\20.0\Comps\RunTime-ToolKit\source\lib\brokenraw with C:\Users\Public\Documents\Embarcadero\Studio\20.0\Comps\RunTime-ToolKit\lib\Win32\Release.  GoTo Tools --> Options --> Language --> Delphi --> Browsing Path
+
 ### Use case - Label and Edit formatting
 In the provided demos on the label tab there are controls missing alignment and the listbox is not wide enough.  
 The problems are:  
