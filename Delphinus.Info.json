@@ -1,0 +1,18 @@
+{
+    "id": "{FCF6AD5D-6019-4783-9B1E-147DC9685D46}",
+    "name": "RunTime-ToolKit",
+    "picture": "images\\rttk_delphinius_logo.png",
+    "licenses":
+    [
+        {
+          "type": "Apache-2.0",
+          "file": "License"
+        }
+    ],
+    "platforms": "Win32;Win64",
+    "package_compiler_min": 34,
+    "package_compiler_max": 33,
+    "compiler_min": 33,
+    "compiler_max": 34,
+    "first_version": "name of version"
+}

@@ -1,0 +1,20 @@
+{
+"browsing_pathes": 
+[
+    {
+        "pathes": "lib\\brokenraw",
+        "platforms": "Win32;Win64"
+    }
+],
+"raw_folders":
+[
+    {
+        "folder": "RTTK_PKG\\Delphi103Rio",
+        "compiler": 33
+    },
+    {
+        "folder": "RTTK_PKG\\Delphi104Sydney",
+        "compiler": 34
+    }
+]
+}
