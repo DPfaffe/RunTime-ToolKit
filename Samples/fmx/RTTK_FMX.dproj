@@ -216,7 +216,7 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <DCC_UnitSearchPath>C:\Data\GitHub\SwiftExpat\RunTime-ToolKit\RunTime-ToolKit\RTTK_PKG\Delphi_10_4\Win32\Bpl;C:\Data\GitHub\SwiftExpat\RunTime-ToolKit\RunTime-ToolKit\RTTK_PKG\Delphi_10_4\Win32\Dcp;C:\Data\GitHub\SwiftExpat\RunTime-ToolKit\RunTime-ToolKit\RTTK_PKG\Delphi_10_4\Win32\Release;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\..\RTTK_PKG\Delphi104Sydney\bpl\Win32;..\..\RTTK_PKG\Delphi104Sydney\dcp\Win32;..\..\RTTK_PKG\Delphi104Sydney\lib\Win32;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;IndyIPCommon;RESTComponents;bindcompdbx;DBXInterBaseDriver;vcl;IndyIPServer;vclactnband;vclFireDAC;IndySystem;bindcompvclsmp;tethering;dsnapcon;FireDACADSDriver;FireDACMSAccDriver;fmxFireDAC;vclimg;TeeDB;FireDAC;vcltouch;vcldb;bindcompfmx;FireDACSqliteDriver;FireDACPgDriver;inetdb;FMXTee;soaprtl;DbxCommonDriver;FmxTeeUI;fmx;FireDACIBDriver;fmxdae;xmlrtl;soapmidas;vcledge;fmxobj;vclwinx;Tee;rtl;DbxClientDriver;CustomIPTransport;vcldsnap;dbexpress;IndyCore;vclx;bindcomp;appanalytics;dsnap;FireDACCommon;IndyIPClient;bindcompvcl;RESTBackendComponents;TeeUI;VCLTMSFNCCorePkgDXE13;VCLRESTComponents;soapserver;dbxcds;VclSmp;adortl;VCLTMSFNCUIPackPkgDXE13;vclie;bindengine;DBXMySQLDriver;CloudService;dsnapxml;FireDACMySQLDriver;dbrtl;IndyProtocols;inetdbxpress;FireDACCommonODBC;FireDACCommonDriver;inet;fmxase;FMXSERTTKDXE13;VCLSERTTKDXE13;$(DCC_UsePackage)</DCC_UsePackage>
@@ -228,7 +228,7 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <DCC_UnitSearchPath>C:\Data\GitHub\SwiftExpat\RunTime-ToolKit\RunTime-ToolKit\RTTK_PKG\Delphi_10_4\Win64\Bpl;C:\Data\GitHub\SwiftExpat\RunTime-ToolKit\RunTime-ToolKit\RTTK_PKG\Delphi_10_4\Win64\Dcp;C:\Data\GitHub\SwiftExpat\RunTime-ToolKit\RunTime-ToolKit\RTTK_PKG\Delphi_10_4\Win64\Release;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\..\RTTK_PKG\Delphi104Sydney\bpl\Win64;..\..\RTTK_PKG\Delphi104Sydney\dcp\Win64;..\..\RTTK_PKG\Delphi104Sydney\lib\Win64;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
