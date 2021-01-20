@@ -3,6 +3,9 @@
 *.dll
 *.bpl
 *.bpi
+GTAGS
+GRTAGS
+GPATH
 *.dcp
 *.so
 *.apk
@@ -22,3 +25,4 @@ __recovery/
 *.dcu
 *.dof
 *.cfg
+G*.*
