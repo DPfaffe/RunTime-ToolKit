@@ -46,6 +46,10 @@ Caddie provides session collection and display for review after you have closed 
 
 5. Tabs of your applications
 
+### Installation
+
+Delphinus-Support
+
 ### Use case - Label and Edit formatting
 In the provided demos on the label tab there are controls missing alignment and the listbox is not wide enough.  
 The problems are:  
