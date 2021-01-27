@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.SERTIRT;
+  Vcl.SE.RTTK.DT.Marshal;
 
 type
   TfrmRTTKVCL = class(TForm)
@@ -19,8 +19,8 @@ type
     btnMarshal: TButton;
     Label2: TLabel;
     Panel1: TPanel;
-    SERTTKMarshal1: TSERTTKMarshal;
     ListBox1: TListBox;
+    SERTTKMarshal1: TSERTTKMarshal;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
   private
