@@ -55,6 +55,10 @@ end;
 procedure TfrmRTTKFMX.FormActivate(Sender: TObject);
 begin
 tcWorkSpace.ActiveTab := tiLabel;
+{$IFNDEF DEBUG}
+  btnMarshal.Text :='Disabled in Release';
+{$ENDIF}
+
 end;
 
 end.
