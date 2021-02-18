@@ -53,35 +53,4 @@ Delphinus-Support
 
 For Delphinus you need to edit the browse path.  Replace C:\Users\Public\Documents\Embarcadero\Studio\20.0\Comps\RunTime-ToolKit\source\lib\brokenraw with C:\Users\Public\Documents\Embarcadero\Studio\20.0\Comps\RunTime-ToolKit\lib\Win32\Release.  GoTo Tools --> Options --> Language --> Delphi --> Browsing Path
 
-### Use case - Label and Edit formatting
-In the provided demos on the label tab there are controls missing alignment and the listbox is not wide enough.  
-The problems are:  
-1. Label is not aligned to client
-2. Edit is not aligned to client
-3. list box is not wide enough
-
-### Side by Side 
-Marshal creates its own form so that you can put it next to your application or on a second monitor.
-
-![Marshal Side by Side view](/images/SxS_Label_Marshal_Start.PNG)
-
-#### FIX
-1. Change the alignment of label1 to client
-
-![Marshal SXS fix panel width](/images/SxS_Label_Marshal_LabelAlignChange.PNG)
-
-2. Change the alignment of Edit1 to client
-
-![Marshal SXS fix label font](/images/SxS_Label_Marshal_EditAlignChange.PNG)
-
-3. Change the Listbox width to 300
-
-![Marshal SXS fix edit width](/images/SxS_Label_Marshal_ListboxWidthChange.PNG)
-
-4. Review the Session
-
-![Marshal SXS fix label font](/images/SxS_Label_Marshal_Log.PNG)
-
-
-
-
+![Powered By Delphi](https://i1.wp.com/blogs.embarcadero.com/wp-content/uploads/2021/01/Powered-by-Delphi-white-175px-7388078.png?resize=175%2C82&ssl=1)[Powered by Delphi](https://www.embarcadero.com/products/delphi)
