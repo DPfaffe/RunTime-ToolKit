@@ -36,7 +36,6 @@ implementation
 
 {$R *.dfm}
 {$IFDEF DEBUG}
-
 uses Vcl.SE.RTTK.Marshal;
 {$ENDIF}
 

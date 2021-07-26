@@ -29,7 +29,7 @@ object frmRTTKFMX: TfrmRTTKFMX
     Size.Width = 318.000000000000000000
     Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -41,7 +41,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 75.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -129,7 +129,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 72.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -145,8 +145,9 @@ object frmRTTKFMX: TfrmRTTKFMX
         Size.PlatformDefault = False
         CalloutWidth = 23.000000000000000000
         CalloutLength = 11.000000000000000000
-        object Label2: TLabel
+        object lblAppHelp: TLabel
           Align = Top
+          HitTest = True
           Margins.Top = 24.000000000000000000
           Position.Y = 24.000000000000000000
           Size.Width = 160.000000000000000000
@@ -155,6 +156,7 @@ object frmRTTKFMX: TfrmRTTKFMX
           TextSettings.HorzAlign = Center
           Text = 'Application Help'
           TabOrder = 0
+          OnClick = lblAppHelpClick
         end
         object btnMarshal: TButton
           Align = Bottom

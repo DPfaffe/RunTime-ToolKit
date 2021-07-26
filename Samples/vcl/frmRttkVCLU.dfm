@@ -29,9 +29,6 @@ object frmRTTKVCL: TfrmRTTKVCL
       Align = alLeft
       Caption = 'Marshal'
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 22
-      ExplicitHeight = 314
     end
   end
   object pcWorkSpace: TPageControl
@@ -91,11 +88,10 @@ object frmRTTKVCL: TfrmRTTKVCL
       object Label2: TLabel
         Left = 0
         Top = 0
-        Width = 627
+        Width = 31
         Height = 13
         Align = alTop
         Caption = 'Label2'
-        ExplicitWidth = 31
       end
       object Panel1: TPanel
         Left = 224

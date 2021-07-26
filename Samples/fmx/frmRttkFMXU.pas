@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
-  FMX.Objects, FMX.SE.RTTK.DT.Marshal;
+  FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils;
 
 type
   TfrmRTTKFMX = class(TForm)
@@ -17,7 +17,7 @@ type
     tiLabel: TTabItem;
     tiIfDef: TTabItem;
     CalloutRectangle1: TCalloutRectangle;
-    Label2: TLabel;
+    lblAppHelp: TLabel;
     btnMarshal: TButton;
     ListBox1: TListBox;
     ListBoxItem1: TListBoxItem;
@@ -29,6 +29,7 @@ type
     SERTTKMarshal1: TSERTTKMarshal;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure lblAppHelpClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,9 +42,9 @@ var
 implementation
 
 {$R *.fmx}
-{$IFDEF DEBUG}
+//{$IFDEF DEBUG}
 uses   FMX.SE.RTTK.Marshal;
-{$ENDIF}
+//{$ENDIF}
 
 procedure TfrmRTTKFMX.btnMarshalClick(Sender: TObject);
 begin
@@ -59,6 +60,31 @@ tcWorkSpace.ActiveTab := tiLabel;
   btnMarshal.Text :='Disabled in Release';
 {$ENDIF}
 
+end;
+
+procedure TfrmRTTKFMX.lblAppHelpClick(Sender: TObject);
+begin
+  if lblAppHelp.Tag = 0 then
+  begin
+    lblAppHelp.TagString := DateTimeToStr(Now);
+    lblAppHelp.Tag := 1;
+  end
+  else if (lblAppHelp.Tag = 1) and (SecondsBetween(Now, StrToDateTime(lblAppHelp.TagString)) < 5) then
+  begin
+    lblAppHelp.TagString := DateTimeToStr(Now);
+    lblAppHelp.Tag := 2;
+  end
+  else if (lblAppHelp.Tag = 2) and (SecondsBetween(Now, StrToDateTime(lblAppHelp.TagString)) < 5) then
+  begin
+    TSERTTKWorker.ShowMarshal;
+    lblAppHelp.Tag := 0;
+    lblAppHelp.TagString := '';
+  end
+  else
+  begin
+    lblAppHelp.Tag := 0;
+    lblAppHelp.TagString := '';
+  end;
 end;
 
 end.
