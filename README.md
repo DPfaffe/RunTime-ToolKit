@@ -47,10 +47,5 @@ Caddie provides session collection and display for review after you have closed 
 
 5. Tabs of your applications
 
-### Installation
-
-Delphinus-Support
-
-For Delphinus you need to edit the browse path.  Replace C:\Users\Public\Documents\Embarcadero\Studio\20.0\Comps\RunTime-ToolKit\source\lib\brokenraw with C:\Users\Public\Documents\Embarcadero\Studio\20.0\Comps\RunTime-ToolKit\lib\Win32\Release.  GoTo Tools --> Options --> Language --> Delphi --> Browsing Path
 
 ![Powered By Delphi](https://i1.wp.com/blogs.embarcadero.com/wp-content/uploads/2021/01/Powered-by-Delphi-white-175px-7388078.png?resize=175%2C82&ssl=1)[Powered by Delphi](https://www.embarcadero.com/products/delphi)
