@@ -2,3 +2,7 @@
 GPATH
 GRTAGS
 GTAGS
+Samples/fmx/RTTK_FMX.delphilsp.json
+Samples/vcl/RTTK.VCL.delphilsp.json
+*.res
+Samples/fmx/RTTK_FMX.res
