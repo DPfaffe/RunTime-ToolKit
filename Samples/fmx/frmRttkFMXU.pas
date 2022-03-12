@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
-  FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils;
+  FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
 
 type
   TfrmRTTKFMX = class(TForm)
@@ -27,11 +27,19 @@ type
     ListBoxGroupFooter1: TListBoxGroupFooter;
     ListBoxGroupFooter2: TListBoxGroupFooter;
     SERTTKMarshal1: TSERTTKMarshal;
+    tiRunTimeComp: TTabItem;
+    pnlRTCompButtons: TPanel;
+    btnAddMemo: TCornerButton;
+    btnDeleteMemo: TSpeedButton;
+    memoRTCompFooter: TMemo;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure lblAppHelpClick(Sender: TObject);
+    procedure btnAddMemoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnDeleteMemoClick(Sender: TObject);
   private
-    { Private declarations }
+    FRuntimeMemo : TMemo;
   public
     { Public declarations }
   end;
@@ -42,24 +50,30 @@ var
 implementation
 
 {$R *.fmx}
-//{$IFDEF DEBUG}
-uses   FMX.SE.RTTK.Marshal;
-//{$ENDIF}
+
+// {$IFDEF DEBUG}
+uses FMX.SE.RTTK.Marshal;
+// {$ENDIF}
 
 procedure TfrmRTTKFMX.btnMarshalClick(Sender: TObject);
 begin
 {$IFDEF DEBUG}
- TSERTTKWorker.ShowMarshal;
- {$ENDIF}
+  TSERTTKWorker.ShowMarshal;
+{$ENDIF}
 end;
+
 
 procedure TfrmRTTKFMX.FormActivate(Sender: TObject);
 begin
-tcWorkSpace.ActiveTab := tiLabel;
+  tcWorkSpace.ActiveTab := tiLabel;
 {$IFNDEF DEBUG}
-  btnMarshal.Text :='Disabled in Release';
+  btnMarshal.Text := 'Disabled in Release';
 {$ENDIF}
+end;
 
+procedure TfrmRTTKFMX.FormCreate(Sender: TObject);
+begin
+  btnDeleteMemo.Enabled := false;
 end;
 
 procedure TfrmRTTKFMX.lblAppHelpClick(Sender: TObject);
@@ -85,6 +99,16 @@ begin
     lblAppHelp.Tag := 0;
     lblAppHelp.TagString := '';
   end;
+end;
+
+procedure TfrmRTTKFMX.btnDeleteMemoClick(Sender: TObject);
+begin
+FRuntimeMemo.Free;
+end;
+
+procedure TfrmRTTKFMX.btnAddMemoClick(Sender: TObject);
+begin
+      FRuntimeMemo := TMemo.Create(self);
 end;
 
 end.

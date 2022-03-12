@@ -6,14 +6,22 @@ uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
-  FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait, Data.DB, FireDAC.Comp.Client, FireDAC.Comp.DataSet;
+  FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait, Data.DB, FireDAC.Comp.Client, FireDAC.Comp.DataSet, FireDAC.DApt,
+  FireDAC.Phys.SQLiteWrapper;
 
 type
   TdmRTTK = class(TDataModule)
     FDMemTable: TFDMemTable;
     FDConnection: TFDConnection;
+    FDQuerySales: TFDQuery;
+    FDQuerySalesyear: TIntegerField;
+    FDQuerySalesmonth: TIntegerField;
+    FDSQLiteFunctionXmY: TFDSQLiteFunction;
+    FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
+    procedure FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; AInputs: TSQLiteInputs; AOutput: TSQLiteOutput;
+      var AUserData: TObject);
   private
     FQuery:TFDQuery;
     procedure CopyDataSet;
@@ -54,6 +62,12 @@ begin
     ('CREATE VIEW [Sales running total] as SELECT month, amount, SUM(amount) OVER (ORDER BY month) RunningTotal FROM SalesInfo;');
   FDConnection.ExecSQL
     ('CREATE VIEW [Sales_moving_average] as SELECT month, amount, AVG(amount) OVER (ORDER BY month ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING ) SalesMovingAverage FROM SalesInfo;');
+end;
+
+procedure TdmRTTK.FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; AInputs: TSQLiteInputs;
+  AOutput: TSQLiteOutput; var AUserData: TObject);
+begin
+ AOutput.AsInteger := AInputs[0].AsInteger * AInputs[1].AsInteger;
 end;
 
 end.

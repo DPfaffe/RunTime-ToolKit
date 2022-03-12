@@ -8,6 +8,7 @@ object frmRTTKFMX: TfrmRTTKFMX
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnActivate = FormActivate
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object lytTools: TLayout
     Align = Top
@@ -29,10 +30,12 @@ object frmRTTKFMX: TfrmRTTKFMX
     Size.Width = 318.000000000000000000
     Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 1
+    TabIndex = 2
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
+      318s
+      430s
       318s
       430s
       318s
@@ -129,7 +132,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 72.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -168,6 +171,63 @@ object frmRTTKFMX: TfrmRTTKFMX
           Text = 'Marshal'
           OnClick = btnMarshalClick
         end
+      end
+    end
+    object tiRunTimeComp: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 74.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'RT Comps'
+      object pnlRTCompButtons: TPanel
+        Align = Top
+        Size.Width = 318.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object btnAddMemo: TCornerButton
+          Align = Left
+          Sides = [Top, Left, Bottom, Right]
+          Size.Width = 80.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Add Memo'
+          XRadius = 3.000000000000000000
+          YRadius = 3.000000000000000000
+          OnClick = btnAddMemoClick
+        end
+        object btnDeleteMemo: TSpeedButton
+          Align = Right
+          Position.X = 238.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Delete Memo'
+          OnClick = btnDeleteMemoClick
+        end
+      end
+      object memoRTCompFooter: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Lines.Strings = (
+          'Clcik on Add Memo to create a memo in the client area at runtime'
+          'Refresh the tree in Marshal'
+          'Click on Delete memo to remove the runtime object'
+          'Refresh the form in Marshal')
+        Align = Bottom
+        Position.Y = 336.000000000000000000
+        Size.Width = 318.000000000000000000
+        Size.Height = 94.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Viewport.Width = 314.000000000000000000
+        Viewport.Height = 74.000000000000000000
       end
     end
   end
