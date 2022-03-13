@@ -184,6 +184,8 @@ object frmRTTKFMX: TfrmRTTKFMX
       StyleLookup = ''
       TabOrder = 0
       Text = 'RT Comps'
+      ExplicitSize.cx = 74.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
       object pnlRTCompButtons: TPanel
         Align = Top
         Size.Width = 318.000000000000000000

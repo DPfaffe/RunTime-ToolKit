@@ -39,7 +39,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnDeleteMemoClick(Sender: TObject);
   private
-    FRuntimeMemo : TMemo;
+    FRuntimeMemo: TMemo;
   public
     { Public declarations }
   end;
@@ -61,7 +61,6 @@ begin
   TSERTTKWorker.ShowMarshal;
 {$ENDIF}
 end;
-
 
 procedure TfrmRTTKFMX.FormActivate(Sender: TObject);
 begin
@@ -103,12 +102,21 @@ end;
 
 procedure TfrmRTTKFMX.btnDeleteMemoClick(Sender: TObject);
 begin
-FRuntimeMemo.Free;
+  if Assigned(FRuntimeMemo) then
+    FRuntimeMemo.Free;
+  btnDeleteMemo.Enabled := false;
 end;
 
 procedure TfrmRTTKFMX.btnAddMemoClick(Sender: TObject);
+var
+  s: string;
 begin
-      FRuntimeMemo := TMemo.Create(self);
+  FRuntimeMemo := TMemo.Create(self);
+  FRuntimeMemo.Parent := tiRunTimeComp;
+  FRuntimeMemo.Align := TAlignLayout.Client;
+  for s in memoRTCompFooter.Lines do
+    FRuntimeMemo.Lines.Add('Copy of : ' + s);
+  btnDeleteMemo.Enabled := true;
 end;
 
 end.
