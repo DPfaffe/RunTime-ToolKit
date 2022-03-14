@@ -64,7 +64,6 @@ end;
 
 procedure TfrmRTTKFMX.FormActivate(Sender: TObject);
 begin
-  tcWorkSpace.ActiveTab := tiLabel;
 {$IFNDEF DEBUG}
   btnMarshal.Text := 'Disabled in Release';
 {$ENDIF}
@@ -73,6 +72,7 @@ end;
 procedure TfrmRTTKFMX.FormCreate(Sender: TObject);
 begin
   btnDeleteMemo.Enabled := false;
+  tcWorkSpace.ActiveTab := tiLabel;
 end;
 
 procedure TfrmRTTKFMX.lblAppHelpClick(Sender: TObject);

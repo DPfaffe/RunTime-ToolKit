@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.SE.RTTK.DT.Marshal;
+  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons;
 
 type
   TfrmRTTKVCL = class(TForm)
@@ -21,10 +21,18 @@ type
     Panel1: TPanel;
     ListBox1: TListBox;
     SERTTKMarshal1: TSERTTKMarshal;
+    tsRunTimeComp: TTabSheet;
+    Panel2: TPanel;
+    memoRTCompFooter: TMemo;
+    btnAddMemo: TButton;
+    btnDeleteMemo: TSpeedButton;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure btnAddMemoClick(Sender: TObject);
+    procedure btnDeleteMemoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
-    { Private declarations }
+    FRuntimeMemo: TMemo;
   public
     { Public declarations }
   end;
@@ -36,8 +44,28 @@ implementation
 
 {$R *.dfm}
 {$IFDEF DEBUG}
+
 uses Vcl.SE.RTTK.Marshal;
 {$ENDIF}
+
+procedure TfrmRTTKVCL.btnAddMemoClick(Sender: TObject);
+var
+  s: string;
+begin
+  FRuntimeMemo := TMemo.Create(self);
+  FRuntimeMemo.Parent := tsRunTimeComp;
+  FRuntimeMemo.Align := TAlign.alClient;
+  for s in memoRTCompFooter.Lines do
+    FRuntimeMemo.Lines.Add('Copy of : ' + s);
+  btnDeleteMemo.Enabled := true;
+end;
+
+procedure TfrmRTTKVCL.btnDeleteMemoClick(Sender: TObject);
+begin
+  if Assigned(FRuntimeMemo) then
+    FRuntimeMemo.Free;
+  btnDeleteMemo.Enabled := false;
+end;
 
 procedure TfrmRTTKVCL.btnMarshalClick(Sender: TObject);
 begin
@@ -48,7 +76,15 @@ end;
 
 procedure TfrmRTTKVCL.FormActivate(Sender: TObject);
 begin
+{$IFNDEF DEBUG}
+  btnMarshal.Text := 'Disabled in Release';
+{$ENDIF}
+end;
+
+procedure TfrmRTTKVCL.FormCreate(Sender: TObject);
+begin
   pcWorkSpace.ActivePage := tsLabel;
+  btnDeleteMemo.Enabled := false;
 end;
 
 end.

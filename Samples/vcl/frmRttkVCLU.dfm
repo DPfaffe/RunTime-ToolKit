@@ -10,8 +10,8 @@ object frmRTTKVCL: TfrmRTTKVCL
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TPanel
@@ -36,7 +36,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     Top = 22
     Width = 635
     Height = 314
-    ActivePage = tsLabel
+    ActivePage = tsRunTimeComp
     Align = alClient
     TabOrder = 1
     object tsLabel: TTabSheet
@@ -88,10 +88,11 @@ object frmRTTKVCL: TfrmRTTKVCL
       object Label2: TLabel
         Left = 0
         Top = 0
-        Width = 31
+        Width = 627
         Height = 13
         Align = alTop
         Caption = 'Label2'
+        ExplicitWidth = 31
       end
       object Panel1: TPanel
         Left = 224
@@ -113,6 +114,60 @@ object frmRTTKVCL: TfrmRTTKVCL
           TabOrder = 0
           OnClick = btnMarshalClick
         end
+      end
+    end
+    object tsRunTimeComp: TTabSheet
+      Caption = 'RT Comps'
+      ImageIndex = 2
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 627
+        Height = 41
+        Align = alTop
+        Caption = 'Panel2'
+        TabOrder = 0
+        ExplicitLeft = 224
+        ExplicitTop = 120
+        ExplicitWidth = 185
+        object btnDeleteMemo: TSpeedButton
+          Left = 504
+          Top = 1
+          Width = 122
+          Height = 39
+          Align = alRight
+          Caption = 'Delete Memo'
+          OnClick = btnDeleteMemoClick
+        end
+        object btnAddMemo: TButton
+          Left = 1
+          Top = 1
+          Width = 75
+          Height = 39
+          Align = alLeft
+          Caption = 'Add Memo'
+          TabOrder = 0
+          OnClick = btnAddMemoClick
+          ExplicitLeft = 280
+          ExplicitTop = 8
+          ExplicitHeight = 25
+        end
+      end
+      object memoRTCompFooter: TMemo
+        Left = 0
+        Top = 197
+        Width = 627
+        Height = 89
+        Align = alBottom
+        Lines.Strings = (
+          'Clcik on Add Memo to create a memo in the client area at runtime'
+          'Refresh the tree in Marshal'
+          'Click on Delete memo to remove the runtime object'
+          'Refresh the form in Marshal')
+        TabOrder = 1
+        ExplicitLeft = 224
+        ExplicitTop = -24
+        ExplicitWidth = 185
       end
     end
   end
