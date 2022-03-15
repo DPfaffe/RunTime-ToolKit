@@ -48,4 +48,4 @@ Caddie provides session collection and display for review after you have closed 
 5. Tabs of your applications
 
 
-![Powered By Delphi](https://i1.wp.com/blogs.embarcadero.com/wp-content/uploads/2021/01/Powered-by-Delphi-white-175px-7388078.png?resize=175%2C82&ssl=1)[Powered by Delphi](https://www.embarcadero.com/products/delphi)
+![Powered By Delphi](https://i1.wp.com/blogs.embarcadero.com/wp-content/uploads/2021/01/Powered-by-Delphi-white-175px-7388078.png?resize=175%2C82&ssl=1)  [Powered by Delphi](https://www.embarcadero.com/products/delphi)
