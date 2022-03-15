@@ -56,4 +56,36 @@ object dmRTTK: TdmRTTK
     Left = 416
     Top = 352
   end
+  object ClientDataSetSalesInfo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 96
+    Top = 40
+  end
+  object FDQuerySalesIndexed: TFDQuery
+    Indexes = <
+      item
+        Name = 'MonthascYeardesc'
+        Fields = 'month'
+        CaseInsFields = 'month'
+        DescFields = 'year'
+      end>
+    Connection = FDConnection
+    SQL.Strings = (
+      'select year, month, amount from SalesInfo')
+    Left = 472
+    Top = 96
+    object IntegerField1: TIntegerField
+      FieldName = 'year'
+      Origin = 'year'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'month'
+      Origin = 'month'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+  end
 end

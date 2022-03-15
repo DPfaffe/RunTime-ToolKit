@@ -77,7 +77,8 @@ end;
 procedure TfrmRTTKVCL.FormActivate(Sender: TObject);
 begin
 {$IFNDEF DEBUG}
-  btnMarshal.Text := 'Disabled in Release';
+  btnMarshal.Caption := 'Disabled in Release';
+  btnMarshal.Enabled := false;
 {$ENDIF}
 end;
 

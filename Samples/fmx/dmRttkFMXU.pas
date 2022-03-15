@@ -7,7 +7,7 @@ uses
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
   FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait, Data.DB, FireDAC.Comp.Client, FireDAC.Comp.DataSet, FireDAC.DApt,
-  FireDAC.Phys.SQLiteWrapper;
+  FireDAC.Phys.SQLiteWrapper, Datasnap.DBClient;
 
 type
   TdmRTTK = class(TDataModule)
@@ -18,6 +18,10 @@ type
     FDQuerySalesmonth: TIntegerField;
     FDSQLiteFunctionXmY: TFDSQLiteFunction;
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
+    ClientDataSetSalesInfo: TClientDataSet;
+    FDQuerySalesIndexed: TFDQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
     procedure FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; AInputs: TSQLiteInputs; AOutput: TSQLiteOutput;

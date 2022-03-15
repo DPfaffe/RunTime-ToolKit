@@ -66,6 +66,7 @@ procedure TfrmRTTKFMX.FormActivate(Sender: TObject);
 begin
 {$IFNDEF DEBUG}
   btnMarshal.Text := 'Disabled in Release';
+  btnMarshal.Enabled := false;
 {$ENDIF}
 end;
 
