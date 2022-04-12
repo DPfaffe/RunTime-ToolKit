@@ -38,6 +38,7 @@ type
     procedure btnAddMemoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnDeleteMemoClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
   public
@@ -51,9 +52,14 @@ implementation
 
 {$R *.fmx}
 
-// {$IFDEF DEBUG}
-uses FMX.SE.RTTK.Marshal;
-// {$ENDIF}
+uses
+{$IF RTLVersion111}
+  FMX.TextLayout.GPU
+{$ENDIF}
+//{$IFDEF DEBUG}
+ , FMX.SE.RTTK.Marshal
+//{$ENDIF}
+;
 
 procedure TfrmRTTKFMX.btnMarshalClick(Sender: TObject);
 begin
@@ -74,6 +80,13 @@ procedure TfrmRTTKFMX.FormCreate(Sender: TObject);
 begin
   btnDeleteMemo.Enabled := false;
   tcWorkSpace.ActiveTab := tiLabel;
+end;
+
+procedure TfrmRTTKFMX.FormDestroy(Sender: TObject);
+begin
+{$IF RTLVersion111}
+  TGPUObjectsPool.Instance.Free;
+{$ENDIF}
 end;
 
 procedure TfrmRTTKFMX.lblAppHelpClick(Sender: TObject);

@@ -9,6 +9,7 @@ object frmRTTKFMX: TfrmRTTKFMX
   FormFactor.Devices = [Desktop]
   OnActivate = FormActivate
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   DesignerMasterStyle = 0
   object lytTools: TLayout
     Align = Top

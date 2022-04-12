@@ -21,6 +21,8 @@ GPATH
 *.dsk
 __history/
 __recovery/
+OSX64/
+WIN32/
 *.~*
 *.dcu
 *.dof

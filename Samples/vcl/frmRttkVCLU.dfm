@@ -12,7 +12,6 @@ object frmRTTKVCL: TfrmRTTKVCL
   Font.Style = []
   OnActivate = FormActivate
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TPanel
     Left = 0
@@ -52,7 +51,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Left = 1
           Top = 1
           Width = 235
-          Height = 55
+          Height = 39
           Align = alLeft
           Caption = 'Fox Jump Status'
           Font.Charset = DEFAULT_CHARSET
@@ -61,7 +60,6 @@ object frmRTTKVCL: TfrmRTTKVCL
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          ExplicitHeight = 39
         end
         object Edit1: TEdit
           Left = 0
@@ -88,11 +86,10 @@ object frmRTTKVCL: TfrmRTTKVCL
       object Label2: TLabel
         Left = 0
         Top = 0
-        Width = 627
+        Width = 31
         Height = 13
         Align = alTop
         Caption = 'Label2'
-        ExplicitWidth = 31
       end
       object Panel1: TPanel
         Left = 224
@@ -127,9 +124,6 @@ object frmRTTKVCL: TfrmRTTKVCL
         Align = alTop
         Caption = 'Panel2'
         TabOrder = 0
-        ExplicitLeft = 224
-        ExplicitTop = 120
-        ExplicitWidth = 185
         object btnDeleteMemo: TSpeedButton
           Left = 504
           Top = 1
@@ -148,9 +142,6 @@ object frmRTTKVCL: TfrmRTTKVCL
           Caption = 'Add Memo'
           TabOrder = 0
           OnClick = btnAddMemoClick
-          ExplicitLeft = 280
-          ExplicitTop = 8
-          ExplicitHeight = 25
         end
       end
       object memoRTCompFooter: TMemo
@@ -165,9 +156,6 @@ object frmRTTKVCL: TfrmRTTKVCL
           'Click on Delete memo to remove the runtime object'
           'Refresh the form in Marshal')
         TabOrder = 1
-        ExplicitLeft = 224
-        ExplicitTop = -24
-        ExplicitWidth = 185
       end
     end
   end
