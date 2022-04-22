@@ -1,8 +1,8 @@
 object dmRTTK: TdmRTTK
   OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
   Height = 480
   Width = 640
-  PixelsPerInch = 96
   object FDConnection: TFDConnection
     Params.Strings = (
       'Database=:memory:'

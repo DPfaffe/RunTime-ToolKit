@@ -31,7 +31,7 @@ object frmRTTKFMX: TfrmRTTKFMX
     Size.Width = 318.000000000000000000
     Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -45,7 +45,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 75.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -178,7 +178,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 74.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False

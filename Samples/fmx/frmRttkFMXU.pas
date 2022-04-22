@@ -9,6 +9,11 @@ uses
   FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
 
 type
+  TDemoObject = class
+  public
+    Demostring: string;
+  end;
+
   TfrmRTTKFMX = class(TForm)
     lytTools: TLayout;
     Label1: TLabel;
@@ -41,6 +46,8 @@ type
     procedure FormDestroy(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
+    FDemoObject: TDemoObject;
+    procedure TagDataSet;
   public
     { Public declarations }
   end;
@@ -56,10 +63,10 @@ uses
 {$IF RTLVersion111}
   FMX.TextLayout.GPU
 {$ENDIF}
-//{$IFDEF DEBUG}
- , FMX.SE.RTTK.Marshal
-//{$ENDIF}
-;
+  // {$IFDEF DEBUG}
+    , FMX.SE.RTTK.Marshal
+  // {$ENDIF}
+    ;
 
 procedure TfrmRTTKFMX.btnMarshalClick(Sender: TObject);
 begin
@@ -80,10 +87,12 @@ procedure TfrmRTTKFMX.FormCreate(Sender: TObject);
 begin
   btnDeleteMemo.Enabled := false;
   tcWorkSpace.ActiveTab := tiLabel;
+  TagDataSet;
 end;
 
 procedure TfrmRTTKFMX.FormDestroy(Sender: TObject);
 begin
+  FDemoObject.Free;
 {$IF RTLVersion111}
   TGPUObjectsPool.Instance.Free;
 {$ENDIF}
@@ -112,6 +121,16 @@ begin
     lblAppHelp.Tag := 0;
     lblAppHelp.TagString := '';
   end;
+end;
+
+procedure TfrmRTTKFMX.TagDataSet;
+begin
+  Edit1.TagString := 'Tag your it';
+  Edit1.TagFloat := 3.1497;
+  Edit1.Tag := 43;
+  FDemoObject := TDemoObject.Create;
+  FDemoObject.Demostring := 'Object of tag string';
+  Edit1.TagObject := FDemoObject;
 end;
 
 procedure TfrmRTTKFMX.btnDeleteMemoClick(Sender: TObject);

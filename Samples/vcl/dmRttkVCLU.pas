@@ -20,6 +20,7 @@ type
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; AInputs: TSQLiteInputs;
       AOutput: TSQLiteOutput; var AUserData: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     FQuery: TFDQuery;
     procedure CopyDataSet;
@@ -35,6 +36,8 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
 
+uses WinAPI.Windows;
+
 procedure TdmRTTK.CopyDataSet;
 begin
   FQuery := TFDQuery.Create(self);
@@ -47,6 +50,11 @@ procedure TdmRTTK.DataModuleCreate(Sender: TObject);
 begin
   FDConnection.Open();
   CopyDataSet;
+end;
+
+procedure TdmRTTK.DataModuleDestroy(Sender: TObject);
+begin
+ OutputDebugString('DataModule destroyed');
 end;
 
 procedure TdmRTTK.FDConnectionAfterConnect(Sender: TObject);

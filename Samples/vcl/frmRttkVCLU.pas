@@ -31,6 +31,7 @@ type
     procedure btnAddMemoClick(Sender: TObject);
     procedure btnDeleteMemoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
   public
@@ -86,6 +87,11 @@ procedure TfrmRTTKVCL.FormCreate(Sender: TObject);
 begin
   pcWorkSpace.ActivePage := tsLabel;
   btnDeleteMemo.Enabled := false;
+end;
+
+procedure TfrmRTTKVCL.FormDestroy(Sender: TObject);
+begin
+  OutputDebugString('VCL form destroyed');
 end;
 
 end.

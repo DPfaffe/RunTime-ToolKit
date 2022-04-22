@@ -12,6 +12,7 @@ object frmRTTKVCL: TfrmRTTKVCL
   Font.Style = []
   OnActivate = FormActivate
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   TextHeight = 13
   object pnlTop: TPanel
     Left = 0
