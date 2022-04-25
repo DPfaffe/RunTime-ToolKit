@@ -5,9 +5,34 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons;
+  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask;
 
 type
+
+  TStallThread = class(TThread)
+  strict private
+    FStallTime: integer;
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(AStallTime: integer);
+  end;
+
+  TLeakChild = class
+  strict private
+    FLeakDict: TDictionary<string, string>;
+  public
+    constructor Create;
+  end;
+
+  TLeakParent = class
+  strict private
+    FLeakChild: TLeakChild;
+    FLeakList: TObjectList<TLeakChild>;
+  public
+    constructor Create;
+  end;
+
   TfrmRTTKVCL = class(TForm)
     pnlTop: TPanel;
     pnlFoxLabel: TPanel;
@@ -26,14 +51,22 @@ type
     memoRTCompFooter: TMemo;
     btnAddMemo: TButton;
     btnDeleteMemo: TSpeedButton;
+    Panel3: TPanel;
+    cbLeakObjects: TCheckBox;
+    cbStallShutdown: TCheckBox;
+    edtShutdownStall: TMaskEdit;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnAddMemoClick(Sender: TObject);
     procedure btnDeleteMemoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure cbLeakObjectsClick(Sender: TObject);
+    procedure cbStallShutdownClick(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
+    FStallThread: TStallThread;
+    FLeakRoot: TLeakParent;
   public
     { Public declarations }
   end;
@@ -75,6 +108,27 @@ begin
 {$ENDIF}
 end;
 
+procedure TfrmRTTKVCL.cbLeakObjectsClick(Sender: TObject);
+begin
+  if  cbLeakObjects.Checked then
+  begin
+    memoRTCompFooter.Lines.Add('leaking objects');
+    FLeakRoot := TLeakParent.Create;
+    //cbLeakObjects.Checked := true;
+  end;
+end;
+
+procedure TfrmRTTKVCL.cbStallShutdownClick(Sender: TObject);
+begin
+  if cbStallShutdown.Checked then
+  begin
+    memoRTCompFooter.Lines.Add('Shutdown Stalled');
+    FStallThread := TStallThread.Create(edtShutdownStall.EditText.ToInteger);
+    FStallThread.Start;
+    //cbStallShutdown.Checked := true;
+  end;
+end;
+
 procedure TfrmRTTKVCL.FormActivate(Sender: TObject);
 begin
 {$IFNDEF DEBUG}
@@ -92,6 +146,50 @@ end;
 procedure TfrmRTTKVCL.FormDestroy(Sender: TObject);
 begin
   OutputDebugString('VCL form destroyed');
+end;
+
+{ TStallThread }
+
+constructor TStallThread.Create(AStallTime: integer);
+begin
+  inherited Create(true);
+  FStallTime := AStallTime;
+end;
+
+procedure TStallThread.Execute;
+begin
+  inherited;
+  NameThreadForDebugging(self.ClassName);
+  while not Terminated do
+    TThread.Sleep(FStallTime)
+
+end;
+
+{ TLeakParent }
+
+constructor TLeakParent.Create;
+var
+  i: integer;
+begin
+  FLeakChild := TLeakChild.Create;
+  FLeakList := TObjectList<TLeakChild>.Create;
+  for i := 0 to 1000 do
+    FLeakList.Add(TLeakChild.Create);
+end;
+
+{ TLeakChild }
+
+constructor TLeakChild.Create;
+const
+  pfx_key = 'Key';
+  pfx_val = 'Val';
+var
+  i: integer;
+begin
+  FLeakDict := TDictionary<string, string>.Create;
+  for i := 0 to 5000 do
+    FLeakDict.Add(pfx_key + i.ToString, pfx_val + i.ToString)
+
 end;
 
 end.

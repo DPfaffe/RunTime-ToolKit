@@ -6,9 +6,34 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
-  FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
+  FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
+  Generics.Collections;
 
 type
+  TStallThread = class(TThread)
+  strict private
+    FStallTime: integer;
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(AStallTime: integer);
+  end;
+
+  TLeakChild = class
+  strict private
+    FLeakDict: TDictionary<string, string>;
+  public
+    constructor Create;
+  end;
+
+  TLeakParent = class
+  strict private
+    FLeakChild: TLeakChild;
+    FLeakList: TObjectList<TLeakChild>;
+  public
+    constructor Create;
+  end;
+
   TDemoObject = class
   public
     Demostring: string;
@@ -37,6 +62,10 @@ type
     btnAddMemo: TCornerButton;
     btnDeleteMemo: TSpeedButton;
     memoRTCompFooter: TMemo;
+    Panel1: TPanel;
+    cbLeakObjects: TCheckBox;
+    cbStallShutdown: TCheckBox;
+    edtShutdownStall: TEdit;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure lblAppHelpClick(Sender: TObject);
@@ -44,9 +73,13 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnDeleteMemoClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure cbLeakObjectsChange(Sender: TObject);
+    procedure cbStallShutdownChange(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
     FDemoObject: TDemoObject;
+    FStallThread: TStallThread;
+    FLeakRoot: TLeakParent;
     procedure TagDataSet;
   public
     { Public declarations }
@@ -75,6 +108,19 @@ begin
 {$ENDIF}
 end;
 
+procedure TfrmRTTKFMX.cbLeakObjectsChange(Sender: TObject);
+begin
+  memoRTCompFooter.Lines.Add('leaking objects');
+      FLeakRoot:= TLeakParent.Create;
+end;
+
+procedure TfrmRTTKFMX.cbStallShutdownChange(Sender: TObject);
+begin
+  memoRTCompFooter.Lines.Add('Shutdown Stalled');
+  FStallThread := TStallThread.Create(edtShutdownStall.Text.ToInteger);
+  FStallThread.Start;
+end;
+
 procedure TfrmRTTKFMX.FormActivate(Sender: TObject);
 begin
 {$IFNDEF DEBUG}
@@ -93,6 +139,7 @@ end;
 procedure TfrmRTTKFMX.FormDestroy(Sender: TObject);
 begin
   FDemoObject.Free;
+  FStallThread.Free;
 {$IF RTLVersion111}
   TGPUObjectsPool.Instance.Free;
 {$ENDIF}
@@ -150,6 +197,50 @@ begin
   for s in memoRTCompFooter.Lines do
     FRuntimeMemo.Lines.Add('Copy of : ' + s);
   btnDeleteMemo.Enabled := true;
+end;
+
+{ TStallThread }
+
+constructor TStallThread.Create(AStallTime: integer);
+begin
+  inherited Create(true);
+  FStallTime := AStallTime;
+end;
+
+procedure TStallThread.Execute;
+begin
+  inherited;
+  NameThreadForDebugging(self.ClassName);
+  while not Terminated do
+    TThread.Sleep(FStallTime)
+
+end;
+
+{ TLeakParent }
+
+constructor TLeakParent.Create;
+var
+  i: integer;
+begin
+  FLeakChild := TLeakChild.Create;
+  FLeakList := TObjectList<TLeakChild>.Create;
+  for i := 0 to 1000 do
+    FLeakList.Add(TLeakChild.Create);
+end;
+
+{ TLeakChild }
+
+constructor TLeakChild.Create;
+const
+  pfx_key = 'Key';
+  pfx_val = 'Val';
+var
+  i: integer;
+begin
+  FLeakDict := TDictionary<string, string>.Create;
+  for i := 0 to 5000 do
+    FLeakDict.Add(pfx_key + i.ToString, pfx_val + i.ToString)
+
 end;
 
 end.

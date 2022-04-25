@@ -55,6 +55,7 @@ end;
 procedure TdmRTTK.DataModuleDestroy(Sender: TObject);
 begin
  OutputDebugString('DataModule destroyed');
+ FDConnection.Close;
 end;
 
 procedure TdmRTTK.FDConnectionAfterConnect(Sender: TObject);

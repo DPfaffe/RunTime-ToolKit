@@ -1,8 +1,8 @@
 object dmRTTK: TdmRTTK
   OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
   Height = 480
   Width = 640
-  PixelsPerInch = 96
   object FDMemTable: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
@@ -65,11 +65,14 @@ object dmRTTK: TdmRTTK
   object FDQuerySalesIndexed: TFDQuery
     Indexes = <
       item
+        Active = True
+        Selected = True
         Name = 'MonthascYeardesc'
-        Fields = 'month'
+        Fields = 'year;month'
         CaseInsFields = 'month'
-        DescFields = 'year'
+        DescFields = 'month'
       end>
+    IndexName = 'MonthascYeardesc'
     Connection = FDConnection
     SQL.Strings = (
       'select year, month, amount from SalesInfo')

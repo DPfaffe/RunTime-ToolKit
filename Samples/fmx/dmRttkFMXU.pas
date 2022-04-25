@@ -26,6 +26,7 @@ type
     procedure DataModuleCreate(Sender: TObject);
     procedure FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; AInputs: TSQLiteInputs; AOutput: TSQLiteOutput;
       var AUserData: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     FQuery:TFDQuery;
     procedure CopyDataSet;
@@ -53,6 +54,11 @@ procedure TdmRTTK.DataModuleCreate(Sender: TObject);
 begin
   FDConnection.Open();
   CopyDataSet;
+end;
+
+procedure TdmRTTK.DataModuleDestroy(Sender: TObject);
+begin
+FDConnection.Close;
 end;
 
 { schema objects from https://www.sqlitetutorial.net/sqlite-window-functions/sqlite-window-frame/ }

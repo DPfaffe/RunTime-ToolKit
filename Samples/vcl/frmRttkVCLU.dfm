@@ -36,7 +36,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     Top = 22
     Width = 635
     Height = 314
-    ActivePage = tsRunTimeComp
+    ActivePage = tsIfDef
     Align = alClient
     TabOrder = 1
     object tsLabel: TTabSheet
@@ -52,7 +52,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Left = 1
           Top = 1
           Width = 235
-          Height = 39
+          Height = 55
           Align = alLeft
           Caption = 'Fox Jump Status'
           Font.Charset = DEFAULT_CHARSET
@@ -61,6 +61,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
+          ExplicitHeight = 39
         end
         object Edit1: TEdit
           Left = 0
@@ -87,10 +88,11 @@ object frmRTTKVCL: TfrmRTTKVCL
       object Label2: TLabel
         Left = 0
         Top = 0
-        Width = 31
+        Width = 627
         Height = 13
         Align = alTop
         Caption = 'Label2'
+        ExplicitWidth = 31
       end
       object Panel1: TPanel
         Left = 224
@@ -111,6 +113,40 @@ object frmRTTKVCL: TfrmRTTKVCL
           Caption = 'Marshal'
           TabOrder = 0
           OnClick = btnMarshalClick
+        end
+      end
+      object Panel3: TPanel
+        Left = 3
+        Top = 242
+        Width = 598
+        Height = 41
+        Caption = 'Panel3'
+        TabOrder = 1
+        object cbLeakObjects: TCheckBox
+          Left = 48
+          Top = 16
+          Width = 97
+          Height = 17
+          Caption = 'Leak Objects'
+          TabOrder = 0
+          OnClick = cbLeakObjectsClick
+        end
+        object cbStallShutdown: TCheckBox
+          Left = 338
+          Top = 16
+          Width = 97
+          Height = 17
+          Caption = 'Stall Shutdown'
+          TabOrder = 1
+          OnClick = cbStallShutdownClick
+        end
+        object edtShutdownStall: TMaskEdit
+          Left = 448
+          Top = 16
+          Width = 121
+          Height = 21
+          TabOrder = 2
+          Text = '2500'
         end
       end
     end

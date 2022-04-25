@@ -31,7 +31,7 @@ object frmRTTKFMX: TfrmRTTKFMX
     Size.Width = 318.000000000000000000
     Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
@@ -45,7 +45,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 75.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -133,7 +133,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 72.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -171,6 +171,36 @@ object frmRTTKFMX: TfrmRTTKFMX
           TabOrder = 1
           Text = 'Marshal'
           OnClick = btnMarshalClick
+        end
+      end
+      object Panel1: TPanel
+        Position.X = 16.000000000000000000
+        Position.Y = 344.000000000000000000
+        Size.Width = 281.000000000000000000
+        Size.Height = 79.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object cbLeakObjects: TCheckBox
+          Position.X = 8.000000000000000000
+          Position.Y = 8.000000000000000000
+          TabOrder = 0
+          Text = 'Leak Objects'
+          OnChange = cbLeakObjectsChange
+        end
+        object cbStallShutdown: TCheckBox
+          Position.X = 8.000000000000000000
+          Position.Y = 52.000000000000000000
+          TabOrder = 1
+          Text = 'Stall Shutdown'
+          OnChange = cbStallShutdownChange
+        end
+        object edtShutdownStall: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 2
+          Text = '2500'
+          Position.X = 136.000000000000000000
+          Position.Y = 49.000000000000000000
+          TextPrompt = '#####'
         end
       end
     end
