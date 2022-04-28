@@ -11,21 +11,8 @@ Bookmarks provide marking points in sessions and an optional description.
 
 ### Feature Overview
 
-![Marshal Main Features](/images/marshal_features_map.png)
+https://youtu.be/h5BTBJ5mGP8
 
-1. View session log
-
-2. Add session bookmarks
-
-3. Tree of forms and components
-
-4. Tabs of inspected components 
-
-5. Tools by component type (all components get an object inspector)
-
-6. Tool detail area
-
-7. Path in form
 
 ## RT Caddie - Session review offline
 Caddie provides session collection and display for review after you have closed your application.  Sessions are parsed for bookmarks to quickly get you back to the session after you have closed your application.  Bookmarks provide a filter to your sessions. 
