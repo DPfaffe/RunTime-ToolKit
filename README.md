@@ -12,8 +12,11 @@ Bookmarks provide marking points in sessions and an optional description.
 ### Marshal Navigation
 [![Watch the video](https://img.youtube.com/vi/h5BTBJ5mGP8/hqdefault.jpg)](https://youtu.be/h5BTBJ5mGP8)
 
+### Object Plus
+[![Watch the video](https://img.youtube.com/vi/ywLY8FnbD4U/hqdefault.jpg)](https://youtu.be/ywLY8FnbD4U)
 
-
+### Data Inspectors
+[![Watch the video](https://img.youtube.com/vi/ovtexwj5d5Q/hqdefault.jpg)](https://youtu.be/ovtexwj5d5Q)
 
 ## RT Caddie - Session review offline
 Caddie provides session collection and display for review after you have closed your application.  Sessions are parsed for bookmarks to quickly get you back to the session after you have closed your application.  Bookmarks provide a filter to your sessions. 
