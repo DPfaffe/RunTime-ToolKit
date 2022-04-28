@@ -9,9 +9,10 @@ Sessions provide logging of screen shots and bookmarks.  Sessions are saved when
 #### Bookmarks
 Bookmarks provide marking points in sessions and an optional description.  
 
-### Feature Overview
+### Marshal Navigation
+[![Watch the video](https://img.youtube.com/vi/h5BTBJ5mGP8/hqdefault.jpg)](https://youtu.be/h5BTBJ5mGP8)
 
-https://youtu.be/h5BTBJ5mGP8
+
 
 
 ## RT Caddie - Session review offline
