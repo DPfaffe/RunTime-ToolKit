@@ -52,7 +52,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Left = 1
           Top = 1
           Width = 235
-          Height = 55
+          Height = 39
           Align = alLeft
           Caption = 'Fox Jump Status'
           Font.Charset = DEFAULT_CHARSET
@@ -61,7 +61,6 @@ object frmRTTKVCL: TfrmRTTKVCL
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          ExplicitHeight = 39
         end
         object Edit1: TEdit
           Left = 0

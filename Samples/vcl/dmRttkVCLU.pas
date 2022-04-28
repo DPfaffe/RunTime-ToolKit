@@ -21,11 +21,13 @@ type
     procedure FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; AInputs: TSQLiteInputs;
       AOutput: TSQLiteOutput; var AUserData: TObject);
     procedure DataModuleDestroy(Sender: TObject);
+  strict private
+    FStallTime: integer;
   private
     FQuery: TFDQuery;
     procedure CopyDataSet;
   public
-    { Public declarations }
+    procedure StallShutdown(AStallTime: integer);
   end;
 
 var
@@ -54,8 +56,15 @@ end;
 
 procedure TdmRTTK.DataModuleDestroy(Sender: TObject);
 begin
- OutputDebugString('DataModule destroyed');
- FDConnection.Close;
+  OutputDebugString('DataModule destroyed');
+  FDConnection.Close;
+  { This is to simulate a slow closing database and ensure Deputy continues to poll }
+  if FStallTime > 0 then
+  begin
+    TThread.Sleep(FStallTime);
+    OutputDebugString('Destroy after thread sleep');
+  end;
+
 end;
 
 procedure TdmRTTK.FDConnectionAfterConnect(Sender: TObject);
@@ -74,6 +83,11 @@ procedure TdmRTTK.FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; A
   AOutput: TSQLiteOutput; var AUserData: TObject);
 begin
   AOutput.AsInteger := AInputs[0].AsInteger * AInputs[1].AsInteger;
+end;
+
+procedure TdmRTTK.StallShutdown(AStallTime: integer);
+begin
+  FStallTime := AStallTime;
 end;
 
 end.

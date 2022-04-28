@@ -77,10 +77,12 @@ var
 implementation
 
 {$R *.dfm}
-{$IFDEF DEBUG}
 
-uses Vcl.SE.RTTK.Marshal;
+uses
+{$IFDEF DEBUG}
+ Vcl.SE.RTTK.Marshal,
 {$ENDIF}
+dmRTTKVCLU;
 
 procedure TfrmRTTKVCL.btnAddMemoClick(Sender: TObject);
 var
@@ -114,7 +116,6 @@ begin
   begin
     memoRTCompFooter.Lines.Add('leaking objects');
     FLeakRoot := TLeakParent.Create;
-    //cbLeakObjects.Checked := true;
   end;
 end;
 
@@ -123,9 +124,9 @@ begin
   if cbStallShutdown.Checked then
   begin
     memoRTCompFooter.Lines.Add('Shutdown Stalled');
+    dmRTTK.StallShutdown(edtShutdownStall.EditText.ToInteger);
     FStallThread := TStallThread.Create(edtShutdownStall.EditText.ToInteger);
     FStallThread.Start;
-    //cbStallShutdown.Checked := true;
   end;
 end;
 
@@ -145,6 +146,7 @@ end;
 
 procedure TfrmRTTKVCL.FormDestroy(Sender: TObject);
 begin
+  FStallThread.Free;
   OutputDebugString('VCL form destroyed');
 end;
 
