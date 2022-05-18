@@ -84,6 +84,13 @@ uses
 {$ENDIF}
 dmRTTKVCLU;
 
+procedure TfrmRTTKVCL.btnMarshalClick(Sender: TObject);
+begin
+{$IFDEF DEBUG}
+  TSERTTKWorker.ShowMarshal;
+{$ENDIF}
+end;
+
 procedure TfrmRTTKVCL.btnAddMemoClick(Sender: TObject);
 var
   s: string;
@@ -103,12 +110,7 @@ begin
   btnDeleteMemo.Enabled := false;
 end;
 
-procedure TfrmRTTKVCL.btnMarshalClick(Sender: TObject);
-begin
-{$IFDEF DEBUG}
-  TSERTTKWorker.ShowMarshal;
-{$ENDIF}
-end;
+
 
 procedure TfrmRTTKVCL.cbLeakObjectsClick(Sender: TObject);
 begin

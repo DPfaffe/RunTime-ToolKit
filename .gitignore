@@ -7,3 +7,5 @@ Samples/vcl/RTTK.VCL.delphilsp.json
 *.res
 Samples/fmx/RTTK_FMX.res
 *.o
+Samples/DEB/FMX/DebFileEventsFMX.delphilsp.json
+Samples/DEB/VCL/DebFileEventsVCL.delphilsp.json
