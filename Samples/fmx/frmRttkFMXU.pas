@@ -93,11 +93,11 @@ implementation
 {$R *.fmx}
 
 uses
-{$IF RTLVersion111}
-  FMX.TextLayout.GPU
-{$ENDIF}
+//{$IF RTLVersion111}
+//  FMX.TextLayout.GPU,
+//{$ENDIF}
   // {$IFDEF DEBUG}
-    , FMX.SE.RTTK.Marshal
+    FMX.SE.RTTK.Marshal
   // {$ENDIF}
     ;
 
@@ -140,9 +140,9 @@ procedure TfrmRTTKFMX.FormDestroy(Sender: TObject);
 begin
   FDemoObject.Free;
   FStallThread.Free;
-{$IF RTLVersion111}
-  TGPUObjectsPool.Instance.Free;
-{$ENDIF}
+//{$IF RTLVersion111}
+//  TGPUObjectsPool.Instance.Free;
+//{$ENDIF}
 end;
 
 procedure TfrmRTTKFMX.lblAppHelpClick(Sender: TObject);
