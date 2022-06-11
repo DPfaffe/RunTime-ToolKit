@@ -12,7 +12,7 @@ object frmDebFileEvents: TfrmDebFileEvents
   object lbFiles: TTMSFNCListBox
     Align = Left
     Size.Width = 200.000000000000000000
-    Size.Height = 770.000000000000000000
+    Size.Height = 750.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     ItemsAppearance.Font.Name = 'Segoe UI'
@@ -50,10 +50,46 @@ object frmDebFileEvents: TfrmDebFileEvents
   object Panel1: TPanel
     Align = Client
     Size.Width = 804.000000000000000000
-    Size.Height = 770.000000000000000000
+    Size.Height = 750.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object chart: TTMSFNCChart
+      Appearance.ColorList = <
+        item
+          Color = xFF57C0F5
+        end
+        item
+          Color = xFFF71F56
+        end
+        item
+          Color = xFF031B79
+        end
+        item
+          Color = xFF954EBB
+        end
+        item
+          Color = xFFEEC713
+        end
+        item
+          Color = xFFF36042
+        end
+        item
+          Color = xFF2773FC
+        end
+        item
+          Color = xFFA1CF58
+        end
+        item
+          Color = xFF00A9A6
+        end
+        item
+          Color = xFF85E4F9
+        end>
+      Appearance.GlobalFont.Color = claNull
+      Appearance.GlobalFont.Scale = 1.000000000000000000
+      Appearance.GlobalFont.Style = []
+      Appearance.ColorScheme = ccsColorList
+      Appearance.MonochromeColor = claSteelblue
       ClickMargin = 10.000000000000000000
       Legend.Fill.Color = claGhostwhite
       Legend.Stroke.Color = claGray
@@ -693,6 +729,9 @@ object frmDebFileEvents: TfrmDebFileEvents
       YAxis.Fill.Color = claGhostwhite
       YAxis.Stroke.Color = claGray
       YAxis.Width = 35.000000000000000000
+      DefaultLoadOptions.XValuesFormatString = '%.0f'
+      DefaultLoadOptions.YValuesFormatString = '%.2f'
+      DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       Align = Top
       Size.Width = 804.000000000000000000
       Size.Height = 480.000000000000000000
@@ -757,5 +796,40 @@ object frmDebFileEvents: TfrmDebFileEvents
       Header.Size = 25.000000000000000000
       Header.SortIndicatorColor = claSteelblue
     end
+    object TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog
+      Size.Width = 39.000000000000000000
+      Size.Height = 39.000000000000000000
+      Size.PlatformDefault = False
+      Position.X = 392.000000000000000000
+      Position.Y = 376.000000000000000000
+      Chart = chart
+    end
+    object Button1: TButton
+      Position.X = 360.000000000000000000
+      Position.Y = 376.000000000000000000
+      TabOrder = 4
+      Text = 'Button1'
+      OnClick = Button1Click
+    end
+  end
+  object TMSFNCStatusBar1: TTMSFNCStatusBar
+    Position.Y = 750.000000000000000000
+    Size.Width = 1004.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Panels = <
+      item
+        Text = '07:02:20'
+        Style = spsTime
+        Alignment = taRightJustify
+        Width = 50
+        Progress.Level0Fill.Color = claLime
+        Progress.Level1Fill.Color = claYellow
+        Progress.Level2Fill.Color = claOrange
+        Progress.Level3Fill.Color = claRed
+        Progress.Position = 0
+      end>
+    PanelAppearance.Font.Name = 'Segoe UI'
   end
 end

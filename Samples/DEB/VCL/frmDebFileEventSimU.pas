@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, EventBus, MsgEventsU,
   Generics.Collections, ThreadProcStats, ThreadFSPollFolder, ThreadItemWorker, Vcl.TMSFNCTypes, Vcl.TMSFNCUtils,
   Vcl.TMSFNCGraphics, Vcl.TMSFNCGraphicsTypes, Vcl.TMSFNCCustomControl, Vcl.TMSFNCListBox, Vcl.ExtCtrls,
-  Vcl.TMSFNCChart, VCL.TMSFNCCustomGroup, VCL.TMSFNCCheckGroup;
+  Vcl.TMSFNCChart, VCL.TMSFNCCustomGroup, VCL.TMSFNCCheckGroup, Vcl.StdCtrls, VCL.TMSFNCCustomComponent,
+  VCL.TMSFNCChartEditor, VCL.TMSFNCStatusBar;
 
 const
   nm_ghqueue_hdr = 'Queue Files';
@@ -21,8 +22,12 @@ type
     chart: TTMSFNCChart;
     Panel1: TPanel;
     cgControls: TTMSFNCCheckGroup;
+    TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog;
+    Button1: TButton;
+    TMSFNCStatusBar1: TTMSFNCStatusBar;
     procedure FormCreate(Sender: TObject);
     procedure cgControlsCheckBoxClick(Sender: TObject; AItemIndex: Integer; AValue: Int64);
+    procedure Button1Click(Sender: TObject);
   strict private
     ghQueueItems: TTMSFNCListBoxItem;
     gfQueueCount: TTMSFNCListBoxItem;
@@ -62,6 +67,12 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmDebFileEvents.Button1Click(Sender: TObject);
+begin
+
+  TMSFNCChartEditorDialog1.Execute;
+end;
 
 procedure TfrmDebFileEvents.cgControlsCheckBoxClick(Sender: TObject; AItemIndex: Integer; AValue: Int64);
 var

@@ -2,28 +2,29 @@ object frmDebFileEvents: TfrmDebFileEvents
   Left = 0
   Top = 0
   Caption = 'DEB File Events Simulation'
-  ClientHeight = 874
-  ClientWidth = 1121
+  ClientHeight = 941
+  ClientWidth = 1525
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesigned
   OnCreate = FormCreate
   TextHeight = 15
   object lbFiles: TTMSFNCListBox
     Left = 0
     Top = 0
     Width = 200
-    Height = 874
+    Height = 921
     Align = alLeft
     ParentDoubleBuffered = False
     DoubleBuffered = True
     TabOrder = 0
     ItemsAppearance.Font.Charset = DEFAULT_CHARSET
     ItemsAppearance.Font.Color = clBlack
-    ItemsAppearance.Font.Height = -26
+    ItemsAppearance.Font.Height = -59
     ItemsAppearance.Font.Name = 'Segoe UI'
     ItemsAppearance.Font.Style = []
     ItemsAppearance.Fill.Color = -1
@@ -34,7 +35,7 @@ object frmDebFileEvents: TfrmDebFileEvents
     ItemsAppearance.DisabledFill.Color = 11119017
     ItemsAppearance.DisabledStroke.Kind = gskNone
     ItemsAppearance.DisabledStroke.Color = 11119017
-    ItemsAppearance.FixedHeight = 56.250000000000000000
+    ItemsAppearance.FixedHeight = 126.562500000000000000
     Items = <
       item
         Text = 'Mercedes'
@@ -54,28 +55,66 @@ object frmDebFileEvents: TfrmDebFileEvents
     Header.Text = 'Header'
     Header.Font.Charset = DEFAULT_CHARSET
     Header.Font.Color = clBlack
-    Header.Font.Height = -26
+    Header.Font.Height = -59
     Header.Font.Name = 'Segoe UI'
     Header.Font.Style = []
     Header.Stroke.Color = 11119017
-    Header.Size = 56.250000000000000000
+    Header.Size = 126.562500000000000000
     Header.SortIndicatorColor = 11829830
-    Interaction.Filtering.DropDownWidth = 225
-    Interaction.Filtering.DropDownHeight = 270
+    Interaction.Filtering.DropDownWidth = 507
+    Interaction.Filtering.DropDownHeight = 608
+    ExplicitHeight = 941
   end
   object Panel1: TPanel
     Left = 200
     Top = 0
-    Width = 921
-    Height = 874
+    Width = 1325
+    Height = 921
     Align = alClient
     Caption = 'Panel1'
     TabOrder = 1
+    ExplicitHeight = 941
     object chart: TTMSFNCChart
       Left = 1
       Top = 1
-      Width = 919
+      Width = 1323
       Height = 350
+      Appearance.ColorList = <
+        item
+          Color = 16105559
+        end
+        item
+          Color = 5644279
+        end
+        item
+          Color = 7936771
+        end
+        item
+          Color = 12275349
+        end
+        item
+          Color = 1296366
+        end
+        item
+          Color = 4350195
+        end
+        item
+          Color = 16544551
+        end
+        item
+          Color = 5820321
+        end
+        item
+          Color = 10922240
+        end
+        item
+          Color = 16376965
+        end>
+      Appearance.GlobalFont.Color = -1
+      Appearance.GlobalFont.Scale = 1.000000000000000000
+      Appearance.GlobalFont.Style = []
+      Appearance.ColorScheme = ccsColorList
+      Appearance.MonochromeColor = 11829830
       ClickMargin = 10.000000000000000000
       Legend.Fill.Color = 16775416
       Legend.Stroke.Color = clGray
@@ -819,6 +858,9 @@ object frmDebFileEvents: TfrmDebFileEvents
       YAxis.Fill.Color = 16775416
       YAxis.Stroke.Color = clGray
       YAxis.Width = 35.000000000000000000
+      DefaultLoadOptions.XValuesFormatString = '%.0f'
+      DefaultLoadOptions.YValuesFormatString = '%.2f'
+      DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       Align = alTop
       TabOrder = 0
     end
@@ -849,5 +891,51 @@ object frmDebFileEvents: TfrmDebFileEvents
       Fill.Kind = gfkNone
       OnCheckBoxClick = cgControlsCheckBoxClick
     end
+  end
+  object TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog
+    Left = 552
+    Top = 448
+    Width = 39
+    Height = 39
+    Visible = True
+    Chart = chart
+  end
+  object Button1: TButton
+    Left = 632
+    Top = 496
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 3
+    OnClick = Button1Click
+  end
+  object TMSFNCStatusBar1: TTMSFNCStatusBar
+    Left = 0
+    Top = 921
+    Width = 1525
+    Height = 20
+    ParentDoubleBuffered = False
+    DoubleBuffered = True
+    TabOrder = 4
+    Panels = <
+      item
+        Text = '07:01:26'
+        Style = spsTime
+        Alignment = taRightJustify
+        Width = 50
+        Progress.Level0Fill.Color = clLime
+        Progress.Level1Fill.Color = clYellow
+        Progress.Level2Fill.Color = 42495
+        Progress.Level3Fill.Color = clRed
+        Progress.Position = 0
+      end>
+    PanelAppearance.Font.Charset = DEFAULT_CHARSET
+    PanelAppearance.Font.Color = clWindowText
+    PanelAppearance.Font.Height = -11
+    PanelAppearance.Font.Name = 'Segoe UI'
+    PanelAppearance.Font.Style = []
+    ExplicitLeft = 776
+    ExplicitTop = 488
+    ExplicitWidth = 0
   end
 end
