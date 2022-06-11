@@ -6,6 +6,7 @@ uses
   System.Classes, EventBus, MsgEventsU;
 
 type
+
   TFSPollFolder = class(TThread)
   private
     FIterations, FIteration: cardinal;
@@ -18,7 +19,6 @@ type
     [Subscribe(TThreadMode.Background)]
     procedure OnPubDebEvent(AEvent: IPubDebEvent);
     procedure EnablePolling(AEnabled: boolean);
-
     destructor Destroy; override;
     constructor Create;
   end;

@@ -7,7 +7,8 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, EventBus, MsgEventsU,
   Generics.Collections, ThreadProcStats, ThreadFSPollFolder, ThreadItemWorker, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
   FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl, FMX.TMSFNCListBox, FMX.TMSFNCChart,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.TMSFNCCustomGroup, FMX.TMSFNCCheckGroup;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.TMSFNCCustomGroup, FMX.TMSFNCCheckGroup, FMX.TMSFNCCustomComponent,
+  FMX.TMSFNCChartEditor, FMX.TMSFNCStatusBar;
 
 const
   nm_ghqueue_hdr = 'Queue Files';
@@ -22,8 +23,12 @@ type
     chart: TTMSFNCChart;
     cgControls: TTMSFNCCheckGroup;
     TMSFNCListBox1: TTMSFNCListBox;
+    TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog;
+    Button1: TButton;
+    TMSFNCStatusBar1: TTMSFNCStatusBar;
     procedure FormCreate(Sender: TObject);
     procedure cgControlsCheckBoxClick(Sender: TObject; AItemIndex: Integer; AValue: Int64);
+    procedure Button1Click(Sender: TObject);
   strict private
     ghQueueItems: TTMSFNCListBoxItem;
     gfQueueCount: TTMSFNCListBoxItem;
@@ -63,6 +68,11 @@ var
 implementation
 
 {$R *.fmx}
+
+procedure TfrmDebFileEvents.Button1Click(Sender: TObject);
+begin
+TMSFNCChartEditorDialog1.Execute;
+end;
 
 procedure TfrmDebFileEvents.cgControlsCheckBoxClick(Sender: TObject; AItemIndex: Integer; AValue: Int64);
 var
