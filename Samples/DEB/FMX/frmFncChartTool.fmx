@@ -1,0 +1,23 @@
+object FrameFNCChartTool: TFrameFNCChartTool
+  Align = Client
+  Size.Width = 608.000000000000000000
+  Size.Height = 486.000000000000000000
+  Size.PlatformDefault = False
+  object btnShowChartEditor: TButton
+    Position.X = 128.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 369.000000000000000000
+    Size.Height = 273.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Show Chart Editor'
+    OnClick = btnShowChartEditorClick
+    object TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog
+      Size.Width = 39.000000000000000000
+      Size.Height = 39.000000000000000000
+      Size.PlatformDefault = False
+      Position.X = -88.000000000000000000
+      Position.Y = -144.000000000000000000
+    end
+  end
+end
