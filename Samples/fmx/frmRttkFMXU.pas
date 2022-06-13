@@ -104,7 +104,7 @@ uses
 procedure TfrmRTTKFMX.btnMarshalClick(Sender: TObject);
 begin
 {$IFDEF DEBUG}
-  TSERTTKWorker.ShowMarshal;
+  TSERTTKMarshalAPI.ShowMarshal;
 {$ENDIF}
 end;
 
@@ -159,7 +159,7 @@ begin
   end
   else if (lblAppHelp.Tag = 2) and (SecondsBetween(Now, StrToDateTime(lblAppHelp.TagString)) < 5) then
   begin
-    TSERTTKWorker.ShowMarshal;
+    TSERTTKMarshalAPI.ShowMarshal;
     lblAppHelp.Tag := 0;
     lblAppHelp.TagString := '';
   end

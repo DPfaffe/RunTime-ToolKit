@@ -8,7 +8,7 @@ uses
   Generics.Collections, ThreadProcStats, ThreadFSPollFolder, ThreadItemWorker, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
   FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl, FMX.TMSFNCListBox, FMX.TMSFNCChart,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.TMSFNCCustomGroup, FMX.TMSFNCCheckGroup, FMX.TMSFNCCustomComponent,
-  FMX.TMSFNCChartEditor, FMX.TMSFNCStatusBar;
+  FMX.TMSFNCChartEditor, FMX.TMSFNCStatusBar, FMX.SE.RTTK.DT.Marshal;
 
 const
   nm_ghqueue_hdr = 'Queue Files';
@@ -26,9 +26,11 @@ type
     TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog;
     Button1: TButton;
     TMSFNCStatusBar1: TTMSFNCStatusBar;
+    SERTTKMarshal1: TSERTTKMarshal;
     procedure FormCreate(Sender: TObject);
     procedure cgControlsCheckBoxClick(Sender: TObject; AItemIndex: Integer; AValue: Int64);
     procedure Button1Click(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   strict private
     ghQueueItems: TTMSFNCListBoxItem;
     gfQueueCount: TTMSFNCListBoxItem;
@@ -69,9 +71,11 @@ implementation
 
 {$R *.fmx}
 
+uses FMX.SE.RTTK.Marshal, FMX.RTTK.PT.FNCChart;
+
 procedure TfrmDebFileEvents.Button1Click(Sender: TObject);
 begin
-TMSFNCChartEditorDialog1.Execute;
+  TMSFNCChartEditorDialog1.Execute;
 end;
 
 procedure TfrmDebFileEvents.cgControlsCheckBoxClick(Sender: TObject; AItemIndex: Integer; AValue: Int64);
@@ -111,6 +115,14 @@ begin
   FThIW.Start;
   FThStats := TAppStatsThread.Create();
   FThStats.Start;
+end;
+
+procedure TfrmDebFileEvents.FormDestroy(Sender: TObject);
+begin
+FProcItems.Free;
+  FTHPollFolder.Free;
+  FThIW.Free;
+  FThStats.Free;
 end;
 
 procedure TfrmDebFileEvents.InitCG;
@@ -216,5 +228,9 @@ begin
     lbi.Index := gfQueueCount.Index;
   lbFiles.EndUpdate;
 end;
+
+//initialization
+//
+//TSERTTKMarshalAPI.AddPluginTransform('new transform');
 
 end.
