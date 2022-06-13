@@ -8,7 +8,8 @@ uses
   ThreadFSPollFolder in '..\ThreadFSPollFolder.pas',
   ThreadItemWorker in '..\ThreadItemWorker.pas',
   ThreadProcStats in '..\ThreadProcStats.pas',
-  FMX.RTTK.PT.FNCChart in 'FMX.RTTK.PT.FNCChart.pas';
+  FMX.RTTK.PT.FNCChart in 'FMX.RTTK.PT.FNCChart.pas',
+  frmFncChartTool in 'frmFncChartTool.pas' {FrameFNCChartTool: TFrame};
 
 {$R *.res}
 
