@@ -8,6 +8,7 @@ object frmDebFileEvents: TfrmDebFileEvents
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   DesignerMasterStyle = 0
   object lbFiles: TTMSFNCListBox
     Align = Left
@@ -811,6 +812,12 @@ object frmDebFileEvents: TfrmDebFileEvents
       Text = 'Button1'
       OnClick = Button1Click
     end
+    object SERTTKMarshal1: TSERTTKMarshal
+      Position.X = 504.000000000000000000
+      Position.Y = 512.000000000000000000
+      TabOrder = 6
+      Text = 'Marshal'
+    end
   end
   object TMSFNCStatusBar1: TTMSFNCStatusBar
     Position.Y = 750.000000000000000000
@@ -820,7 +827,7 @@ object frmDebFileEvents: TfrmDebFileEvents
     TabOrder = 3
     Panels = <
       item
-        Text = '07:02:20'
+        Text = '05:28:16'
         Style = spsTime
         Alignment = taRightJustify
         Width = 50

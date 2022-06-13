@@ -259,6 +259,7 @@
         <DCCReference Include="..\ThreadFSPollFolder.pas"/>
         <DCCReference Include="..\ThreadItemWorker.pas"/>
         <DCCReference Include="..\ThreadProcStats.pas"/>
+        <DCCReference Include="FMX.RTTK.PT.FNCChart.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
