@@ -259,8 +259,7 @@
         <DCCReference Include="..\ThreadFSPollFolder.pas"/>
         <DCCReference Include="..\ThreadItemWorker.pas"/>
         <DCCReference Include="..\ThreadProcStats.pas"/>
-        <DCCReference Include="FMX.RTTK.PT.FNCChart.pas"/>
-        <DCCReference Include="frmFncChartTool.pas">
+        <DCCReference Include="FMX.RTTK.PT.FNCChartTool.pas">
             <Form>FrameFNCChartTool</Form>
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>

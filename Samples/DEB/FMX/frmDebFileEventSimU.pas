@@ -71,7 +71,7 @@ implementation
 
 {$R *.fmx}
 
-uses FMX.SE.RTTK.Marshal, FMX.RTTK.PT.FNCChart;
+uses FMX.SE.RTTK.Marshal, FMX.RTTK.PT.FNCChartTool;
 
 procedure TfrmDebFileEvents.Button1Click(Sender: TObject);
 begin

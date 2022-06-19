@@ -6,7 +6,7 @@ interface
 
 uses Generics.Collections, System.Classes,
 {$IFDEF FMXRTILIB}
-  FMX.SE.RTTK.PluginTypes, frmFncChartTool,   FMX.SE.SupportRepository,
+  FMX.SE.RTTK.PluginTypes, frmFncChartTool, FMX.SE.SupportRepository,
 {$ENDIF}
 {$IFDEF VCLRTILIB}
   VCL.SE.SupportTypes,
@@ -69,12 +69,13 @@ type
 
   TSESITFNCChart = class(TSERTTKPluginInspectTool)
   public
-    function InitToolUI( const AToolPage: TSERTTKPluginToolPage; const ARTTKRepository: TSESRepository)  : TSERTTKPluginToolInstance; override;
+    function InitToolUI(const AToolPage: TSERTTKPluginToolPage; const ARTTKRepository: TSESRepository)
+      : TSERTTKPluginToolInstance; override;
   end;
 
   TSERTTKPluginFNCChartTool = class(TSERTTKPluginToolInstance)
   strict private
-    FChartUITool : TFrameFNCChartTool;
+    FChartUITool: TFrameFNCChartTool;
   protected
     procedure InitToolInstance; override;
   public
@@ -104,16 +105,17 @@ end;
 
 { TSESITFNCChart }
 
-function TSESITFNCChart.InitToolUI( const AToolPage: TSERTTKPluginToolPage; const ARTTKRepository: TSESRepository)  : TSERTTKPluginToolInstance;
+function TSESITFNCChart.InitToolUI(const AToolPage: TSERTTKPluginToolPage; const ARTTKRepository: TSESRepository)
+  : TSERTTKPluginToolInstance;
 begin
-  result := TSERTTKPluginFNCChartTool.Create(self, AToolPage,  ARTTKRepository);
+  result := TSERTTKPluginFNCChartTool.Create(self, AToolPage, ARTTKRepository);
 end;
 
 { TSERTTKPluginFNCChartTool }
 
 function TSERTTKPluginFNCChartTool.DisplayName: string;
 begin
-result := '23';
+  result := 'FNC Chart Editor';
 end;
 
 procedure TSERTTKPluginFNCChartTool.InitToolInstance;
@@ -124,7 +126,7 @@ begin
   if Assigned(self.ToolInfo.AppComponent) and (self.ToolInfo.AppComponent is TTMSFNCChart) then
     FChartUITool.AssignChartToEditor(TTMSFNCChart(self.ToolInfo.AppComponent));
 
-  //code to create tool here
+  // code to create tool here
 
 end;
 
