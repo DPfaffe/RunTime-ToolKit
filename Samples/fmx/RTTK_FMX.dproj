@@ -252,6 +252,10 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_MajorVer>2022</VerInfo_MajorVer>
+        <VerInfo_MinorVer>7</VerInfo_MinorVer>
+        <VerInfo_Release>6</VerInfo_Release>
+        <VerInfo_Keys>CompanyName=SwiftExpat.com;FileDescription=$(MSBuildProjectName);FileVersion=2022.7.6.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=2022.7.6.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
