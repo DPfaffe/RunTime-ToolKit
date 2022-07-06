@@ -87,7 +87,7 @@ dmRTTKVCLU;
 procedure TfrmRTTKVCL.btnMarshalClick(Sender: TObject);
 begin
 {$IFDEF DEBUG}
-  TSERTTKWorker.ShowMarshal;
+  TSERTTKMarshalAPI.ShowMarshal;
 {$ENDIF}
 end;
 
