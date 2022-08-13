@@ -1,4 +1,5 @@
-
+*.otares
+*.ico
 GPATH
 GRTAGS
 GTAGS
@@ -9,3 +10,6 @@ Samples/fmx/RTTK_FMX.res
 *.o
 Samples/DEB/FMX/DebFileEventsFMX.delphilsp.json
 Samples/DEB/VCL/DebFileEventsVCL.delphilsp.json
+*.stat
+*.exe
+*.res

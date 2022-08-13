@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2DC9E8E0-7AE1-40DE-BF9C-5C1C66FC8919}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="vcl\RTTK.VCL_20.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="fmx\RTTK_FMX_20.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="RTTK_VCL_20">
+        <MSBuild Projects="vcl\RTTK.VCL_20.dproj"/>
+    </Target>
+    <Target Name="RTTK_VCL_20:Clean">
+        <MSBuild Projects="vcl\RTTK.VCL_20.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RTTK_VCL_20:Make">
+        <MSBuild Projects="vcl\RTTK.VCL_20.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RTTK_FMX_20">
+        <MSBuild Projects="fmx\RTTK_FMX_20.dproj"/>
+    </Target>
+    <Target Name="RTTK_FMX_20:Clean">
+        <MSBuild Projects="fmx\RTTK_FMX_20.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RTTK_FMX_20:Make">
+        <MSBuild Projects="fmx\RTTK_FMX_20.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="RTTK_VCL_20;RTTK_FMX_20"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="RTTK_VCL_20:Clean;RTTK_FMX_20:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="RTTK_VCL_20:Make;RTTK_FMX_20:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,4 +1,5 @@
 object dmRTTK: TdmRTTK
+  OldCreateOrder = True
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Height = 480
