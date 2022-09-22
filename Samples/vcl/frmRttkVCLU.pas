@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask;
+  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask, frmFramedVCLU;
 
 type
 
@@ -55,6 +55,10 @@ type
     cbLeakObjects: TCheckBox;
     cbStallShutdown: TCheckBox;
     edtShutdownStall: TMaskEdit;
+    SERTTKAppInspectorVCL1: TSERTTKAppInspectorVCL;
+    tsFramed: TTabSheet;
+    Memo1: TMemo;
+    FramedVCL1: TFramedVCL;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnAddMemoClick(Sender: TObject);
@@ -63,6 +67,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure cbLeakObjectsClick(Sender: TObject);
     procedure cbStallShutdownClick(Sender: TObject);
+    procedure FramedTestVCL1Button1Click(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
     FStallThread: TStallThread;
@@ -80,9 +85,9 @@ implementation
 
 uses
 {$IFDEF DEBUG}
- Vcl.SE.RTTK.Marshal,
+  Vcl.SE.RTTK.Marshal,
 {$ENDIF}
-dmRTTKVCLU;
+  dmRTTKVCLU;
 
 procedure TfrmRTTKVCL.btnMarshalClick(Sender: TObject);
 begin
@@ -110,11 +115,9 @@ begin
   btnDeleteMemo.Enabled := false;
 end;
 
-
-
 procedure TfrmRTTKVCL.cbLeakObjectsClick(Sender: TObject);
 begin
-  if  cbLeakObjects.Checked then
+  if cbLeakObjects.Checked then
   begin
     memoRTCompFooter.Lines.Add('leaking objects');
     FLeakRoot := TLeakParent.Create;
@@ -150,6 +153,18 @@ procedure TfrmRTTKVCL.FormDestroy(Sender: TObject);
 begin
   FStallThread.Free;
   OutputDebugString('VCL form destroyed');
+end;
+
+procedure TfrmRTTKVCL.FramedTestVCL1Button1Click(Sender: TObject);
+var
+  i: integer;
+begin
+  Memo1.Lines.Add('count = ' +FramedVCL1.ComponentCount.ToString);
+  Memo1.Lines.Add('hash ' + FramedVCL1.GetHashCode.ToString);
+  for i := 0 to FramedVCL1.ComponentCount - 1 do
+  begin
+    Memo1.Lines.Add(FramedVCL1.Components[i].ClassName + ' parent = ' + FramedVCL1.Components[i].GetParentComponent.GetHashCode.ToString );
+  end;
 end;
 
 { TStallThread }

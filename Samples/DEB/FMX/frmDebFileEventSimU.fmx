@@ -16,16 +16,14 @@ object frmDebFileEvents: TfrmDebFileEvents
     Size.Height = 750.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
+    Stroke.Color = claDarkgray
+    ItemsAppearance.Font.Color = xFF7A7A7A
     ItemsAppearance.Font.Name = 'Segoe UI'
-    ItemsAppearance.Fill.Color = claNull
-    ItemsAppearance.Stroke.Kind = gskNone
-    ItemsAppearance.Stroke.Color = claDarkgray
-    ItemsAppearance.SelectedFill.Color = xFF1BADF8
-    ItemsAppearance.SelectedStroke.Color = xFF1BADF8
-    ItemsAppearance.DisabledFill.Color = claDarkgray
-    ItemsAppearance.DisabledStroke.Kind = gskNone
-    ItemsAppearance.DisabledStroke.Color = claDarkgray
+    ItemsAppearance.SelectedFill.Color = xFFF6F8FC
+    ItemsAppearance.SelectedStroke.Color = xFF2D9BEF
+    ItemsAppearance.SelectedStroke.Width = 2.000000000000000000
     ItemsAppearance.FixedHeight = 25.000000000000000000
+    ItemsAppearance.ShowFocus = False
     Items = <
       item
         Text = 'Mercedes'
@@ -43,10 +41,16 @@ object frmDebFileEvents: TfrmDebFileEvents
         Text = 'Bugatti'
       end>
     Header.Text = 'Header'
+    Header.Fill.Color = xFFEEF2F9
+    Header.Font.Size = 14.000000000000000000
+    Header.Font.Color = xFF454545
     Header.Font.Name = 'Segoe UI'
-    Header.Stroke.Color = claDarkgray
+    Header.Font.StyleExt = {00070000000000000004000000}
+    Header.Stroke.Kind = gskNone
     Header.Size = 25.000000000000000000
     Header.SortIndicatorColor = claSteelblue
+    GlobalFont.Scale = 1.000000000000000000
+    GlobalFont.Style = []
   end
   object Panel1: TPanel
     Align = Client
@@ -765,16 +769,14 @@ object frmDebFileEvents: TfrmDebFileEvents
       Size.Height = 220.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
+      Stroke.Color = claDarkgray
+      ItemsAppearance.Font.Color = xFF7A7A7A
       ItemsAppearance.Font.Name = 'Segoe UI'
-      ItemsAppearance.Fill.Color = claNull
-      ItemsAppearance.Stroke.Kind = gskNone
-      ItemsAppearance.Stroke.Color = claDarkgray
-      ItemsAppearance.SelectedFill.Color = xFF1BADF8
-      ItemsAppearance.SelectedStroke.Color = xFF1BADF8
-      ItemsAppearance.DisabledFill.Color = claDarkgray
-      ItemsAppearance.DisabledStroke.Kind = gskNone
-      ItemsAppearance.DisabledStroke.Color = claDarkgray
+      ItemsAppearance.SelectedFill.Color = xFFF6F8FC
+      ItemsAppearance.SelectedStroke.Color = xFF2D9BEF
+      ItemsAppearance.SelectedStroke.Width = 2.000000000000000000
       ItemsAppearance.FixedHeight = 25.000000000000000000
+      ItemsAppearance.ShowFocus = False
       Items = <
         item
           Text = 'Mercedes'
@@ -792,10 +794,16 @@ object frmDebFileEvents: TfrmDebFileEvents
           Text = 'Bugatti'
         end>
       Header.Text = 'Header'
+      Header.Fill.Color = xFFEEF2F9
+      Header.Font.Size = 14.000000000000000000
+      Header.Font.Color = xFF454545
       Header.Font.Name = 'Segoe UI'
-      Header.Stroke.Color = claDarkgray
+      Header.Font.StyleExt = {00070000000000000004000000}
+      Header.Stroke.Kind = gskNone
       Header.Size = 25.000000000000000000
       Header.SortIndicatorColor = claSteelblue
+      GlobalFont.Scale = 1.000000000000000000
+      GlobalFont.Style = []
     end
     object TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog
       Size.Width = 39.000000000000000000
@@ -827,7 +835,7 @@ object frmDebFileEvents: TfrmDebFileEvents
     TabOrder = 3
     Panels = <
       item
-        Text = '05:28:16'
+        Text = '06:11:24'
         Style = spsTime
         Alignment = taRightJustify
         Width = 50

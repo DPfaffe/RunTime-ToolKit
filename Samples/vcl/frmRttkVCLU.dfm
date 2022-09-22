@@ -36,7 +36,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     Top = 22
     Width = 635
     Height = 314
-    ActivePage = tsIfDef
+    ActivePage = tsFramed
     Align = alClient
     TabOrder = 1
     object tsLabel: TTabSheet
@@ -52,7 +52,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Left = 1
           Top = 1
           Width = 235
-          Height = 39
+          Height = 55
           Align = alLeft
           Caption = 'Fox Jump Status'
           Font.Charset = DEFAULT_CHARSET
@@ -61,6 +61,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
+          ExplicitHeight = 39
         end
         object Edit1: TEdit
           Left = 0
@@ -194,5 +195,129 @@ object frmRTTKVCL: TfrmRTTKVCL
         TabOrder = 1
       end
     end
+    object tsFramed: TTabSheet
+      Caption = 'tsFramed'
+      ImageIndex = 3
+      object Memo1: TMemo
+        Left = 0
+        Top = 197
+        Width = 627
+        Height = 89
+        Align = alBottom
+        Lines.Strings = (
+          'Memo1')
+        TabOrder = 0
+      end
+      inline FramedVCL1: TFramedVCL
+        Left = 0
+        Top = 0
+        Width = 627
+        Height = 197
+        Align = alClient
+        TabOrder = 1
+        ExplicitTop = 8
+        ExplicitWidth = 627
+        ExplicitHeight = 197
+        inherited GridPanel1: TGridPanel
+          Width = 627
+          Height = 197
+          ControlCollection = <
+            item
+              Column = 0
+              Control = FramedVCL1.Button1
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = FramedVCL1.Label1
+              Row = 0
+            end
+            item
+              Column = 0
+              ColumnSpan = 2
+              Control = FramedVCL1.FrameSubFramedVCL1
+              Row = 1
+            end>
+          inherited Button1: TButton
+            Left = 119
+            Top = 37
+          end
+          inherited Label1: TLabel
+            Top = 43
+            Width = 31
+            Height = 13
+            ExplicitLeft = 454
+            ExplicitTop = 108
+            ExplicitWidth = 31
+            ExplicitHeight = 13
+          end
+          inherited FrameSubFramedVCL1: TFrameSubFramedVCL
+            Top = 99
+            Width = 625
+            Height = 97
+            inherited GridPanel1: TGridPanel
+              Width = 625
+              Height = 97
+              ControlCollection = <
+                item
+                  Column = 0
+                  Control = FramedVCL1.FrameSubFramedVCL1.Label1
+                  Row = 0
+                end
+                item
+                  Column = 1
+                  Control = FramedVCL1.FrameSubFramedVCL1.Button1
+                  Row = 0
+                end
+                item
+                  Column = 0
+                  Control = FramedVCL1.FrameSubFramedVCL1.Edit1
+                  Row = 1
+                end
+                item
+                  Column = 1
+                  Control = FramedVCL1.FrameSubFramedVCL1.CheckBox1
+                  Row = 1
+                end>
+              inherited Label1: TLabel
+                Left = 141
+                Top = 18
+                Width = 31
+                Height = 13
+                ExplicitWidth = 31
+                ExplicitHeight = 13
+              end
+              inherited Button1: TButton
+                Left = 431
+                Top = 12
+                ExplicitLeft = 440
+                ExplicitTop = 47
+              end
+              inherited Edit1: TEdit
+                Left = 96
+                Top = 62
+                Height = 21
+                ExplicitLeft = 99
+                ExplicitTop = 168
+                ExplicitHeight = 21
+              end
+              inherited CheckBox1: TCheckBox
+                Left = 420
+                Top = 64
+                ExplicitLeft = 429
+                ExplicitTop = 170
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  object SERTTKAppInspectorVCL1: TSERTTKAppInspectorVCL
+    FormWidth = 960
+    FormHeight = 720
+    StartupDelay = 250
+    Left = 492
+    Top = 118
   end
 end

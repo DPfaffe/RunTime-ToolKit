@@ -31,10 +31,12 @@ object frmRTTKFMX: TfrmRTTKFMX
     Size.Width = 318.000000000000000000
     Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 1
+    TabIndex = 3
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
+      318s
+      430s
       318s
       430s
       318s
@@ -133,7 +135,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 72.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -209,7 +211,7 @@ object frmRTTKFMX: TfrmRTTKFMX
         item
         end>
       IsSelected = False
-      Size.Width = 74.000000000000000000
+      Size.Width = 73.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
@@ -263,5 +265,104 @@ object frmRTTKFMX: TfrmRTTKFMX
         Viewport.Height = 74.000000000000000000
       end
     end
+    object tiFramed: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 67.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tiFramed'
+      inline FramedFMX1: TFramedFMX
+        Align = Client
+        Size.Width = 318.000000000000000000
+        Size.Height = 430.000000000000000000
+        Size.PlatformDefault = False
+        inherited GridPanelLayout1: TGridPanelLayout
+          Size.Width = 318.000000000000000000
+          Size.Height = 430.000000000000000000
+          ControlCollection = <
+            item
+              Column = 0
+              Control = FramedFMX1.Edit1
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = FramedFMX1.Button1
+              Row = 0
+            end
+            item
+              Column = 0
+              ColumnSpan = 2
+              Control = FramedFMX1.FrameSubFramedFXM1
+              Row = 1
+            end>
+          inherited Edit1: TEdit
+            Position.X = 29.500000000000000000
+            Position.Y = 96.500000000000000000
+          end
+          inherited Button1: TButton
+            Position.X = 198.500000000000000000
+            Position.Y = 96.500000000000000000
+          end
+          inherited FrameSubFramedFXM1: TFrameSubFramedFXM
+            Size.Width = 318.000000000000000000
+            Size.Height = 215.000000000000000000
+            inherited GridPanelLayout1: TGridPanelLayout
+              Size.Width = 318.000000000000000000
+              Size.Height = 215.000000000000000000
+              ControlCollection = <
+                item
+                  Column = 0
+                  Control = FramedFMX1.FrameSubFramedFXM1.Label1
+                  Row = 0
+                end
+                item
+                  Column = 1
+                  Control = FramedFMX1.FrameSubFramedFXM1.Button1
+                  Row = 0
+                end
+                item
+                  Column = 0
+                  Control = FramedFMX1.FrameSubFramedFXM1.Edit1
+                  Row = 1
+                end
+                item
+                  Column = 1
+                  Control = FramedFMX1.FrameSubFramedFXM1.CheckBox1
+                  Row = 1
+                end>
+              inherited Label1: TLabel
+                Position.X = 39.500000000000000000
+                Position.Y = 45.250000000000000000
+              end
+              inherited Button1: TButton
+                Position.X = 198.500000000000000000
+                Position.Y = 42.750000000000000000
+              end
+              inherited Edit1: TEdit
+                Position.X = 39.500000000000000000
+                Position.Y = 150.250000000000000000
+              end
+              inherited CheckBox1: TCheckBox
+                Position.X = 198.500000000000000000
+                Position.Y = 151.750000000000000000
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  object SERTTKAppInspector1: TSERTTKAppInspectorFMX
+    FormWidth = 1024
+    FormHeight = 780
+    StartupDelay = 250
+    Left = 208
+    Top = 272
   end
 end

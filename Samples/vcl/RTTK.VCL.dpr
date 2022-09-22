@@ -3,7 +3,9 @@ program RTTK.VCL;
 uses
   Vcl.Forms,
   frmRttkVCLU in 'frmRttkVCLU.pas' {frmRTTKVCL},
-  dmRttkVCLU in 'dmRttkVCLU.pas' {dmRTTK: TDataModule};
+  dmRttkVCLU in 'dmRttkVCLU.pas' {dmRTTK: TDataModule},
+  frmFramedVCLU in 'frmFramedVCLU.pas' {FramedVCL: TFrame},
+  frmSubFramedVCLU in 'frmSubFramedVCLU.pas' {FrameSubFramedVCL: TFrame};
 
 {$R *.res}
 

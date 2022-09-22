@@ -85,6 +85,8 @@ begin
   if AItemIndex = 0 then
     FTHPollFolder.EnablePolling(cgControls.Checked[AItemIndex]);
 
+
+
   if AItemIndex = 1 then
   begin
     lp := TEnablePolling.Create;

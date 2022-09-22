@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
   FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
-  Generics.Collections;
+  Generics.Collections, frmFramedFMXU;
 
 type
   TStallThread = class(TThread)
@@ -66,6 +66,9 @@ type
     cbLeakObjects: TCheckBox;
     cbStallShutdown: TCheckBox;
     edtShutdownStall: TEdit;
+    SERTTKAppInspector1: TSERTTKAppInspectorFMX;
+    tiFramed: TTabItem;
+    FramedFMX1: TFramedFMX;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure lblAppHelpClick(Sender: TObject);
@@ -240,7 +243,6 @@ begin
   FLeakDict := TDictionary<string, string>.Create;
   for i := 0 to 5000 do
     FLeakDict.Add(pfx_key + i.ToString, pfx_val + i.ToString)
-
 end;
 
 end.
