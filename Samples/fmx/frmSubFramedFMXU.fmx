@@ -73,4 +73,12 @@ object FrameSubFramedFXM: TFrameSubFramedFXM
       Text = 'CheckBox1'
     end
   end
+  object Timer1: TTimer
+    Left = 240
+    Top = 176
+  end
+  object ActionList1: TActionList
+    Left = 248
+    Top = 184
+  end
 end

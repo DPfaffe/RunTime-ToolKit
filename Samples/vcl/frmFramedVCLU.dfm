@@ -79,8 +79,8 @@ object FramedVCL: TFramedVCL
       ExplicitWidth = 638
       ExplicitHeight = 239
       inherited GridPanel1: TGridPanel
-        Width = 638
-        Height = 239
+        Width = 625
+        Height = 97
         ControlCollection = <
           item
             Column = 0
@@ -113,22 +113,30 @@ object FramedVCL: TFramedVCL
         inherited Button1: TButton
           Left = 431
           Top = 12
-          ExplicitLeft = 442
-          ExplicitTop = 108
+          ExplicitLeft = 440
+          ExplicitTop = 47
         end
         inherited Edit1: TEdit
           Left = 96
           Top = 56
-          ExplicitLeft = 100
-          ExplicitTop = 343
+          ExplicitLeft = 99
+          ExplicitTop = 162
         end
         inherited CheckBox1: TCheckBox
           Left = 420
           Top = 64
-          ExplicitLeft = 431
-          ExplicitTop = 351
+          ExplicitLeft = 429
+          ExplicitTop = 170
         end
       end
     end
+  end
+  object ActionList1: TActionList
+    Left = 304
+    Top = 224
+  end
+  object Timer1: TTimer
+    Left = 312
+    Top = 232
   end
 end

@@ -108,4 +108,12 @@ object FramedFMX: TFramedFMX
       end
     end
   end
+  object Timer1: TTimer
+    Left = 144
+    Top = 104
+  end
+  object ActionList1: TActionList
+    Left = 152
+    Top = 112
+  end
 end

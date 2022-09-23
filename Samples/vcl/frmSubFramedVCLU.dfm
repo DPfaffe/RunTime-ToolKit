@@ -69,8 +69,6 @@ object FrameSubFramedVCL: TFrameSubFramedVCL
       Anchors = []
       Caption = 'Button1'
       TabOrder = 0
-      ExplicitLeft = 280
-      ExplicitTop = 232
     end
     object Edit1: TEdit
       Left = 100
@@ -80,8 +78,6 @@ object FrameSubFramedVCL: TFrameSubFramedVCL
       Anchors = []
       TabOrder = 1
       Text = 'Edit1'
-      ExplicitLeft = 264
-      ExplicitTop = 224
     end
     object CheckBox1: TCheckBox
       Left = 431
@@ -91,8 +87,14 @@ object FrameSubFramedVCL: TFrameSubFramedVCL
       Anchors = []
       Caption = 'CheckBox1'
       TabOrder = 2
-      ExplicitLeft = 272
-      ExplicitTop = 232
     end
+  end
+  object ActionList1: TActionList
+    Left = 296
+    Top = 216
+  end
+  object Timer1: TTimer
+    Left = 304
+    Top = 224
   end
 end

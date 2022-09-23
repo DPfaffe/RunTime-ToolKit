@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask, frmFramedVCLU;
+  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask, frmFramedVCLU, System.Actions, Vcl.ActnList;
 
 type
 
@@ -59,6 +59,8 @@ type
     tsFramed: TTabSheet;
     Memo1: TMemo;
     FramedVCL1: TFramedVCL;
+    ActionList1: TActionList;
+    Timer1: TTimer;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnAddMemoClick(Sender: TObject);

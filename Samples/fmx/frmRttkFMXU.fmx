@@ -276,6 +276,8 @@ object frmRTTKFMX: TfrmRTTKFMX
       StyleLookup = ''
       TabOrder = 0
       Text = 'tiFramed'
+      ExplicitSize.cx = 67.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
       inline FramedFMX1: TFramedFMX
         Align = Client
         Size.Width = 318.000000000000000000
@@ -364,5 +366,13 @@ object frmRTTKFMX: TfrmRTTKFMX
     StartupDelay = 250
     Left = 208
     Top = 272
+  end
+  object Timer1: TTimer
+    Left = 144
+    Top = 224
+  end
+  object ActionList1: TActionList
+    Left = 152
+    Top = 232
   end
 end

@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
   FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
-  Generics.Collections, frmFramedFMXU;
+  Generics.Collections, frmFramedFMXU, System.Actions, FMX.ActnList;
 
 type
   TStallThread = class(TThread)
@@ -69,6 +69,8 @@ type
     SERTTKAppInspector1: TSERTTKAppInspectorFMX;
     tiFramed: TTabItem;
     FramedFMX1: TFramedFMX;
+    Timer1: TTimer;
+    ActionList1: TActionList;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure lblAppHelpClick(Sender: TObject);

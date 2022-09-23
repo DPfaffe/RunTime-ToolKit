@@ -52,7 +52,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Left = 1
           Top = 1
           Width = 235
-          Height = 55
+          Height = 39
           Align = alLeft
           Caption = 'Fox Jump Status'
           Font.Charset = DEFAULT_CHARSET
@@ -61,7 +61,6 @@ object frmRTTKVCL: TfrmRTTKVCL
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          ExplicitHeight = 39
         end
         object Edit1: TEdit
           Left = 0
@@ -88,11 +87,10 @@ object frmRTTKVCL: TfrmRTTKVCL
       object Label2: TLabel
         Left = 0
         Top = 0
-        Width = 627
+        Width = 31
         Height = 13
         Align = alTop
         Caption = 'Label2'
-        ExplicitWidth = 31
       end
       object Panel1: TPanel
         Left = 224
@@ -215,7 +213,6 @@ object frmRTTKVCL: TfrmRTTKVCL
         Height = 197
         Align = alClient
         TabOrder = 1
-        ExplicitTop = 8
         ExplicitWidth = 627
         ExplicitHeight = 197
         inherited GridPanel1: TGridPanel
@@ -238,9 +235,13 @@ object frmRTTKVCL: TfrmRTTKVCL
               Control = FramedVCL1.FrameSubFramedVCL1
               Row = 1
             end>
+          ExplicitWidth = 627
+          ExplicitHeight = 197
           inherited Button1: TButton
             Left = 119
             Top = 37
+            ExplicitLeft = 119
+            ExplicitTop = 37
           end
           inherited Label1: TLabel
             Top = 43
@@ -255,9 +256,10 @@ object frmRTTKVCL: TfrmRTTKVCL
             Top = 99
             Width = 625
             Height = 97
+            ExplicitTop = 99
+            ExplicitWidth = 625
+            ExplicitHeight = 97
             inherited GridPanel1: TGridPanel
-              Width = 625
-              Height = 97
               ControlCollection = <
                 item
                   Column = 0
@@ -279,33 +281,32 @@ object frmRTTKVCL: TfrmRTTKVCL
                   Control = FramedVCL1.FrameSubFramedVCL1.CheckBox1
                   Row = 1
                 end>
+              ExplicitWidth = 625
+              ExplicitHeight = 97
               inherited Label1: TLabel
                 Left = 141
                 Top = 18
                 Width = 31
                 Height = 13
+                ExplicitLeft = 141
+                ExplicitTop = 18
                 ExplicitWidth = 31
                 ExplicitHeight = 13
               end
               inherited Button1: TButton
-                Left = 431
-                Top = 12
-                ExplicitLeft = 440
-                ExplicitTop = 47
+                ExplicitLeft = 431
+                ExplicitTop = 12
               end
               inherited Edit1: TEdit
-                Left = 96
                 Top = 62
                 Height = 21
-                ExplicitLeft = 99
-                ExplicitTop = 168
+                ExplicitLeft = 96
+                ExplicitTop = 62
                 ExplicitHeight = 21
               end
               inherited CheckBox1: TCheckBox
-                Left = 420
-                Top = 64
-                ExplicitLeft = 429
-                ExplicitTop = 170
+                ExplicitLeft = 420
+                ExplicitTop = 64
               end
             end
           end
@@ -319,5 +320,13 @@ object frmRTTKVCL: TfrmRTTKVCL
     StartupDelay = 250
     Left = 492
     Top = 118
+  end
+  object ActionList1: TActionList
+    Left = 304
+    Top = 176
+  end
+  object Timer1: TTimer
+    Left = 312
+    Top = 184
   end
 end
