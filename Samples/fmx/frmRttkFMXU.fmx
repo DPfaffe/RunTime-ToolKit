@@ -281,11 +281,11 @@ object frmRTTKFMX: TfrmRTTKFMX
       inline FramedFMX1: TFramedFMX
         Align = Client
         Size.Width = 318.000000000000000000
-        Size.Height = 430.000000000000000000
+        Size.Height = 360.000000000000000000
         Size.PlatformDefault = False
         inherited GridPanelLayout1: TGridPanelLayout
           Size.Width = 318.000000000000000000
-          Size.Height = 430.000000000000000000
+          Size.Height = 360.000000000000000000
           ControlCollection = <
             item
               Column = 0
@@ -299,24 +299,24 @@ object frmRTTKFMX: TfrmRTTKFMX
             end
             item
               Column = 0
-              ColumnSpan = 2
               Control = FramedFMX1.FrameSubFramedFXM1
               Row = 1
             end>
           inherited Edit1: TEdit
             Position.X = 29.500000000000000000
-            Position.Y = 96.500000000000000000
+            Position.Y = 79.000000000000000000
           end
           inherited Button1: TButton
             Position.X = 198.500000000000000000
-            Position.Y = 96.500000000000000000
+            Position.Y = 79.000000000000000000
+            OnClick = FramedFMX1Button1Click
           end
           inherited FrameSubFramedFXM1: TFrameSubFramedFXM
-            Size.Width = 318.000000000000000000
-            Size.Height = 215.000000000000000000
+            Size.Width = 159.000000000000000000
+            Size.Height = 180.000000000000000000
             inherited GridPanelLayout1: TGridPanelLayout
-              Size.Width = 318.000000000000000000
-              Size.Height = 215.000000000000000000
+              Size.Width = 159.000000000000000000
+              Size.Height = 180.000000000000000000
               ControlCollection = <
                 item
                   Column = 0
@@ -339,24 +339,34 @@ object frmRTTKFMX: TfrmRTTKFMX
                   Row = 1
                 end>
               inherited Label1: TLabel
-                Position.X = 39.500000000000000000
-                Position.Y = 45.250000000000000000
+                Position.Y = 36.500000000000000000
               end
               inherited Button1: TButton
-                Position.X = 198.500000000000000000
-                Position.Y = 42.750000000000000000
+                Position.X = 79.500000000000000000
+                Position.Y = 34.000000000000000000
               end
               inherited Edit1: TEdit
-                Position.X = 39.500000000000000000
-                Position.Y = 150.250000000000000000
+                Position.Y = 124.000000000000000000
               end
               inherited CheckBox1: TCheckBox
-                Position.X = 198.500000000000000000
-                Position.Y = 151.750000000000000000
+                Position.X = 79.500000000000000000
+                Position.Y = 125.500000000000000000
               end
             end
           end
         end
+      end
+      object memoFramedMessage: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Align = Bottom
+        Position.Y = 360.000000000000000000
+        Size.Width = 318.000000000000000000
+        Size.Height = 70.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Viewport.Width = 314.000000000000000000
+        Viewport.Height = 66.000000000000000000
       end
     end
   end

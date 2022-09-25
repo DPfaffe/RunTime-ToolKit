@@ -71,6 +71,7 @@ type
     FramedFMX1: TFramedFMX;
     Timer1: TTimer;
     ActionList1: TActionList;
+    memoFramedMessage: TMemo;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure lblAppHelpClick(Sender: TObject);
@@ -80,6 +81,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure cbLeakObjectsChange(Sender: TObject);
     procedure cbStallShutdownChange(Sender: TObject);
+    procedure FramedFMX1Button1Click(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
     FDemoObject: TDemoObject;
@@ -98,11 +100,11 @@ implementation
 {$R *.fmx}
 
 uses
-//{$IF RTLVersion111}
-//  FMX.TextLayout.GPU,
-//{$ENDIF}
+  // {$IF RTLVersion111}
+  // FMX.TextLayout.GPU,
+  // {$ENDIF}
   // {$IFDEF DEBUG}
-    FMX.SE.RTTK.Marshal
+  FMX.SE.RTTK.Marshal
   // {$ENDIF}
     ;
 
@@ -116,7 +118,7 @@ end;
 procedure TfrmRTTKFMX.cbLeakObjectsChange(Sender: TObject);
 begin
   memoRTCompFooter.Lines.Add('leaking objects');
-      FLeakRoot:= TLeakParent.Create;
+  FLeakRoot := TLeakParent.Create;
 end;
 
 procedure TfrmRTTKFMX.cbStallShutdownChange(Sender: TObject);
@@ -145,9 +147,28 @@ procedure TfrmRTTKFMX.FormDestroy(Sender: TObject);
 begin
   FDemoObject.Free;
   FStallThread.Free;
-//{$IF RTLVersion111}
-//  TGPUObjectsPool.Instance.Free;
-//{$ENDIF}
+  // {$IF RTLVersion111}
+  // TGPUObjectsPool.Instance.Free;
+  // {$ENDIF}
+end;
+
+procedure TfrmRTTKFMX.FramedFMX1Button1Click(Sender: TObject);
+var
+  i: integer;
+  c: TComponent;
+begin
+  memoFramedMessage.Lines.Add('count = ' + FramedFMX1.ComponentCount.ToString);
+  memoFramedMessage.Lines.Add('hash ' + FramedFMX1.GetHashCode.ToString);
+  for i := 0 to FramedFMX1.ComponentCount - 1 do
+  begin
+    c := FramedFMX1.Components[i];
+    if c.HasParent then
+      memoFramedMessage.Lines.Add(c.ClassName + ' parent = ' + c.GetParentComponent.GetHashCode.ToString)
+    else if Assigned(Owner) then
+      memoFramedMessage.Lines.Add(c.ClassName + ' owner = ' + c.Owner.GetHashCode.ToString)
+    else
+      memoFramedMessage.Lines.Add(c.ClassName + ' parent = none , owner = none ')
+  end;
 end;
 
 procedure TfrmRTTKFMX.lblAppHelpClick(Sender: TObject);

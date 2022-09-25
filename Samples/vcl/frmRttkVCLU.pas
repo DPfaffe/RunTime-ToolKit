@@ -57,7 +57,7 @@ type
     edtShutdownStall: TMaskEdit;
     SERTTKAppInspectorVCL1: TSERTTKAppInspectorVCL;
     tsFramed: TTabSheet;
-    Memo1: TMemo;
+    memoFramedMessage: TMemo;
     FramedVCL1: TFramedVCL;
     ActionList1: TActionList;
     Timer1: TTimer;
@@ -160,12 +160,19 @@ end;
 procedure TfrmRTTKVCL.FramedTestVCL1Button1Click(Sender: TObject);
 var
   i: integer;
+  c: TComponent;
 begin
-  Memo1.Lines.Add('count = ' +FramedVCL1.ComponentCount.ToString);
-  Memo1.Lines.Add('hash ' + FramedVCL1.GetHashCode.ToString);
+  memoFramedMessage.Lines.Add('count = ' + FramedVCL1.ComponentCount.ToString);
+  memoFramedMessage.Lines.Add('hash ' + FramedVCL1.GetHashCode.ToString);
   for i := 0 to FramedVCL1.ComponentCount - 1 do
   begin
-    Memo1.Lines.Add(FramedVCL1.Components[i].ClassName + ' parent = ' + FramedVCL1.Components[i].GetParentComponent.GetHashCode.ToString );
+    c := FramedVCL1.Components[i];
+    if c.HasParent then
+      memoFramedMessage.Lines.Add(c.ClassName + ' parent = ' + c.GetParentComponent.GetHashCode.ToString)
+    else if Assigned(Owner) then
+      memoFramedMessage.Lines.Add(c.ClassName + ' owner = ' + c.Owner.GetHashCode.ToString)
+    else
+      memoFramedMessage.Lines.Add(c.ClassName + ' parent = none , owner = none ')
   end;
 end;
 

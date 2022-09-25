@@ -52,7 +52,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Left = 1
           Top = 1
           Width = 235
-          Height = 39
+          Height = 55
           Align = alLeft
           Caption = 'Fox Jump Status'
           Font.Charset = DEFAULT_CHARSET
@@ -61,6 +61,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
+          ExplicitHeight = 39
         end
         object Edit1: TEdit
           Left = 0
@@ -87,10 +88,11 @@ object frmRTTKVCL: TfrmRTTKVCL
       object Label2: TLabel
         Left = 0
         Top = 0
-        Width = 31
+        Width = 627
         Height = 13
         Align = alTop
         Caption = 'Label2'
+        ExplicitWidth = 31
       end
       object Panel1: TPanel
         Left = 224
@@ -196,7 +198,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     object tsFramed: TTabSheet
       Caption = 'tsFramed'
       ImageIndex = 3
-      object Memo1: TMemo
+      object memoFramedMessage: TMemo
         Left = 0
         Top = 197
         Width = 627
@@ -240,6 +242,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           inherited Button1: TButton
             Left = 119
             Top = 37
+            OnClick = FramedTestVCL1Button1Click
             ExplicitLeft = 119
             ExplicitTop = 37
           end
@@ -260,6 +263,8 @@ object frmRTTKVCL: TfrmRTTKVCL
             ExplicitWidth = 625
             ExplicitHeight = 97
             inherited GridPanel1: TGridPanel
+              Width = 625
+              Height = 97
               ControlCollection = <
                 item
                   Column = 0

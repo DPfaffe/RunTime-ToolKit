@@ -12,4 +12,5 @@ Samples/DEB/FMX/DebFileEventsFMX.delphilsp.json
 Samples/DEB/VCL/DebFileEventsVCL.delphilsp.json
 *.stat
 *.exe
+*.delphilsp.json
 *.res
