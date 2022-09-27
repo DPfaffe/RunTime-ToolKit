@@ -13,7 +13,7 @@ begin
   ReportMemoryLeaksOnShutdown := true;
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmRTTKVCL, frmRTTKVCL);
   Application.CreateForm(TdmRTTK, dmRTTK);
+  Application.CreateForm(TfrmRTTKVCL, frmRTTKVCL);
   Application.Run;
 end.

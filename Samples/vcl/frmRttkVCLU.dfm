@@ -36,7 +36,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     Top = 22
     Width = 635
     Height = 314
-    ActivePage = tsFramed
+    ActivePage = tsSalesData
     Align = alClient
     TabOrder = 1
     object tsLabel: TTabSheet
@@ -70,6 +70,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Height = 21
           TabOrder = 0
           Text = 'The Quick Brown Fox Jumped over the lazy Moon'
+          OnChange = Edit1Change
         end
       end
       object ListBox1: TListBox
@@ -187,11 +188,17 @@ object frmRTTKVCL: TfrmRTTKVCL
         Width = 627
         Height = 89
         Align = alBottom
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Consolas'
+        Font.Style = []
         Lines.Strings = (
-          'Clcik on Add Memo to create a memo in the client area at runtime'
+          'Click on Add Memo to create a memo in the client area at runtime'
           'Refresh the tree in Marshal'
           'Click on Delete memo to remove the runtime object'
           'Refresh the form in Marshal')
+        ParentFont = False
         TabOrder = 1
       end
     end
@@ -318,6 +325,40 @@ object frmRTTKVCL: TfrmRTTKVCL
         end
       end
     end
+    object tsSalesData: TTabSheet
+      Caption = 'SalesData'
+      ImageIndex = 4
+      object DBGrid1: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 627
+        Height = 286
+        Align = alClient
+        DataSource = DataSource1
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'Year'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Month'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Amount'
+            Visible = True
+          end>
+      end
+    end
   end
   object SERTTKAppInspectorVCL1: TSERTTKAppInspectorVCL
     FormWidth = 960
@@ -333,5 +374,10 @@ object frmRTTKVCL: TfrmRTTKVCL
   object Timer1: TTimer
     Left = 312
     Top = 184
+  end
+  object DataSource1: TDataSource
+    DataSet = dmRTTK.FDMemTable
+    Left = 320
+    Top = 192
   end
 end

@@ -31,10 +31,12 @@ object frmRTTKFMX: TfrmRTTKFMX
     Size.Width = 318.000000000000000000
     Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 3
+    TabIndex = 4
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
+      318s
+      430s
       318s
       430s
       318s
@@ -119,6 +121,7 @@ object frmRTTKFMX: TfrmRTTKFMX
             TabOrder = 1
             Text = 'The Quick Brown Fox Jumped over the lazy moon'
             TextSettings.HorzAlign = Trailing
+            OnChange = Edit1Change
           end
         end
         object ListBoxGroupFooter2: TListBoxGroupFooter
@@ -269,7 +272,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 67.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -339,18 +342,23 @@ object frmRTTKFMX: TfrmRTTKFMX
                   Row = 1
                 end>
               inherited Label1: TLabel
+                Position.X = 14.750000000000000000
                 Position.Y = 36.500000000000000000
+                Size.Width = 50.000000000000000000
               end
               inherited Button1: TButton
                 Position.X = 79.500000000000000000
                 Position.Y = 34.000000000000000000
               end
               inherited Edit1: TEdit
+                Position.X = 14.750000000000000000
                 Position.Y = 124.000000000000000000
+                Size.Width = 50.000000000000000000
               end
               inherited CheckBox1: TCheckBox
-                Position.X = 79.500000000000000000
+                Position.X = 94.250000000000000000
                 Position.Y = 125.500000000000000000
+                Size.Width = 50.000000000000000000
               end
             end
           end
@@ -369,6 +377,29 @@ object frmRTTKFMX: TfrmRTTKFMX
         Viewport.Height = 66.000000000000000000
       end
     end
+    object tiSalesData: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 72.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'SalesData'
+      object StringGrid1: TStringGrid
+        Align = Client
+        CanFocus = True
+        ClipChildren = True
+        Size.Width = 318.000000000000000000
+        Size.Height = 430.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 298.000000000000000000
+        Viewport.Height = 405.000000000000000000
+      end
+    end
   end
   object SERTTKAppInspector1: TSERTTKAppInspectorFMX
     FormWidth = 1024
@@ -384,5 +415,23 @@ object frmRTTKFMX: TfrmRTTKFMX
   object ActionList1: TActionList
     Left = 152
     Top = 232
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = dmRTTK.FDMemTable
+    ScopeMappings = <>
+    Left = 160
+    Top = 240
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGrid1
+      Columns = <>
+    end
   end
 end

@@ -13,7 +13,7 @@ uses
 begin
   ReportMemoryLeaksOnShutdown := true;
   Application.Initialize;
-  Application.CreateForm(TfrmRTTKFMX, frmRTTKFMX);
   Application.CreateForm(TdmRTTK, dmRTTK);
+  Application.CreateForm(TfrmRTTKFMX, frmRTTKFMX);
   Application.Run;
 end.

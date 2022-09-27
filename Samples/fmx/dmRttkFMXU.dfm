@@ -1,9 +1,9 @@
 object dmRTTK: TdmRTTK
-  OldCreateOrder = True
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Height = 480
-  Width = 640
+  Height = 720
+  Width = 960
+  PixelsPerInch = 144
   object FDMemTable: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
@@ -12,8 +12,19 @@ object dmRTTK: TdmRTTK
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 304
-    Top = 224
+    Left = 456
+    Top = 336
+    object FDMemTableYear: TIntegerField
+      FieldName = 'Year'
+    end
+    object FDMemTableMonth: TIntegerField
+      FieldName = 'Month'
+    end
+    object FDMemTableAmount: TBCDField
+      FieldName = 'Amount'
+      Precision = 10
+      Size = 2
+    end
   end
   object FDConnection: TFDConnection
     Params.Strings = (
@@ -22,15 +33,15 @@ object dmRTTK: TdmRTTK
     Connected = True
     LoginPrompt = False
     AfterConnect = FDConnectionAfterConnect
-    Left = 288
-    Top = 152
+    Left = 432
+    Top = 228
   end
   object FDQuerySales: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
       'select year, month, amount from SalesInfo')
-    Left = 176
-    Top = 232
+    Left = 264
+    Top = 348
     object FDQuerySalesyear: TIntegerField
       FieldName = 'year'
       Origin = 'year'
@@ -50,18 +61,18 @@ object dmRTTK: TdmRTTK
     FunctionName = 'XmY'
     ArgumentsCount = 2
     OnCalculate = FDSQLiteFunctionXmYCalculate
-    Left = 232
-    Top = 328
+    Left = 348
+    Top = 492
   end
   object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
-    Left = 416
-    Top = 352
+    Left = 624
+    Top = 528
   end
   object ClientDataSetSalesInfo: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 96
-    Top = 40
+    Left = 144
+    Top = 60
   end
   object FDQuerySalesIndexed: TFDQuery
     Indexes = <
@@ -77,8 +88,8 @@ object dmRTTK: TdmRTTK
     Connection = FDConnection
     SQL.Strings = (
       'select year, month, amount from SalesInfo')
-    Left = 472
-    Top = 96
+    Left = 708
+    Top = 144
     object IntegerField1: TIntegerField
       FieldName = 'year'
       Origin = 'year'

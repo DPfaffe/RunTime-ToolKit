@@ -8,6 +8,7 @@ object dmRTTK: TdmRTTK
     Params.Strings = (
       'Database=:memory:'
       'DriverID=SQLite')
+    Connected = True
     LoginPrompt = False
     AfterConnect = FDConnectionAfterConnect
     Left = 384
@@ -23,6 +24,17 @@ object dmRTTK: TdmRTTK
     UpdateOptions.AutoCommitUpdates = True
     Left = 624
     Top = 36
+    object FDMemTableYear: TIntegerField
+      FieldName = 'Year'
+    end
+    object FDMemTableMonth: TIntegerField
+      FieldName = 'Month'
+    end
+    object FDMemTableAmount: TBCDField
+      FieldName = 'Amount'
+      Precision = 10
+      Size = 2
+    end
   end
   object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
     Left = 768

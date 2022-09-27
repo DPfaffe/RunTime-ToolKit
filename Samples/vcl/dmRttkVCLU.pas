@@ -17,6 +17,9 @@ type
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
     FDSQLiteFunctionXmY: TFDSQLiteFunction;
     FDQuerySales: TFDQuery;
+    FDMemTableYear: TIntegerField;
+    FDMemTableMonth: TIntegerField;
+    FDMemTableAmount: TBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; AInputs: TSQLiteInputs;
@@ -83,12 +86,19 @@ begin
   FDConnection.ExecSQL
     ('CREATE VIEW [Sales_moving_average] as SELECT month, amount, AVG(amount) OVER (ORDER BY month ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING ) SalesMovingAverage FROM SalesInfo;');
   FDConnection.ExecSQL
+    ('CREATE VIEW [Multiply_Twos] as select Multiplier, XmY( Multiplier, 2) as Twos from Multiply_Limit;');
+  FDConnection.ExecSQL
     ('CREATE VIEW [Multiply_Threes] as select Multiplier, XmY( Multiplier, 3) as Threes from Multiply_Limit;');
+  FDConnection.ExecSQL
+    ('CREATE VIEW [Multiply_Fours] as select Multiplier, XmY( Multiplier, 4) as Fours from Multiply_Limit;');
+  FDConnection.ExecSQL
+    ('CREATE VIEW [Multiply_Fives] as select Multiplier, XmY( Multiplier, 5) as Fives from Multiply_Limit;');
+  FDConnection.ExecSQL
+    ('CREATE VIEW [Multiply_Sixes] as select Multiplier, XmY( Multiplier, 6) as Sixes from Multiply_Limit;');
   FDConnection.ExecSQL
     ('CREATE VIEW [Multiply_Sevens] as select Multiplier, XmY( Multiplier, 7) as Sevens from Multiply_Limit;');
   FDConnection.ExecSQL
     ('CREATE VIEW [Multiply_Quiz] as  Select m3.Multiplier, m3.Threes, m7.Sevens from multiply_threes m3 inner join multiply_sevens m7 on m3.Multiplier = m7.Multiplier;');
-
 {$ENDIF}
 end;
 

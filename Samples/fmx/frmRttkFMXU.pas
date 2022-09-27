@@ -7,7 +7,9 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
   FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
-  Generics.Collections, frmFramedFMXU, System.Actions, FMX.ActnList;
+  Generics.Collections, frmFramedFMXU, System.Actions, FMX.ActnList, System.Rtti, FMX.Grid.Style, Data.Bind.Components,
+  Data.Bind.DBScope, FMX.Grid, Data.Bind.EngExt, Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs,
+  Fmx.Bind.Editors, Data.Bind.Grid;
 
 type
   TStallThread = class(TThread)
@@ -72,6 +74,11 @@ type
     Timer1: TTimer;
     ActionList1: TActionList;
     memoFramedMessage: TMemo;
+    tiSalesData: TTabItem;
+    BindSourceDB1: TBindSourceDB;
+    StringGrid1: TStringGrid;
+    BindingsList1: TBindingsList;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure lblAppHelpClick(Sender: TObject);
@@ -82,6 +89,7 @@ type
     procedure cbLeakObjectsChange(Sender: TObject);
     procedure cbStallShutdownChange(Sender: TObject);
     procedure FramedFMX1Button1Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
     FDemoObject: TDemoObject;
@@ -100,9 +108,7 @@ implementation
 {$R *.fmx}
 
 uses
-  // {$IF RTLVersion111}
-  // FMX.TextLayout.GPU,
-  // {$ENDIF}
+  dmRttkFMXU,
   // {$IFDEF DEBUG}
   FMX.SE.RTTK.Marshal
   // {$ENDIF}
@@ -126,6 +132,11 @@ begin
   memoRTCompFooter.Lines.Add('Shutdown Stalled');
   FStallThread := TStallThread.Create(edtShutdownStall.Text.ToInteger);
   FStallThread.Start;
+end;
+
+procedure TfrmRTTKFMX.Edit1Change(Sender: TObject);
+begin
+  // empty method
 end;
 
 procedure TfrmRTTKFMX.FormActivate(Sender: TObject);

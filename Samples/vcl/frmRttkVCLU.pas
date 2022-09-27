@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask, frmFramedVCLU, System.Actions, Vcl.ActnList;
+  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask, frmFramedVCLU, System.Actions, Vcl.ActnList,
+  Data.DB, Vcl.Grids, Vcl.DBGrids;
 
 type
 
@@ -61,6 +62,9 @@ type
     FramedVCL1: TFramedVCL;
     ActionList1: TActionList;
     Timer1: TTimer;
+    tsSalesData: TTabSheet;
+    DBGrid1: TDBGrid;
+    DataSource1: TDataSource;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnAddMemoClick(Sender: TObject);
@@ -70,6 +74,7 @@ type
     procedure cbLeakObjectsClick(Sender: TObject);
     procedure cbStallShutdownClick(Sender: TObject);
     procedure FramedTestVCL1Button1Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
     FStallThread: TStallThread;
@@ -135,6 +140,11 @@ begin
     FStallThread := TStallThread.Create(edtShutdownStall.EditText.ToInteger);
     FStallThread.Start;
   end;
+end;
+
+procedure TfrmRTTKVCL.Edit1Change(Sender: TObject);
+begin
+// empty method
 end;
 
 procedure TfrmRTTKVCL.FormActivate(Sender: TObject);
