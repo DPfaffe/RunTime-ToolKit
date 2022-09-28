@@ -71,8 +71,18 @@ object dmRTTK: TdmRTTK
   object ClientDataSetSalesInfo: TClientDataSet
     Aggregates = <>
     Params = <>
+    AfterOpen = ClientDataSetSalesInfoAfterOpen
     Left = 144
     Top = 60
+    object ClientDataSetSalesInfoYear: TIntegerField
+      FieldName = 'Year'
+    end
+    object ClientDataSetSalesInfoMonth: TIntegerField
+      FieldName = 'Month'
+    end
+    object ClientDataSetSalesInfoAmount: TBCDField
+      FieldName = 'Amount'
+    end
   end
   object FDQuerySalesIndexed: TFDQuery
     Indexes = <

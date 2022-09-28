@@ -55,4 +55,20 @@ object dmRTTK: TdmRTTK
     Left = 216
     Top = 168
   end
+  object ClientDataSetSalesInfo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    AfterOpen = ClientDataSetSalesInfoAfterOpen
+    Left = 456
+    Top = 336
+    object ClientDataSetSalesInfoYear: TIntegerField
+      FieldName = 'Year'
+    end
+    object ClientDataSetSalesInfoMonth: TIntegerField
+      FieldName = 'Month'
+    end
+    object ClientDataSetSalesInfoAmount: TBCDField
+      FieldName = 'Amount'
+    end
+  end
 end

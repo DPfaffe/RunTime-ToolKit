@@ -7,8 +7,8 @@ uses
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
-  FireDAC.Phys.SQLiteWrapper, FireDAC.DApt, FireDAC.Phys.SQLiteWrapper.Stat;
-  //{$IF COMPILERVERSION > 33}FireDAC.Phys.SQLiteWrapper.Stat, {$ENDIF}
+  FireDAC.Phys.SQLiteWrapper, FireDAC.DApt, FireDAC.Phys.SQLiteWrapper.Stat, Datasnap.DBClient;
+// {$IF COMPILERVERSION > 33}FireDAC.Phys.SQLiteWrapper.Stat, {$ENDIF}
 
 type
   TdmRTTK = class(TDataModule)
@@ -20,13 +20,20 @@ type
     FDMemTableYear: TIntegerField;
     FDMemTableMonth: TIntegerField;
     FDMemTableAmount: TBCDField;
+    ClientDataSetSalesInfo: TClientDataSet;
+    ClientDataSetSalesInfoYear: TIntegerField;
+    ClientDataSetSalesInfoMonth: TIntegerField;
+    ClientDataSetSalesInfoAmount: TBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FDSQLiteFunctionXmYCalculate(AFunc: TSQLiteFunctionInstance; AInputs: TSQLiteInputs;
       AOutput: TSQLiteOutput; var AUserData: TObject);
     procedure DataModuleDestroy(Sender: TObject);
+    procedure ClientDataSetSalesInfoAfterOpen(DataSet: TDataSet);
   strict private
     FStallTime: integer;
+    procedure DataAppend2019;
+    procedure DataAppend2020;
   private
     FQuery: TFDQuery;
     procedure CopyDataSet;
@@ -44,18 +51,64 @@ implementation
 
 uses WinAPI.Windows;
 
+procedure TdmRTTK.ClientDataSetSalesInfoAfterOpen(DataSet: TDataSet);
+var
+  i: integer;
+begin
+  for i := 1 to 12 do
+  begin
+    DataSet.Append;
+    DataSet.Fields[0].AsInteger := 2021;
+    DataSet.Fields[1].AsInteger := i;
+    DataSet.Fields[2].AsInteger := i * 175;
+    DataSet.Post;
+  end;
+end;
+
 procedure TdmRTTK.CopyDataSet;
 begin
   FQuery := TFDQuery.Create(self);
   FQuery.Connection := FDConnection;
   FQuery.Open('Select * from SalesInfo');
+  DataAppend2019;
   FDMemTable.CopyDataSet(FQuery, [coStructure, coRestart, coAppend]);
+  DataAppend2020;
+end;
+
+procedure TdmRTTK.DataAppend2019;
+var
+  i: integer;
+begin
+  for i := 1 to 12 do
+  begin
+    FQuery.Append;
+    FQuery.Fields[0].AsInteger := 2019;
+    FQuery.Fields[1].AsInteger := i;
+    FQuery.Fields[2].AsInteger := i * 125;
+    FQuery.Post;
+  end;
+end;
+
+procedure TdmRTTK.DataAppend2020;
+var
+  i: integer;
+begin
+  for i := 1 to 12 do
+  begin
+    FQuery.Append;
+    FQuery.Fields[0].AsInteger := 2020;
+    FQuery.Fields[1].AsInteger := i;
+    FQuery.Fields[2].AsInteger := i * 150;
+    FQuery.Post;
+  end;
 end;
 
 procedure TdmRTTK.DataModuleCreate(Sender: TObject);
 begin
   FDConnection.Open();
   CopyDataSet;
+  ClientDataSetSalesInfo.CreateDataSet;
+  ClientDataSetSalesInfo.Open;
 end;
 
 procedure TdmRTTK.DataModuleDestroy(Sender: TObject);
