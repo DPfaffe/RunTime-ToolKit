@@ -21,6 +21,7 @@ type
     TMSFNCPieChart1: TTMSFNCPieChart;
     TMSFNCGrid1: TTMSFNCGrid;
     TMSFNCGridDatabaseAdapter1: TTMSFNCGridDatabaseAdapter;
+    TMSFNCChartDatabaseAdapter2: TTMSFNCChartDatabaseAdapter;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -40,6 +41,8 @@ uses dmChartWebinar;
 procedure TfrmChartSalesFMX.FormCreate(Sender: TObject);
 begin
         TMSFNCGridDatabaseAdapter1.Active := true;
+        TMSFNCChartDatabaseAdapter1.Active := true;
+                TMSFNCChartDatabaseAdapter2.Active := true;
 end;
 
 end.

@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,frmFncChartGridFMXU, FMX.Controls.Presentation,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, frmFncChartGridFMXU, FMX.Controls.Presentation,
   FMX.StdCtrls;
 
 type
@@ -24,26 +24,25 @@ var
 
 implementation
 
-uses
- FMX.SE.RTTK.Marshal,
- FMX.SERTTK.MarshalCV;
-
+uses dmChartWebinar,
+  FMX.SE.RTTK.Marshal,
+  FMX.SERTTK.MarshalCV;
 
 {$R *.fmx}
 
 procedure TfrmFmxMarshalCodedOptions.Label1Click(Sender: TObject);
 begin
-TSERTTKMarshalAPI.ShowMarshal;
+  TSERTTKMarshalAPI.ShowMarshal;
 end;
 
 procedure TfrmFmxMarshalCodedOptions.Label2Click(Sender: TObject);
 var
-lMarshalOptions: TSERTTKMarshalOptions;
+  lMarshalOptions: TSERTTKMarshalOptions;
 begin
-lMarshalOptions:= TSERTTKMarshalOptions.Create(true);
-lMarshalOptions.FormWidth := 1024;
-lMarshalOptions.FormHeight := 720;
-TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
+  lMarshalOptions := TSERTTKMarshalOptions.Create(true);
+  lMarshalOptions.FormWidth := 1024;
+  lMarshalOptions.FormHeight := 720;
+  TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
 
 end;
 
