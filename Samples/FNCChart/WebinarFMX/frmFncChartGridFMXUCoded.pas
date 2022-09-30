@@ -24,7 +24,7 @@ var
 
 implementation
 
-uses
+uses FMX.RTTK.PT.FNCChartTool,
   FMX.SE.RTTK.Marshal,
   FMX.SERTTK.MarshalCV;
 

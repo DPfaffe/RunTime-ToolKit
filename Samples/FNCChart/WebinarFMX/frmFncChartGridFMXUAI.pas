@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, frmFncChartGridFMXU,  FMX.SE.RTTK.DT.Marshal;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, frmFncChartGridFMXU, FMX.SE.RTTK.DT.Marshal;
 
 type
   TfrmFmxChartAppInspector = class(TfrmChartSalesFMX)
@@ -20,7 +20,7 @@ var
 
 implementation
 
-
+uses FMX.RTTK.PT.FNCChartTool;
 {$R *.fmx}
 
 end.
