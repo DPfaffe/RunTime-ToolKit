@@ -18,8 +18,6 @@ type
     dsSalesBarChart: TDataSource;
     dsSalesGrid: TDataSource;
     dsSalesPie: TDataSource;
-    TMSFNCStackedBarChart1: TTMSFNCStackedBarChart;
-    TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter;
     GridPanelLayout1: TGridPanelLayout;
     TMSFNCPieChart1: TTMSFNCPieChart;
     TMSFNCGrid1: TTMSFNCGrid;
@@ -37,6 +35,8 @@ type
     fdqSalesChartSA2020: TBCDField;
     fdqSalesChartmdisp: TStringField;
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
+    TMSFNCBarChart1: TTMSFNCBarChart;
+    TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter;
     procedure FormCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
   private

@@ -16,7 +16,6 @@ uses
 type
   TfrmChartSalesVCL = class(TForm)
     GridPanel1: TGridPanel;
-    TMSFNCStackedBarChart1: TTMSFNCStackedBarChart;
     TMSFNCPieChart1: TTMSFNCPieChart;
     TMSFNCGrid1: TTMSFNCGrid;
     FDConnection: TFDConnection;
@@ -36,6 +35,7 @@ type
     fdqSalesChartSA2020: TBCDField;
     fdqSalesPieyear: TIntegerField;
     fdqSalesPieSales: TIntegerField;
+    TMSFNCBarChart1: TTMSFNCBarChart;
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
