@@ -24,7 +24,7 @@ var
 
 implementation
 
-uses dmChartWebinar,
+uses
   FMX.SE.RTTK.Marshal,
   FMX.SERTTK.MarshalCV;
 

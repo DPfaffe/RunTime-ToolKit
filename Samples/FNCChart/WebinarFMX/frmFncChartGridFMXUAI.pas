@@ -20,7 +20,6 @@ var
 
 implementation
 
-uses dmChartWebinar;
 
 {$R *.fmx}
 
