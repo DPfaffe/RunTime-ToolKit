@@ -2,13 +2,13 @@ program FNChartVCLMarshalButton;
 
 uses
   Vcl.Forms,
-  frmFncChartGridVCLUMarshalButton in 'frmFncChartGridVCLUMarshalButton.pas' {Form2};
+  frmFncChartGridVCLUMarshalButton in 'frmFncChartGridVCLUMarshalButton.pas' {frmFncChartMarshalButton};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TfrmFncChartMarshalButton, frmFncChartMarshalButton);
   Application.Run;
 end.

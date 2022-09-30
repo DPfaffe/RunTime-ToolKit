@@ -106,7 +106,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="frmFncChartGridVCLUMarshalButton.pas">
-            <Form>Form2</Form>
+            <Form>frmFncChartMarshalButton</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

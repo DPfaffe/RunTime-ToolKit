@@ -1,7 +1,7 @@
-object Form2: TForm2
+object frmFncChartMarshalButton: TfrmFncChartMarshalButton
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'Marshal started via button'
   ClientHeight = 424
   ClientWidth = 618
   Color = clBtnFace

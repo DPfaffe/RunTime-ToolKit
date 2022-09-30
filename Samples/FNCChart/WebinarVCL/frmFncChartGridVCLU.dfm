@@ -386,6 +386,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Legend.Font.Name = 'Segoe UI'
       Legend.Font.Style = []
       Legend.Left = 10.000000000000000000
+      Legend.Position = lpBottomRight
       Legend.Top = 10.000000000000000000
       Stroke.Color = clGray
       SeriesMargins.Left = 0

@@ -1,7 +1,7 @@
-object Form1: TForm1
+object frmVCLChartAppInspector: TfrmVCLChartAppInspector
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'frmVCLChartAppInspector'
   ClientHeight = 424
   ClientWidth = 618
   Color = clBtnFace

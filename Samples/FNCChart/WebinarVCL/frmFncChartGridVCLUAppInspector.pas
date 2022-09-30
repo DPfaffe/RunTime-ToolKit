@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,frmFncChartGridVCLU, VCL.SE.RTTK.DT.Marshal;
 
 type
-  TForm1 = class(TfrmChartSalesVCL)
+  TfrmVCLChartAppInspector = class(TfrmChartSalesVCL)
     SERTTKAppInspectorVCL1: TSERTTKAppInspectorVCL;
   private
     { Private declarations }
@@ -16,7 +16,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmVCLChartAppInspector: TfrmVCLChartAppInspector;
 
 implementation
 

@@ -1,7 +1,7 @@
 object frmFncChartMarshalButton: TfrmFncChartMarshalButton
   Left = 0
   Top = 0
-  Caption = 'Marshal started from button'
+  Caption = 'Marshal started Via button'
   ClientHeight = 656
   ClientWidth = 884
   FormFactor.Width = 320

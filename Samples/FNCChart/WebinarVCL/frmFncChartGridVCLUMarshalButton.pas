@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,frmFncChartGridVCLU, VCL.SE.RTTK.DT.Marshal;
 
 type
-  TForm2 = class(TfrmChartSalesVCL)
+  TfrmFncChartMarshalButton = class(TfrmChartSalesVCL)
     SERTTKMarshal1: TSERTTKMarshal;
   private
     { Private declarations }
@@ -16,7 +16,7 @@ type
   end;
 
 var
-  Form2: TForm2;
+  frmFncChartMarshalButton: TfrmFncChartMarshalButton;
 
 implementation
 

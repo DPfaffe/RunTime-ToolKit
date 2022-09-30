@@ -40,9 +40,8 @@ type
     procedure FormCreate(Sender: TObject);
   private
     FQuery: TFDQuery;
-    procedure CopyDataSet;
-    procedure DataAppend2019;
-    procedure DataAppend2020;
+    procedure ChartDataETL;
+    procedure DataAppend(AYear, ABaseAmount:integer);
   public
     { Public declarations }
   end;
@@ -54,42 +53,28 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmChartSalesVCL.CopyDataSet;
+procedure TfrmChartSalesVCL.ChartDataETL;
 begin
   FQuery := TFDQuery.Create(self);
   FQuery.Connection := FDConnection;
   FQuery.Open('Select * from SalesInfo');
-  DataAppend2019;
+  DataAppend(2019, 125);
   fdqSalesChart.Active := true; // THIS LINE NEEDS TO MOVE AFTER APPEND 2020
-  DataAppend2020;
+  DataAppend(2020, 150);
   FDMemTableSalesGrid.CopyDataSet(FQuery, [coStructure, coRestart, coAppend]);
   fdqSalesPie.Active := true;
 end;
 
-procedure TfrmChartSalesVCL.DataAppend2019;
+procedure TfrmChartSalesVCL.DataAppend(AYear, ABaseAmount: integer);
 var
   i: integer;
 begin
   for i := 1 to 12 do
   begin
     FQuery.Append;
-    FQuery.Fields[0].AsInteger := 2019;
+    FQuery.Fields[0].AsInteger := AYear;
     FQuery.Fields[1].AsInteger := i;
-    FQuery.Fields[2].AsInteger := i * 125;
-    FQuery.Post;
-  end;
-end;
-
-procedure TfrmChartSalesVCL.DataAppend2020;
-var
-  i: integer;
-begin
-  for i := 1 to 12 do
-  begin
-    FQuery.Append;
-    FQuery.Fields[0].AsInteger := 2020;
-    FQuery.Fields[1].AsInteger := i;
-    FQuery.Fields[2].AsInteger := i * 150;
+    FQuery.Fields[2].AsInteger := i * ABaseAmount;
     FQuery.Post;
   end;
 end;
@@ -119,7 +104,7 @@ end;
 procedure TfrmChartSalesVCL.FormCreate(Sender: TObject);
 begin
   FDConnection.Open();
-  CopyDataSet;
+  ChartDataETL;
   TMSFNCGridDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter2.Active := true;
