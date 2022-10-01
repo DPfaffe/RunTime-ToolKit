@@ -446,6 +446,8 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Appearance.ColorScheme = ccsColorList
       Appearance.MonochromeColor = claSteelblue
       ClickMargin = 10.000000000000000000
+      Crosshair.Visible = True
+      Crosshair.Modes = [ccmPointBased]
       Legend.Fill.Color = claGhostwhite
       Legend.Stroke.Color = claGray
       Legend.Font.Name = 'Segoe UI'

@@ -51,10 +51,6 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       end>
     ShowCaption = False
     TabOrder = 0
-    ExplicitLeft = 608
-    ExplicitTop = 456
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object TMSFNCPieChart1: TTMSFNCPieChart
       AlignWithMargins = True
       Left = 692
@@ -142,10 +138,6 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 8
-      ExplicitTop = 8
-      ExplicitWidth = 550
-      ExplicitHeight = 350
       object TMSFNCChartDatabaseAdapter2: TTMSFNCChartDatabaseAdapter
         Left = 328
         Top = 208
@@ -319,10 +311,6 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       GlobalFont.Scale = 1.000000000000000000
       GlobalFont.Style = []
       DesignTimeSampleData = True
-      ExplicitLeft = 16
-      ExplicitTop = 40
-      ExplicitWidth = 520
-      ExplicitHeight = 270
       object TMSFNCGridDatabaseAdapter1: TTMSFNCGridDatabaseAdapter
         Left = 560
         Top = 264
@@ -378,6 +366,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Appearance.MonochromeColor = 11829830
       ClickMargin = 10.000000000000000000
       Crosshair.Visible = True
+      Crosshair.Modes = [ccmPointBased]
       Legend.Fill.Color = 16775416
       Legend.Stroke.Color = clGray
       Legend.Font.Charset = DEFAULT_CHARSET
@@ -928,10 +917,6 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       Align = alClient
       TabOrder = 2
-      ExplicitLeft = 920
-      ExplicitTop = 560
-      ExplicitWidth = 550
-      ExplicitHeight = 350
       object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
         Left = 472
         Top = 272
