@@ -105,12 +105,18 @@ begin
 end;
 
 procedure TfrmChartSalesFMX.FormCreate(Sender: TObject);
+const
+  Pi = 3.1415;
 begin
   FDConnection.Open();
   ChartDataETL;
   TMSFNCGridDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter2.Active := true;
+  TMSFNCBarChart1.TagString := 'You have been Tagged';
+  TMSFNCBarChart1.Tag := round(Pi * 10);
+  TMSFNCBarChart1.TagFloat := Pi;
+  TMSFNCBarChart1.TagObject := TMSFNCChartDatabaseAdapter1;
 end;
 
 end.

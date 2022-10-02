@@ -36,7 +36,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     Top = 22
     Width = 635
     Height = 314
-    ActivePage = tsSalesData
+    ActivePage = tsIfDef
     Align = alClient
     TabOrder = 1
     object tsLabel: TTabSheet
@@ -96,8 +96,8 @@ object frmRTTKVCL: TfrmRTTKVCL
         ExplicitWidth = 31
       end
       object Panel1: TPanel
-        Left = 224
-        Top = 112
+        Left = 222
+        Top = 88
         Width = 185
         Height = 81
         Align = alCustom
@@ -370,6 +370,17 @@ object frmRTTKVCL: TfrmRTTKVCL
   object ActionList1: TActionList
     Left = 304
     Top = 176
+    object Action1: TAction
+      Caption = 'Action1'
+      ShortCut = 32880
+      OnExecute = Action1Execute
+    end
+    object Action2: TAction
+      Caption = 'Action2'
+    end
+    object ControlAction1: TControlAction
+      Caption = 'ControlAction1'
+    end
   end
   object Timer1: TTimer
     Left = 312

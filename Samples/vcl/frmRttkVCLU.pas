@@ -65,6 +65,9 @@ type
     tsSalesData: TTabSheet;
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
+    Action1: TAction;
+    Action2: TAction;
+    ControlAction1: TControlAction;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnAddMemoClick(Sender: TObject);
@@ -75,6 +78,7 @@ type
     procedure cbStallShutdownClick(Sender: TObject);
     procedure FramedTestVCL1Button1Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
+    procedure Action1Execute(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
     FStallThread: TStallThread;
@@ -101,6 +105,11 @@ begin
 {$IFDEF DEBUG}
   TSERTTKMarshalAPI.ShowMarshal;
 {$ENDIF}
+end;
+
+procedure TfrmRTTKVCL.Action1Execute(Sender: TObject);
+begin
+   memoRTCompFooter.Lines.Add('Shutdown Stalled');
 end;
 
 procedure TfrmRTTKVCL.btnAddMemoClick(Sender: TObject);
