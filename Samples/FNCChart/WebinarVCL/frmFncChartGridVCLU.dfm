@@ -1,7 +1,7 @@
 object frmChartSalesVCL: TfrmChartSalesVCL
   Left = 0
   Top = 0
-  Caption = 'frmChartSalesVCL'
+  Caption = 'FNC Sales Dashboard - VCL - by SwiftExpat'
   ClientHeight = 895
   ClientWidth = 1379
   Color = clBtnFace
@@ -21,26 +21,35 @@ object frmChartSalesVCL: TfrmChartSalesVCL
     Caption = 'GridPanel1'
     ColumnCollection = <
       item
-        Value = 50.000000000000000000
+        Value = 50.478260869565220000
       end
       item
-        Value = 50.000000000000000000
+        Value = 30.478260869565220000
+      end
+      item
+        Value = 19.043478260869570000
       end>
     ControlCollection = <
       item
         Column = 1
         Control = TMSFNCPieChart1
-        Row = 0
+        Row = 1
       end
       item
-        Column = 0
+        Column = 2
         Control = TMSFNCGrid1
         Row = 1
       end
       item
         Column = 0
+        ColumnSpan = 3
         Control = TMSFNCBarChart1
         Row = 0
+      end
+      item
+        Column = 0
+        Control = TMSFNCStackedAreaChart1
+        Row = 1
       end>
     RowCollection = <
       item
@@ -53,10 +62,10 @@ object frmChartSalesVCL: TfrmChartSalesVCL
     TabOrder = 0
     object TMSFNCPieChart1: TTMSFNCPieChart
       AlignWithMargins = True
-      Left = 692
-      Top = 4
-      Width = 683
-      Height = 440
+      Left = 699
+      Top = 450
+      Width = 414
+      Height = 441
       Appearance.ColorList = <
         item
           Color = 16105559
@@ -91,12 +100,11 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Appearance.GlobalFont.Color = -1
       Appearance.GlobalFont.Scale = 1.000000000000000000
       Appearance.GlobalFont.Style = []
-      Appearance.ColorScheme = ccsColorList
+      Appearance.ColorScheme = ccsExcel
       Appearance.MonochromeColor = 11829830
       ClickMargin = 10.000000000000000000
       Legend.Fill.Color = 16775416
       Legend.Stroke.Color = clGray
-      Legend.Visible = False
       Legend.Font.Charset = DEFAULT_CHARSET
       Legend.Font.Color = clWindowText
       Legend.Font.Height = -11
@@ -148,6 +156,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
         Source.Series = <
           item
             YValue = 'Sales'
+            XValue = 'year'
             XLabel = 'year'
             YValueHigh = 'Sales'
           end>
@@ -155,9 +164,9 @@ object frmChartSalesVCL: TfrmChartSalesVCL
     end
     object TMSFNCGrid1: TTMSFNCGrid
       AlignWithMargins = True
-      Left = 4
+      Left = 1119
       Top = 450
-      Width = 682
+      Width = 256
       Height = 441
       Align = alClient
       ParentDoubleBuffered = False
@@ -326,7 +335,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 682
+      Width = 1371
       Height = 440
       Appearance.ColorList = <
         item
@@ -362,7 +371,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Appearance.GlobalFont.Color = -1
       Appearance.GlobalFont.Scale = 1.000000000000000000
       Appearance.GlobalFont.Style = []
-      Appearance.ColorScheme = ccsColorList
+      Appearance.ColorScheme = ccsExcel
       Appearance.MonochromeColor = 11829830
       ClickMargin = 10.000000000000000000
       Crosshair.Visible = True
@@ -395,7 +404,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
           Pie.Margins.Right = 10
           Pie.Margins.Bottom = 10
           Pie.SweepAngle = 360.000000000000000000
-          Fill.Color = 16105559
+          Fill.Color = 12874308
           LegendText = 'Series 0'
           Labels.Fill.Color = 16775416
           Labels.Font.Charset = DEFAULT_CHARSET
@@ -407,9 +416,9 @@ object frmChartSalesVCL: TfrmChartSalesVCL
           Labels.OffsetY = -10.000000000000000000
           Labels.Stroke.Color = clGray
           Labels.Visible = True
-          Markers.Fill.Color = 16105559
+          Markers.Fill.Color = 12874308
           Markers.Height = 10.000000000000000000
-          Markers.Stroke.Color = 8020012
+          Markers.Stroke.Color = 6437154
           Markers.Visible = True
           Markers.Width = 10.000000000000000000
           MaxX = 10.000000000000000000
@@ -558,7 +567,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
           Legend.Font.Style = []
           Legend.Left = -10.000000000000000000
           Legend.Stroke.Color = clGray
-          Stroke.Color = 8020012
+          Stroke.Color = 6437154
           XGrid.Visible = True
           XValues.MajorUnit = 1.000000000000000000
           XValues.MajorUnitFont.Charset = DEFAULT_CHARSET
@@ -619,22 +628,22 @@ object frmChartSalesVCL: TfrmChartSalesVCL
           YValues.Title.TextMargins.Right = 0
           YValues.Title.TextMargins.Bottom = 0
           YValues.Title.Text = 'Y-Axis Series 1'
-          Crosshair.XTextStroke.Color = 16105559
-          Crosshair.XTextFill.Color = 16105559
+          Crosshair.XTextStroke.Color = 12874308
+          Crosshair.XTextFill.Color = 12874308
           Crosshair.XTextFont.Charset = DEFAULT_CHARSET
           Crosshair.XTextFont.Color = clWhite
           Crosshair.XTextFont.Height = -11
           Crosshair.XTextFont.Name = 'Segoe UI'
           Crosshair.XTextFont.Style = []
-          Crosshair.YTextStroke.Color = 16105559
-          Crosshair.YTextFill.Color = 16105559
+          Crosshair.YTextStroke.Color = 12874308
+          Crosshair.YTextFill.Color = 12874308
           Crosshair.YTextFont.Charset = DEFAULT_CHARSET
           Crosshair.YTextFont.Color = clWhite
           Crosshair.YTextFont.Height = -11
           Crosshair.YTextFont.Name = 'Segoe UI'
           Crosshair.YTextFont.Style = []
-          Crosshair.HorizontalLineStroke.Color = 16105559
-          Crosshair.VerticalLineStroke.Color = 16105559
+          Crosshair.HorizontalLineStroke.Color = 12874308
+          Crosshair.VerticalLineStroke.Color = 12874308
         end
         item
           AnimationFactor = 4.000000000000000000
@@ -648,7 +657,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
           Pie.Margins.Right = 10
           Pie.Margins.Bottom = 10
           Pie.SweepAngle = 360.000000000000000000
-          Fill.Color = 5644279
+          Fill.Color = 3243501
           LegendText = 'Series 1'
           Labels.Fill.Color = 16775416
           Labels.Font.Charset = DEFAULT_CHARSET
@@ -660,9 +669,9 @@ object frmChartSalesVCL: TfrmChartSalesVCL
           Labels.OffsetY = -10.000000000000000000
           Labels.Stroke.Color = clGray
           Labels.Visible = True
-          Markers.Fill.Color = 5644279
+          Markers.Fill.Color = 3243501
           Markers.Height = 10.000000000000000000
-          Markers.Stroke.Color = 2822268
+          Markers.Stroke.Color = 1588854
           Markers.Width = 10.000000000000000000
           MaxX = 10.000000000000000000
           MaxY = 10.000000000000000000
@@ -810,7 +819,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
           Legend.Font.Style = []
           Legend.Left = -10.000000000000000000
           Legend.Stroke.Color = clGray
-          Stroke.Color = 2822268
+          Stroke.Color = 1588854
           XValues.MajorUnit = 1.000000000000000000
           XValues.MajorUnitFont.Charset = DEFAULT_CHARSET
           XValues.MajorUnitFont.Color = clWindowText
@@ -871,22 +880,22 @@ object frmChartSalesVCL: TfrmChartSalesVCL
           YValues.Title.TextMargins.Bottom = 0
           YValues.Title.Text = 'Y-Axis Series 2'
           YValues.Positions = []
-          Crosshair.XTextStroke.Color = 5644279
-          Crosshair.XTextFill.Color = 5644279
+          Crosshair.XTextStroke.Color = 3243501
+          Crosshair.XTextFill.Color = 3243501
           Crosshair.XTextFont.Charset = DEFAULT_CHARSET
           Crosshair.XTextFont.Color = clWhite
           Crosshair.XTextFont.Height = -11
           Crosshair.XTextFont.Name = 'Segoe UI'
           Crosshair.XTextFont.Style = []
-          Crosshair.YTextStroke.Color = 5644279
-          Crosshair.YTextFill.Color = 5644279
+          Crosshair.YTextStroke.Color = 3243501
+          Crosshair.YTextFill.Color = 3243501
           Crosshair.YTextFont.Charset = DEFAULT_CHARSET
           Crosshair.YTextFont.Color = clWhite
           Crosshair.YTextFont.Height = -11
           Crosshair.YTextFont.Name = 'Segoe UI'
           Crosshair.YTextFont.Style = []
-          Crosshair.HorizontalLineStroke.Color = 5644279
-          Crosshair.VerticalLineStroke.Color = 5644279
+          Crosshair.HorizontalLineStroke.Color = 3243501
+          Crosshair.VerticalLineStroke.Color = 3243501
         end>
       Title.Fill.Kind = gfkNone
       Title.Fill.Color = 16775416
@@ -925,6 +934,117 @@ object frmChartSalesVCL: TfrmChartSalesVCL
         Visible = True
         AutoCreateSeries = False
         Source.DataSource = dsSalesBarChart
+        Source.Series = <
+          item
+            YValue = 'SA2018'
+            XValue = 'Month'
+            XLabel = 'mdisp'
+          end
+          item
+            YValue = 'SA2019'
+            XValue = 'Month'
+            XLabel = 'mdisp'
+          end
+          item
+            YValue = 'SA2020'
+            XValue = 'Month'
+            XLabel = 'mdisp'
+          end>
+      end
+    end
+    object TMSFNCStackedAreaChart1: TTMSFNCStackedAreaChart
+      Left = 1
+      Top = 447
+      Width = 695
+      Height = 447
+      Appearance.ColorList = <
+        item
+          Color = 16105559
+        end
+        item
+          Color = 5644279
+        end
+        item
+          Color = 7936771
+        end
+        item
+          Color = 12275349
+        end
+        item
+          Color = 1296366
+        end
+        item
+          Color = 4350195
+        end
+        item
+          Color = 16544551
+        end
+        item
+          Color = 5820321
+        end
+        item
+          Color = 10922240
+        end
+        item
+          Color = 16376965
+        end>
+      Appearance.GlobalFont.Color = -1
+      Appearance.GlobalFont.Scale = 1.000000000000000000
+      Appearance.GlobalFont.Style = []
+      Appearance.ColorScheme = ccsExcel
+      Appearance.MonochromeColor = 11829830
+      ClickMargin = 10.000000000000000000
+      Legend.Fill.Color = 16775416
+      Legend.Stroke.Color = clGray
+      Legend.Font.Charset = DEFAULT_CHARSET
+      Legend.Font.Color = clWindowText
+      Legend.Font.Height = -11
+      Legend.Font.Name = 'Segoe UI'
+      Legend.Font.Style = []
+      Legend.Left = 10.000000000000000000
+      Legend.Top = 10.000000000000000000
+      Stroke.Color = clGray
+      SeriesMargins.Left = 0
+      SeriesMargins.Top = 0
+      SeriesMargins.Right = 0
+      SeriesMargins.Bottom = 0
+      Series = <>
+      Title.Fill.Kind = gfkNone
+      Title.Fill.Color = 16775416
+      Title.Stroke.Color = clGray
+      Title.Font.Charset = DEFAULT_CHARSET
+      Title.Font.Color = clWindowText
+      Title.Font.Height = -11
+      Title.Font.Name = 'Segoe UI'
+      Title.Font.Style = []
+      Title.Height = 35.000000000000000000
+      Title.TextMargins.Left = 3
+      Title.TextMargins.Top = 3
+      Title.TextMargins.Right = 3
+      Title.TextMargins.Bottom = 3
+      Title.Text = 'TMS FNC Chart'
+      XAxis.Fill.Kind = gfkNone
+      XAxis.Fill.Color = 16775416
+      XAxis.Stroke.Color = clGray
+      XAxis.Height = 35.000000000000000000
+      YAxis.Fill.Kind = gfkNone
+      YAxis.Fill.Color = 16775416
+      YAxis.Stroke.Color = clGray
+      YAxis.Width = 35.000000000000000000
+      Adapter = TMSFNCChartDatabaseAdapter3
+      DefaultLoadOptions.XValuesFormatString = '%.0f'
+      DefaultLoadOptions.YValuesFormatString = '%.2f'
+      DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      Align = alClient
+      TabOrder = 3
+      object TMSFNCChartDatabaseAdapter3: TTMSFNCChartDatabaseAdapter
+        Left = 488
+        Top = 96
+        Width = 39
+        Height = 39
+        Visible = True
+        AutoCreateSeries = False
+        Source.DataSource = dsSalesLines
         Source.Series = <
           item
             YValue = 'SA2018'
@@ -1036,5 +1156,45 @@ object frmChartSalesVCL: TfrmChartSalesVCL
     UpdateOptions.AutoCommitUpdates = True
     Left = 992
     Top = 640
+  end
+  object fdqSalesLines: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from sales_chart')
+    Left = 696
+    Top = 656
+    object IntegerField1: TIntegerField
+      FieldName = 'Month'
+      Origin = 'Month'
+      Required = True
+    end
+    object StringField1: TStringField
+      FieldName = 'mdisp'
+      Origin = 'mdisp'
+      Size = 32767
+    end
+    object BCDField1: TBCDField
+      FieldName = 'SA2018'
+      Origin = 'SA2018'
+      Precision = 10
+      Size = 2
+    end
+    object BCDField2: TBCDField
+      FieldName = 'SA2019'
+      Origin = 'SA2019'
+      Precision = 10
+      Size = 2
+    end
+    object BCDField3: TBCDField
+      FieldName = 'SA2020'
+      Origin = 'SA2020'
+      Precision = 10
+      Size = 2
+    end
+  end
+  object dsSalesLines: TDataSource
+    DataSet = fdqSalesLines
+    Left = 696
+    Top = 528
   end
 end

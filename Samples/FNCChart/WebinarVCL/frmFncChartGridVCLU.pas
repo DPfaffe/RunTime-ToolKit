@@ -36,12 +36,23 @@ type
     fdqSalesPieyear: TIntegerField;
     fdqSalesPieSales: TIntegerField;
     TMSFNCBarChart1: TTMSFNCBarChart;
+    TMSFNCStackedAreaChart1: TTMSFNCStackedAreaChart;
+    TMSFNCChartDatabaseAdapter3: TTMSFNCChartDatabaseAdapter;
+    fdqSalesLines: TFDQuery;
+    IntegerField1: TIntegerField;
+    StringField1: TStringField;
+    BCDField1: TBCDField;
+    BCDField2: TBCDField;
+    BCDField3: TBCDField;
+    dsSalesLines: TDataSource;
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     FQuery: TFDQuery;
     procedure ChartDataETL;
     procedure DataAppend(AYear, ABaseAmount: integer);
+    procedure UpdateStackedLines;
+    procedure UpdatePieSeries;
   public
     { Public declarations }
   end;
@@ -62,9 +73,10 @@ begin
   fdqSalesChart.Active := true; // THIS LINE NEEDS TO MOVE AFTER APPEND 2020
   DataAppend(2020, 150);
   FQuery.Active := false;
-  FQuery.Active := true; //re-fectch data with the order by
+  FQuery.Active := true; // re-fectch data with the order by
   FDMemTableSalesGrid.CopyDataSet(FQuery, [coStructure, coRestart, coAppend]);
   fdqSalesPie.Active := true;
+  fdqSalesLines.Active := true;
 end;
 
 procedure TfrmChartSalesVCL.DataAppend(AYear, ABaseAmount: integer);
@@ -76,7 +88,7 @@ begin
     FQuery.Append;
     FQuery.Fields[0].AsInteger := AYear;
     FQuery.Fields[1].AsInteger := i;
-    FQuery.Fields[2].AsInteger := i * ABaseAmount;
+    FQuery.Fields[2].AsInteger := ABaseAmount + Random(ABaseAmount);
     FQuery.Post;
   end;
 end;
@@ -105,11 +117,45 @@ end;
 
 procedure TfrmChartSalesVCL.FormCreate(Sender: TObject);
 begin
+  Randomize;
   FDConnection.Open();
   ChartDataETL;
   TMSFNCGridDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter2.Active := true;
+  TMSFNCChartDatabaseAdapter3.Active := true;
+  UpdateStackedLines;
+  UpdatePieSeries;
+end;
+
+procedure TfrmChartSalesVCL.UpdatePieSeries;
+var
+  s: TTMSFNCChartSerie;
+  i: integer;
+begin
+  for i:= 0 to  TMSFNCPieChart1.Series.Count -1 do
+  begin
+    s:=  TMSFNCPieChart1.Series[i];
+    s.Enable3D := true;
+    s.Fill.Opacity := 0.5;
+    s.Labels.Format := '%g';
+    s.Labels.Visible := True;
+  end;
+end;
+
+procedure TfrmChartSalesVCL.UpdateStackedLines;
+var
+  s: TTMSFNCChartSerie;
+  i: integer;
+begin
+  for i:= 0 to  TMSFNCStackedAreaChart1.Series.Count -1 do
+  begin
+    s:=  TMSFNCStackedAreaChart1.Series[i];
+    s.Enable3D := true;
+    s.Fill.Opacity := 0.5;
+    s.Labels.Format := '%g';
+    s.Labels.Visible := True;
+  end;
 end;
 
 end.

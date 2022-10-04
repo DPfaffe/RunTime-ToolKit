@@ -37,12 +37,23 @@ type
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
     TMSFNCBarChart1: TTMSFNCBarChart;
     TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter;
+    TMSFNCStackedAreaChart1: TTMSFNCStackedAreaChart;
+    TMSFNCChartDatabaseAdapter3: TTMSFNCChartDatabaseAdapter;
+    fdqSalesLines: TFDQuery;
+    IntegerField1: TIntegerField;
+    BCDField1: TBCDField;
+    BCDField2: TBCDField;
+    BCDField3: TBCDField;
+    StringField1: TStringField;
+    dsSaleLines: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
   private
     FQuery: TFDQuery;
     procedure ChartDataETL;
     procedure DataAppend(AYear, ABaseAmount: integer);
+    procedure UpdateStackedLines;
+    procedure UpdatePieSeries;
   public
     { Public declarations }
   end;
@@ -59,13 +70,14 @@ begin
   FQuery := TFDQuery.Create(self);
   FQuery.Connection := FDConnection;
   FQuery.Open('Select * from SalesInfo order by year desc, month');
-  DataAppend(2019, 125);
-  fdqSalesChart.Active := true; // THIS LINE NEEDS TO MOVE AFTER APPEND 2020
   DataAppend(2020, 150);
+  fdqSalesChart.Active := true; // THIS LINE NEEDS TO MOVE AFTER APPEND 2020
+  DataAppend(2019, 125);
   FQuery.Active := false;
   FQuery.Active := true; // re-fectch data with the order by
   FDMemTableSalesGrid.CopyDataSet(FQuery, [coStructure, coRestart, coAppend]);
   fdqSalesPie.Active := true;
+  fdqSalesLines.Active := true;
 end;
 
 procedure TfrmChartSalesFMX.DataAppend(AYear, ABaseAmount: integer);
@@ -77,7 +89,7 @@ begin
     FQuery.Append;
     FQuery.Fields[0].AsInteger := AYear;
     FQuery.Fields[1].AsInteger := i;
-    FQuery.Fields[2].AsInteger := i * ABaseAmount;
+    FQuery.Fields[2].AsInteger := ABaseAmount + Random(ABaseAmount);
     FQuery.Post;
   end;
 end;
@@ -108,15 +120,49 @@ procedure TfrmChartSalesFMX.FormCreate(Sender: TObject);
 const
   Pi = 3.1415;
 begin
+  Randomize;
   FDConnection.Open();
   ChartDataETL;
   TMSFNCGridDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter2.Active := true;
+  TMSFNCChartDatabaseAdapter3.Active := true;
+  UpdateStackedLines;
+  UpdatePieSeries;
   TMSFNCBarChart1.TagString := 'You have been Tagged';
   TMSFNCBarChart1.Tag := round(Pi * 10);
   TMSFNCBarChart1.TagFloat := Pi;
   TMSFNCBarChart1.TagObject := TMSFNCChartDatabaseAdapter1;
+end;
+
+procedure TfrmChartSalesFMX.UpdatePieSeries;
+var
+  s: TTMSFNCChartSerie;
+  i: integer;
+begin
+  for i:= 0 to  TMSFNCPieChart1.Series.Count -1 do
+  begin
+    s:=  TMSFNCPieChart1.Series[i];
+    s.Enable3D := true;
+    s.Fill.Opacity := 0.5;
+    s.Labels.Format := '%g';
+    s.Labels.Visible := True;
+  end;
+end;
+
+procedure TfrmChartSalesFMX.UpdateStackedLines;
+var
+  s: TTMSFNCChartSerie;
+  i: integer;
+begin
+  for i := 0 to TMSFNCStackedAreaChart1.Series.Count - 1 do
+  begin
+    s := TMSFNCStackedAreaChart1.Series[i];
+    s.Enable3D := true;
+    s.Fill.Opacity := 0.5;
+    s.Labels.Format := '%g';
+    s.Labels.Visible := true;
+  end;
 end;
 
 end.
