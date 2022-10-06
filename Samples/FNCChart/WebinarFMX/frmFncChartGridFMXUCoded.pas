@@ -26,20 +26,21 @@ var
 
 implementation
 
-uses FMX.RTTK.PT.FNCChartTool,
-  FMX.SE.RTTK.Marshal,
-  FMX.SERTTK.MarshalCV;
+uses
+  FMX.SE.RTTK.Marshal, // Required for Marshal
+  FMX.RTTK.PT.FNCChartTool, // only needed if using FNC Chart
+  FMX.SERTTK.MarshalCV; // only needed for Marshal options
 
 const
   marshal_show_clicks = 2;
 {$R *.fmx}
 
-/// <summary>
-///   Click counter to prevent opening Marshal on the first click.
-/// </summary>
-/// <remarks>
-///   This allows you to hide Marshal functionality unless you know the right click count
-/// </remarks>
+  /// <summary>
+  /// Click counter to prevent opening Marshal on the first click.
+  /// </summary>
+  /// <remarks>
+  /// This allows you to hide Marshal functionality unless you know the right click count
+  /// </remarks>
 function TfrmFmxMarshalCodedOptions.ClickCountShow(AChart: TFMXObject): boolean;
 begin
   result := AChart.Tag = marshal_show_clicks;
@@ -49,12 +50,24 @@ begin
     AChart.Tag := AChart.Tag + 1;
 end;
 
+/// <summary>
+/// Shows Marshal if the click count is met
+/// </summary>
+/// <remarks>
+/// Hidden for chart demo, shown as an option if no other control is availalbe.
+/// </remarks>
 procedure TfrmFmxMarshalCodedOptions.Label1Click(Sender: TObject);
 begin
   if ClickCountShow(TFMXObject(Sender)) then
     TSERTTKMarshalAPI.ShowMarshal;
 end;
 
+/// <summary>
+/// Shows Marshal with custom optoins if the click count is met
+/// </summary>
+/// <remarks>
+/// Hidden for chart demo, shown as an option if no other control is availalbe.
+/// </remarks>
 procedure TfrmFmxMarshalCodedOptions.Label2Click(Sender: TObject);
 var
   lMarshalOptions: TSERTTKMarshalOptions;
