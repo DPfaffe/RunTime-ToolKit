@@ -92,6 +92,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Appearance.ColorScheme = ccsExcel
       Appearance.MonochromeColor = claSteelblue
       ClickMargin = 10.000000000000000000
+      Fill.Kind = gfkGradient
       Legend.Fill.Color = claGhostwhite
       Legend.Stroke.Color = claGray
       Legend.Font.Name = 'Segoe UI'
@@ -121,7 +122,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       YAxis.Fill.Color = claGhostwhite
       YAxis.Stroke.Color = claGray
       YAxis.Width = 35.000000000000000000
-      Adapter = TMSFNCChartDatabaseAdapter2
+      Adapter = PieAdapterStacked
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
@@ -133,16 +134,29 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       ClipChildren = True
       DisableFocusEffect = False
       TabOrder = 4
-      object TMSFNCChartDatabaseAdapter2: TTMSFNCChartDatabaseAdapter
+      object PieAdapterStacked: TTMSFNCChartDatabaseAdapter
         Size.Width = 39.000000000000000000
         Size.Height = 39.000000000000000000
         Size.PlatformDefault = False
-        Position.X = 280.000000000000000000
-        Position.Y = 208.000000000000000000
-        Source.DataSource = dsSalesPie
+        Position.X = 16.000000000000000000
+        Position.Y = 16.000000000000000000
+        AutoCreateSeries = False
+        Source.DataSource = dsSalePieStacked
         Source.Series = <
           item
-            YValue = 'Sales'
+            YValue = 'SA2018'
+            XValue = 'month'
+            XLabel = 'mdisp'
+          end
+          item
+            YValue = 'SA2019'
+            XValue = 'month'
+            XLabel = 'mdisp'
+          end
+          item
+            YValue = 'SA2020'
+            XValue = 'month'
+            XLabel = 'mdisp'
           end>
       end
     end
@@ -852,5 +866,51 @@ object frmChartSalesFMX: TfrmChartSalesFMX
     DataSet = fdqSalesLines
     Left = 984
     Top = 472
+  end
+  object dsSalePieStacked: TDataSource
+    DataSet = fdqSalesPieStacked
+    Left = 912
+    Top = 488
+  end
+  object fdqSalesPieStacked: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      
+        'Select m.month, m.displayName as mdisp, s1.amount as SA2018, s2.' +
+        'amount as SA2019, s3.amount as SA2020 from Chart_Months m left j' +
+        'oin '
+      
+        ' sales_2018 s1 on m.month = s1.month left join sales_2019 s2 on ' +
+        'm.month = s2.month left join sales_2020 s3 on m.month = s3.month' +
+        ';')
+    Left = 1000
+    Top = 576
+    object IntegerField2: TIntegerField
+      FieldName = 'month'
+      Origin = 'month'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object BCDField4: TBCDField
+      FieldName = 'SA2018'
+      Origin = 'SA2018'
+      Precision = 10
+      Size = 2
+    end
+    object BCDField5: TBCDField
+      FieldName = 'SA2019'
+      Origin = 'SA2019'
+      Precision = 10
+      Size = 2
+    end
+    object BCDField6: TBCDField
+      FieldName = 'SA2020'
+      Origin = 'SA2020'
+      Precision = 10
+      Size = 2
+    end
+    object StringField2: TStringField
+      FieldName = 'mdisp'
+    end
   end
 end

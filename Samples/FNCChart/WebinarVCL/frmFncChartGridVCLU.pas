@@ -47,14 +47,18 @@ type
     dsSalesLines: TDataSource;
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+    procedure TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
   private
     FQuery: TFDQuery;
     procedure ChartDataETL;
-    procedure DataAppend(AYear, ABaseAmount: integer);
+    procedure DataAppend(AYear, ABaseAmount: Integer);
     procedure UpdateStackedLines;
     procedure UpdatePieSeries;
+    procedure UpdateGridColumns;
   public
-    { Public declarations }
+    procedure PieLegendClick(Sender: TObject); virtual;
+    procedure StackLegendClick(Sender: TObject); virtual;
   end;
 
 var
@@ -79,9 +83,9 @@ begin
   fdqSalesLines.Active := true;
 end;
 
-procedure TfrmChartSalesVCL.DataAppend(AYear, ABaseAmount: integer);
+procedure TfrmChartSalesVCL.DataAppend(AYear, ABaseAmount: Integer);
 var
-  i: integer;
+  i: Integer;
 begin
   for i := 1 to 12 do
   begin
@@ -126,35 +130,61 @@ begin
   TMSFNCChartDatabaseAdapter3.Active := true;
   UpdateStackedLines;
   UpdatePieSeries;
+  UpdateGridColumns;
+end;
+
+procedure TfrmChartSalesVCL.PieLegendClick(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmChartSalesVCL.StackLegendClick(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmChartSalesVCL.TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+begin
+  PieLegendClick(Sender);
+end;
+
+procedure TfrmChartSalesVCL.TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+begin
+  StackLegendClick(Sender);
+end;
+
+procedure TfrmChartSalesVCL.UpdateGridColumns;
+begin
+  TMSFNCGrid1.Columns[1].Width := TMSFNCGrid1.Columns[0].Width;
 end;
 
 procedure TfrmChartSalesVCL.UpdatePieSeries;
 var
   s: TTMSFNCChartSerie;
-  i: integer;
+  i: Integer;
 begin
-  for i:= 0 to  TMSFNCPieChart1.Series.Count -1 do
+  for i := 0 to TMSFNCPieChart1.Series.Count - 1 do
   begin
-    s:=  TMSFNCPieChart1.Series[i];
+    s := TMSFNCPieChart1.Series[i];
     s.Enable3D := true;
     s.Fill.Opacity := 0.5;
     s.Labels.Format := '%g';
-    s.Labels.Visible := True;
+    s.Labels.Visible := true;
   end;
 end;
 
 procedure TfrmChartSalesVCL.UpdateStackedLines;
 var
   s: TTMSFNCChartSerie;
-  i: integer;
+  i: Integer;
 begin
-  for i:= 0 to  TMSFNCStackedAreaChart1.Series.Count -1 do
+  for i := 0 to TMSFNCStackedAreaChart1.Series.Count - 1 do
   begin
-    s:=  TMSFNCStackedAreaChart1.Series[i];
+    s := TMSFNCStackedAreaChart1.Series[i];
     s.Enable3D := true;
     s.Fill.Opacity := 0.5;
     s.Labels.Format := '%g';
-    s.Labels.Visible := True;
+    s.Labels.Visible := true;
   end;
 end;
 

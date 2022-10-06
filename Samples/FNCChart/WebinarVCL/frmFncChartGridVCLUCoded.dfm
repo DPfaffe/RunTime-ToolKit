@@ -22,6 +22,7 @@ object frmVCLMarshalCodedOptions: TfrmVCLMarshalCodedOptions
     Anchors = [akRight, akBottom]
     Caption = 'StaticText1'
     TabOrder = 0
+    Visible = False
     OnClick = StaticText1Click
   end
   object StaticText2: TStaticText
@@ -32,6 +33,7 @@ object frmVCLMarshalCodedOptions: TfrmVCLMarshalCodedOptions
     Anchors = [akRight, akBottom]
     Caption = 'StaticText2'
     TabOrder = 1
+    Visible = False
     OnClick = StaticText2Click
   end
 end

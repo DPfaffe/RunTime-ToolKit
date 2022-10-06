@@ -22,7 +22,6 @@ type
     TMSFNCPieChart1: TTMSFNCPieChart;
     TMSFNCGrid1: TTMSFNCGrid;
     TMSFNCGridDatabaseAdapter1: TTMSFNCGridDatabaseAdapter;
-    TMSFNCChartDatabaseAdapter2: TTMSFNCChartDatabaseAdapter;
     FDConnection: TFDConnection;
     FDMemTableSalesGrid: TFDMemTable;
     fdqSalesPie: TFDQuery;
@@ -46,6 +45,14 @@ type
     BCDField3: TBCDField;
     StringField1: TStringField;
     dsSaleLines: TDataSource;
+    dsSalePieStacked: TDataSource;
+    PieAdapterStacked: TTMSFNCChartDatabaseAdapter;
+    fdqSalesPieStacked: TFDQuery;
+    IntegerField2: TIntegerField;
+    BCDField4: TBCDField;
+    BCDField5: TBCDField;
+    BCDField6: TBCDField;
+    StringField2: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
@@ -57,6 +64,7 @@ type
     procedure UpdateStackedLines;
     procedure UpdatePieSeries;
     procedure UpdateTagData;
+    procedure UpdateGridColumns;
   public
     procedure PieLegendClick(Sender: TObject); virtual;
     procedure StackLegendClick(Sender: TObject); virtual;
@@ -82,6 +90,7 @@ begin
   FDMemTableSalesGrid.CopyDataSet(FQuery, [coStructure, coRestart, coAppend]);
   fdqSalesPie.Active := true;
   fdqSalesLines.Active := true;
+  fdqSalesPieStacked.Active := true;
 end;
 
 procedure TfrmChartSalesFMX.DataAppend(AYear, ABaseAmount: Integer);
@@ -129,11 +138,12 @@ begin
   ChartDataETL;
   TMSFNCGridDatabaseAdapter1.Active := true;
   TMSFNCChartDatabaseAdapter1.Active := true;
-  TMSFNCChartDatabaseAdapter2.Active := true;
   TMSFNCChartDatabaseAdapter3.Active := true;
+  PieAdapterStacked.Active := true;
   UpdateStackedLines;
   UpdatePieSeries;
   UpdateTagData;
+  UpdateGridColumns;
 end;
 
 procedure TfrmChartSalesFMX.PieLegendClick(Sender: TObject);
@@ -156,6 +166,11 @@ begin
   StackLegendClick(Sender);
 end;
 
+procedure TfrmChartSalesFMX.UpdateGridColumns;
+begin
+  TMSFNCGrid1.Columns[1].Width := TMSFNCGrid1.Columns[0].Width;
+end;
+
 procedure TfrmChartSalesFMX.UpdatePieSeries;
 var
   s: TTMSFNCChartSerie;
@@ -166,8 +181,13 @@ begin
     s := TMSFNCPieChart1.Series[i];
     s.Enable3D := true;
     s.Fill.Opacity := 0.5;
-    s.Labels.Format := '%g';
-    s.Labels.Visible := true;
+    // s.Labels.Format := '%g';
+    // s.Labels.Visible := true;
+    s.Pie.Stacked := true;
+    s.Pie.Size := s.Pie.Size + i * 200;
+    s.Pie.InnerSize := s.Pie.InnerSize + i * 200;
+    s.Stroke.Kind := TTMSFncGraphicsStrokeKind.gskNone;
+    // s.Fill.Kind := TTMSFncGraphicsFillKind.gfkGradient;
   end;
 end;
 

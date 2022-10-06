@@ -8,14 +8,15 @@ uses
 
 type
   TfrmVCLMarshalCodedOptions = class(TfrmChartSalesVCL)
-    StaticText1: TStaticText;
-    StaticText2: TStaticText;
+    StaticText1: TStaticText; // hidden for chart demo
+    StaticText2: TStaticText; // hidden for chart demo
     procedure StaticText1Click(Sender: TObject);
     procedure StaticText2Click(Sender: TObject);
   private
     function ClickCountShow(AChart: TControl): boolean;
   public
-    { Public declarations }
+    procedure PieLegendClick(Sender: TObject); override;
+    procedure StackLegendClick(Sender: TObject); override;
   end;
 
 var
@@ -48,6 +49,45 @@ begin
     AChart.Tag := AChart.Tag + 1;
 end;
 
+/// <summary>
+/// Shows Marshal with custom options if the click count is met
+/// </summary>
+/// <remarks>
+/// Legend click is mapped in base form. This is implementation for inherited form
+/// </remarks>
+procedure TfrmVCLMarshalCodedOptions.PieLegendClick(Sender: TObject);
+var
+  lMarshalOptions: TSERTTKMarshalOptions;
+begin
+  if ClickCountShow(TControl(Sender)) then
+  begin
+    lMarshalOptions := TSERTTKMarshalOptions.Create(true);
+    lMarshalOptions.FormWidth := 1024;
+    lMarshalOptions.FormHeight := 720;
+    TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
+  end;
+  inherited;
+end;
+
+/// <summary>
+/// Shows Marshal if the click count is met
+/// </summary>
+/// <remarks>
+/// Legend click is mapped in base form. This is implementation for inherited form
+/// </remarks>
+procedure TfrmVCLMarshalCodedOptions.StackLegendClick(Sender: TObject);
+begin
+  if ClickCountShow(TControl(Sender)) then
+    TSERTTKMarshalAPI.ShowMarshal;
+  inherited;
+end;
+
+/// <summary>
+/// Shows Marshal if the click count is met
+/// </summary>
+/// <remarks>
+/// Hidden for chart demo, shown as an option if no other control is availalbe.
+/// </remarks>
 procedure TfrmVCLMarshalCodedOptions.StaticText1Click(Sender: TObject);
 begin
   if ClickCountShow(TControl(Sender)) then
@@ -55,7 +95,7 @@ begin
 end;
 
 /// <summary>
-/// Shows Marshal with custom optoins if the click count is met
+/// Shows Marshal with custom options if the click count is met
 /// </summary>
 /// <remarks>
 /// Hidden for chart demo, shown as an option if no other control is availalbe.

@@ -10,8 +10,8 @@ uses
 
 type
   TfrmFmxMarshalCodedOptions = class(TfrmChartSalesFMX)
-    Label1: TLabel;
-    Label2: TLabel;
+    Label1: TLabel;    //Visible = flase for chart demo
+    Label2: TLabel;    //Visible = flase for chart demo
     procedure Label1Click(Sender: TObject);
     procedure Label2Click(Sender: TObject);
   private
@@ -63,7 +63,7 @@ begin
 end;
 
 /// <summary>
-/// Shows Marshal with custom optoins if the click count is met
+/// Shows Marshal with custom options if the click count is met
 /// </summary>
 /// <remarks>
 /// Hidden for chart demo, shown as an option if no other control is availalbe.
@@ -81,6 +81,12 @@ begin
   end;
 end;
 
+/// <summary>
+/// Shows Marshal with custom options if the click count is met
+/// </summary>
+/// <remarks>
+/// Legend click is mapped in base form. This is implementation for inherited form
+/// </remarks>
 procedure TfrmFmxMarshalCodedOptions.PieLegendClick(Sender: TObject);
 var
   lMarshalOptions: TSERTTKMarshalOptions;
@@ -95,6 +101,12 @@ begin
   inherited;
 end;
 
+/// <summary>
+/// Shows Marshal if the click count is met
+/// </summary>
+/// <remarks>
+/// Legend click is mapped in base form. This is implementation for inherited form
+/// </remarks>
 procedure TfrmFmxMarshalCodedOptions.StackLegendClick(Sender: TObject);
 begin
   if ClickCountShow(TFMXObject(Sender)) then

@@ -144,6 +144,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      OnLegendItemClick = TMSFNCPieChart1LegendItemClick
       Align = alClient
       TabOrder = 0
       object TMSFNCChartDatabaseAdapter2: TTMSFNCChartDatabaseAdapter
@@ -1039,6 +1040,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      OnLegendItemClick = TMSFNCStackedAreaChart1LegendItemClick
       Align = alClient
       TabOrder = 3
       object TMSFNCChartDatabaseAdapter3: TTMSFNCChartDatabaseAdapter
