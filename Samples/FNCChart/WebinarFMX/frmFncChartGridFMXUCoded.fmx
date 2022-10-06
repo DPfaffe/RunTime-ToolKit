@@ -13,6 +13,7 @@ object frmFmxMarshalCodedOptions: TfrmFmxMarshalCodedOptions
     Position.X = 384.000000000000000000
     Position.Y = 328.000000000000000000
     Text = 'Marshal Defaults'
+    Visible = False
     TabOrder = 0
     OnClick = Label1Click
   end
@@ -21,6 +22,7 @@ object frmFmxMarshalCodedOptions: TfrmFmxMarshalCodedOptions
     Position.X = 384.000000000000000000
     Position.Y = 360.000000000000000000
     Text = 'Marshal Options'
+    Visible = False
     TabOrder = 1
     OnClick = Label2Click
   end

@@ -131,7 +131,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Title.TextMargins.Top = 3
       Title.TextMargins.Right = 3
       Title.TextMargins.Bottom = 3
-      Title.Text = 'Sales Pie by Year'
+      Title.Text = 'Spanish Olive Oil Sales by Year'
       XAxis.Fill.Kind = gfkNone
       XAxis.Fill.Color = 16775416
       XAxis.Stroke.Color = clGray
@@ -911,7 +911,11 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Title.TextMargins.Top = 3
       Title.TextMargins.Right = 3
       Title.TextMargins.Bottom = 3
-      Title.Text = 'Sales Stacked by Year'
+      Title.Text = 
+        'Retail 3rd party sales totals of hand picked, cold pressed, firs' +
+        't harvest, extra virgin, low altitude, select premium, export qu' +
+        'ality, fresh packed, spanish olive oil by WeCanPressYourOlivesFr' +
+        'eshIt LLC exported and imported for your private label sales'
       XAxis.Fill.Kind = gfkNone
       XAxis.Fill.Color = 16775416
       XAxis.Stroke.Color = clGray
@@ -1022,7 +1026,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Title.TextMargins.Top = 3
       Title.TextMargins.Right = 3
       Title.TextMargins.Bottom = 3
-      Title.Text = 'TMS FNC Chart'
+      Title.Text = 'Spanish Olive Oil by Month'
       XAxis.Fill.Kind = gfkNone
       XAxis.Fill.Color = 16775416
       XAxis.Stroke.Color = clGray

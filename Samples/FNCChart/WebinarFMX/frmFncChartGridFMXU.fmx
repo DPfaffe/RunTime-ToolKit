@@ -94,7 +94,6 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       ClickMargin = 10.000000000000000000
       Legend.Fill.Color = claGhostwhite
       Legend.Stroke.Color = claGray
-      Legend.Visible = False
       Legend.Font.Name = 'Segoe UI'
       Legend.Left = 10.000000000000000000
       Legend.Top = 10.000000000000000000
@@ -113,7 +112,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Title.TextMargins.Top = 3
       Title.TextMargins.Right = 3
       Title.TextMargins.Bottom = 3
-      Title.Text = 'Sales Pie by Year'
+      Title.Text = 'Spanish Olive Oil Sales by Year'
       XAxis.Fill.Kind = gfkNone
       XAxis.Fill.Color = claGhostwhite
       XAxis.Stroke.Color = claGray
@@ -126,6 +125,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      OnLegendItemClick = TMSFNCPieChart1LegendItemClick
       Align = Client
       Size.Width = 337.200012207031300000
       Size.Height = 418.000000000000000000
@@ -321,7 +321,11 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Title.TextMargins.Top = 3
       Title.TextMargins.Right = 3
       Title.TextMargins.Bottom = 3
-      Title.Text = 'Sales Stacked by Year'
+      Title.Text = 
+        'Retail 3rd party sales totals of hand picked, cold pressed, firs' +
+        't harvest, extra virgin, low altitude, select premium, export qu' +
+        'ality, fresh packed, spanish olive oil by WeCanPressYourOlivesFr' +
+        'eshIt LLC exported and imported for your private label sales'
       XAxis.Fill.Kind = gfkNone
       XAxis.Fill.Color = claGhostwhite
       XAxis.Stroke.Color = claGray
@@ -665,7 +669,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Title.TextMargins.Top = 3
       Title.TextMargins.Right = 3
       Title.TextMargins.Bottom = 3
-      Title.Text = 'TMS FNC Chart'
+      Title.Text = 'Spanish Olive Oil by Month'
       XAxis.Fill.Kind = gfkNone
       XAxis.Fill.Color = claGhostwhite
       XAxis.Stroke.Color = claGray
@@ -678,6 +682,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      OnLegendItemClick = TMSFNCStackedAreaChart1LegendItemClick
       Align = Client
       Size.Width = 562.000000000000000000
       Size.Height = 418.000000000000000000

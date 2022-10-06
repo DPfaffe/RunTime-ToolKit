@@ -48,14 +48,18 @@ type
     dsSaleLines: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
+    procedure TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+    procedure TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
   private
     FQuery: TFDQuery;
     procedure ChartDataETL;
-    procedure DataAppend(AYear, ABaseAmount: integer);
+    procedure DataAppend(AYear, ABaseAmount: Integer);
     procedure UpdateStackedLines;
     procedure UpdatePieSeries;
+    procedure UpdateTagData;
   public
-    { Public declarations }
+    procedure PieLegendClick(Sender: TObject); virtual;
+    procedure StackLegendClick(Sender: TObject); virtual;
   end;
 
 var
@@ -80,9 +84,9 @@ begin
   fdqSalesLines.Active := true;
 end;
 
-procedure TfrmChartSalesFMX.DataAppend(AYear, ABaseAmount: integer);
+procedure TfrmChartSalesFMX.DataAppend(AYear, ABaseAmount: Integer);
 var
-  i: integer;
+  i: Integer;
 begin
   for i := 1 to 12 do
   begin
@@ -129,31 +133,48 @@ begin
   TMSFNCChartDatabaseAdapter3.Active := true;
   UpdateStackedLines;
   UpdatePieSeries;
-  TMSFNCBarChart1.TagString := 'You have been Tagged';
-  TMSFNCBarChart1.Tag := round(Pi * 10);
-  TMSFNCBarChart1.TagFloat := Pi;
-  TMSFNCBarChart1.TagObject := TMSFNCChartDatabaseAdapter1;
+  UpdateTagData;
+end;
+
+procedure TfrmChartSalesFMX.PieLegendClick(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmChartSalesFMX.StackLegendClick(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmChartSalesFMX.TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+begin
+  PieLegendClick(Sender);
+end;
+
+procedure TfrmChartSalesFMX.TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+begin
+  StackLegendClick(Sender);
 end;
 
 procedure TfrmChartSalesFMX.UpdatePieSeries;
 var
   s: TTMSFNCChartSerie;
-  i: integer;
+  i: Integer;
 begin
-  for i:= 0 to  TMSFNCPieChart1.Series.Count -1 do
+  for i := 0 to TMSFNCPieChart1.Series.Count - 1 do
   begin
-    s:=  TMSFNCPieChart1.Series[i];
+    s := TMSFNCPieChart1.Series[i];
     s.Enable3D := true;
     s.Fill.Opacity := 0.5;
     s.Labels.Format := '%g';
-    s.Labels.Visible := True;
+    s.Labels.Visible := true;
   end;
 end;
 
 procedure TfrmChartSalesFMX.UpdateStackedLines;
 var
   s: TTMSFNCChartSerie;
-  i: integer;
+  i: Integer;
 begin
   for i := 0 to TMSFNCStackedAreaChart1.Series.Count - 1 do
   begin
@@ -163,6 +184,14 @@ begin
     s.Labels.Format := '%g';
     s.Labels.Visible := true;
   end;
+end;
+
+procedure TfrmChartSalesFMX.UpdateTagData;
+begin
+  TMSFNCBarChart1.TagString := 'You have been Tagged';
+  TMSFNCBarChart1.Tag := round(Pi * 10);
+  TMSFNCBarChart1.TagFloat := Pi;
+  TMSFNCBarChart1.TagObject := TMSFNCChartDatabaseAdapter1;
 end;
 
 end.
