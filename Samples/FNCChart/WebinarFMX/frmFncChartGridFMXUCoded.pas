@@ -10,12 +10,14 @@ uses
 
 type
   TfrmFmxMarshalCodedOptions = class(TfrmChartSalesFMX)
-    Label1: TLabel;    //Visible = flase for chart demo
-    Label2: TLabel;    //Visible = flase for chart demo
+    Label1: TLabel; // Visible = flase for chart demo
+    Label2: TLabel; // Visible = flase for chart demo
     procedure Label1Click(Sender: TObject);
     procedure Label2Click(Sender: TObject);
   private
     function ClickCountShow(AChart: TFMXObject): boolean;
+    procedure MarshalCode(Sender: TObject);
+    procedure MarshalCodeWithOptions(Sender: TObject);
   public
     procedure PieLegendClick(Sender: TObject); override;
     procedure StackLegendClick(Sender: TObject); override;
@@ -58,8 +60,7 @@ end;
 /// </remarks>
 procedure TfrmFmxMarshalCodedOptions.Label1Click(Sender: TObject);
 begin
-  if ClickCountShow(TFMXObject(Sender)) then
-    TSERTTKMarshalAPI.ShowMarshal;
+  MarshalCode(Sender);
 end;
 
 /// <summary>
@@ -69,6 +70,23 @@ end;
 /// Hidden for chart demo, shown as an option if no other control is availalbe.
 /// </remarks>
 procedure TfrmFmxMarshalCodedOptions.Label2Click(Sender: TObject);
+begin
+  MarshalCodeWithOptions(Sender);
+end;
+
+/// <summary>
+/// Shows Marshal if the click count is met
+/// </summary>
+procedure TfrmFmxMarshalCodedOptions.MarshalCode(Sender: TObject);
+begin
+  if ClickCountShow(TFMXObject(Sender)) then
+    TSERTTKMarshalAPI.ShowMarshal;
+end;
+
+/// <summary>
+/// Shows Marshal with custom options if the click count is met
+/// </summary>
+procedure TfrmFmxMarshalCodedOptions.MarshalCodeWithOptions(Sender: TObject);
 var
   lMarshalOptions: TSERTTKMarshalOptions;
 begin
@@ -79,6 +97,7 @@ begin
     lMarshalOptions.FormHeight := 720;
     TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
   end;
+
 end;
 
 /// <summary>
@@ -88,16 +107,8 @@ end;
 /// Legend click is mapped in base form. This is implementation for inherited form
 /// </remarks>
 procedure TfrmFmxMarshalCodedOptions.PieLegendClick(Sender: TObject);
-var
-  lMarshalOptions: TSERTTKMarshalOptions;
 begin
-  if ClickCountShow(TFMXObject(Sender)) then
-  begin
-    lMarshalOptions := TSERTTKMarshalOptions.Create(true);
-    lMarshalOptions.FormWidth := 1024;
-    lMarshalOptions.FormHeight := 720;
-    TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
-  end;
+  MarshalCodeWithOptions(Sender);
   inherited;
 end;
 
@@ -109,8 +120,7 @@ end;
 /// </remarks>
 procedure TfrmFmxMarshalCodedOptions.StackLegendClick(Sender: TObject);
 begin
-  if ClickCountShow(TFMXObject(Sender)) then
-    TSERTTKMarshalAPI.ShowMarshal;
+  MarshalCode(Sender);
   inherited;
 end;
 

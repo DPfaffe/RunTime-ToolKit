@@ -14,6 +14,8 @@ type
     procedure StaticText2Click(Sender: TObject);
   private
     function ClickCountShow(AChart: TControl): boolean;
+    procedure MarshalCode(Sender: TObject);
+    procedure MarshalCodeWithOptions(Sender: TObject);
   public
     procedure PieLegendClick(Sender: TObject); override;
     procedure StackLegendClick(Sender: TObject); override;
@@ -50,12 +52,18 @@ begin
 end;
 
 /// <summary>
+/// Shows Marshal if the click count is met
+/// </summary>
+procedure TfrmVCLMarshalCodedOptions.MarshalCode(Sender: TObject);
+begin
+  if ClickCountShow(TControl(Sender)) then
+    TSERTTKMarshalAPI.ShowMarshal;
+end;
+
+/// <summary>
 /// Shows Marshal with custom options if the click count is met
 /// </summary>
-/// <remarks>
-/// Legend click is mapped in base form. This is implementation for inherited form
-/// </remarks>
-procedure TfrmVCLMarshalCodedOptions.PieLegendClick(Sender: TObject);
+procedure TfrmVCLMarshalCodedOptions.MarshalCodeWithOptions(Sender: TObject);
 var
   lMarshalOptions: TSERTTKMarshalOptions;
 begin
@@ -66,6 +74,17 @@ begin
     lMarshalOptions.FormHeight := 720;
     TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
   end;
+end;
+
+/// <summary>
+/// Shows Marshal with custom options if the click count is met
+/// </summary>
+/// <remarks>
+/// Legend click is mapped in base form. This is implementation for inherited form
+/// </remarks>
+procedure TfrmVCLMarshalCodedOptions.PieLegendClick(Sender: TObject);
+begin
+  MarshalCodeWithOptions(Sender);
   inherited;
 end;
 
@@ -77,8 +96,7 @@ end;
 /// </remarks>
 procedure TfrmVCLMarshalCodedOptions.StackLegendClick(Sender: TObject);
 begin
-  if ClickCountShow(TControl(Sender)) then
-    TSERTTKMarshalAPI.ShowMarshal;
+  MarshalCode(Sender);
   inherited;
 end;
 
@@ -90,8 +108,7 @@ end;
 /// </remarks>
 procedure TfrmVCLMarshalCodedOptions.StaticText1Click(Sender: TObject);
 begin
-  if ClickCountShow(TControl(Sender)) then
-    TSERTTKMarshalAPI.ShowMarshal;
+  MarshalCode(Sender);
 end;
 
 /// <summary>
@@ -101,16 +118,8 @@ end;
 /// Hidden for chart demo, shown as an option if no other control is availalbe.
 /// </remarks>
 procedure TfrmVCLMarshalCodedOptions.StaticText2Click(Sender: TObject);
-var
-  lMarshalOptions: TSERTTKMarshalOptions;
 begin
-  if ClickCountShow(TControl(Sender)) then
-  begin
-    lMarshalOptions := TSERTTKMarshalOptions.Create(true);
-    lMarshalOptions.FormWidth := 1024;
-    lMarshalOptions.FormHeight := 720;
-    TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
-  end;
+  MarshalCodeWithOptions(Sender);
 end;
 
 end.
