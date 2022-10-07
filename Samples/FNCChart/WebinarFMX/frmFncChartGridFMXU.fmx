@@ -27,11 +27,6 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       end>
     ControlCollection = <
       item
-        Column = 1
-        Control = TMSFNCPieChart1
-        Row = 1
-      end
-      item
         Column = 2
         Control = TMSFNCGrid1
         Row = 1
@@ -46,6 +41,11 @@ object frmChartSalesFMX: TfrmChartSalesFMX
         Column = 0
         Control = ChartStackedArea
         Row = 1
+      end
+      item
+        Column = 1
+        Control = TMSFNCSpiderChart1
+        Row = 1
       end>
     RowCollection = <
       item
@@ -54,119 +54,12 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       item
         Value = 50.000000000000000000
       end>
-    object TMSFNCPieChart1: TTMSFNCPieChart
-      Appearance.ColorList = <
-        item
-          Color = xFF57C0F5
-        end
-        item
-          Color = xFFF71F56
-        end
-        item
-          Color = xFF031B79
-        end
-        item
-          Color = xFF954EBB
-        end
-        item
-          Color = xFFEEC713
-        end
-        item
-          Color = xFFF36042
-        end
-        item
-          Color = xFF2773FC
-        end
-        item
-          Color = xFFA1CF58
-        end
-        item
-          Color = xFF00A9A6
-        end
-        item
-          Color = xFF85E4F9
-        end>
-      Appearance.GlobalFont.Color = claNull
-      Appearance.GlobalFont.Scale = 1.000000000000000000
-      Appearance.GlobalFont.Style = []
-      Appearance.ColorScheme = ccsExcel
-      Appearance.MonochromeColor = claSteelblue
-      ClickMargin = 10.000000000000000000
-      Fill.Kind = gfkGradient
-      Fill.ColorTo = claLavender
-      Legend.Fill.Color = claGhostwhite
-      Legend.Stroke.Color = claGray
-      Legend.Font.Name = 'Segoe UI'
-      Legend.Left = 10.000000000000000000
-      Legend.Top = 10.000000000000000000
-      Stroke.Color = claGray
-      SeriesMargins.Left = 0
-      SeriesMargins.Top = 0
-      SeriesMargins.Right = 0
-      SeriesMargins.Bottom = 0
-      Series = <>
-      Title.Fill.Kind = gfkNone
-      Title.Fill.Color = claGhostwhite
-      Title.Stroke.Color = claGray
-      Title.Font.Name = 'Segoe UI'
-      Title.Height = 35.000000000000000000
-      Title.TextMargins.Left = 3
-      Title.TextMargins.Top = 3
-      Title.TextMargins.Right = 3
-      Title.TextMargins.Bottom = 3
-      Title.Text = 'Spanish Olive Oil Sales by Year'
-      XAxis.Fill.Kind = gfkNone
-      XAxis.Fill.Color = claGhostwhite
-      XAxis.Stroke.Color = claGray
-      XAxis.Height = 35.000000000000000000
-      YAxis.Fill.Kind = gfkNone
-      YAxis.Fill.Color = claGhostwhite
-      YAxis.Stroke.Color = claGray
-      YAxis.Width = 35.000000000000000000
-      Adapter = chartDBAdaptPieStacked
-      DefaultLoadOptions.XValuesFormatString = '%.0f'
-      DefaultLoadOptions.YValuesFormatString = '%.2f'
-      DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
-      OnLegendItemClick = TMSFNCPieChart1LegendItemClick
-      Align = Client
-      Size.Width = 337.200012207031300000
-      Size.Height = 418.000000000000000000
-      Size.PlatformDefault = False
-      ClipChildren = True
-      DisableFocusEffect = False
-      TabOrder = 4
-      object chartDBAdaptPieStacked: TTMSFNCChartDatabaseAdapter
-        Size.Width = 39.000000000000000000
-        Size.Height = 39.000000000000000000
-        Size.PlatformDefault = False
-        Position.X = 16.000000000000000000
-        Position.Y = 16.000000000000000000
-        AutoCreateSeries = False
-        Source.DataSource = dsSalePieStacked
-        Source.Series = <
-          item
-            YValue = 'SA2018'
-            XValue = 'month'
-            XLabel = 'mdisp'
-          end
-          item
-            YValue = 'SA2019'
-            XValue = 'month'
-            XLabel = 'mdisp'
-          end
-          item
-            YValue = 'SA2020'
-            XValue = 'month'
-            XLabel = 'mdisp'
-          end>
-      end
-    end
     object TMSFNCGrid1: TTMSFNCGrid
       Align = Client
       Size.Width = 224.799987792968800000
       Size.Height = 418.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 5
+      TabOrder = 4
       DefaultRowHeight = 40.000000000000000000
       FixedColumns = 0
       ColumnCount = 4
@@ -231,6 +124,8 @@ object frmChartSalesFMX: TfrmChartSalesFMX
           ID = ''
           Width = 90.000000000000000000
         end>
+      Fill.Kind = gfkGradient
+      Fill.ColorTo = claKhaki
       DefaultFont.Name = 'Segoe UI'
       TopRow = 1
       Appearance.FixedLayout.Fill.Color = xFFEEF2F9
@@ -238,7 +133,9 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Appearance.FixedLayout.Font.Color = xFF454545
       Appearance.FixedLayout.Font.Name = 'Segoe UI'
       Appearance.FixedLayout.Font.StyleExt = {00070000000000000004000000}
+      Appearance.NormalLayout.Fill.Kind = gfkGradient
       Appearance.NormalLayout.Fill.Color = xFFF6F8FC
+      Appearance.NormalLayout.Fill.ColorTo = claPalegoldenrod
       Appearance.NormalLayout.Font.Color = xFF7A7A7A
       Appearance.NormalLayout.Font.Name = 'Segoe UI'
       Appearance.GroupLayout.Fill.Color = xFF6E93C3
@@ -254,7 +151,9 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Appearance.FocusedLayout.Font.Name = 'Segoe UI'
       Appearance.FixedSelectedLayout.Fill.Color = claLightsteelblue
       Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
+      Appearance.BandLayout.Fill.Kind = gfkGradient
       Appearance.BandLayout.Fill.Color = xFFFFFFFE
+      Appearance.BandLayout.Fill.ColorTo = claNavajowhite
       Appearance.BandLayout.Font.Color = xFF7A7A7A
       Appearance.BandLayout.Font.Name = 'Segoe UI'
       Appearance.ProgressLayout.Format = '%.0f%%'
@@ -361,7 +260,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Size.PlatformDefault = False
       ClipChildren = True
       DisableFocusEffect = False
-      TabOrder = 6
+      TabOrder = 5
       object chartDBAdaptStackedBar: TTMSFNCChartDatabaseAdapter
         Size.Width = 39.000000000000000000
         Size.Height = 39.000000000000000000
@@ -708,7 +607,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Size.PlatformDefault = False
       ClipChildren = True
       DisableFocusEffect = False
-      TabOrder = 7
+      TabOrder = 6
       object chartDBAdaptStackedArea: TTMSFNCChartDatabaseAdapter
         Size.Width = 39.000000000000000000
         Size.Height = 39.000000000000000000
@@ -735,6 +634,118 @@ object frmChartSalesFMX: TfrmChartSalesFMX
           end>
         SkipFirstColumn = False
         OnFieldsToSeries = chartDBAdaptStackedAreaFieldsToSeries
+      end
+    end
+    object TMSFNCSpiderChart1: TTMSFNCSpiderChart
+      Appearance.ColorList = <
+        item
+          Color = xFF57C0F5
+        end
+        item
+          Color = xFFF71F56
+        end
+        item
+          Color = xFF031B79
+        end
+        item
+          Color = xFF954EBB
+        end
+        item
+          Color = xFFEEC713
+        end
+        item
+          Color = xFFF36042
+        end
+        item
+          Color = xFF2773FC
+        end
+        item
+          Color = xFFA1CF58
+        end
+        item
+          Color = xFF00A9A6
+        end
+        item
+          Color = xFF85E4F9
+        end>
+      Appearance.GlobalFont.Color = claNull
+      Appearance.GlobalFont.Scale = 1.000000000000000000
+      Appearance.GlobalFont.Style = []
+      Appearance.ColorScheme = ccsExcel
+      Appearance.MonochromeColor = claSteelblue
+      ClickMargin = 10.000000000000000000
+      Fill.Kind = gfkGradient
+      Fill.ColorTo = claLightyellow
+      Crosshair.Modes = [ccmPointBased]
+      Legend.Fill.Color = claGhostwhite
+      Legend.Stroke.Color = claGray
+      Legend.Font.Name = 'Segoe UI'
+      Legend.Left = 10.000000000000000000
+      Legend.Top = 10.000000000000000000
+      Stroke.Color = claGray
+      SeriesMargins.Left = 0
+      SeriesMargins.Top = 20
+      SeriesMargins.Right = 0
+      SeriesMargins.Bottom = 20
+      Series = <>
+      Title.Fill.Kind = gfkNone
+      Title.Fill.Color = claLightyellow
+      Title.Stroke.Color = claGray
+      Title.Font.Name = 'Segoe UI'
+      Title.Height = 35.000000000000000000
+      Title.TextMargins.Left = 3
+      Title.TextMargins.Top = 3
+      Title.TextMargins.Right = 3
+      Title.TextMargins.Bottom = 3
+      Title.Text = 'Sales by Month Overlapped'
+      XAxis.Fill.Kind = gfkNone
+      XAxis.Fill.Color = claGhostwhite
+      XAxis.Stroke.Color = claGray
+      XAxis.Height = 35.000000000000000000
+      YAxis.Fill.Kind = gfkNone
+      YAxis.Fill.Color = claGhostwhite
+      YAxis.Stroke.Color = claGray
+      YAxis.AutoSize = False
+      YAxis.Border = True
+      YAxis.Width = 35.000000000000000000
+      Adapter = chartDBAdaptSpider
+      DefaultLoadOptions.XValuesFormatString = '%.0f'
+      DefaultLoadOptions.YValuesFormatString = '%.0f'
+      DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      OnLegendItemClick = TMSFNCSpiderChart1LegendItemClick
+      Align = Client
+      Size.Width = 337.200012207031300000
+      Size.Height = 418.000000000000000000
+      Size.PlatformDefault = False
+      ClipChildren = True
+      DisableFocusEffect = False
+      TabOrder = 21
+      object chartDBAdaptSpider: TTMSFNCChartDatabaseAdapter
+        Size.Width = 39.000000000000000000
+        Size.Height = 39.000000000000000000
+        Size.PlatformDefault = False
+        Position.X = 272.000000000000000000
+        Position.Y = 168.000000000000000000
+        AutoCreateSeries = False
+        Source.DataSource = dsSalePieStacked
+        Source.Series = <
+          item
+            YValue = 'SA2018'
+            XValue = 'month'
+            XLabel = 'mdisp'
+          end
+          item
+            YValue = 'SA2019'
+            XValue = 'month'
+            XLabel = 'mdisp'
+          end
+          item
+            YValue = 'SA2020'
+            XValue = 'month'
+            XLabel = 'mdisp'
+          end>
+        OnFieldsToSeries = chartDBAdaptSpiderFieldsToSeries
+        OnFieldsToPoint = chartDBAdaptSpiderFieldsToPoint
       end
     end
   end

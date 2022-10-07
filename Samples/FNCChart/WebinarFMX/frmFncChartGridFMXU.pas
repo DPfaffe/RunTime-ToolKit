@@ -19,7 +19,6 @@ type
     dsSalesGrid: TDataSource;
     dsSalesPie: TDataSource;
     GridPanelLayout1: TGridPanelLayout;
-    TMSFNCPieChart1: TTMSFNCPieChart;
     TMSFNCGrid1: TTMSFNCGrid;
     TMSFNCGridDatabaseAdapter1: TTMSFNCGridDatabaseAdapter;
     FDConnection: TFDConnection;
@@ -46,23 +45,26 @@ type
     StringField1: TStringField;
     dsSaleLines: TDataSource;
     dsSalePieStacked: TDataSource;
-    chartDBAdaptPieStacked: TTMSFNCChartDatabaseAdapter;
     fdqSalesPieStacked: TFDQuery;
     IntegerField2: TIntegerField;
     BCDField4: TBCDField;
     BCDField5: TBCDField;
     BCDField6: TBCDField;
     StringField2: TStringField;
+    TMSFNCSpiderChart1: TTMSFNCSpiderChart;
+    chartDBAdaptSpider: TTMSFNCChartDatabaseAdapter;
     procedure FormCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
-    procedure TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
     procedure ChartStackedAreaLegendItemClick(Sender: TObject; AIndex: Integer);
     procedure chartDBAdaptStackedAreaFieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
+    procedure chartDBAdaptSpiderFieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
+    procedure chartDBAdaptSpiderFieldsToPoint(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie;
+      APoint: TTMSFNCChartPoint);
+    procedure TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
   private
     FQuery: TFDQuery;
     procedure ChartDataETL;
     procedure DataAppend(AYear, ABaseAmount: Integer);
-    procedure UpdatePieSeries;
     procedure UpdateTagData;
     procedure UpdateGridColumns;
   public
@@ -139,8 +141,7 @@ begin
   TMSFNCGridDatabaseAdapter1.Active := true;
   chartDBAdaptStackedBar.Active := true;
   chartDBAdaptStackedArea.Active := true;
-  chartDBAdaptPieStacked.Active := true;
-  UpdatePieSeries;
+  chartDBAdaptSpider.Active := true;
   UpdateTagData;
   UpdateGridColumns;
 end;
@@ -155,16 +156,44 @@ begin
 
 end;
 
+procedure TfrmChartSalesFMX.chartDBAdaptSpiderFieldsToPoint(Sender: TObject; AFields: TFields;
+  ASeries: TTMSFNCChartSerie; APoint: TTMSFNCChartPoint);
+begin
+  APoint.LegendText := AFields.FieldByName('mdisp').AsString;
+end;
+
+procedure TfrmChartSalesFMX.chartDBAdaptSpiderFieldsToSeries(Sender: TObject; AFields: TFields;
+  ASeries: TTMSFNCChartSerie);
+begin
+  ASeries.YGrid.SpiderLegend := true;
+  ASeries.YValues.MajorUnitFormat := '%.0m';
+  ASeries.YValues.MinorUnitFormat := '%.0m';
+  ASeries.YValues.MajorUnit := 50.0;
+  ASeries.YValues.MinorUnit := 25.0;
+  ASeries.YValues.AutoUnits := false;
+  ASeries.AutoYRange := arCommonZeroBased;
+  ASeries.Pie.Stacked := true;
+  ASeries.Pie.AutoSize := true;
+  ASeries.Pie.Size := 150;
+  ASeries.Fill.Opacity := 0.5 - (ASeries.Index / 10);
+  ASeries.Stroke.Color := ASeries.Fill.Color;
+  ASeries.Stroke.Width := 3;
+  ASeries.Pie.Margins.Left := 50;
+  ASeries.Pie.Margins.Top := 50;
+  ASeries.Pie.Margins.Bottom := 50;
+  ASeries.Pie.StartAngle := -90;
+end;
+
 procedure TfrmChartSalesFMX.chartDBAdaptStackedAreaFieldsToSeries(Sender: TObject; AFields: TFields;
   ASeries: TTMSFNCChartSerie);
 begin
-    ASeries.Enable3D := true;
-    ASeries.Fill.Opacity := 0.5;
-    ASeries.Labels.Format := '%g';
-    ASeries.Labels.Visible := true;
+  ASeries.Enable3D := true;
+  ASeries.Fill.Opacity := 0.5;
+  ASeries.Labels.Format := '%.0m';
+  ASeries.Labels.Visible := true;
 end;
 
-procedure TfrmChartSalesFMX.TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+procedure TfrmChartSalesFMX.TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
 begin
   PieLegendClick(Sender);
 end;
@@ -179,33 +208,12 @@ begin
   TMSFNCGrid1.Columns[1].Width := TMSFNCGrid1.Columns[0].Width;
 end;
 
-procedure TfrmChartSalesFMX.UpdatePieSeries;
-var
-  s: TTMSFNCChartSerie;
-  i: Integer;
-begin
-  for i := 0 to TMSFNCPieChart1.Series.Count - 1 do
-  begin
-    s := TMSFNCPieChart1.Series[i];
-    s.Enable3D := true;
-    s.Fill.Opacity := 0.5;
-    // s.Labels.Format := '%g';
-    // s.Labels.Visible := true;
-    s.Pie.Stacked := true;
-    s.Pie.Size := s.Pie.Size + i * 200;
-    s.Pie.InnerSize := s.Pie.InnerSize + i * 200;
-    s.Stroke.Kind := TTMSFncGraphicsStrokeKind.gskNone;
-    // s.Fill.Kind := TTMSFncGraphicsFillKind.gfkGradient;
-  end;
-end;
-
-
 procedure TfrmChartSalesFMX.UpdateTagData;
 begin
   TMSFNCBarChart1.TagString := 'You have been Tagged';
   TMSFNCBarChart1.Tag := round(Pi * 10);
   TMSFNCBarChart1.TagFloat := Pi;
-  TMSFNCBarChart1.TagObject := chartDBAdaptPieStacked;
+  TMSFNCBarChart1.TagObject := self;
 end;
 
 end.
