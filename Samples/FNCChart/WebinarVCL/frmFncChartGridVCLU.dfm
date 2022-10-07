@@ -338,6 +338,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Top = 4
       Width = 1371
       Height = 440
+      ParentCustomHint = False
       Appearance.ColorList = <
         item
           Color = 16105559
@@ -374,6 +375,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Appearance.GlobalFont.Style = []
       Appearance.ColorScheme = ccsExcel
       Appearance.MonochromeColor = 11829830
+      NativeCanvas = True
       ClickMargin = 10.000000000000000000
       Crosshair.Visible = True
       Crosshair.Modes = [ccmPointBased]

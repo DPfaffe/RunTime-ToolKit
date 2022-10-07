@@ -35,9 +35,9 @@ type
     fdqSalesChartmdisp: TStringField;
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
     TMSFNCBarChart1: TTMSFNCBarChart;
-    TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter;
-    TMSFNCStackedAreaChart1: TTMSFNCStackedAreaChart;
-    TMSFNCChartDatabaseAdapter3: TTMSFNCChartDatabaseAdapter;
+    chartDBAdaptStackedBar: TTMSFNCChartDatabaseAdapter;
+    ChartStackedArea: TTMSFNCStackedAreaChart;
+    chartDBAdaptStackedArea: TTMSFNCChartDatabaseAdapter;
     fdqSalesLines: TFDQuery;
     IntegerField1: TIntegerField;
     BCDField1: TBCDField;
@@ -46,7 +46,7 @@ type
     StringField1: TStringField;
     dsSaleLines: TDataSource;
     dsSalePieStacked: TDataSource;
-    PieAdapterStacked: TTMSFNCChartDatabaseAdapter;
+    chartDBAdaptPieStacked: TTMSFNCChartDatabaseAdapter;
     fdqSalesPieStacked: TFDQuery;
     IntegerField2: TIntegerField;
     BCDField4: TBCDField;
@@ -56,12 +56,12 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
-    procedure TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+    procedure ChartStackedAreaLegendItemClick(Sender: TObject; AIndex: Integer);
+    procedure chartDBAdaptStackedAreaFieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
   private
     FQuery: TFDQuery;
     procedure ChartDataETL;
     procedure DataAppend(AYear, ABaseAmount: Integer);
-    procedure UpdateStackedLines;
     procedure UpdatePieSeries;
     procedure UpdateTagData;
     procedure UpdateGridColumns;
@@ -137,10 +137,9 @@ begin
   FDConnection.Open();
   ChartDataETL;
   TMSFNCGridDatabaseAdapter1.Active := true;
-  TMSFNCChartDatabaseAdapter1.Active := true;
-  TMSFNCChartDatabaseAdapter3.Active := true;
-  PieAdapterStacked.Active := true;
-  UpdateStackedLines;
+  chartDBAdaptStackedBar.Active := true;
+  chartDBAdaptStackedArea.Active := true;
+  chartDBAdaptPieStacked.Active := true;
   UpdatePieSeries;
   UpdateTagData;
   UpdateGridColumns;
@@ -156,12 +155,21 @@ begin
 
 end;
 
+procedure TfrmChartSalesFMX.chartDBAdaptStackedAreaFieldsToSeries(Sender: TObject; AFields: TFields;
+  ASeries: TTMSFNCChartSerie);
+begin
+    ASeries.Enable3D := true;
+    ASeries.Fill.Opacity := 0.5;
+    ASeries.Labels.Format := '%g';
+    ASeries.Labels.Visible := true;
+end;
+
 procedure TfrmChartSalesFMX.TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
 begin
   PieLegendClick(Sender);
 end;
 
-procedure TfrmChartSalesFMX.TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+procedure TfrmChartSalesFMX.ChartStackedAreaLegendItemClick(Sender: TObject; AIndex: Integer);
 begin
   StackLegendClick(Sender);
 end;
@@ -191,27 +199,13 @@ begin
   end;
 end;
 
-procedure TfrmChartSalesFMX.UpdateStackedLines;
-var
-  s: TTMSFNCChartSerie;
-  i: Integer;
-begin
-  for i := 0 to TMSFNCStackedAreaChart1.Series.Count - 1 do
-  begin
-    s := TMSFNCStackedAreaChart1.Series[i];
-    s.Enable3D := true;
-    s.Fill.Opacity := 0.5;
-    s.Labels.Format := '%g';
-    s.Labels.Visible := true;
-  end;
-end;
 
 procedure TfrmChartSalesFMX.UpdateTagData;
 begin
   TMSFNCBarChart1.TagString := 'You have been Tagged';
   TMSFNCBarChart1.Tag := round(Pi * 10);
   TMSFNCBarChart1.TagFloat := Pi;
-  TMSFNCBarChart1.TagObject := TMSFNCChartDatabaseAdapter1;
+  TMSFNCBarChart1.TagObject := chartDBAdaptPieStacked;
 end;
 
 end.

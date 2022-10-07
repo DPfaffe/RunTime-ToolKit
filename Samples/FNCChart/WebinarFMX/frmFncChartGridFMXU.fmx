@@ -44,7 +44,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       end
       item
         Column = 0
-        Control = TMSFNCStackedAreaChart1
+        Control = ChartStackedArea
         Row = 1
       end>
     RowCollection = <
@@ -93,6 +93,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Appearance.MonochromeColor = claSteelblue
       ClickMargin = 10.000000000000000000
       Fill.Kind = gfkGradient
+      Fill.ColorTo = claLavender
       Legend.Fill.Color = claGhostwhite
       Legend.Stroke.Color = claGray
       Legend.Font.Name = 'Segoe UI'
@@ -122,7 +123,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       YAxis.Fill.Color = claGhostwhite
       YAxis.Stroke.Color = claGray
       YAxis.Width = 35.000000000000000000
-      Adapter = PieAdapterStacked
+      Adapter = chartDBAdaptPieStacked
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
@@ -134,7 +135,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       ClipChildren = True
       DisableFocusEffect = False
       TabOrder = 4
-      object PieAdapterStacked: TTMSFNCChartDatabaseAdapter
+      object chartDBAdaptPieStacked: TTMSFNCChartDatabaseAdapter
         Size.Width = 39.000000000000000000
         Size.Height = 39.000000000000000000
         Size.PlatformDefault = False
@@ -311,6 +312,8 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Appearance.ColorScheme = ccsExcel
       Appearance.MonochromeColor = claSteelblue
       ClickMargin = 10.000000000000000000
+      Fill.Kind = gfkGradient
+      Fill.ColorTo = claLightcyan
       Crosshair.Visible = True
       Crosshair.Modes = [ccmPointBased]
       Legend.Fill.Color = claGhostwhite
@@ -348,7 +351,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       YAxis.Fill.Color = claGhostwhite
       YAxis.Stroke.Color = claGray
       YAxis.Width = 35.000000000000000000
-      Adapter = TMSFNCChartDatabaseAdapter1
+      Adapter = chartDBAdaptStackedBar
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
@@ -359,7 +362,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       ClipChildren = True
       DisableFocusEffect = False
       TabOrder = 6
-      object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
+      object chartDBAdaptStackedBar: TTMSFNCChartDatabaseAdapter
         Size.Width = 39.000000000000000000
         Size.Height = 39.000000000000000000
         Size.PlatformDefault = False
@@ -385,7 +388,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
           end>
       end
     end
-    object TMSFNCStackedAreaChart1: TTMSFNCStackedAreaChart
+    object ChartStackedArea: TTMSFNCStackedAreaChart
       Appearance.ColorList = <
         item
           Color = xFF57C0F5
@@ -423,6 +426,8 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       Appearance.ColorScheme = ccsExcel
       Appearance.MonochromeColor = claSteelblue
       ClickMargin = 10.000000000000000000
+      Fill.Kind = gfkGradient
+      Fill.ColorTo = claAntiquewhite
       Legend.Fill.Color = claGhostwhite
       Legend.Stroke.Color = claGray
       Legend.Font.Name = 'Segoe UI'
@@ -692,11 +697,11 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       YAxis.Fill.Color = claGhostwhite
       YAxis.Stroke.Color = claGray
       YAxis.Width = 35.000000000000000000
-      Adapter = TMSFNCChartDatabaseAdapter3
+      Adapter = chartDBAdaptStackedArea
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
-      OnLegendItemClick = TMSFNCStackedAreaChart1LegendItemClick
+      OnLegendItemClick = ChartStackedAreaLegendItemClick
       Align = Client
       Size.Width = 562.000000000000000000
       Size.Height = 418.000000000000000000
@@ -704,7 +709,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       ClipChildren = True
       DisableFocusEffect = False
       TabOrder = 7
-      object TMSFNCChartDatabaseAdapter3: TTMSFNCChartDatabaseAdapter
+      object chartDBAdaptStackedArea: TTMSFNCChartDatabaseAdapter
         Size.Width = 39.000000000000000000
         Size.Height = 39.000000000000000000
         Size.PlatformDefault = False
@@ -729,6 +734,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
             XLabel = 'mdisp'
           end>
         SkipFirstColumn = False
+        OnFieldsToSeries = chartDBAdaptStackedAreaFieldsToSeries
       end
     end
   end

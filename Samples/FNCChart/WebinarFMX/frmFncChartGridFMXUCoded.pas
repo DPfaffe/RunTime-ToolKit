@@ -97,7 +97,6 @@ begin
     lMarshalOptions.FormHeight := 720;
     TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
   end;
-
 end;
 
 /// <summary>
