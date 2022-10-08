@@ -1,7 +1,7 @@
 object frmVCLChartAppInspector: TfrmVCLChartAppInspector
   Left = 0
   Top = 0
-  Caption = 'frmVCLChartAppInspector'
+  Caption = 'VCL Marshal App Inspector component - auto start'
   ClientHeight = 424
   ClientWidth = 618
   Color = clBtnFace

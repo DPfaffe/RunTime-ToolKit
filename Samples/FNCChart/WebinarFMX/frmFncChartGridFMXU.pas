@@ -63,12 +63,30 @@ type
     procedure TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
   private
     FQuery: TFDQuery;
+    /// <summary>
+    /// Runs ETL process to populate the chart data
+    /// </summary>
     procedure ChartDataETL;
+    /// <summary>
+    /// Updates the dataset with random amounts for the year
+    /// </summary>
     procedure DataAppend(AYear, ABaseAmount: Integer);
+    /// <summary>
+    /// Sets tag data for FMX object to be seen in Object Plus
+    /// </summary>
     procedure UpdateTagData;
+    /// <summary>
+    /// Sets Grid column size
+    /// </summary>
     procedure UpdateGridColumns;
   public
-    procedure PieLegendClick(Sender: TObject); virtual;
+    /// <summary>
+    /// Method to override in TForm for Marshal coded option to start based on legend click
+    /// </summary>
+    procedure SpiderLegendClick(Sender: TObject); virtual;
+    /// <summary>
+    /// Method to override in TForm for Marshal coded option to start based on legend click
+    /// </summary>
     procedure StackLegendClick(Sender: TObject); virtual;
   end;
 
@@ -132,29 +150,19 @@ begin
 end;
 
 procedure TfrmChartSalesFMX.FormCreate(Sender: TObject);
-const
-  Pi = 3.1415;
 begin
-  Randomize;
-  FDConnection.Open();
-  ChartDataETL;
+  Randomize; //initialize Random
+  FDConnection.Open(); //Open the database - SQLite in memory instance
+  ChartDataETL; // Run ETL before DataAdapters
   TMSFNCGridDatabaseAdapter1.Active := true;
   chartDBAdaptStackedBar.Active := true;
   chartDBAdaptStackedArea.Active := true;
   chartDBAdaptSpider.Active := true;
   UpdateTagData;
   UpdateGridColumns;
+  self.Caption := 'FNC Sales Dashboard by SwiftExpat - ' + self.Caption;
 end;
 
-procedure TfrmChartSalesFMX.PieLegendClick(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmChartSalesFMX.StackLegendClick(Sender: TObject);
-begin
-
-end;
 
 procedure TfrmChartSalesFMX.chartDBAdaptSpiderFieldsToPoint(Sender: TObject; AFields: TFields;
   ASeries: TTMSFNCChartSerie; APoint: TTMSFNCChartPoint);
@@ -195,12 +203,22 @@ end;
 
 procedure TfrmChartSalesFMX.TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
 begin
-  PieLegendClick(Sender);
+  SpiderLegendClick(Sender); //forward the event to the descendant form
+end;
+
+procedure TfrmChartSalesFMX.SpiderLegendClick(Sender: TObject);
+begin
+ //override this in descending class to launch Marshal
 end;
 
 procedure TfrmChartSalesFMX.ChartStackedAreaLegendItemClick(Sender: TObject; AIndex: Integer);
 begin
-  StackLegendClick(Sender);
+  StackLegendClick(Sender); //forward the event to the descendant form
+end;
+
+procedure TfrmChartSalesFMX.StackLegendClick(Sender: TObject);
+begin
+ //override this in descending class to launch Marshal
 end;
 
 procedure TfrmChartSalesFMX.UpdateGridColumns;
@@ -209,9 +227,11 @@ begin
 end;
 
 procedure TfrmChartSalesFMX.UpdateTagData;
+const
+  Pi = 3.1415;
 begin
   TMSFNCBarChart1.TagString := 'You have been Tagged';
-  TMSFNCBarChart1.Tag := round(Pi * 10);
+  TMSFNCBarChart1.Tag := round(Pi * 1000);
   TMSFNCBarChart1.TagFloat := Pi;
   TMSFNCBarChart1.TagObject := self;
 end;

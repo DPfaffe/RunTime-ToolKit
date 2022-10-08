@@ -17,7 +17,7 @@ type
     procedure MarshalCode(Sender: TObject);
     procedure MarshalCodeWithOptions(Sender: TObject);
   public
-    procedure PieLegendClick(Sender: TObject); override;
+    procedure SpiderLegendClick(Sender: TObject); override;
     procedure StackLegendClick(Sender: TObject); override;
   end;
 
@@ -82,7 +82,7 @@ end;
 /// <remarks>
 /// Legend click is mapped in base form. This is implementation for inherited form
 /// </remarks>
-procedure TfrmVCLMarshalCodedOptions.PieLegendClick(Sender: TObject);
+procedure TfrmVCLMarshalCodedOptions.SpiderLegendClick(Sender: TObject);
 begin
   MarshalCodeWithOptions(Sender);
   inherited;

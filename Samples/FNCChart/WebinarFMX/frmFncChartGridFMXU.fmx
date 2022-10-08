@@ -1,7 +1,7 @@
 object frmChartSalesFMX: TfrmChartSalesFMX
   Left = 0
   Top = 0
-  Caption = 'FNC Sales Dashboard - FMX - by SwiftExpat'
+  Caption = 'FMX Base From'
   ClientHeight = 836
   ClientWidth = 1124
   FormFactor.Width = 320

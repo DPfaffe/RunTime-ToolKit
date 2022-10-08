@@ -1,7 +1,7 @@
 object frmFncChartMarshalButton: TfrmFncChartMarshalButton
   Left = 0
   Top = 0
-  Caption = 'Marshal started via button'
+  Caption = 'VCL Marshal started via button'
   ClientHeight = 424
   ClientWidth = 618
   Color = clBtnFace

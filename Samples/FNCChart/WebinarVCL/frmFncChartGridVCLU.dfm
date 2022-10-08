@@ -1,7 +1,7 @@
 object frmChartSalesVCL: TfrmChartSalesVCL
   Left = 0
   Top = 0
-  Caption = 'FNC Sales Dashboard - VCL - by SwiftExpat'
+  Caption = 'VCL Base From'
   ClientHeight = 895
   ClientWidth = 1379
   Color = clBtnFace
@@ -31,11 +31,6 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       end>
     ControlCollection = <
       item
-        Column = 1
-        Control = TMSFNCPieChart1
-        Row = 1
-      end
-      item
         Column = 2
         Control = TMSFNCGrid1
         Row = 1
@@ -50,6 +45,11 @@ object frmChartSalesVCL: TfrmChartSalesVCL
         Column = 0
         Control = TMSFNCStackedAreaChart1
         Row = 1
+      end
+      item
+        Column = 1
+        Control = TMSFNCSpiderChart1
+        Row = 1
       end>
     RowCollection = <
       item
@@ -60,109 +60,6 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       end>
     ShowCaption = False
     TabOrder = 0
-    object TMSFNCPieChart1: TTMSFNCPieChart
-      AlignWithMargins = True
-      Left = 699
-      Top = 450
-      Width = 414
-      Height = 441
-      Appearance.ColorList = <
-        item
-          Color = 16105559
-        end
-        item
-          Color = 5644279
-        end
-        item
-          Color = 7936771
-        end
-        item
-          Color = 12275349
-        end
-        item
-          Color = 1296366
-        end
-        item
-          Color = 4350195
-        end
-        item
-          Color = 16544551
-        end
-        item
-          Color = 5820321
-        end
-        item
-          Color = 10922240
-        end
-        item
-          Color = 16376965
-        end>
-      Appearance.GlobalFont.Color = -1
-      Appearance.GlobalFont.Scale = 1.000000000000000000
-      Appearance.GlobalFont.Style = []
-      Appearance.ColorScheme = ccsExcel
-      Appearance.MonochromeColor = 11829830
-      ClickMargin = 10.000000000000000000
-      Legend.Fill.Color = 16775416
-      Legend.Stroke.Color = clGray
-      Legend.Font.Charset = DEFAULT_CHARSET
-      Legend.Font.Color = clWindowText
-      Legend.Font.Height = -11
-      Legend.Font.Name = 'Segoe UI'
-      Legend.Font.Style = []
-      Legend.Left = 10.000000000000000000
-      Legend.Top = 10.000000000000000000
-      Stroke.Color = clGray
-      SeriesMargins.Left = 0
-      SeriesMargins.Top = 0
-      SeriesMargins.Right = 0
-      SeriesMargins.Bottom = 0
-      Series = <>
-      Title.Fill.Kind = gfkNone
-      Title.Fill.Color = 16775416
-      Title.Stroke.Color = clGray
-      Title.Font.Charset = DEFAULT_CHARSET
-      Title.Font.Color = clWindowText
-      Title.Font.Height = -11
-      Title.Font.Name = 'Segoe UI'
-      Title.Font.Style = []
-      Title.Height = 35.000000000000000000
-      Title.TextMargins.Left = 3
-      Title.TextMargins.Top = 3
-      Title.TextMargins.Right = 3
-      Title.TextMargins.Bottom = 3
-      Title.Text = 'Spanish Olive Oil Sales by Year'
-      XAxis.Fill.Kind = gfkNone
-      XAxis.Fill.Color = 16775416
-      XAxis.Stroke.Color = clGray
-      XAxis.Height = 35.000000000000000000
-      YAxis.Fill.Kind = gfkNone
-      YAxis.Fill.Color = 16775416
-      YAxis.Stroke.Color = clGray
-      YAxis.Width = 35.000000000000000000
-      Adapter = TMSFNCChartDatabaseAdapter2
-      DefaultLoadOptions.XValuesFormatString = '%.0f'
-      DefaultLoadOptions.YValuesFormatString = '%.2f'
-      DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
-      OnLegendItemClick = TMSFNCPieChart1LegendItemClick
-      Align = alClient
-      TabOrder = 0
-      object TMSFNCChartDatabaseAdapter2: TTMSFNCChartDatabaseAdapter
-        Left = 328
-        Top = 208
-        Width = 39
-        Height = 39
-        Visible = True
-        Source.DataSource = dsSalesPie
-        Source.Series = <
-          item
-            YValue = 'Sales'
-            XValue = 'year'
-            XLabel = 'year'
-            YValueHigh = 'Sales'
-          end>
-      end
-    end
     object TMSFNCGrid1: TTMSFNCGrid
       AlignWithMargins = True
       Left = 1119
@@ -172,7 +69,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Align = alClient
       ParentDoubleBuffered = False
       DoubleBuffered = True
-      TabOrder = 1
+      TabOrder = 0
       DefaultRowHeight = 40.000000000000000000
       FixedColumns = 0
       ColumnCount = 4
@@ -927,13 +824,13 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       YAxis.Fill.Color = 16775416
       YAxis.Stroke.Color = clGray
       YAxis.Width = 35.000000000000000000
-      Adapter = TMSFNCChartDatabaseAdapter1
+      Adapter = chartDBAdaptStackedBar
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       Align = alClient
-      TabOrder = 2
-      object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
+      TabOrder = 1
+      object chartDBAdaptStackedBar: TTMSFNCChartDatabaseAdapter
         Left = 472
         Top = 272
         Width = 39
@@ -1000,6 +897,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Appearance.GlobalFont.Style = []
       Appearance.ColorScheme = ccsExcel
       Appearance.MonochromeColor = 11829830
+      NativeCanvas = True
       ClickMargin = 10.000000000000000000
       Legend.Fill.Color = 16775416
       Legend.Stroke.Color = clGray
@@ -1038,14 +936,14 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       YAxis.Fill.Color = 16775416
       YAxis.Stroke.Color = clGray
       YAxis.Width = 35.000000000000000000
-      Adapter = TMSFNCChartDatabaseAdapter3
+      Adapter = chartDBAdaptStackedArea
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       OnLegendItemClick = TMSFNCStackedAreaChart1LegendItemClick
       Align = alClient
-      TabOrder = 3
-      object TMSFNCChartDatabaseAdapter3: TTMSFNCChartDatabaseAdapter
+      TabOrder = 2
+      object chartDBAdaptStackedArea: TTMSFNCChartDatabaseAdapter
         Left = 488
         Top = 96
         Width = 39
@@ -1069,6 +967,317 @@ object frmChartSalesVCL: TfrmChartSalesVCL
             XValue = 'Month'
             XLabel = 'mdisp'
           end>
+        OnFieldsToSeries = chartDBAdaptStackedAreaFieldsToSeries
+      end
+    end
+    object TMSFNCSpiderChart1: TTMSFNCSpiderChart
+      Left = 696
+      Top = 447
+      Width = 420
+      Height = 447
+      Appearance.ColorList = <
+        item
+          Color = 16105559
+        end
+        item
+          Color = 5644279
+        end
+        item
+          Color = 7936771
+        end
+        item
+          Color = 12275349
+        end
+        item
+          Color = 1296366
+        end
+        item
+          Color = 4350195
+        end
+        item
+          Color = 16544551
+        end
+        item
+          Color = 5820321
+        end
+        item
+          Color = 10922240
+        end
+        item
+          Color = 16376965
+        end>
+      Appearance.GlobalFont.Color = -1
+      Appearance.GlobalFont.Scale = 1.000000000000000000
+      Appearance.GlobalFont.Style = []
+      Appearance.ColorScheme = ccsExcel
+      Appearance.MonochromeColor = 11829830
+      NativeCanvas = True
+      ClickMargin = 10.000000000000000000
+      Legend.Fill.Color = 16775416
+      Legend.Stroke.Color = clGray
+      Legend.Font.Charset = DEFAULT_CHARSET
+      Legend.Font.Color = clWindowText
+      Legend.Font.Height = -11
+      Legend.Font.Name = 'Segoe UI'
+      Legend.Font.Style = []
+      Legend.Left = 10.000000000000000000
+      Legend.Top = 10.000000000000000000
+      Stroke.Color = clGray
+      SeriesMargins.Left = 0
+      SeriesMargins.Top = 20
+      SeriesMargins.Right = 0
+      SeriesMargins.Bottom = 20
+      Series = <
+        item
+          AnimationFactor = 4.000000000000000000
+          AutoYRange = arCommonZeroBased
+          Bar.Width = 65.000000000000000000
+          Bar.Spacing = 20.000000000000000000
+          MultiPoint.Width = 65.000000000000000000
+          Pie.Size = 200.000000000000000000
+          Pie.Margins.Left = 10
+          Pie.Margins.Top = 10
+          Pie.Margins.Right = 10
+          Pie.Margins.Bottom = 10
+          Pie.SweepAngle = 360.000000000000000000
+          Fill.Color = 12874308
+          LegendText = 'Series 0'
+          Labels.Fill.Color = 16775416
+          Labels.Font.Charset = DEFAULT_CHARSET
+          Labels.Font.Color = clWindowText
+          Labels.Font.Height = -11
+          Labels.Font.Name = 'Segoe UI'
+          Labels.Font.Style = []
+          Labels.Format = '%.2f'
+          Labels.OffsetY = -10.000000000000000000
+          Labels.Stroke.Color = clGray
+          Markers.Fill.Color = 12874308
+          Markers.Height = 10.000000000000000000
+          Markers.Stroke.Color = 6437154
+          Markers.Width = 10.000000000000000000
+          MaxX = 10.000000000000000000
+          MaxY = 10.000000000000000000
+          MaxYOffsetPercentage = 10.000000000000000000
+          Offset3DX = 15.000000000000000000
+          Offset3DY = 15.000000000000000000
+          Points = <
+            item
+              Annotations = <>
+              YValue = 30.000000000000000000
+              YValueSecond = 14.000000000000000000
+              YValueVariable = 30.000000000000000000
+              YValueLow = 5.000000000000000000
+              YValueClose = 7.000000000000000000
+              YValueHigh = 30.000000000000000000
+              YValueOpen = 13.000000000000000000
+              YValueMedian = 29.000000000000000000
+            end
+            item
+              Annotations = <>
+              XValue = 1.000000000000000000
+              YValue = 20.000000000000000000
+              YValueSecond = 7.000000000000000000
+              YValueVariable = 20.000000000000000000
+              YValueLow = 1.000000000000000000
+              YValueClose = 6.000000000000000000
+              YValueHigh = 20.000000000000000000
+              YValueOpen = 8.000000000000000000
+              YValueMedian = 19.000000000000000000
+            end
+            item
+              Annotations = <>
+              XValue = 2.000000000000000000
+              YValue = 38.000000000000000000
+              YValueSecond = 19.000000000000000000
+              YValueVariable = 38.000000000000000000
+              YValueLow = 6.000000000000000000
+              YValueClose = 13.000000000000000000
+              YValueHigh = 38.000000000000000000
+              YValueOpen = 8.000000000000000000
+              YValueMedian = 40.000000000000000000
+            end
+            item
+              Annotations = <>
+              XValue = 3.000000000000000000
+              YValue = 25.000000000000000000
+              YValueSecond = 7.000000000000000000
+              YValueVariable = 25.000000000000000000
+              YValueLow = 7.000000000000000000
+              YValueClose = 14.000000000000000000
+              YValueHigh = 25.000000000000000000
+              YValueOpen = 18.000000000000000000
+              YValueMedian = 20.000000000000000000
+            end
+            item
+              Annotations = <>
+              XValue = 4.000000000000000000
+              YValue = 28.000000000000000000
+              YValueSecond = 17.000000000000000000
+              YValueVariable = 28.000000000000000000
+              YValueLow = 6.000000000000000000
+              YValueClose = 17.000000000000000000
+              YValueHigh = 28.000000000000000000
+              YValueOpen = 23.000000000000000000
+              YValueMedian = 29.000000000000000000
+            end
+            item
+              Annotations = <>
+              XValue = 5.000000000000000000
+              YValue = 27.000000000000000000
+              YValueSecond = 17.000000000000000000
+              YValueVariable = 27.000000000000000000
+              YValueLow = 7.000000000000000000
+              YValueClose = 10.000000000000000000
+              YValueHigh = 27.000000000000000000
+              YValueOpen = 12.000000000000000000
+              YValueMedian = 30.000000000000000000
+            end>
+          Legend.Fill.Color = 16775416
+          Legend.Font.Charset = DEFAULT_CHARSET
+          Legend.Font.Color = clWindowText
+          Legend.Font.Height = -11
+          Legend.Font.Name = 'Segoe UI'
+          Legend.Font.Style = []
+          Legend.Left = -10.000000000000000000
+          Legend.Stroke.Color = clGray
+          Legend.Visible = True
+          Stroke.Color = 6437154
+          XGrid.Visible = True
+          XValues.MajorUnit = 1.000000000000000000
+          XValues.MajorUnitFont.Charset = DEFAULT_CHARSET
+          XValues.MajorUnitFont.Color = clWindowText
+          XValues.MajorUnitFont.Height = -11
+          XValues.MajorUnitFont.Name = 'Segoe UI'
+          XValues.MajorUnitFont.Style = []
+          XValues.MajorUnitFormat = '%.0f'
+          XValues.MajorUnitSpacing = 5.000000000000000000
+          XValues.MajorUnitTickMarkSize = 10.000000000000000000
+          XValues.MajorUnitTickMarkColor = clSilver
+          XValues.MinorUnitFont.Charset = DEFAULT_CHARSET
+          XValues.MinorUnitFont.Color = clWindowText
+          XValues.MinorUnitFont.Height = -11
+          XValues.MinorUnitFont.Name = 'Segoe UI'
+          XValues.MinorUnitFont.Style = []
+          XValues.MinorUnitFormat = '%.0f'
+          XValues.MinorUnitSpacing = 5.000000000000000000
+          XValues.MinorUnitTickMarkSize = 7.000000000000000000
+          XValues.MinorUnitTickMarkColor = clSilver
+          XValues.Title.Font.Charset = DEFAULT_CHARSET
+          XValues.Title.Font.Color = clWindowText
+          XValues.Title.Font.Height = -11
+          XValues.Title.Font.Name = 'Segoe UI'
+          XValues.Title.Font.Style = []
+          XValues.Title.TextMargins.Left = 0
+          XValues.Title.TextMargins.Top = 0
+          XValues.Title.TextMargins.Right = 0
+          XValues.Title.TextMargins.Bottom = 0
+          XValues.Title.Text = 'X-Axis Series 1'
+          YGrid.Visible = True
+          YValues.MajorUnit = 1.000000000000000000
+          YValues.MajorUnitFont.Charset = DEFAULT_CHARSET
+          YValues.MajorUnitFont.Color = clWindowText
+          YValues.MajorUnitFont.Height = -11
+          YValues.MajorUnitFont.Name = 'Segoe UI'
+          YValues.MajorUnitFont.Style = []
+          YValues.MajorUnitFormat = '%.2f'
+          YValues.MajorUnitSpacing = 5.000000000000000000
+          YValues.MajorUnitTickMarkSize = 10.000000000000000000
+          YValues.MajorUnitTickMarkColor = clSilver
+          YValues.MinorUnitFont.Charset = DEFAULT_CHARSET
+          YValues.MinorUnitFont.Color = clWindowText
+          YValues.MinorUnitFont.Height = -11
+          YValues.MinorUnitFont.Name = 'Segoe UI'
+          YValues.MinorUnitFont.Style = []
+          YValues.MinorUnitFormat = '%.2f'
+          YValues.MinorUnitSpacing = 5.000000000000000000
+          YValues.MinorUnitTickMarkSize = 7.000000000000000000
+          YValues.MinorUnitTickMarkColor = clSilver
+          YValues.Title.Font.Charset = DEFAULT_CHARSET
+          YValues.Title.Font.Color = clWindowText
+          YValues.Title.Font.Height = -11
+          YValues.Title.Font.Name = 'Segoe UI'
+          YValues.Title.Font.Style = []
+          YValues.Title.TextMargins.Left = 0
+          YValues.Title.TextMargins.Top = 0
+          YValues.Title.TextMargins.Right = 0
+          YValues.Title.TextMargins.Bottom = 0
+          YValues.Title.Text = 'Y-Axis Series 1'
+          Crosshair.XTextStroke.Color = 12874308
+          Crosshair.XTextFill.Color = 12874308
+          Crosshair.XTextFont.Charset = DEFAULT_CHARSET
+          Crosshair.XTextFont.Color = clWhite
+          Crosshair.XTextFont.Height = -11
+          Crosshair.XTextFont.Name = 'Segoe UI'
+          Crosshair.XTextFont.Style = []
+          Crosshair.YTextStroke.Color = 12874308
+          Crosshair.YTextFill.Color = 12874308
+          Crosshair.YTextFont.Charset = DEFAULT_CHARSET
+          Crosshair.YTextFont.Color = clWhite
+          Crosshair.YTextFont.Height = -11
+          Crosshair.YTextFont.Name = 'Segoe UI'
+          Crosshair.YTextFont.Style = []
+          Crosshair.HorizontalLineStroke.Color = 12874308
+          Crosshair.VerticalLineStroke.Color = 12874308
+        end>
+      Title.Fill.Kind = gfkNone
+      Title.Fill.Color = 16775416
+      Title.Stroke.Color = clGray
+      Title.Font.Charset = DEFAULT_CHARSET
+      Title.Font.Color = clWindowText
+      Title.Font.Height = -11
+      Title.Font.Name = 'Segoe UI'
+      Title.Font.Style = []
+      Title.Height = 35.000000000000000000
+      Title.TextMargins.Left = 3
+      Title.TextMargins.Top = 3
+      Title.TextMargins.Right = 3
+      Title.TextMargins.Bottom = 3
+      Title.Text = 'TMS FNC Chart'
+      XAxis.Fill.Kind = gfkNone
+      XAxis.Fill.Color = 16775416
+      XAxis.Stroke.Color = clGray
+      XAxis.Height = 35.000000000000000000
+      YAxis.Fill.Kind = gfkNone
+      YAxis.Fill.Color = 16775416
+      YAxis.Stroke.Color = clGray
+      YAxis.Width = 35.000000000000000000
+      Adapter = chartDBAdaptSpider
+      DefaultLoadOptions.XValuesFormatString = '%.0f'
+      DefaultLoadOptions.YValuesFormatString = '%.2f'
+      DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      OnLegendItemClick = TMSFNCSpiderChart1LegendItemClick
+      Align = alClient
+      TabOrder = 3
+      ExplicitLeft = 424
+      ExplicitTop = 304
+      ExplicitWidth = 550
+      ExplicitHeight = 350
+      object chartDBAdaptSpider: TTMSFNCChartDatabaseAdapter
+        Left = 112
+        Top = 304
+        Width = 39
+        Height = 39
+        Visible = True
+        AutoCreateSeries = False
+        Source.DataSource = dsSalesSpider
+        Source.Series = <
+          item
+            YValue = 'SA2018'
+            XValue = 'Month'
+            XLabel = 'mdisp'
+          end
+          item
+            YValue = 'SA2019'
+            XValue = 'Month'
+            XLabel = 'mdisp'
+          end
+          item
+            YValue = 'SA2020'
+            XValue = 'Month'
+            XLabel = 'mdisp'
+          end>
+        OnFieldsToSeries = chartDBAdaptSpiderFieldsToSeries
+        OnFieldsToPoint = chartDBAdaptSpiderFieldsToPoint
       end
     end
   end
@@ -1092,8 +1301,8 @@ object frmChartSalesVCL: TfrmChartSalesVCL
     Left = 976
     Top = 496
   end
-  object dsSalesPie: TDataSource
-    DataSet = fdqSalesPie
+  object dsSalesSpider: TDataSource
+    DataSet = fdqSalesSpider
     Left = 1152
     Top = 488
   end
@@ -1130,28 +1339,6 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Origin = 'SA2020'
       Precision = 10
       Size = 2
-    end
-  end
-  object fdqSalesPie: TFDQuery
-    Connection = FDConnection
-    SQL.Strings = (
-      
-        '                      select year, sum(amount) as "Sales::Int32"' +
-        ' from salesinfo group by year')
-    Left = 1160
-    Top = 632
-    object fdqSalesPieyear: TIntegerField
-      FieldName = 'year'
-      Origin = 'year'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object fdqSalesPieSales: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'Sales'
-      Origin = 'Sales'
-      ProviderFlags = []
-      ReadOnly = True
     end
   end
   object FDMemTableSalesGrid: TFDMemTable
@@ -1204,5 +1391,48 @@ object frmChartSalesVCL: TfrmChartSalesVCL
     DataSet = fdqSalesLines
     Left = 696
     Top = 528
+  end
+  object fdqSalesSpider: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      
+        'Select m.month, m.displayName as mdisp, s1.amount as SA2018, s2.' +
+        'amount as SA2019, s3.amount as SA2020 from Chart_Months m left j' +
+        'oin '
+      
+        ' sales_2018 s1 on m.month = s1.month left join sales_2019 s2 on ' +
+        'm.month = s2.month left join sales_2020 s3 on m.month = s3.month' +
+        ';'
+      '')
+    Left = 1160
+    Top = 640
+    object IntegerField2: TIntegerField
+      FieldName = 'Month'
+      Origin = 'Month'
+      Required = True
+    end
+    object StringField2: TStringField
+      FieldName = 'mdisp'
+      Origin = 'mdisp'
+      Size = 32767
+    end
+    object BCDField4: TBCDField
+      FieldName = 'SA2018'
+      Origin = 'SA2018'
+      Precision = 10
+      Size = 2
+    end
+    object BCDField5: TBCDField
+      FieldName = 'SA2019'
+      Origin = 'SA2019'
+      Precision = 10
+      Size = 2
+    end
+    object BCDField6: TBCDField
+      FieldName = 'SA2020'
+      Origin = 'SA2020'
+      Precision = 10
+      Size = 2
+    end
   end
 end

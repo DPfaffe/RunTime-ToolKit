@@ -1,7 +1,7 @@
 object frmFmxMarshalCodedOptions: TfrmFmxMarshalCodedOptions
   Left = 0
   Top = 0
-  Caption = 'Marshal Options by code on label'
+  Caption = 'FMX Marshal Options via 3 clicks on chart legend item'
   ClientHeight = 480
   ClientWidth = 640
   FormFactor.Width = 320

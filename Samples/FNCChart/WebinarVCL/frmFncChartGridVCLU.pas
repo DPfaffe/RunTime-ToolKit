@@ -16,28 +16,23 @@ uses
 type
   TfrmChartSalesVCL = class(TForm)
     GridPanel1: TGridPanel;
-    TMSFNCPieChart1: TTMSFNCPieChart;
     TMSFNCGrid1: TTMSFNCGrid;
     FDConnection: TFDConnection;
     dsSalesBarChart: TDataSource;
     dsSalesGrid: TDataSource;
-    dsSalesPie: TDataSource;
+    dsSalesSpider: TDataSource;
     fdqSalesChart: TFDQuery;
-    fdqSalesPie: TFDQuery;
     FDMemTableSalesGrid: TFDMemTable;
     TMSFNCGridDatabaseAdapter1: TTMSFNCGridDatabaseAdapter;
-    TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter;
-    TMSFNCChartDatabaseAdapter2: TTMSFNCChartDatabaseAdapter;
+    chartDBAdaptStackedBar: TTMSFNCChartDatabaseAdapter;
     fdqSalesChartMonth: TIntegerField;
     fdqSalesChartmdisp: TStringField;
     fdqSalesChartSA2018: TBCDField;
     fdqSalesChartSA2019: TBCDField;
     fdqSalesChartSA2020: TBCDField;
-    fdqSalesPieyear: TIntegerField;
-    fdqSalesPieSales: TIntegerField;
     TMSFNCBarChart1: TTMSFNCBarChart;
     TMSFNCStackedAreaChart1: TTMSFNCStackedAreaChart;
-    TMSFNCChartDatabaseAdapter3: TTMSFNCChartDatabaseAdapter;
+    chartDBAdaptStackedArea: TTMSFNCChartDatabaseAdapter;
     fdqSalesLines: TFDQuery;
     IntegerField1: TIntegerField;
     StringField1: TStringField;
@@ -45,19 +40,42 @@ type
     BCDField2: TBCDField;
     BCDField3: TBCDField;
     dsSalesLines: TDataSource;
+    TMSFNCSpiderChart1: TTMSFNCSpiderChart;
+    chartDBAdaptSpider: TTMSFNCChartDatabaseAdapter;
+    fdqSalesSpider: TFDQuery;
+    IntegerField2: TIntegerField;
+    StringField2: TStringField;
+    BCDField4: TBCDField;
+    BCDField5: TBCDField;
+    BCDField6: TBCDField;
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
-    procedure TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+    procedure chartDBAdaptStackedAreaFieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
+    procedure chartDBAdaptSpiderFieldsToPoint(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie;
+      APoint: TTMSFNCChartPoint);
+    procedure chartDBAdaptSpiderFieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
+    procedure TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
   private
     FQuery: TFDQuery;
+    /// <summary>
+    /// Runs ETL process to populate the chart data
+    /// </summary>
     procedure ChartDataETL;
+    /// <summary>
+    /// Updates the dataset with random amounts for the year
+    /// </summary>
     procedure DataAppend(AYear, ABaseAmount: Integer);
-    procedure UpdateStackedLines;
-    procedure UpdatePieSeries;
+    /// <summary>
+    /// Sets tag data for VCL object to be seen in Object Plus
+    /// </summary>
+    procedure UpdateTagData;
+    /// <summary>
+    /// Sets Grid column size
+    /// </summary>
     procedure UpdateGridColumns;
   public
-    procedure PieLegendClick(Sender: TObject); virtual;
+    procedure SpiderLegendClick(Sender: TObject); virtual;
     procedure StackLegendClick(Sender: TObject); virtual;
   end;
 
@@ -79,7 +97,7 @@ begin
   FQuery.Active := false;
   FQuery.Active := true; // re-fectch data with the order by
   FDMemTableSalesGrid.CopyDataSet(FQuery, [coStructure, coRestart, coAppend]);
-  fdqSalesPie.Active := true;
+  fdqSalesSpider.Active := true;
   fdqSalesLines.Active := true;
 end;
 
@@ -121,31 +139,26 @@ end;
 
 procedure TfrmChartSalesVCL.FormCreate(Sender: TObject);
 begin
-  Randomize;
-  FDConnection.Open();
-  ChartDataETL;
+  Randomize; // initialize Random
+  FDConnection.Open(); // Open the database - SQLite in memory instance
+  ChartDataETL; // Run ETL before DataAdapters
   TMSFNCGridDatabaseAdapter1.Active := true;
-  TMSFNCChartDatabaseAdapter1.Active := true;
-  TMSFNCChartDatabaseAdapter2.Active := true;
-  TMSFNCChartDatabaseAdapter3.Active := true;
-  UpdateStackedLines;
-  UpdatePieSeries;
+  chartDBAdaptStackedBar.Active := true;
+  chartDBAdaptStackedArea.Active := true;
+  chartDBAdaptSpider.Active := true;
   UpdateGridColumns;
+  UpdateTagData;
+  self.Caption := 'FNC Sales Dashboard by SwiftExpat - ' + self.Caption;
 end;
 
-procedure TfrmChartSalesVCL.PieLegendClick(Sender: TObject);
+procedure TfrmChartSalesVCL.TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
 begin
-
+  SpiderLegendClick(Sender);
 end;
 
-procedure TfrmChartSalesVCL.StackLegendClick(Sender: TObject);
+procedure TfrmChartSalesVCL.SpiderLegendClick(Sender: TObject);
 begin
-
-end;
-
-procedure TfrmChartSalesVCL.TMSFNCPieChart1LegendItemClick(Sender: TObject; AIndex: Integer);
-begin
-  PieLegendClick(Sender);
+  //override this in descending class to launch Marshal
 end;
 
 procedure TfrmChartSalesVCL.TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
@@ -153,39 +166,58 @@ begin
   StackLegendClick(Sender);
 end;
 
+procedure TfrmChartSalesVCL.StackLegendClick(Sender: TObject);
+begin
+  //override this in descending class to launch Marshal
+end;
+
 procedure TfrmChartSalesVCL.UpdateGridColumns;
 begin
   TMSFNCGrid1.Columns[1].Width := TMSFNCGrid1.Columns[0].Width;
 end;
 
-procedure TfrmChartSalesVCL.UpdatePieSeries;
-var
-  s: TTMSFNCChartSerie;
-  i: Integer;
+procedure TfrmChartSalesVCL.UpdateTagData;
+const
+  Pi = 3.1415;
 begin
-  for i := 0 to TMSFNCPieChart1.Series.Count - 1 do
-  begin
-    s := TMSFNCPieChart1.Series[i];
-    s.Enable3D := true;
-    s.Fill.Opacity := 0.5;
-    s.Labels.Format := '%g';
-    s.Labels.Visible := true;
-  end;
+  TMSFNCBarChart1.Tag := round(Pi * 1000);
 end;
 
-procedure TfrmChartSalesVCL.UpdateStackedLines;
-var
-  s: TTMSFNCChartSerie;
-  i: Integer;
+procedure TfrmChartSalesVCL.chartDBAdaptSpiderFieldsToPoint(Sender: TObject; AFields: TFields;
+  ASeries: TTMSFNCChartSerie; APoint: TTMSFNCChartPoint);
 begin
-  for i := 0 to TMSFNCStackedAreaChart1.Series.Count - 1 do
-  begin
-    s := TMSFNCStackedAreaChart1.Series[i];
-    s.Enable3D := true;
-    s.Fill.Opacity := 0.5;
-    s.Labels.Format := '%g';
-    s.Labels.Visible := true;
-  end;
+  APoint.LegendText := AFields.FieldByName('mdisp').AsString;
+end;
+
+procedure TfrmChartSalesVCL.chartDBAdaptSpiderFieldsToSeries(Sender: TObject; AFields: TFields;
+  ASeries: TTMSFNCChartSerie);
+begin
+  ASeries.YGrid.SpiderLegend := true;
+  ASeries.YValues.MajorUnitFormat := '%.0m';
+  ASeries.YValues.MinorUnitFormat := '%.0m';
+  ASeries.YValues.MajorUnit := 50.0;
+  ASeries.YValues.MinorUnit := 25.0;
+  ASeries.YValues.AutoUnits := false;
+  ASeries.AutoYRange := arCommonZeroBased;
+  ASeries.Pie.Stacked := true;
+  ASeries.Pie.AutoSize := true;
+  ASeries.Pie.Size := 150;
+  ASeries.Fill.Opacity := 0.5 - (ASeries.Index / 10);
+  ASeries.Stroke.Color := ASeries.Fill.Color;
+  ASeries.Stroke.Width := 3;
+  ASeries.Pie.Margins.Left := 50;
+  ASeries.Pie.Margins.Top := 50;
+  ASeries.Pie.Margins.Bottom := 50;
+  ASeries.Pie.StartAngle := -90;
+end;
+
+procedure TfrmChartSalesVCL.chartDBAdaptStackedAreaFieldsToSeries(Sender: TObject; AFields: TFields;
+  ASeries: TTMSFNCChartSerie);
+begin
+  ASeries.Enable3D := true;
+  ASeries.Fill.Opacity := 0.5;
+  ASeries.Labels.Format := '%.0m';
+  ASeries.Labels.Visible := true;
 end;
 
 end.

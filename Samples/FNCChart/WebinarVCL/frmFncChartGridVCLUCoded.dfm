@@ -1,7 +1,7 @@
 object frmVCLMarshalCodedOptions: TfrmVCLMarshalCodedOptions
   Left = 0
   Top = 0
-  Caption = 'FNC Chart Marshal Coded Options'
+  Caption = 'VCL Marshal Options via 3 clicks on chart legend item'
   ClientHeight = 424
   ClientWidth = 618
   Color = clBtnFace

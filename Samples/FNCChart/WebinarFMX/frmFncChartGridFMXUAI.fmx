@@ -1,7 +1,7 @@
 object frmFmxChartAppInspector: TfrmFmxChartAppInspector
   Left = 0
   Top = 0
-  Caption = 'Marshal app inspector component auto start'
+  Caption = 'FMX Marshal App Inspector component - auto start'
   ClientHeight = 480
   ClientWidth = 640
   FormFactor.Width = 320
