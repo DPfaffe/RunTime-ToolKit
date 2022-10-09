@@ -38,19 +38,19 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="OSX64\Release\FncChartFMXMarshalCoded.info.plist" Condition="'$(Config)'=='Release'">
-            <RemoteDir>FncChartFMXMarshalCoded.app\Contents\</RemoteDir>
-            <RemoteName>Info.plist</RemoteName>
-            <DeployClass>ProjectOSXInfoPList</DeployClass>
+        <DeployFile Include="OSX64\Release\FncChartFMXMarshalCoded.entitlements" Condition="'$(Config)'=='Release'">
+            <RemoteDir>FncChartFMXMarshalCoded.app\..\</RemoteDir>
+            <RemoteName>FncChartFMXMarshalCoded.entitlements</RemoteName>
+            <DeployClass>ProjectOSXEntitlements</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="OSX64\Release\FncChartFMXMarshalCoded.entitlements" Condition="'$(Config)'=='Release'">
-            <RemoteDir>FncChartFMXMarshalCoded.app\..\</RemoteDir>
-            <RemoteName>FncChartFMXMarshalCoded.entitlements</RemoteName>
-            <DeployClass>ProjectOSXEntitlements</DeployClass>
+        <DeployFile Include="OSX64\Release\FncChartFMXMarshalCoded.info.plist" Condition="'$(Config)'=='Release'">
+            <RemoteDir>FncChartFMXMarshalCoded.app\Contents\</RemoteDir>
+            <RemoteName>Info.plist</RemoteName>
+            <DeployClass>ProjectOSXInfoPList</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>

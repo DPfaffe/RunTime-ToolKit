@@ -27,4 +27,6 @@ WIN32/
 *.dcu
 *.dof
 *.cfg
-G*.*
+GPATH
+GRTAGS
+GTAGS
