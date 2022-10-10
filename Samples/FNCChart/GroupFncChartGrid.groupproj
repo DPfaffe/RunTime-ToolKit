@@ -27,9 +27,6 @@
         <Projects Include="WebinarVCL\FNChartVCLMarshalButton.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="C:\Users\Coder\AppData\Local\tmssoftware\registered\TMS FNC Chart\Demos\FMX\Overview\Desktop\Demo.dproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -110,23 +107,14 @@
     <Target Name="FNChartVCLMarshalButton:Make">
         <MSBuild Projects="WebinarVCL\FNChartVCLMarshalButton.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Demo">
-        <MSBuild Projects="C:\Users\Coder\AppData\Local\tmssoftware\registered\TMS FNC Chart\Demos\FMX\Overview\Desktop\Demo.dproj"/>
-    </Target>
-    <Target Name="Demo:Clean">
-        <MSBuild Projects="C:\Users\Coder\AppData\Local\tmssoftware\registered\TMS FNC Chart\Demos\FMX\Overview\Desktop\Demo.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Demo:Make">
-        <MSBuild Projects="C:\Users\Coder\AppData\Local\tmssoftware\registered\TMS FNC Chart\Demos\FMX\Overview\Desktop\Demo.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="FncChartFMXBase;FncChartFMXMarshalButton;FncChartFMXAppInspector;FncChartFMXMarshalCoded;FNChartVCLBase;FNChartVCLMarshalCoded;FNChartVCLAppInspector;FNChartVCLMarshalButton;Demo"/>
+        <CallTarget Targets="FncChartFMXBase;FncChartFMXMarshalButton;FncChartFMXAppInspector;FncChartFMXMarshalCoded;FNChartVCLBase;FNChartVCLMarshalCoded;FNChartVCLAppInspector;FNChartVCLMarshalButton"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="FncChartFMXBase:Clean;FncChartFMXMarshalButton:Clean;FncChartFMXAppInspector:Clean;FncChartFMXMarshalCoded:Clean;FNChartVCLBase:Clean;FNChartVCLMarshalCoded:Clean;FNChartVCLAppInspector:Clean;FNChartVCLMarshalButton:Clean;Demo:Clean"/>
+        <CallTarget Targets="FncChartFMXBase:Clean;FncChartFMXMarshalButton:Clean;FncChartFMXAppInspector:Clean;FncChartFMXMarshalCoded:Clean;FNChartVCLBase:Clean;FNChartVCLMarshalCoded:Clean;FNChartVCLAppInspector:Clean;FNChartVCLMarshalButton:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="FncChartFMXBase:Make;FncChartFMXMarshalButton:Make;FncChartFMXAppInspector:Make;FncChartFMXMarshalCoded:Make;FNChartVCLBase:Make;FNChartVCLMarshalCoded:Make;FNChartVCLAppInspector:Make;FNChartVCLMarshalButton:Make;Demo:Make"/>
+        <CallTarget Targets="FncChartFMXBase:Make;FncChartFMXMarshalButton:Make;FncChartFMXAppInspector:Make;FncChartFMXMarshalCoded:Make;FNChartVCLBase:Make;FNChartVCLMarshalCoded:Make;FNChartVCLAppInspector:Make;FNChartVCLMarshalButton:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
