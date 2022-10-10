@@ -21,13 +21,13 @@ Marshal has possible [implementation options](https://swiftexpat.com/marshal/mar
 2. Marshal button control
 3. Marsahl App Inspector (auto open)
 
-**Compiled versions are available in the releases for you to try out the different options.****
+**Compiled versions are available in the releases for you to try out the different options.**
 
 Pure Code
 The following project files apply to the pure code option
 
-* FMX - [frmFncChartGridFMXUCoded.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarFMX/frmFncChartGridFMXUCoded.pas)
-* VCL - [frmFncChartGridVCLUCoded.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarVCL/frmFncChartGridVCLUCoded.pas)
+* FMX - [frmFncChartGridFMXUCoded.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarFMX/frmFncChartGridFMXUCoded.pas) Compiled [DemoFMXCoded](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FncChartFMXMarshalCoded.exe)
+* VCL - [frmFncChartGridVCLUCoded.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarVCL/frmFncChartGridVCLUCoded.pas) Compiled [DemoVCLCoded](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FNChartVCLMarshalCoded.exe)
 
 Marshal Button Control
 The following project files apply to Marshal Button Control Option
