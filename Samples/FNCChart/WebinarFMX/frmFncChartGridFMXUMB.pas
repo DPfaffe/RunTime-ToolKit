@@ -21,7 +21,7 @@ var
 
 implementation
 
-uses FMX.RTTK.PT.FNCChartTool;
+uses FMX.RTTK.PT.FNCChartTool; // only needed if using FNC Chart
 {$R *.fmx}
 
 end.

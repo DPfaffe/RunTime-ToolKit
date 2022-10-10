@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,frmFncChartGridVCLU, VCL.SE.RTTK.DT.Marshal;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frmFncChartGridVCLU, Vcl.SE.RTTK.DT.Marshal;
 
 type
   TfrmVCLChartAppInspector = class(TfrmChartSalesVCL)
@@ -21,6 +21,7 @@ var
 implementation
 
 {$R *.dfm}
-uses Vcl.RTTK.PT.FNCChartTool;
+
+uses Vcl.RTTK.PT.FNCChartTool; // only needed if using FNC Chart
 
 end.
