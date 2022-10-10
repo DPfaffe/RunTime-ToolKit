@@ -32,11 +32,11 @@ The following project files apply to the pure code option
 Marshal Button Control
 The following project files apply to Marshal Button Control Option
 
-* FMX - [frmFncChartGridFMXUMB.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarFMX/frmFncChartGridFMXUMB.pas)
-* VCL - [frmFncChartGridVCLUMarshalButton.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarVCL/frmFncChartGridVCLUMarshalButton.pas)
+* FMX - [frmFncChartGridFMXUMB.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarFMX/frmFncChartGridFMXUMB.pas) Compiled [DemoFMXButton](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FncChartFMXMarshalButton.exe)
+* VCL - [frmFncChartGridVCLUMarshalButton.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarVCL/frmFncChartGridVCLUMarshalButton.pas) Compiled [DemoVCLButton](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FNChartVCLMarshalButton.exe)
 
 Marshal App Inspector
 The following project files apply to the App Inspector Option
 
-* FMX - [frmFncChartGridFMXUAI.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarFMX/frmFncChartGridFMXUAI.pas)
-* VCL - [frmFncChartGridVCLUAppInspector.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarVCL/frmFncChartGridVCLUAppInspector.pas)
+* FMX - [frmFncChartGridFMXUAI.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarFMX/frmFncChartGridFMXUAI.pas) Comiled [DemoFMXAppInsp](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FncChartFMXAppInspector.exe)
+* VCL - [frmFncChartGridVCLUAppInspector.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarVCL/frmFncChartGridVCLUAppInspector.pas) Compiled [DemoVCLAppInsp](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FNChartVCLAppInspector.exe)
