@@ -1,16 +1,19 @@
 # Autonomous Dashboard Diagnostics
 
-The samples in this folder go along with the following blog posts and webinar on Nov 15, 2022.
+The samples in this folder go along with the following blog posts and webinar on [Webinar Nov 15, 2022](https://www.tmssoftware.com/site/tmswebacademy.asp?id=145).
 
-1. Blog [Part 1 of 3 ](https://www.tmssoftware.com/site/blog.asp?post=1005) - Object Inspection and modification using Marshal
+1. Blog (read here) [Part 1 of 3 ](https://www.tmssoftware.com/site/blog.asp?post=1005) - Object Inspection and modification using Marshal 
+[![Watch the video](https://img.youtube.com/vi/394wOxhvi5Y/hqdefault.jpg)](https://youtu.be/394wOxhvi5Y)
 2. Blog Part 2 of 3 - Dataset Insepection and SQL Queries using Marshal
 3. Blog Part 3 of 3 - Custom inspectors and Marshal SDK
 
 [Webinar Nov 15, 2022](https://www.tmssoftware.com/site/tmswebacademy.asp?id=145)  will cover the 3 topics plus more live.
 
-## About the samples
+Samples are provided for you to analyze what is required to implement Marshal. The 3 options are detailed below.
 
-The demo dashboard is written with FNC Chart and FNC UI Pack components. This is the base form for the demo, VCL and FMX respectively.  Marshal is added seperately using form inheritance in the units below.
+## Foundation App - Dashboard
+
+The demo dashboard is written with [TMS FNC Chart 2.5](https://www.tmssoftware.com/site/tmsfncchart.asp) and [TMS FNC UI Pack](https://www.tmssoftware.com/site/tmsfncuipack.asp) components. To compile you will need a licensed version or a demo of these components. This is the base form for the demo, VCL and FMX respectively.  Marshal is added seperately using form inheritance explained in the following section.
 
 * FMX [frmFncChartGridFMXU.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarFMX/frmFncChartGridFMXU.pas) Compiled [DemoFMX](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FncChartFMXBase.exe)
 * VCL [frmFncChartGridVCLU.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarVCL/frmFncChartGridVCLU.pas) Compiled [DemoVCL](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FNChartVCLBase.exe)
@@ -27,7 +30,7 @@ Marshal has 3 possible [implementation options](https://swiftexpat.com/marshal/m
 
 ### Pure Code
 
-These samples include a simple 3 click counter to guard against mis-use.  The event handlers are inherited from the base form on legend item click events.
+This samples include a simple 3 click counter to guard against mis-use.  The event handlers are overriden from the base form on legend item click events.
 
 * FMX - [frmFncChartGridFMXUCoded.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarFMX/frmFncChartGridFMXUCoded.pas) Compiled [DemoFMXCoded](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FncChartFMXMarshalCoded.exe)
 * VCL - [frmFncChartGridVCLUCoded.pas](https://github.com/SwiftExpat/RunTime-ToolKit/blob/main/Samples/FNCChart/WebinarVCL/frmFncChartGridVCLUCoded.pas) Compiled [DemoVCLCoded](https://github.com/SwiftExpat/RunTime-ToolKit/releases/download/SeptBlog/FNChartVCLMarshalCoded.exe)
