@@ -48,6 +48,7 @@ type
     BCDField4: TBCDField;
     BCDField5: TBCDField;
     BCDField6: TBCDField;
+    tmrUpdateChart: TTimer;
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);

@@ -20,4 +20,45 @@ object FrameFNCChartTool: TFrameFNCChartTool
       Position.Y = -144.000000000000000000
     end
   end
+  object TMSFNCGraphicsPDFIO1: TTMSFNCGraphicsPDFIO
+    Size.Width = 39.000000000000000000
+    Size.Height = 39.000000000000000000
+    Size.PlatformDefault = False
+    Position.X = 288.000000000000000000
+    Position.Y = 408.000000000000000000
+    Options.DefaultFont.Name = 'Arial'
+    Options.Header = 'TMS PDF Header'
+    Options.Footer = 'TMS PDF Footer'
+    Options.Margins.Left = 20.000000000000000000
+    Options.Margins.Top = 50.000000000000000000
+    Options.Margins.Right = 20.000000000000000000
+    Options.Margins.Bottom = 50.000000000000000000
+    Options.HeaderFont.Name = 'Arial'
+    Options.FooterFont.Name = 'Arial'
+    Options.HeaderMargins.Left = 5.000000000000000000
+    Options.HeaderMargins.Top = 5.000000000000000000
+    Options.HeaderMargins.Right = 5.000000000000000000
+    Options.HeaderMargins.Bottom = 5.000000000000000000
+    Options.FooterMargins.Left = 5.000000000000000000
+    Options.FooterMargins.Top = 5.000000000000000000
+    Options.FooterMargins.Right = 5.000000000000000000
+    Options.FooterMargins.Bottom = 5.000000000000000000
+    Options.PageNumberMargins.Left = 10.000000000000000000
+    Options.PageNumberMargins.Top = 5.000000000000000000
+    Options.PageNumberMargins.Right = 10.000000000000000000
+    Options.PageNumberMargins.Bottom = 5.000000000000000000
+    Options.PageNumberFormat = '%d'
+    Options.PageNumberFont.Name = 'Arial'
+  end
+  object TMSFNCButton1: TTMSFNCButton
+    Font.Name = 'Segoe UI'
+    Size.Width = 100.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    Position.X = 24.000000000000000000
+    Position.Y = 24.000000000000000000
+    TabOrder = 2
+    Text = 'TMSFNCButton1'
+    OnClick = TMSFNCButton1Click
+  end
 end

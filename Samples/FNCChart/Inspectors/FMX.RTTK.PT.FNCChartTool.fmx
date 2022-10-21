@@ -3,21 +3,168 @@ object FrameFNCChartTool: TFrameFNCChartTool
   Size.Width = 608.000000000000000000
   Size.Height = 486.000000000000000000
   Size.PlatformDefault = False
-  object btnShowChartEditor: TButton
-    Position.X = 128.000000000000000000
-    Position.Y = 88.000000000000000000
-    Size.Width = 369.000000000000000000
-    Size.Height = 273.000000000000000000
+  object TMSFNCGraphicsPDFIO1: TTMSFNCGraphicsPDFIO
+    Size.Width = 39.000000000000000000
+    Size.Height = 39.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 0
-    Text = 'Show Chart Editor'
-    OnClick = btnShowChartEditorClick
-    object TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog
-      Size.Width = 39.000000000000000000
-      Size.Height = 39.000000000000000000
+    Position.X = 40.000000000000000000
+    Options.DefaultFont.Name = 'Arial'
+    Options.Header = 'TMS PDF Header'
+    Options.Footer = 'TMS PDF Footer'
+    Options.Margins.Left = 20.000000000000000000
+    Options.Margins.Top = 50.000000000000000000
+    Options.Margins.Right = 20.000000000000000000
+    Options.Margins.Bottom = 50.000000000000000000
+    Options.HeaderFont.Name = 'Arial'
+    Options.FooterFont.Name = 'Arial'
+    Options.HeaderMargins.Left = 5.000000000000000000
+    Options.HeaderMargins.Top = 5.000000000000000000
+    Options.HeaderMargins.Right = 5.000000000000000000
+    Options.HeaderMargins.Bottom = 5.000000000000000000
+    Options.FooterMargins.Left = 5.000000000000000000
+    Options.FooterMargins.Top = 5.000000000000000000
+    Options.FooterMargins.Right = 5.000000000000000000
+    Options.FooterMargins.Bottom = 5.000000000000000000
+    Options.PageNumberMargins.Left = 10.000000000000000000
+    Options.PageNumberMargins.Top = 5.000000000000000000
+    Options.PageNumberMargins.Right = 10.000000000000000000
+    Options.PageNumberMargins.Bottom = 5.000000000000000000
+    Options.PageNumberFormat = '%d'
+    Options.PageNumberFont.Name = 'Arial'
+  end
+  object TMSFNCChartEditorDialog: TTMSFNCChartEditorDialog
+    Size.Width = 39.000000000000000000
+    Size.Height = 39.000000000000000000
+    Size.PlatformDefault = False
+    Position.X = 288.000000000000000000
+    Position.Y = 232.000000000000000000
+  end
+  object TMSFNCTableView1: TTMSFNCTableView
+    Align = Left
+    Size.Width = 250.000000000000000000
+    Size.Height = 486.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Stroke.Color = xFFB2B2B2
+    ItemAppearance.Font.Color = xFF7A7A7A
+    ItemAppearance.Font.Name = 'Segoe UI'
+    ItemAppearance.Stroke.Kind = gskSolid
+    ItemAppearance.Stroke.Color = xFFC8C7CC
+    ItemAppearance.SelectedFill.Color = xFFF6F8FC
+    ItemAppearance.SelectedStroke.Color = xFF2D9BEF
+    ItemAppearance.SelectedStroke.Width = 2.000000000000000000
+    ItemAppearance.DisabledFill.Kind = gfkNone
+    ItemAppearance.FixedHeight = 25.000000000000000000
+    ItemAppearance.AccessoryDetailBitmaps = <>
+    ItemAppearance.AccessoryFont.Color = claDarkred
+    ItemAppearance.AccessoryFont.Name = 'Segoe UI'
+    ItemAppearance.AccessoryFont.StyleExt = {00070000000000000004000000}
+    ItemAppearance.ShowFocus = False
+    DefaultItem.DetailControl = TMSFNCHTMLText1
+    DefaultItem.VerticalTextAlign = gtaCenter
+    DefaultItem.SelectedTextColor = claBlack
+    Items = <
+      item
+        Text = 'Bugfix 376'
+        VerticalTextAlign = gtaCenter
+        TextColor = xFF7A7A7A
+        SelectedTextColor = xFF454545
+      end
+      item
+        Text = 'Bugfix 378'
+        VerticalTextAlign = gtaCenter
+        TextColor = xFF7A7A7A
+        SelectedTextColor = xFF454545
+      end
+      item
+        Text = 'Customer Update'
+        VerticalTextAlign = gtaCenter
+        TextColor = xFF7A7A7A
+        SelectedTextColor = xFF454545
+      end
+      item
+        Text = 'Install New server'
+        VerticalTextAlign = gtaCenter
+        TextColor = xFF7A7A7A
+        SelectedTextColor = xFF454545
+      end
+      item
+        Text = 'Meeting: Next Phase'
+        VerticalTextAlign = gtaCenter
+        TextColor = xFF7A7A7A
+        SelectedTextColor = xFF454545
+      end
+      item
+        Text = 'Release Planning'
+        VerticalTextAlign = gtaCenter
+        TextColor = xFF7A7A7A
+        SelectedTextColor = xFF454545
+      end>
+    Header.Text = 'Chart Edits'
+    Header.Fill.Color = xFFEEF2F9
+    Header.Font.Size = 14.000000000000000000
+    Header.Font.Color = xFF454545
+    Header.Font.Name = 'Segoe UI'
+    Header.Font.StyleExt = {00070000000000000004000000}
+    Header.Stroke.Kind = gskNone
+    Header.Stroke.Color = xFFB2B2B2
+    Header.Height = 36.000000000000000000
+    Footer.Text = 'Footer'
+    Footer.Fill.Kind = gfkNone
+    Footer.Fill.Color = xFFEEF2F9
+    Footer.Font.Size = 14.000000000000000000
+    Footer.Font.Color = xFF454545
+    Footer.Font.Name = 'Segoe UI'
+    Footer.Stroke.Color = xFFB2B2B2
+    Footer.Height = 30.000000000000000000
+    Interaction.AnimationFactor = 1.000000000000000000
+    LookupBar.Font.Name = 'Segoe UI'
+    LookupBar.InActiveFont.Color = claSilver
+    LookupBar.InActiveFont.Name = 'Segoe UI'
+    Reload.Stroke.Width = 2.000000000000000000
+    Categories = <>
+    MoreOptions = <>
+    MoreOptionAppearance.Font.Color = claWhite
+    MoreOptionAppearance.Font.Name = 'Segoe UI'
+    CategoryAppearance.Font.Name = 'Segoe UI'
+    OnItemSelected = TMSFNCTableView1ItemSelected
+    GlobalFont.Name = 'Segoe UI'
+    GlobalFont.Scale = 1.000000000000000000
+    GlobalFont.Style = []
+    OnBeforeItemShowDetailControl = TMSFNCTableView1BeforeItemShowDetailControl
+    object TMSFNCHTMLText1: TTMSFNCHTMLText
+      Position.X = 72.000000000000000000
+      Position.Y = 216.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
-      Position.X = -88.000000000000000000
-      Position.Y = -144.000000000000000000
+      TabOrder = 0
+      Visible = False
+      Font.Name = 'Segoe UI'
+      Fill.Kind = gfkNone
+      Stroke.Kind = gskNone
+      Stroke.Color = claNull
+      Text = 'TTMSFNCHTMLText'
+      WordWrapping = True
     end
+  end
+  object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer
+    Size.Width = 39.000000000000000000
+    Size.Height = 39.000000000000000000
+    Size.PlatformDefault = False
+    Position.X = 112.000000000000000000
+    Position.Y = 232.000000000000000000
+    Items = <>
+  end
+  object TMSFNCImage1: TTMSFNCImage
+    Align = Client
+    Size.Width = 358.000000000000000000
+    Size.Height = 486.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Bitmaps = <>
+    BitmapContainer = TMSFNCBitmapContainer1
+    Fill.Kind = gfkNone
+    Stroke.Kind = gskNone
   end
 end

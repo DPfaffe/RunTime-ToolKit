@@ -930,4 +930,8 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       FieldName = 'mdisp'
     end
   end
+  object tmrUpdateChart: TTimer
+    Left = 816
+    Top = 704
+  end
 end

@@ -1248,10 +1248,6 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       OnLegendItemClick = TMSFNCSpiderChart1LegendItemClick
       Align = alClient
       TabOrder = 3
-      ExplicitLeft = 424
-      ExplicitTop = 304
-      ExplicitWidth = 550
-      ExplicitHeight = 350
       object chartDBAdaptSpider: TTMSFNCChartDatabaseAdapter
         Left = 112
         Top = 304
@@ -1434,5 +1430,9 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       Precision = 10
       Size = 2
     end
+  end
+  object tmrUpdateChart: TTimer
+    Left = 680
+    Top = 456
   end
 end

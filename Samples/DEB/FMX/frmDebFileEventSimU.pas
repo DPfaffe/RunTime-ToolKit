@@ -8,7 +8,8 @@ uses
   Generics.Collections, ThreadProcStats, ThreadFSPollFolder, ThreadItemWorker, FMX.TMSFNCTypes, FMX.TMSFNCUtils,
   FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl, FMX.TMSFNCListBox, FMX.TMSFNCChart,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.TMSFNCCustomGroup, FMX.TMSFNCCheckGroup, FMX.TMSFNCCustomComponent,
-  FMX.TMSFNCChartEditor, FMX.TMSFNCStatusBar, FMX.SE.RTTK.DT.Marshal;
+  FMX.TMSFNCChartEditor, FMX.TMSFNCStatusBar, FMX.SE.RTTK.DT.Marshal, FMX.TMSFNCButton, FMX.TMSFNCHTMLText,
+  FMX.TMSFNCLabelEdit, FMX.TMSFNCEdit;
 
 const
   nm_ghqueue_hdr = 'Queue Files';
@@ -27,10 +28,14 @@ type
     Button1: TButton;
     TMSFNCStatusBar1: TTMSFNCStatusBar;
     SERTTKMarshal1: TSERTTKMarshal;
+    TMSFNCButton1: TTMSFNCButton;
+    TMSFNCEditButton1: TTMSFNCEditButton;
+    TMSFNCLabelEdit1: TTMSFNCLabelEdit;
     procedure FormCreate(Sender: TObject);
     procedure cgControlsCheckBoxClick(Sender: TObject; AItemIndex: Integer; AValue: Int64);
     procedure Button1Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure TMSFNCButton1Click(Sender: TObject);
   strict private
     ghQueueItems: TTMSFNCListBoxItem;
     gfQueueCount: TTMSFNCListBoxItem;
@@ -229,6 +234,11 @@ begin
   if FProcItems.TryGetValue(AFileName, lbi) then
     lbi.Index := gfQueueCount.Index;
   lbFiles.EndUpdate;
+end;
+
+procedure TfrmDebFileEvents.TMSFNCButton1Click(Sender: TObject);
+begin
+chart.SaveToImage('test.jpg');
 end;
 
 //initialization

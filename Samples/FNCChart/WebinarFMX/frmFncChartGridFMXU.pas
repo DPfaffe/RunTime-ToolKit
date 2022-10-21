@@ -53,6 +53,7 @@ type
     StringField2: TStringField;
     TMSFNCSpiderChart1: TTMSFNCSpiderChart;
     chartDBAdaptSpider: TTMSFNCChartDatabaseAdapter;
+    tmrUpdateChart: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure ChartStackedAreaLegendItemClick(Sender: TObject; AIndex: Integer);

@@ -309,6 +309,16 @@ object frmDebFileEvents: TfrmDebFileEvents
           YValues.Title.TextMargins.Right = 0
           YValues.Title.TextMargins.Bottom = 0
           YValues.Title.Text = 'Y-Axis Serie 1'
+          Crosshair.XTextStroke.Color = xFF57C0F5
+          Crosshair.XTextFill.Color = xFF57C0F5
+          Crosshair.XTextFont.Color = claWhite
+          Crosshair.XTextFont.Name = 'Segoe UI'
+          Crosshair.YTextStroke.Color = xFF57C0F5
+          Crosshair.YTextFill.Color = xFF57C0F5
+          Crosshair.YTextFont.Color = claWhite
+          Crosshair.YTextFont.Name = 'Segoe UI'
+          Crosshair.HorizontalLineStroke.Color = xFF57C0F5
+          Crosshair.VerticalLineStroke.Color = xFF57C0F5
         end
         item
           AnimationFactor = 4.000000000000000000
@@ -512,6 +522,16 @@ object frmDebFileEvents: TfrmDebFileEvents
           YValues.Title.TextMargins.Bottom = 0
           YValues.Title.Text = 'Y-Axis Serie 2'
           YValues.Positions = []
+          Crosshair.XTextStroke.Color = xFFF71F56
+          Crosshair.XTextFill.Color = xFFF71F56
+          Crosshair.XTextFont.Color = claWhite
+          Crosshair.XTextFont.Name = 'Segoe UI'
+          Crosshair.YTextStroke.Color = xFFF71F56
+          Crosshair.YTextFill.Color = xFFF71F56
+          Crosshair.YTextFont.Color = claWhite
+          Crosshair.YTextFont.Name = 'Segoe UI'
+          Crosshair.HorizontalLineStroke.Color = xFFF71F56
+          Crosshair.VerticalLineStroke.Color = xFFF71F56
         end
         item
           AnimationFactor = 4.000000000000000000
@@ -715,6 +735,16 @@ object frmDebFileEvents: TfrmDebFileEvents
           YValues.Title.TextMargins.Bottom = 0
           YValues.Title.Text = 'Y-Axis Serie 3'
           YValues.Positions = []
+          Crosshair.XTextStroke.Color = xFF031B79
+          Crosshair.XTextFill.Color = xFF031B79
+          Crosshair.XTextFont.Color = claWhite
+          Crosshair.XTextFont.Name = 'Segoe UI'
+          Crosshair.YTextStroke.Color = xFF031B79
+          Crosshair.YTextFill.Color = xFF031B79
+          Crosshair.YTextFont.Color = claWhite
+          Crosshair.YTextFont.Name = 'Segoe UI'
+          Crosshair.HorizontalLineStroke.Color = xFF031B79
+          Crosshair.VerticalLineStroke.Color = xFF031B79
         end>
       Title.Fill.Kind = gfkNone
       Title.Fill.Color = claGhostwhite
@@ -814,8 +844,8 @@ object frmDebFileEvents: TfrmDebFileEvents
       Chart = chart
     end
     object Button1: TButton
-      Position.X = 360.000000000000000000
-      Position.Y = 376.000000000000000000
+      Position.X = 24.000000000000000000
+      Position.Y = 688.000000000000000000
       TabOrder = 4
       Text = 'Button1'
       OnClick = Button1Click
@@ -826,6 +856,40 @@ object frmDebFileEvents: TfrmDebFileEvents
       TabOrder = 6
       Text = 'Marshal'
     end
+    object TMSFNCButton1: TTMSFNCButton
+      Font.Name = 'Segoe UI'
+      Size.Width = 100.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Position.X = 24.000000000000000000
+      Position.Y = 649.000000000000000000
+      TabOrder = 7
+      Text = 'TMSFNCButton1'
+      OnClick = TMSFNCButton1Click
+    end
+    object TMSFNCLabelEdit1: TTMSFNCLabelEdit
+      Position.X = 112.000000000000000000
+      Position.Y = 679.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Font.Name = 'Segoe UI'
+      Fill.Kind = gfkNone
+      Stroke.Kind = gskNone
+      Stroke.Color = claNull
+      Text = 'TTMSFNCLabelEdit'
+      AcceptButtonStroke.Width = 2.000000000000000000
+      CancelButtonStroke.Width = 2.000000000000000000
+    end
+    object TMSFNCEditButton1: TTMSFNCEditButton
+      Position.X = 132.000000000000000000
+      Position.Y = 649.000000000000000000
+      Size.Width = 118.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 9
+    end
   end
   object TMSFNCStatusBar1: TTMSFNCStatusBar
     Position.Y = 750.000000000000000000
@@ -835,7 +899,7 @@ object frmDebFileEvents: TfrmDebFileEvents
     TabOrder = 3
     Panels = <
       item
-        Text = '06:11:24'
+        Text = '15:54:59'
         Style = spsTime
         Alignment = taRightJustify
         Width = 50
