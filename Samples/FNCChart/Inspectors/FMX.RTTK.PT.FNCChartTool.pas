@@ -7,25 +7,26 @@ uses
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, FMX.TMSFNCCustomComponent,
   FMX.TMSFNCChartEditor, FMX.Controls.Presentation, FMX.TMSFNCChart, FMX.SERTTK.PluginTypes, FMX.TMSFNCPDFIO,
   FMX.TMSFNCGraphicsPDFEngine, FMX.TMSFNCButton, FMX.TMSFNCPDFLib, FMX.TMSFNCTypes, FMX.TMSFNCUtils, FMX.TMSFNCGraphics,
-  FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl, FMX.TMSFNCTableView, FMX.Layouts, FMX.TMSFNCBitmapContainer,
-  FMX.TMSFNCImage, FMX.TMSFNCHTMLText;
+  FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl, FMX.Layouts, FMX.TMSFNCBitmapContainer,
+  FMX.TMSFNCImage, FMX.TMSFNCHTMLText, FMX.TMSFNCStatusBar, FMX.TMSFNCListBox;
 
 type
   TFrameFNCChartTool = class(TFrame)
     TMSFNCGraphicsPDFIO1: TTMSFNCGraphicsPDFIO;
     TMSFNCChartEditorDialog: TTMSFNCChartEditorDialog;
-    TMSFNCTableView1: TTMSFNCTableView;
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
     TMSFNCImage1: TTMSFNCImage;
     TMSFNCHTMLText1: TTMSFNCHTMLText;
-    procedure TMSFNCTableView1ItemSelected(Sender: TObject; AItem: TTMSFNCTableViewItem);
-    procedure TMSFNCTableView1BeforeItemShowDetailControl(Sender: TObject; AItem: TTMSFNCTableViewItem;
-      ADetailControl: TControl; var AAllow: Boolean);
+    TMSFNCStatusBar1: TTMSFNCStatusBar;
+    TMSFNCListBox1: TTMSFNCListBox;
+    Panel1: TPanel;
+    procedure TMSFNCListBox1ItemClick(Sender: TObject; AItem: TTMSFNCListBoxItem);
   private
     FChart: TTMSFNCChart; // used for references
     procedure LogChartAction(const AMessage: string);
     procedure ExportChartPDF(const AFile: string; const AResult: Boolean);
     function CaptureChartImage: integer;
+    procedure StatusBarLoad;
   public
     procedure ShowEditor(Sender: TObject);
     procedure ExportPDF(Sender: TObject);
@@ -57,14 +58,15 @@ implementation
 
 {$R *.fmx}
 
-uses FMX.SERTTK.Registry, FMX.SE.Logger, System.IOUtils, System.JSON;
+uses FMX.SERTTK.Registry, FMX.SE.Logger, System.IOUtils, System.JSON, FMX.TMSFNCChartDatabaseAdapter;
 
 procedure TFrameFNCChartTool.AssignChartToEditor(AChart: TTMSFNCChart);
 begin
   FChart := AChart;
   TMSFNCChartEditorDialog.Chart := AChart;
-  TMSFNCTableView1.Items.Clear;
+  TMSFNCListBox1.Items.Clear;
   LogChartAction('Initial Capture');
+  StatusBarLoad;
 end;
 
 procedure TFrameFNCChartTool.ExportChartPDF(const AFile: string; const AResult: Boolean);
@@ -74,8 +76,11 @@ begin
   if AResult = false then
     exit;
   TMSFNCGraphicsPDFIO1.Information.Title := 'Export FNC Chart';
+  TMSFNCGraphicsPDFIO1.ExportObject := FChart;
   TMSFNCGraphicsPDFIO1.Options.Header := TMSFNCGraphicsPDFIO1.Information.Title;
   TMSFNCGraphicsPDFIO1.Options.Footer := 'Exported @ ' + FormatDateTime(fmt_datetime, now);
+  if FChart.Width > FChart.height then
+    TMSFNCGraphicsPDFIO1.Options.PageOrientation  := TTMSFNCPDFlibPageOrientation.poLandscape;
   TMSFNCGraphicsPDFIO1.Save(AFile);
 end;
 
@@ -88,9 +93,9 @@ var
 begin
   cn := FChart.Name;
   if cn.IsEmpty then
-    fn := TPath.Combine(TTMSFNCUtils.GetTempPath, FChart.ClassName) + '.json'
+    fn := TPath.Combine(TTMSFNCUtils.GetTempPath, FChart.ClassName) + '.pdf'
   else
-    fn := TPath.Combine(TTMSFNCUtils.GetTempPath, 'FNCChart' + cn) + '.json';
+    fn := TPath.Combine(TTMSFNCUtils.GetTempPath, 'FNCChart' + cn) + '.pdf';
   fr := TTMSFNCUtils.SaveFile(fn, txt_extension, ExportChartPDF);
 end;
 
@@ -118,12 +123,63 @@ begin
   LogChartAction('Edit @' + FormatDateTime('hh:nn:ss', now));
 end;
 
+procedure TFrameFNCChartTool.StatusBarLoad;
+var
+  sp: TTMSFNCStatusBarPanel;
+  adapter: TTMSFNCChartDatabaseAdapter;
+  function AddPanel: TTMSFNCStatusBarPanel;
+  begin
+    result := TMSFNCStatusBar1.Panels.Add;
+    result.Style := TTMSFNCStatusBarPanelStyle.spsHTML;
+    result.AutoSize := true;
+  end;
+  function TextGreen(AText:string):string;
+  begin
+    result := '<FONT color="#00FF00" >'+AText+'</FONT>';
+  end;
+  function TextRed(AText:string):string;
+  begin
+    result := '<FONT color="#FF0000">'+AText+'</FONT>';
+  end;
+
+begin
+  sp := AddPanel;
+  if Assigned(FChart.adapter) then
+    if FChart.adapter.Active then
+    begin
+      sp.Text := TextGreen('Adapter active');
+      adapter := TTMSFNCChartDatabaseAdapter(FChart.adapter);
+      sp := AddPanel;
+      if Assigned(adapter.Source.DataSource) then
+        if adapter.Source.DataSource.Enabled then
+        begin
+          sp.Text := TextGreen('DataSource Active');
+          sp := AddPanel;
+          if Assigned(adapter.Source.DataSource.DataSet) then
+            if adapter.Source.DataSource.DataSet.Active then
+              sp.Text := TextGreen('DataSet Active')
+            else
+              sp.Text := TextRed('DataSet InActive')
+          else
+            sp.Text := TextRed('DataSet Not Assigned');
+        end
+        else
+          sp.Text := TextRed('DataSource Disabled')
+      else
+        sp.Text := TextRed('DataSource not Assigned')
+    end
+    else
+      sp.Text := TextRed('Adapter inactive')
+  else
+    sp.Text := TextRed('NO Adapter!')
+end;
+
 procedure TFrameFNCChartTool.LogChartAction(const AMessage: string);
 var
-  tvi: TTMSFNCTableViewItem;
+  tvi: TTMSFNCListBoxItem;
   ts: TStringStream;
 begin
-  tvi := TMSFNCTableView1.Items.Add;
+  tvi := TMSFNCListBox1.Items.Add;
   tvi.Text := AMessage;
   tvi.DataInteger := CaptureChartImage;
   ts := TStringStream.Create;
@@ -131,18 +187,19 @@ begin
     FChart.SaveToJSONStream(ts);
     ts.Position := 0;
     tvi.DataString := ts.DataString;
+    TMSFNCListBox1.ItemIndex := tvi.Index;
   finally
     ts.Free;
   end;
 end;
 
-procedure TFrameFNCChartTool.TMSFNCTableView1BeforeItemShowDetailControl(Sender: TObject; AItem: TTMSFNCTableViewItem;
-  ADetailControl: TControl; var AAllow: Boolean);
+procedure TFrameFNCChartTool.TMSFNCListBox1ItemClick(Sender: TObject; AItem: TTMSFNCListBoxItem);
 var
   JV: TJSONValue;
 begin
   try
     try
+    TMSFNCImage1.Bitmap := TMSFNCBitmapContainer1.Items[AItem.DataInteger].Bitmap;
       JV := TJSONObject.ParseJSONValue(AItem.DataString);
       TMSFNCHTMLText1.Text := JV.Format(1);
     except
@@ -151,11 +208,6 @@ begin
   finally
     FreeAndNil(JV);
   end;
-end;
-
-procedure TFrameFNCChartTool.TMSFNCTableView1ItemSelected(Sender: TObject; AItem: TTMSFNCTableViewItem);
-begin
-  TMSFNCImage1.Bitmap := TMSFNCBitmapContainer1.Items[AItem.DataInteger].Bitmap;
 end;
 
 { TSETransformFNCChart }

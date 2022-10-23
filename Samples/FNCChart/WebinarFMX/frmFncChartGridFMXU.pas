@@ -62,6 +62,8 @@ type
     procedure chartDBAdaptSpiderFieldsToPoint(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie;
       APoint: TTMSFNCChartPoint);
     procedure TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+    procedure TMSFNCBarChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+    procedure FormDestroy(Sender: TObject);
   private
     FQuery: TFDQuery;
     /// <summary>
@@ -152,8 +154,8 @@ end;
 
 procedure TfrmChartSalesFMX.FormCreate(Sender: TObject);
 begin
-  Randomize; //initialize Random
-  FDConnection.Open(); //Open the database - SQLite in memory instance
+  Randomize; // initialize Random
+  FDConnection.Open(); // Open the database - SQLite in memory instance
   ChartDataETL; // Run ETL before DataAdapters
   TMSFNCGridDatabaseAdapter1.Active := true;
   chartDBAdaptStackedBar.Active := true;
@@ -164,6 +166,10 @@ begin
   self.Caption := 'FNC Sales Dashboard by SwiftExpat - ' + self.Caption;
 end;
 
+procedure TfrmChartSalesFMX.FormDestroy(Sender: TObject);
+begin
+  tmrUpdateChart.Enabled := false;
+end;
 
 procedure TfrmChartSalesFMX.chartDBAdaptSpiderFieldsToPoint(Sender: TObject; AFields: TFields;
   ASeries: TTMSFNCChartSerie; APoint: TTMSFNCChartPoint);
@@ -202,24 +208,33 @@ begin
   ASeries.Labels.Visible := true;
 end;
 
+procedure TfrmChartSalesFMX.TMSFNCBarChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+begin
+  TMSFNCBarChart1.Title.Text := 'Olive Oil Sales Month By Year';
+  TMSFNCBarChart1.Title.TextHorizontalAlignment := TTMSFNCGraphicsTextAlign.gtaCenter;
+  TMSFNCBarChart1.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
+  fdqSalesChart.Active := false;
+  fdqSalesChart.Active := true;
+end;
+
 procedure TfrmChartSalesFMX.TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
 begin
-  SpiderLegendClick(Sender); //forward the event to the descendant form
+  SpiderLegendClick(Sender); // forward the event to the descendant form
 end;
 
 procedure TfrmChartSalesFMX.SpiderLegendClick(Sender: TObject);
 begin
- //override this in descending class to launch Marshal
+  // override this in descending class to launch Marshal
 end;
 
 procedure TfrmChartSalesFMX.ChartStackedAreaLegendItemClick(Sender: TObject; AIndex: Integer);
 begin
-  StackLegendClick(Sender); //forward the event to the descendant form
+  StackLegendClick(Sender); // forward the event to the descendant form
 end;
 
 procedure TfrmChartSalesFMX.StackLegendClick(Sender: TObject);
 begin
- //override this in descending class to launch Marshal
+  // override this in descending class to launch Marshal
 end;
 
 procedure TfrmChartSalesFMX.UpdateGridColumns;

@@ -8,6 +8,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   DesignerMasterStyle = 0
   object GridPanelLayout1: TGridPanelLayout
     Align = Client
@@ -254,6 +255,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      OnLegendItemClick = TMSFNCBarChart1LegendItemClick
       Align = Client
       Size.Width = 1124.000000000000000000
       Size.Height = 418.000000000000000000
@@ -749,6 +751,11 @@ object frmChartSalesFMX: TfrmChartSalesFMX
       end
     end
   end
+  object tmrUpdateChart: TTimer
+    Interval = 100
+    Left = 816
+    Top = 704
+  end
   object dsSalesBarChart: TDataSource
     DataSet = fdqSalesChart
     Left = 640
@@ -929,9 +936,5 @@ object frmChartSalesFMX: TfrmChartSalesFMX
     object StringField2: TStringField
       FieldName = 'mdisp'
     end
-  end
-  object tmrUpdateChart: TTimer
-    Left = 816
-    Top = 704
   end
 end
