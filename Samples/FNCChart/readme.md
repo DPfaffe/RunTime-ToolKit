@@ -5,7 +5,9 @@ The samples in this folder go along with the following blog posts and webinar on
 1. Blog (read here) [Part 1 of 3 ](https://www.tmssoftware.com/site/blog.asp?post=1005) - Object Inspection and modification using Marshal 
 [![Watch the video](https://img.youtube.com/vi/394wOxhvi5Y/hqdefault.jpg)](https://youtu.be/394wOxhvi5Y)
 2. Blog Part 2 of 3 - Dataset Insepection and SQL Queries using Marshal
+[![Watch the video](https://img.youtube.com/vi/gafTIxVz4nY/hqdefault.jpg)](https://youtu.be/gafTIxVz4nY)
 3. Blog Part 3 of 3 - Custom inspectors and Marshal SDK
+[![Watch the video](https://img.youtube.com/vi/WcJ9gEcIWHA/hqdefault.jpg)](https://youtu.be/WcJ9gEcIWHA)
 
 [Webinar Nov 15, 2022](https://www.tmssoftware.com/site/tmswebacademy.asp?id=145)  will cover the 3 topics plus more live.
 
