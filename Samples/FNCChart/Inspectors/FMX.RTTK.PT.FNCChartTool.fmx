@@ -103,7 +103,8 @@ object FrameFNCChartTool: TFrameFNCChartTool
         TextColor = xFF454545
         SelectedTextColor = xFF454545
       end>
-    Header.Text = 'Header'
+    Header.Visible = True
+    Header.Text = 'Chart Actions'
     Header.Fill.Color = xFFEEF2F9
     Header.Font.Size = 14.000000000000000000
     Header.Font.Color = xFF454545
@@ -127,7 +128,7 @@ object FrameFNCChartTool: TFrameFNCChartTool
       Size.Width = 408.000000000000000000
       Size.Height = 241.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 3
+      TabOrder = 2
       Bitmaps = <>
       BitmapContainer = TMSFNCBitmapContainer1
       Fill.Kind = gfkNone
