@@ -3,6 +3,7 @@ object FrameFNCChartTool: TFrameFNCChartTool
   Top = 0
   Width = 640
   Height = 480
+  Align = alClient
   TabOrder = 0
   object TMSFNCChartEditorDialog1: TTMSFNCChartEditorDialog
     Left = 176
@@ -45,7 +46,7 @@ object FrameFNCChartTool: TFrameFNCChartTool
     Left = 0
     Top = 0
     Width = 250
-    Height = 480
+    Height = 460
     Align = alLeft
     ParentDoubleBuffered = False
     DoubleBuffered = True
@@ -57,9 +58,11 @@ object FrameFNCChartTool: TFrameFNCChartTool
     ItemAppearance.Font.Height = -11
     ItemAppearance.Font.Name = 'Segoe UI'
     ItemAppearance.Font.Style = []
+    ItemAppearance.Stroke.Kind = gskSolid
     ItemAppearance.Stroke.Color = 13420488
     ItemAppearance.SelectedFill.Color = 16578806
     ItemAppearance.SelectedStroke.Color = 15702829
+    ItemAppearance.SelectedStroke.Width = 2.000000000000000000
     ItemAppearance.DisabledFill.Kind = gfkNone
     ItemAppearance.FixedHeight = 25.000000000000000000
     ItemAppearance.AccessoryDetailBitmaps = <>
@@ -116,9 +119,11 @@ object FrameFNCChartTool: TFrameFNCChartTool
     Header.Font.Height = -13
     Header.Font.Name = 'Segoe UI'
     Header.Font.Style = [fsBold]
+    Header.Stroke.Kind = gskNone
     Header.Stroke.Color = 11711154
     Header.Height = 36.000000000000000000
     Footer.Text = 'Footer'
+    Footer.Fill.Kind = gfkNone
     Footer.Fill.Color = 16380654
     Footer.Font.Charset = DEFAULT_CHARSET
     Footer.Font.Color = 4539717
@@ -156,36 +161,13 @@ object FrameFNCChartTool: TFrameFNCChartTool
     GlobalFont.Scale = 1.000000000000000000
     GlobalFont.Style = []
     OnBeforeItemShowDetailControl = TMSFNCTableView1BeforeItemShowDetailControl
-    ExplicitLeft = 192
-    ExplicitTop = 64
-    ExplicitHeight = 350
-    object TMSFNCHTMLText1: TTMSFNCHTMLText
-      Left = 72
-      Top = 216
-      Width = 100
-      Height = 50
-      ParentDoubleBuffered = False
-      Color = clBtnFace
-      DoubleBuffered = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      TabOrder = 1
-      Visible = False
-      Fill.Kind = gfkNone
-      Stroke.Kind = gskNone
-      Stroke.Color = -1
-      Text = 'TTMSFNCHTMLText'
-      WordWrapping = True
-    end
+    ExplicitHeight = 480
   end
   object TMSFNCImage1: TTMSFNCImage
     Left = 250
     Top = 0
     Width = 390
-    Height = 480
+    Height = 460
     Align = alClient
     ParentDoubleBuffered = False
     Color = clBtnFace
@@ -194,17 +176,53 @@ object FrameFNCChartTool: TFrameFNCChartTool
     Bitmaps = <>
     Fill.Kind = gfkNone
     Stroke.Kind = gskNone
-    ExplicitLeft = 72
-    ExplicitTop = 192
-    ExplicitWidth = 100
-    ExplicitHeight = 100
+    ExplicitHeight = 480
   end
   object TMSFNCBitmapContainer1: TTMSFNCBitmapContainer
     Left = 104
     Top = 224
-    Width = 39
-    Height = 39
+    Width = 26
+    Height = 26
     Visible = True
     Items = <>
+  end
+  object TMSFNCHTMLText1: TTMSFNCHTMLText
+    Left = 72
+    Top = 216
+    Width = 100
+    Height = 50
+    ParentDoubleBuffered = False
+    Color = clBtnFace
+    DoubleBuffered = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    TabOrder = 5
+    Visible = False
+    Fill.Kind = gfkNone
+    Stroke.Kind = gskNone
+    Stroke.Color = -1
+    Text = 'TTMSFNCHTMLText'
+    WordWrapping = True
+  end
+  object TMSFNCStatusBar1: TTMSFNCStatusBar
+    Left = 0
+    Top = 460
+    Width = 640
+    Height = 20
+    ParentDoubleBuffered = False
+    DoubleBuffered = True
+    TabOrder = 6
+    Panels = <>
+    PanelAppearance.Font.Charset = DEFAULT_CHARSET
+    PanelAppearance.Font.Color = clWindowText
+    PanelAppearance.Font.Height = -11
+    PanelAppearance.Font.Name = 'Segoe UI'
+    PanelAppearance.Font.Style = []
+    ExplicitLeft = 320
+    ExplicitTop = 232
+    ExplicitWidth = 0
   end
 end

@@ -7,7 +7,7 @@ uses
   VCL.Graphics, VCL.Controls, VCL.Forms, VCL.Dialogs, VCL.SERTTK.PluginTypes, VCL.StdCtrls, VCL.TMSFNCCustomComponent,
   VCL.TMSFNCChartEditor, VCL.TMSFNCChart, VCL.TMSFNCPDFIO, VCL.TMSFNCGraphicsPDFEngine, VCL.TMSFNCButton,
   VCL.TMSFNCTypes, VCL.TMSFNCUtils, VCL.TMSFNCGraphics, VCL.TMSFNCGraphicsTypes, VCL.TMSFNCHTMLText, VCL.TMSFNCImage,
-  VCL.TMSFNCBitmapContainer, VCL.TMSFNCCustomControl, VCL.TMSFNCTableView;
+  VCL.TMSFNCBitmapContainer, VCL.TMSFNCCustomControl, VCL.TMSFNCTableView, VCL.TMSFNCStatusBar;
 
 type
   TFrameFNCChartTool = class(TFrame)
@@ -17,6 +17,7 @@ type
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
     TMSFNCImage1: TTMSFNCImage;
     TMSFNCHTMLText1: TTMSFNCHTMLText;
+    TMSFNCStatusBar1: TTMSFNCStatusBar;
     procedure TMSFNCTableView1ItemSelected(Sender: TObject; AItem: TTMSFNCTableViewItem);
     procedure TMSFNCTableView1BeforeItemShowDetailControl(Sender: TObject; AItem: TTMSFNCTableViewItem;
       ADetailControl: TControl; var AAllow: Boolean);
@@ -25,6 +26,9 @@ type
     procedure ExportChartPDF(const AFile: string; const AResult: Boolean);
     procedure LogChartAction(const AMessage: string);
     function CaptureChartImage: integer;
+    /// <summary>Checks assignment of adapter, data source and dataset</summary>
+    /// <remarks>Displays as status bar panels</remarks>
+    procedure StatusBarLoad;
   public
     procedure ShowEditor(Sender: TObject);
     procedure ExportPDF(Sender: TObject);
@@ -56,7 +60,7 @@ implementation
 
 {$R *.dfm}
 
-uses VCL.SERTTK.Registry, VCL.SE.Logger, System.IOUtils, System.JSON;
+uses VCL.SERTTK.Registry, VCL.SE.Logger, System.IOUtils, System.JSON, VCL.TMSFNCChartDatabaseAdapter;
 
 { TFrameFNCChartTool }
 
@@ -66,6 +70,7 @@ begin
   TMSFNCChartEditorDialog1.Chart := AChart;
   TMSFNCTableView1.Items.Clear;
   LogChartAction('Initial Capture');
+  StatusBarLoad;
 end;
 
 procedure TFrameFNCChartTool.ExportChartPDF(const AFile: string; const AResult: Boolean);
@@ -75,6 +80,7 @@ begin
   if AResult = false then
     exit;
   TMSFNCGraphicsPDFIO1.Information.Title := 'Export FNC Chart';
+  TMSFNCGraphicsPDFIO1.ExportObject := FChart;
   TMSFNCGraphicsPDFIO1.Options.Header := TMSFNCGraphicsPDFIO1.Information.Title;
   TMSFNCGraphicsPDFIO1.Options.Footer := 'Exported @ ' + FormatDateTime(fmt_datetime, now);
   TMSFNCGraphicsPDFIO1.Save(AFile);
@@ -99,6 +105,57 @@ procedure TFrameFNCChartTool.ShowEditor(Sender: TObject);
 begin
   TMSFNCChartEditorDialog1.Execute;
   LogChartAction('Edit @' + FormatDateTime('hh:nn:ss', now));
+end;
+
+procedure TFrameFNCChartTool.StatusBarLoad;
+var
+  sp: TTMSFNCStatusBarPanel;
+  adapter: TTMSFNCChartDatabaseAdapter;
+  function AddPanel: TTMSFNCStatusBarPanel;
+  begin
+    result := TMSFNCStatusBar1.Panels.Add;
+    result.Style := TTMSFNCStatusBarPanelStyle.spsHTML;
+    result.AutoSize := true;
+  end;
+  function TextGreen(AText: string): string;
+  begin
+    result := '<FONT color="#008800" >' + AText + '</FONT>';
+  end;
+  function TextRed(AText: string): string;
+  begin
+    result := '<FONT color="#FF0000">' + AText + '</FONT>';
+  end;
+
+begin
+  sp := AddPanel;
+  if Assigned(FChart.adapter) then
+    if FChart.adapter.Active then
+    begin
+      sp.Text := TextGreen('Adapter active');
+      adapter := TTMSFNCChartDatabaseAdapter(FChart.adapter);
+      sp := AddPanel;
+      if Assigned(adapter.Source.DataSource) then
+        if adapter.Source.DataSource.Enabled then
+        begin
+          sp.Text := TextGreen('DataSource Active');
+          sp := AddPanel;
+          if Assigned(adapter.Source.DataSource.DataSet) then
+            if adapter.Source.DataSource.DataSet.Active then
+              sp.Text := TextGreen('DataSet Active')
+            else
+              sp.Text := TextRed('DataSet InActive')
+          else
+            sp.Text := TextRed('DataSet Not Assigned');
+        end
+        else
+          sp.Text := TextRed('DataSource Disabled')
+      else
+        sp.Text := TextRed('DataSource not Assigned')
+    end
+    else
+      sp.Text := TextRed('Adapter inactive')
+  else
+    sp.Text := TextRed('NO Adapter!')
 end;
 
 function TFrameFNCChartTool.CaptureChartImage: integer;
