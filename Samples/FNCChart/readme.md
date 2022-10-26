@@ -10,7 +10,7 @@ The samples in this folder go along with the following blog posts and webinar on
 
 [![Watch the video](https://img.youtube.com/vi/gafTIxVz4nY/hqdefault.jpg)](https://youtu.be/gafTIxVz4nY)
 
-3. Blog Part 3 of 3 - Custom inspectors and Marshal SDK
+3. Blog (read here) [Part 3 of 3](https://www.tmssoftware.com/site/blog.asp?post=1014) - Custom inspectors and Marshal SDK
 
 [![Watch the video](https://img.youtube.com/vi/WcJ9gEcIWHA/hqdefault.jpg)](https://youtu.be/WcJ9gEcIWHA)
 
