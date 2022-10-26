@@ -1,14 +1,16 @@
-# FNC Gems - SaveFile and SelectFile
+# FNC Core Gems - TTMSFNCUtils - SaveFile and SelectFile
 
-FNC products help you in all phases of your migration to cross platform and one of the core tasks is the file open dialog. FNCUtils contains a lot of helpful procedures and it is easy to overlook some when you do not see them in the pallet ( I did!).  Two items I would like to highlight are TTMSFNCUtils.SaveFile and TTMSFNCUtils.SelectFile as replacements for TFileOpen and TFileSave components.
+FNC products help you in all phases of your migration to cross platform and one of the core tasks is the file dialogs. FNCUtils contains a lot of helpful procedures and it is easy to overlook some when you do not see them in the pallet ( I did!).  Two items I would like to highlight are TTMSFNCUtils.SaveFile and TTMSFNCUtils.SelectFile as replacements for TFileOpenDialog (VCL) / TOpenDialog (FMX) and TFileSaveDialog (VCL) / TOpenDialogcomponents (FMX).
 
-VCL and FMX provide these as components on the pallet, in FNC these are class functions that require a callback method to implement the save. Personally I like this approach versus the component and here is a practical example of how to use the functions.
+VCL and FMX provide these as components on the pallet, in FNC these are class functions that require a callback method to implement the save. Personally I like this approach versus the component and here is a practical example of how to use the functions. As with all FNC components the procedure names, parameters and return types are the same across VCL, FMX, LCL and WEB so even if you are not going cross platform today, your code is ready for the future.
+
+TTMSFNCUtils is include in FNC Core which is provided with any of the components which means even if you only purchased FNC Chart, you have a license. FNC Chart, FNC Blox, FNC Cloud Pack, FNC Maps are all available separately to give you specific functionality with a lower price and you can start preparing your code.
 
 The following examples are available on Github as part of a Marshal custom inspector written for FNC Chart. https://github.com/SwiftExpat/RunTime-ToolKit/tree/main/Samples/FNCChart/Inspectors
 
 ## TTMSFNCUtils.SaveFile
 
-Save file is used to export an image of the FNC Chart to a PDF file via a button click event. This event needs to supply the file name, extension and callback function where the save action will be executed if the user selects ok.
+TTMSFNCUtils.SaveFile is used in place of TFileSaveDialog (VCL) or TOpenDialog (FMX) dialog. This procedure is assigned to a button click event. This SaveFile procedure needs to supply the file name, extension and callback function where the save action will be executed if the user selects ok.
 
 ```pascal
 procedure TFrameFNCChartTool.ExportPDF(Sender: TObject);
@@ -27,7 +29,7 @@ begin
 end;
 ```
 
-The export to pdf will execute in the call back function ExportChartPDF.  The callback should check the result to determine if the user selected OK or Cancel.  When OK is selected the export gets processed using the parameter AFile as the filename selected by the user.
+The export to pdf will execute in the call back function ExportChartPDF.  The callback should check the result to determine if the user selected OK or Cancel.  When OK is selected the export gets processed using the parameter AFile as the filename selected by the user. TMSFNCGraphicsPDFIO is include in FNC Core which is provided with any of the components: for example even if you only purchased FNC Chart, you have a license.
 
 ```pascal
 procedure TFrameFNCChartTool.ExportChartPDF(const AFile: string; const AResult: Boolean);
@@ -46,7 +48,7 @@ end;
 
 ## TTMSFNCUtils.SelectFile
 
-Select file is used in place of TFileOpen dialog.
+TTMSFNCUtils.SelectFile is used in place of TFileOpenDialog (VCL) or TOpenDialog (FMX) dialog.
 
 ```pascal
 procedure TSERTTKToolInstTMSFNCCustomControl.DoAfterCheckNode(Sender: TObject; ANode: TTMSFNCTreeViewVirtualNode;
@@ -87,3 +89,4 @@ begin
   end;
 end;
 ```
+TTMSFNCUtils is provided with FNC Core and these are two (ok 3 with the PDF Export) of many functions that can help you simplify existing code an get ready to go cross platfrom with FNC. PDF export is also provided in FNC Core.
