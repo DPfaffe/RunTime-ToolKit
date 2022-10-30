@@ -159,7 +159,7 @@ end;
 
 procedure TfrmChartSalesVCL.SpiderLegendClick(Sender: TObject);
 begin
-  //override this in descending class to launch Marshal
+  // override this in descending class to launch Marshal
 end;
 
 procedure TfrmChartSalesVCL.TMSFNCStackedAreaChart1LegendItemClick(Sender: TObject; AIndex: Integer);
@@ -169,7 +169,7 @@ end;
 
 procedure TfrmChartSalesVCL.StackLegendClick(Sender: TObject);
 begin
-  //override this in descending class to launch Marshal
+  // override this in descending class to launch Marshal
 end;
 
 procedure TfrmChartSalesVCL.UpdateGridColumns;
@@ -182,6 +182,11 @@ const
   Pi = 3.1415;
 begin
   TMSFNCBarChart1.Tag := round(Pi * 1000);
+
+  TMSFNCGrid1.DataString := 'You have been Tagged';
+  TMSFNCGrid1.DataInteger := round(Pi * 1000);
+  TMSFNCGrid1.DataBoolean := true;
+  TMSFNCGrid1.DataObject := self;
 end;
 
 procedure TfrmChartSalesVCL.chartDBAdaptSpiderFieldsToPoint(Sender: TObject; AFields: TFields;

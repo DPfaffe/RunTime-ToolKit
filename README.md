@@ -2,7 +2,7 @@
 RunTime ToolKit includes: Marshal, a component for runtime inspection; and Caddie, a client to oragnize sessions and bookmarks.
 
 Together, Marshal and Caddie enable diagnostics at runtime and review sessions offline. Marshal documents your actions by creating a session file and capturing screenshots and modifications as you inspect. Caddie gathers the sessions and indexes bookmarks to return to important sessions.
-## RT Marshal - Component Inspection @ Runtime
+## Marshal - Component Inspection @ Runtime
 Marshal provides a tree view of your application and an object inspector to adjust settings.  Create a bookmark for offline review.
 #### Sessions
 Sessions provide logging of screen shots and bookmarks.  Sessions are saved when the application exits to later be indexed by Caddie.

@@ -105,7 +105,9 @@ end;
 
 procedure TdmRTTK.DataModuleCreate(Sender: TObject);
 begin
+  FDSQLiteFunctionXmY.Active := true;
   FDConnection.Open();
+
   CopyDataSet;
   ClientDataSetSalesInfo.CreateDataSet;
   ClientDataSetSalesInfo.Open;

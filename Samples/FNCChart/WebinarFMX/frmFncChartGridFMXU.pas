@@ -250,6 +250,12 @@ begin
   TMSFNCBarChart1.Tag := round(Pi * 1000);
   TMSFNCBarChart1.TagFloat := Pi;
   TMSFNCBarChart1.TagObject := self;
+
+  TMSFNCGrid1.DataString   := 'You have been Tagged';
+  TMSFNCGrid1.DataInteger  :=  round(Pi * 1000);
+  TMSFNCGrid1.DataBoolean := true;
+  TMSFNCGrid1.DataObject := self;
+
 end;
 
 end.
