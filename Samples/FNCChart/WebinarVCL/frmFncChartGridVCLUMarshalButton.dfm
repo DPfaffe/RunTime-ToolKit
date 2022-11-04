@@ -10,16 +10,17 @@ object frmFncChartMarshalButton: TfrmFncChartMarshalButton
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnResize = FormResize
   DesignSize = (
     618
     424)
   TextHeight = 15
   object SERTTKMarshal1: TSERTTKMarshal
     Left = 496
-    Top = 360
+    Top = 0
     Width = 75
     Height = 25
-    Anchors = [akRight, akBottom]
+    Anchors = [akTop, akRight]
     Caption = 'Marshal'
     TabOrder = 0
   end

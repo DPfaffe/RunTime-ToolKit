@@ -36,12 +36,8 @@ uses
 const
   marshal_show_clicks = 2;
 
-  /// <summary>
-  /// Click counter to prevent opening Marshal on the first click.
-  /// </summary>
-  /// <remarks>
-  /// This allows you to hide Marshal functionality unless you know the right click count
-  /// </remarks>
+  /// <summary>Click counter to prevent opening Marshal on the first click.</summary>
+  /// <remarks>This allows you to hide Marshal functionality unless you know the right click count</remarks>
 function TfrmVCLMarshalCodedOptions.ClickCountShow(AChart: TControl): boolean;
 begin
   result := AChart.Tag = marshal_show_clicks;
@@ -51,18 +47,14 @@ begin
     AChart.Tag := AChart.Tag + 1;
 end;
 
-/// <summary>
-/// Shows Marshal if the click count is met
-/// </summary>
+/// <summary>Shows Marshal if the click count is met</summary>
 procedure TfrmVCLMarshalCodedOptions.MarshalCode(Sender: TObject);
 begin
   if ClickCountShow(TControl(Sender)) then
     TSERTTKMarshalAPI.ShowMarshal;
 end;
 
-/// <summary>
-/// Shows Marshal with custom options if the click count is met
-/// </summary>
+/// <summary>Shows Marshal with custom options if the click count is met</summary>
 procedure TfrmVCLMarshalCodedOptions.MarshalCodeWithOptions(Sender: TObject);
 var
   lMarshalOptions: TSERTTKMarshalOptions;
@@ -76,47 +68,31 @@ begin
   end;
 end;
 
-/// <summary>
-/// Shows Marshal with custom options if the click count is met
-/// </summary>
-/// <remarks>
-/// Legend click is mapped in base form. This is implementation for inherited form
-/// </remarks>
+/// <summary>Shows Marshal with custom options if the click count is met</summary>
+/// <remarks>Legend click is mapped in base form. This is implementation for inherited form </remarks>
 procedure TfrmVCLMarshalCodedOptions.SpiderLegendClick(Sender: TObject);
 begin
   MarshalCodeWithOptions(Sender);
   inherited;
 end;
 
-/// <summary>
-/// Shows Marshal if the click count is met
-/// </summary>
-/// <remarks>
-/// Legend click is mapped in base form. This is implementation for inherited form
-/// </remarks>
+/// <summary>Shows Marshal if the click count is met</summary>
+/// <remarks>Legend click is mapped in base form. This is implementation for inherited form</remarks>
 procedure TfrmVCLMarshalCodedOptions.StackLegendClick(Sender: TObject);
 begin
   MarshalCode(Sender);
   inherited;
 end;
 
-/// <summary>
-/// Shows Marshal if the click count is met
-/// </summary>
-/// <remarks>
-/// Hidden for chart demo, shown as an option if no other control is availalbe.
-/// </remarks>
+/// <summary>Shows Marshal if the click count is met</summary>
+/// <remarks>Hidden for chart demo, shown as an option if no other control is available.</remarks>
 procedure TfrmVCLMarshalCodedOptions.StaticText1Click(Sender: TObject);
 begin
   MarshalCode(Sender);
 end;
 
-/// <summary>
-/// Shows Marshal with custom options if the click count is met
-/// </summary>
-/// <remarks>
-/// Hidden for chart demo, shown as an option if no other control is availalbe.
-/// </remarks>
+/// <summary>Shows Marshal with custom options if the click count is met</summary>
+/// <remarks>Hidden for chart demo, shown as an option if no other control is availalbe.</remarks>
 procedure TfrmVCLMarshalCodedOptions.StaticText2Click(Sender: TObject);
 begin
   MarshalCodeWithOptions(Sender);

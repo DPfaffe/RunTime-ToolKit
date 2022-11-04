@@ -37,12 +37,8 @@ const
   marshal_show_clicks = 2;
 {$R *.fmx}
 
-  /// <summary>
-  /// Click counter to prevent opening Marshal on the first click.
-  /// </summary>
-  /// <remarks>
-  /// This allows you to hide Marshal functionality unless you know the right click count
-  /// </remarks>
+  /// <summary>Click counter to prevent opening Marshal on the first click.</summary>
+  /// <remarks>This allows you to hide Marshal functionality unless you know the right click count</remarks>
 function TfrmFmxMarshalCodedOptions.ClickCountShow(AChart: TFMXObject): boolean;
 begin
   result := AChart.Tag = marshal_show_clicks;
@@ -52,40 +48,28 @@ begin
     AChart.Tag := AChart.Tag + 1;
 end;
 
-/// <summary>
-/// Shows Marshal if the click count is met
-/// </summary>
-/// <remarks>
-/// Hidden for chart demo, shown as an option if no other control is availalbe.
-/// </remarks>
+/// <summary>  Shows Marshal if the click count is met </summary>
+/// <remarks> Hidden for chart demo, shown as an option if no other control is availalbe. </remarks>
 procedure TfrmFmxMarshalCodedOptions.Label1Click(Sender: TObject);
 begin
   MarshalCode(Sender);
 end;
 
-/// <summary>
-/// Shows Marshal with custom options if the click count is met
-/// </summary>
-/// <remarks>
-/// Hidden for chart demo, shown as an option if no other control is availalbe.
-/// </remarks>
+/// <summary> Shows Marshal with custom options if the click count is met </summary>
+/// <remarks> Hidden for chart demo, shown as an option if no other control is availalbe. </remarks>
 procedure TfrmFmxMarshalCodedOptions.Label2Click(Sender: TObject);
 begin
   MarshalCodeWithOptions(Sender);
 end;
 
-/// <summary>
-/// Shows Marshal if the click count is met
-/// </summary>
+/// <summary>Shows Marshal if the click count is met</summary>
 procedure TfrmFmxMarshalCodedOptions.MarshalCode(Sender: TObject);
 begin
   if ClickCountShow(TFMXObject(Sender)) then
     TSERTTKMarshalAPI.ShowMarshal;
 end;
 
-/// <summary>
-/// Shows Marshal with custom options if the click count is met
-/// </summary>
+/// <summary>Shows Marshal with custom options if the click count is met</summary>
 procedure TfrmFmxMarshalCodedOptions.MarshalCodeWithOptions(Sender: TObject);
 var
   lMarshalOptions: TSERTTKMarshalOptions;
@@ -99,24 +83,16 @@ begin
   end;
 end;
 
-/// <summary>
-/// Shows Marshal with custom options if the click count is met
-/// </summary>
-/// <remarks>
-/// Legend click is mapped in base form. This is implementation for inherited form
-/// </remarks>
+/// <summary>Shows Marshal with custom options if the click count is met</summary>
+/// <remarks>Legend click is mapped in base form. This is implementation for inherited form </remarks>
 procedure TfrmFmxMarshalCodedOptions.SpiderLegendClick(Sender: TObject);
 begin
   MarshalCodeWithOptions(Sender);
   inherited;
 end;
 
-/// <summary>
-/// Shows Marshal if the click count is met
-/// </summary>
-/// <remarks>
-/// Legend click is mapped in base form. This is implementation for inherited form
-/// </remarks>
+/// <summary>Shows Marshal if the click count is met</summary>
+/// <remarks>Legend click is mapped in base form. This is implementation for inherited form</remarks>
 procedure TfrmFmxMarshalCodedOptions.StackLegendClick(Sender: TObject);
 begin
   MarshalCode(Sender);

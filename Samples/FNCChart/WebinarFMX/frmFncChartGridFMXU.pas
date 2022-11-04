@@ -66,30 +66,24 @@ type
     procedure FormDestroy(Sender: TObject);
   private
     FQuery: TFDQuery;
-    /// <summary>
-    /// Runs ETL process to populate the chart data
-    /// </summary>
+    /// <summary>Runs ETL process to populate the chart data </summary>
+    /// <remarks>Loads data for 2019 after chart query is loaded </remarks>
     procedure ChartDataETL;
-    /// <summary>
-    /// Updates the dataset with random amounts for the year
-    /// </summary>
+    /// <summary>Updates the dataset with random amounts for the year </summary>
+    /// <remarks>Randomizes based on amount</remarks>
     procedure DataAppend(AYear, ABaseAmount: Integer);
-    /// <summary>
-    /// Sets tag data for FMX object to be seen in Object Plus
-    /// </summary>
+    /// <summary>Sets tag data for FMX object to be seen in Object Plus</summary>
+    /// <remarks>Purpose is to demo Object Plus</remarks>
     procedure UpdateTagData;
-    /// <summary>
-    /// Sets Grid column size
-    /// </summary>
+    /// <summary>Sets Grid column size </summary>
+    /// <remarks>Size the columns to the data</remarks>
     procedure UpdateGridColumns;
   public
-    /// <summary>
-    /// Method to override in TForm for Marshal coded option to start based on legend click
-    /// </summary>
+    /// <summary>Method to override in TForm for Marshal coded option to start based on legend click</summary>
+    /// <remarks>Override in descendant forms</remarks>
     procedure SpiderLegendClick(Sender: TObject); virtual;
-    /// <summary>
-    /// Method to override in TForm for Marshal coded option to start based on legend click
-    /// </summary>
+    /// <summary>Method to override in TForm for Marshal coded option to start based on legend click </summary>
+    /// <remarks>Override in descendant forms</remarks>
     procedure StackLegendClick(Sender: TObject); virtual;
   end;
 
@@ -215,6 +209,7 @@ begin
   TMSFNCBarChart1.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
   fdqSalesChart.Active := false;
   fdqSalesChart.Active := true;
+  dsSalePieStacked.Enabled := false;//error for showing chart inspector capabilities
 end;
 
 procedure TfrmChartSalesFMX.TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
@@ -251,8 +246,8 @@ begin
   TMSFNCBarChart1.TagFloat := Pi;
   TMSFNCBarChart1.TagObject := self;
 
-  TMSFNCGrid1.DataString   := 'You have been Tagged';
-  TMSFNCGrid1.DataInteger  :=  round(Pi * 1000);
+  TMSFNCGrid1.DataString := 'You have been Tagged';
+  TMSFNCGrid1.DataInteger := round(Pi * 1000);
   TMSFNCGrid1.DataBoolean := true;
   TMSFNCGrid1.DataObject := self;
 

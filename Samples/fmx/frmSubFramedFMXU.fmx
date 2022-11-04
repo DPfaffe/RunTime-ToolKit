@@ -48,7 +48,7 @@ object FrameSubFramedFXM: TFrameSubFramedFXM
       Anchors = []
       Position.X = 68.500000000000000000
       Position.Y = 84.500000000000000000
-      Text = 'Label1'
+      Text = 'Sub framed Label'
       TabOrder = 0
     end
     object Button1: TButton
@@ -64,6 +64,7 @@ object FrameSubFramedFXM: TFrameSubFramedFXM
       TabOrder = 2
       Position.X = 78.500000000000000000
       Position.Y = 268.000000000000000000
+      TextPrompt = 'Sub Framed Edit '
     end
     object CheckBox1: TCheckBox
       Anchors = []

@@ -52,14 +52,13 @@ object FrameSubFramedVCL: TFrameSubFramedVCL
       640
       480)
     object Label1: TLabel
-      Left = 135
+      Left = 95
       Top = 108
-      Width = 51
+      Width = 131
       Height = 25
       Anchors = []
-      Caption = 'Label1'
-      ExplicitLeft = 96
-      ExplicitTop = 72
+      Caption = 'Sub Frame Label'
+      ExplicitLeft = 97
     end
     object Button1: TButton
       Left = 442
@@ -77,7 +76,7 @@ object FrameSubFramedVCL: TFrameSubFramedVCL
       Height = 33
       Anchors = []
       TabOrder = 1
-      Text = 'Edit1'
+      Text = 'sub frame edit2'
     end
     object CheckBox1: TCheckBox
       Left = 431

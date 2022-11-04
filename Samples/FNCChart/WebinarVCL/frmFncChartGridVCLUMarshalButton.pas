@@ -9,6 +9,7 @@ uses
 type
   TfrmFncChartMarshalButton = class(TfrmChartSalesVCL)
     SERTTKMarshal1: TSERTTKMarshal;
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,5 +24,10 @@ implementation
 {$R *.dfm}
 
 uses Vcl.RTTK.PT.FNCChartTool; // only needed if using FNC Chart
+
+procedure TfrmFncChartMarshalButton.FormResize(Sender: TObject);
+begin    // align the button to the top right
+  SERTTKMarshal1.Left := round( (self.Width ) - (SERTTKMarshal1.Width*self.ScaleFactor));
+end;
 
 end.

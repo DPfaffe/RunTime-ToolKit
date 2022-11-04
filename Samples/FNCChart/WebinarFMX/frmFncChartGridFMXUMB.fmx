@@ -7,11 +7,11 @@ object frmFncChartMarshalButton: TfrmFncChartMarshalButton
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnResize = FormResize
   DesignerMasterStyle = 0
   object SERTTKMarshal1: TSERTTKMarshal
-    Anchors = [akRight, akBottom]
+    Anchors = [akTop, akRight]
     Position.X = 712.000000000000000000
-    Position.Y = 528.000000000000000000
     TabOrder = 0
     Text = 'Marshal'
   end
