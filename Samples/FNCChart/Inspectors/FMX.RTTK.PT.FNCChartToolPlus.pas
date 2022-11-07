@@ -1,4 +1,4 @@
-unit FMX.RTTK.PT.FNCChartTool;
+unit FMX.RTTK.PT.FNCChartToolPlus;
 
 interface
 
@@ -8,26 +8,33 @@ uses
   FMX.TMSFNCChartEditor, FMX.Controls.Presentation, FMX.TMSFNCChart, FMX.SERTTK.PluginTypes, FMX.TMSFNCPDFIO,
   FMX.TMSFNCGraphicsPDFEngine, FMX.TMSFNCButton, FMX.TMSFNCPDFLib, FMX.TMSFNCTypes, FMX.TMSFNCUtils, FMX.TMSFNCGraphics,
   FMX.TMSFNCGraphicsTypes, FMX.TMSFNCCustomControl, FMX.Layouts, FMX.TMSFNCBitmapContainer,
-  FMX.TMSFNCImage, FMX.TMSFNCHTMLText, FMX.TMSFNCStatusBar, FMX.TMSFNCListBox, FMX.TMSFNCTreeViewBase,
-  FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView, FMX.TMSFNCTreeView, FMX.TMSFNCPageControl, FMX.TMSFNCTabSet,
-  FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
+  FMX.TMSFNCImage, FMX.TMSFNCHTMLText, FMX.TMSFNCStatusBar, FMX.TMSFNCListBox, FMX.TMSFNCWebBrowser,
+  FMX.TMSFNCCustomWEBControl, FMX.TMSFNCWXJSONFormatter, FMX.TMSFNCPageControl, FMX.TMSFNCTabSet,
+  FMX.TMSFNCTreeViewBase, FMX.TMSFNCTreeViewData, FMX.TMSFNCCustomTreeView, FMX.TMSFNCTreeView;
 
 type
-  TFrameFNCChartTool = class(TFrame)
+  TFrameFNCChartToolPlus = class(TFrame)
     TMSFNCGraphicsPDFIO1: TTMSFNCGraphicsPDFIO;
     TMSFNCChartEditorDialog: TTMSFNCChartEditorDialog;
     TMSFNCBitmapContainer1: TTMSFNCBitmapContainer;
     TMSFNCImage1: TTMSFNCImage;
+    TMSFNCHTMLText1: TTMSFNCHTMLText;
     TMSFNCStatusBar1: TTMSFNCStatusBar;
     TMSFNCListBox1: TTMSFNCListBox;
+    Panel1: TPanel;
     TMSFNCPageControl1: TTMSFNCPageControl;
     TMSFNCPageControl1Page0: TTMSFNCPageControlContainer;
     TMSFNCPageControl1Page1: TTMSFNCPageControlContainer;
     TMSFNCPageControl1Page2: TTMSFNCPageControlContainer;
     TMSFNCTreeView1: TTMSFNCTreeView;
-    Memo1: TMemo;
     procedure TMSFNCListBox1ItemClick(Sender: TObject; AItem: TTMSFNCListBoxItem);
+    procedure TMSFNCPageControl1BeforeChangePage(Sender: TObject; ACurrentPageIndex, ANewPageIndex: Integer;
+      var ACanChange: Boolean);
+  strict private
+    procedure JsonFormatterInit;
+    procedure JsonFormatterLoad(AJson:String);
   private
+    JSONFormatter: TTMSFNCWXJSONFormatter;
     FChart: TTMSFNCChart; // used for references
     /// <summary>Creates an entry in the listbox for an action</summary>
     /// <remarks>assigns the image index and json string</remarks>
@@ -38,7 +45,7 @@ type
     /// <summary>Captures bitmap image of chart component</summary>
     /// <remarks>Display is in a FNC image component and reference is in fnc listbox</remarks>
     /// <returns>Index of bitmap in the bitmap container</returns>
-    function CaptureChartImage: integer;
+    function CaptureChartImage: Integer;
     /// <summary>Checks assignment of adapter, data source and dataset</summary>
     /// <remarks>Displays as status bar panels</remarks>
     procedure StatusBarLoad;
@@ -57,7 +64,7 @@ type
   /// <summary>Classtype mapping for the registry. What class type does this inspector work for?</summary>
   /// <remarks>Regsitry controls disposal</remarks>
   /// <returns>Instance in the registry via the initialization section</returns>
-  TSETransformFNCChart = class(TSERTTKPluginTransform)
+  TSETransformFNCChartPlus = class(TSERTTKPluginTransform)
   protected
     /// <summary>Assigns the tool instance to the component if class type matches</summary>
     /// <remarks>Called for each component in the application</remarks>
@@ -71,7 +78,7 @@ type
   /// <summary>Mapping class for transform to assign the inspector type to the component instance</summary>
   /// <remarks>intermediate class to later build the inspector UI</remarks>
   /// <returns>Reference for the component to later display inspectors</returns>
-  TSESITFNCChart = class(TSERTTKPluginInspectTool)
+  TSESITFNCChartPlus = class(TSERTTKPluginInspectTool)
   public
     /// <summary>Factory method to allow implementation of custom inspector</summary>
     /// <remarks>Called once the component tab has been created</remarks>
@@ -82,9 +89,9 @@ type
   /// <summary>Custom inspector for TMSFNCChart</summary>
   /// <remarks>Creates the frame which implements inspector logic</remarks>
   /// <returns>Frame is parented to the client area and align is client</returns>
-  TSERTTKPluginFNCChartTool = class(TSERTTKPluginToolInstance)
+  TSERTTKPluginFNCChartToolPlus = class(TSERTTKPluginToolInstance)
   strict private
-    FChartUITool: TFrameFNCChartTool;
+    FChartUITool: TFrameFNCChartToolPlus;
   protected
     /// <summary>Executes the initial inspector load procedures</summary>
     /// <remarks>Called when the click in the nav tree happens, late binding</remarks>
@@ -103,7 +110,7 @@ implementation
 
 uses FMX.SERTTK.Registry, FMX.SE.Logger, System.IOUtils, System.JSON, FMX.TMSFNCChartDatabaseAdapter;
 
-procedure TFrameFNCChartTool.AssignChartToEditor(AChart: TTMSFNCChart);
+procedure TFrameFNCChartToolPlus.AssignChartToEditor(AChart: TTMSFNCChart);
 begin
   FChart := AChart;
   TMSFNCChartEditorDialog.Chart := AChart;
@@ -112,7 +119,7 @@ begin
   StatusBarLoad;
 end;
 
-procedure TFrameFNCChartTool.ExportChartPDF(const AFile: string; const AResult: Boolean);
+procedure TFrameFNCChartToolPlus.ExportChartPDF(const AFile: string; const AResult: Boolean);
 const
   fmt_datetime = 'yyyy/mm/dd hh:nn:ss';
 begin
@@ -127,7 +134,7 @@ begin
   TMSFNCGraphicsPDFIO1.Save(AFile);
 end;
 
-procedure TFrameFNCChartTool.ExportPDF(Sender: TObject);
+procedure TFrameFNCChartToolPlus.ExportPDF(Sender: TObject);
 const
   txt_extension = 'PDF files (*.pdf)|*.PDF';
 var
@@ -142,7 +149,24 @@ begin
   fr := TTMSFNCUtils.SaveFile(fn, txt_extension, ExportChartPDF);
 end;
 
-function TFrameFNCChartTool.CaptureChartImage: integer;
+procedure TFrameFNCChartToolPlus.JsonFormatterInit;
+begin
+  if Not Assigned(JSONFormatter) then
+  begin
+    JSONFormatter := TTMSFNCWXJSONFormatter.Create(self);
+    JSONFormatter.Parent := TMSFNCPageControl1Page1;
+    JSONFormatter.Align := TAlignLayout.Client;
+  end;
+end;
+
+procedure TFrameFNCChartToolPlus.JsonFormatterLoad(AJson:String);
+begin
+JsonFormatterInit;
+  JSONFormatter.JSON.clear;
+    JSONFormatter.JSON.Add(AJson);
+  end;
+
+function TFrameFNCChartToolPlus.CaptureChartImage: Integer;
 var
   bmi: TTMSFNCBitmapItem;
   lms: TMemoryStream;
@@ -160,13 +184,13 @@ begin
   end;
 end;
 
-procedure TFrameFNCChartTool.ShowEditor(Sender: TObject);
+procedure TFrameFNCChartToolPlus.ShowEditor(Sender: TObject);
 begin
   TMSFNCChartEditorDialog.Execute;
   LogChartAction('Edit @' + FormatDateTime('hh:nn:ss', now));
 end;
 
-procedure TFrameFNCChartTool.StatusBarLoad;
+procedure TFrameFNCChartToolPlus.StatusBarLoad;
 var
   sp: TTMSFNCStatusBarPanel;
   adapter: TTMSFNCChartDatabaseAdapter;
@@ -217,7 +241,7 @@ begin
     sp.Text := TextRed('NO Adapter!')
 end;
 
-procedure TFrameFNCChartTool.LogChartAction(const AMessage: string);
+procedure TFrameFNCChartToolPlus.LogChartAction(const AMessage: string);
 var
   tvi: TTMSFNCListBoxItem;
   ts: TStringStream;
@@ -236,42 +260,46 @@ begin
   end;
 end;
 
-procedure TFrameFNCChartTool.TMSFNCListBox1ItemClick(Sender: TObject; AItem: TTMSFNCListBoxItem);
+procedure TFrameFNCChartToolPlus.TMSFNCListBox1ItemClick(Sender: TObject; AItem: TTMSFNCListBoxItem);
 var
   JV: TJSONValue;
-  o: TTMSFNCTreeViewViewJSONOptions;
 begin
-  o := TTMSFNCTreeViewViewJSONOptions.Create;
   try
-    o.ArrayItemPrefix := 'Item ';
-    o.NameHTMLTemplate := '<b><#NAME></b>'; // #NAME and #VALUE are mandatory names to use for the ViewJSON method.
-    o.ValueHTMLTemplate := '<font color="red"><#VALUE></font>';
     try
       TMSFNCImage1.Bitmap := TMSFNCBitmapContainer1.Items[AItem.DataInteger].Bitmap;
       JV := TJSONObject.ParseJSONValue(AItem.DataString);
-      Memo1.Lines.Clear;
-      Memo1.Lines.Add(JV.Format(1));
-      TMSFNCTreeView1.ViewJSONFromText(AItem.DataString, o);
+      TMSFNCHTMLText1.Text := JV.Format(1);
+      JsonFormatterLoad(AItem.DataString);
+      TMSFNCTreeView1.ViewJSONFromText(  AItem.DataString);
     except
       on E: Exception do
     end;
   finally
     FreeAndNil(JV);
-    o.Free;
   end;
+end;
+
+procedure TFrameFNCChartToolPlus.TMSFNCPageControl1BeforeChangePage(Sender: TObject;
+  ACurrentPageIndex, ANewPageIndex: Integer; var ACanChange: Boolean);
+begin
+  if ANewPageIndex = 1 then
+  begin
+    JsonFormatterInit;
+  end;
+
 end;
 
 { TSETransformFNCChart }
 
-constructor TSETransformFNCChart.Create;
+constructor TSETransformFNCChartPlus.Create;
 begin // what class type will this transform be mapped for?
   inherited Create(TTMSFNCChart);
 end;
 
-procedure TSETransformFNCChart.ExecTransform;
+procedure TSETransformFNCChartPlus.ExecTransform;
 begin
   try // add tool reference class to the Inspectors list
-    RepoComponent.ToolAdd(TSESITFNCChart.Create(RepoComponent));
+    RepoComponent.ToolAdd(TSESITFNCChartPlus.Create(RepoComponent));
   except
     on E: Exception do
       Logger.Debug(E.Message)
@@ -280,15 +308,15 @@ end;
 
 { TSERTTKPluginFNCChartTool }
 
-function TSERTTKPluginFNCChartTool.DisplayName: string;
+function TSERTTKPluginFNCChartToolPlus.DisplayName: string;
 begin
-  result := 'FNC Chart Editor';
+  result := 'FNC Chart Plus';
 end;
 
-procedure TSERTTKPluginFNCChartTool.InitToolInstance;
+procedure TSERTTKPluginFNCChartToolPlus.InitToolInstance;
 begin
   inherited; // code to create tool here
-  FChartUITool := TFrameFNCChartTool.Create(self.ToolPage.Container);
+  FChartUITool := TFrameFNCChartToolPlus.Create(self.ToolPage.Container);
   FChartUITool.Parent := self.ToolArea;
   if Assigned(self.ToolInfo.AppComponent) and (self.ToolInfo.AppComponent is TTMSFNCChart) then
     FChartUITool.AssignChartToEditor(TTMSFNCChart(self.ToolInfo.AppComponent));
@@ -298,13 +326,13 @@ end;
 
 { TSESITFNCChart }
 
-function TSESITFNCChart.InitToolUI(const AInspectorCVInfo: TSERTTKPluginInspectorCVInfo): TSERTTKPluginToolInstance;
+function TSESITFNCChartPlus.InitToolUI(const AInspectorCVInfo: TSERTTKPluginInspectorCVInfo): TSERTTKPluginToolInstance;
 begin
-  result := TSERTTKPluginFNCChartTool.Create(self, AInspectorCVInfo);
+  result := TSERTTKPluginFNCChartToolPlus.Create(self, AInspectorCVInfo);
 end;
 
 initialization
 
-MarshalPlugins.AddTransform(TSETransformFNCChart.Create);
+MarshalPlugins.AddTransform(TSETransformFNCChartPlus.Create);
 
 end.

@@ -1,4 +1,4 @@
-object FrameFNCChartTool: TFrameFNCChartTool
+object FrameFNCChartToolPlus: TFrameFNCChartToolPlus
   Align = Client
   Size.Width = 608.000000000000000000
   Size.Height = 486.000000000000000000
@@ -250,33 +250,58 @@ object FrameFNCChartTool: TFrameFNCChartTool
         UseDefaultAppearance = True
       end
       item
-        Text = 'JsonTree'
+        Text = 'JSON'
         Bitmaps = <>
         DisabledBitmaps = <>
         UseDefaultAppearance = True
       end
       item
-        Text = 'JsonText'
+        Text = 'Page 3'
         Bitmaps = <>
         DisabledBitmaps = <>
         UseDefaultAppearance = True
       end>
-    object TMSFNCPageControl1Page1: TTMSFNCPageControlContainer
+    OnBeforeChangePage = TMSFNCPageControl1BeforeChangePage
+    object TMSFNCPageControl1Page2: TTMSFNCPageControlContainer
       Align = Client
       Margins.Top = 29.000000000000000000
       Size.Width = 408.000000000000000000
       Size.Height = 437.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 1
+      TabOrder = 2
       TabStop = False
-      PageIndex = 1
+      PageIndex = 2
       IsActive = False
+      object Panel1: TPanel
+        Align = Client
+        Size.Width = 408.000000000000000000
+        Size.Height = 437.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        object TMSFNCHTMLText1: TTMSFNCHTMLText
+          Align = Bottom
+          Position.Y = 212.000000000000000000
+          Size.Width = 408.000000000000000000
+          Size.Height = 225.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Font.Name = 'Segoe UI'
+          HorizontalTextAlign = gtaLeading
+          Trimming = gttWord
+          Fill.Kind = gfkNone
+          Stroke.Kind = gskNone
+          Stroke.Color = claNull
+          Text = 'TTMSFNCHTMLText'
+          VerticalTextAlign = gtaLeading
+          WordWrapping = True
+        end
+      end
       object TMSFNCTreeView1: TTMSFNCTreeView
         Align = Client
         Size.Width = 408.000000000000000000
         Size.Height = 437.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 0
+        TabOrder = 4
         Stroke.Color = claDarkgray
         Groups = <>
         GroupsAppearance.TopSize = 50.000000000000000000
@@ -326,13 +351,13 @@ object FrameFNCChartTool: TFrameFNCChartTool
               item
                 Values = <
                   item
-                    Text = 'Fatma Gonzales'
+                    Text = 'Isabella Gonzales'
                   end
                   item
-                    Text = 'Finance'
+                    Text = 'Research'
                   end
                   item
-                    Text = 'Abroad'
+                    Text = 'On Leave'
                   end>
                 Tag = 0
                 Nodes = <>
@@ -340,13 +365,13 @@ object FrameFNCChartTool: TFrameFNCChartTool
               item
                 Values = <
                   item
-                    Text = 'Arthur Gonzales'
+                    Text = 'Marie Peeters'
                   end
                   item
-                    Text = 'Finance'
+                    Text = 'Marketing'
                   end
                   item
-                    Text = 'Office'
+                    Text = 'Flight'
                   end>
                 Tag = 0
                 Nodes = <>
@@ -354,13 +379,13 @@ object FrameFNCChartTool: TFrameFNCChartTool
               item
                 Values = <
                   item
-                    Text = 'Liam Wang'
+                    Text = 'Omar Moyo'
                   end
                   item
-                    Text = 'HR'
+                    Text = 'Sales'
                   end
                   item
-                    Text = 'Office'
+                    Text = 'Flight'
                   end>
                 Tag = 0
                 Nodes = <>
@@ -377,13 +402,13 @@ object FrameFNCChartTool: TFrameFNCChartTool
               item
                 Values = <
                   item
-                    Text = 'Arthur Ali'
+                    Text = 'Marie Smith'
                   end
                   item
-                    Text = 'Marketing'
+                    Text = 'Research'
                   end
                   item
-                    Text = 'Office'
+                    Text = 'Abroad'
                   end>
                 Tag = 0
                 Nodes = <>
@@ -391,10 +416,10 @@ object FrameFNCChartTool: TFrameFNCChartTool
               item
                 Values = <
                   item
-                    Text = 'Omar Moyo'
+                    Text = 'Yusuf Ali'
                   end
                   item
-                    Text = 'Manufactering'
+                    Text = 'HR'
                   end
                   item
                     Text = 'Office'
@@ -413,13 +438,13 @@ object FrameFNCChartTool: TFrameFNCChartTool
               item
                 Values = <
                   item
-                    Text = 'Isabella Wang'
+                    Text = 'Isabella Smith'
                   end
                   item
-                    Text = 'Manufactering'
+                    Text = 'HR'
                   end
                   item
-                    Text = 'Flight'
+                    Text = 'Office'
                   end>
                 Tag = 0
                 Nodes = <>
@@ -427,27 +452,27 @@ object FrameFNCChartTool: TFrameFNCChartTool
               item
                 Values = <
                   item
-                    Text = 'Yusuf Moyo'
-                  end
-                  item
-                    Text = 'Research'
-                  end
-                  item
-                    Text = 'Abroad'
-                  end>
-                Tag = 0
-                Nodes = <>
-              end
-              item
-                Values = <
-                  item
-                    Text = 'Yusuf Smith'
+                    Text = 'Liam Ali'
                   end
                   item
                     Text = 'Customers'
                   end
                   item
                     Text = 'Office'
+                  end>
+                Tag = 0
+                Nodes = <>
+              end
+              item
+                Values = <
+                  item
+                    Text = 'Isabella Ali'
+                  end
+                  item
+                    Text = 'Customers'
+                  end
+                  item
+                    Text = 'Flight'
                   end>
                 Tag = 0
                 Nodes = <>
@@ -516,27 +541,17 @@ object FrameFNCChartTool: TFrameFNCChartTool
         DefaultViewJSONOptions.ValueHTMLTemplate = '<#VALUE>'
       end
     end
-    object TMSFNCPageControl1Page2: TTMSFNCPageControlContainer
+    object TMSFNCPageControl1Page1: TTMSFNCPageControlContainer
       Align = Client
       Margins.Top = 29.000000000000000000
       Size.Width = 408.000000000000000000
       Size.Height = 437.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 2
+      TabOrder = 1
       TabStop = False
-      PageIndex = 2
+      Visible = False
+      PageIndex = 1
       IsActive = False
-      object Memo1: TMemo
-        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-        DataDetectorTypes = []
-        Align = Client
-        Size.Width = 408.000000000000000000
-        Size.Height = 437.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 0
-        Viewport.Width = 404.000000000000000000
-        Viewport.Height = 433.000000000000000000
-      end
     end
     object TMSFNCPageControl1Page0: TTMSFNCPageControlContainer
       Align = Client

@@ -752,6 +752,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
     end
   end
   object tmrUpdateChart: TTimer
+    Enabled = False
     Interval = 100
     Left = 816
     Top = 704

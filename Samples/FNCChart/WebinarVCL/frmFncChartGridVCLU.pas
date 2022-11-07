@@ -92,9 +92,9 @@ begin
   FQuery := TFDQuery.Create(self);
   FQuery.Connection := FDConnection;
   FQuery.Open('Select * from SalesInfo order by year desc, month');
-  DataAppend(2019, 125);
-  fdqSalesChart.Active := true; // THIS LINE NEEDS TO MOVE AFTER APPEND 2020
   DataAppend(2020, 150);
+  fdqSalesChart.Active := true; // THIS LINE NEEDS TO MOVE AFTER APPEND 2020
+  DataAppend(2019, 125);
   FQuery.Active := false;
   FQuery.Active := true; // re-fectch data with the order by
   FDMemTableSalesGrid.CopyDataSet(FQuery, [coStructure, coRestart, coAppend]);

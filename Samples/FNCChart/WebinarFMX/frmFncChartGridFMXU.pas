@@ -204,12 +204,18 @@ end;
 
 procedure TfrmChartSalesFMX.TMSFNCBarChart1LegendItemClick(Sender: TObject; AIndex: Integer);
 begin
-  TMSFNCBarChart1.Title.Text := 'Olive Oil Sales Month By Year';
-  TMSFNCBarChart1.Title.TextHorizontalAlignment := TTMSFNCGraphicsTextAlign.gtaCenter;
-  TMSFNCBarChart1.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
-  fdqSalesChart.Active := false;
-  fdqSalesChart.Active := true;
-  dsSalePieStacked.Enabled := false;//error for showing chart inspector capabilities
+  if AIndex = 0 then
+  begin
+    TMSFNCBarChart1.Title.Text := 'Olive Oil Sales Month By Year';
+    TMSFNCBarChart1.Title.TextHorizontalAlignment := TTMSFNCGraphicsTextAlign.gtaCenter;
+    TMSFNCBarChart1.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
+  end
+  else if AIndex = 1 then
+  begin
+    fdqSalesChart.Active := false;
+    fdqSalesChart.Active := true;
+    dsSalePieStacked.Enabled := false; // error for showing chart inspector capabilities
+  end;
 end;
 
 procedure TfrmChartSalesFMX.TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);

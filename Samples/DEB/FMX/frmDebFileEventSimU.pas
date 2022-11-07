@@ -36,6 +36,10 @@ type
     procedure Button1Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure TMSFNCButton1Click(Sender: TObject);
+    procedure TMSFNCLabelEdit1Accept(Sender: TObject);
+    procedure TMSFNCLabelEdit1Cancel(Sender: TObject);
+    procedure TMSFNCLabelEdit1EditStart(Sender: TObject);
+    procedure TMSFNCLabelEdit1EditEnd(Sender: TObject);
   strict private
     ghQueueItems: TTMSFNCListBoxItem;
     gfQueueCount: TTMSFNCListBoxItem;
@@ -90,8 +94,6 @@ begin
   if AItemIndex = 0 then
     FTHPollFolder.EnablePolling(cgControls.Checked[AItemIndex]);
 
-
-
   if AItemIndex = 1 then
   begin
     lp := TEnablePolling.Create;
@@ -126,7 +128,7 @@ end;
 
 procedure TfrmDebFileEvents.FormDestroy(Sender: TObject);
 begin
-FProcItems.Free;
+  FProcItems.Free;
   FTHPollFolder.Free;
   FThIW.Free;
   FThStats.Free;
@@ -238,11 +240,32 @@ end;
 
 procedure TfrmDebFileEvents.TMSFNCButton1Click(Sender: TObject);
 begin
-chart.SaveToImage('test.jpg');
+  chart.SaveToImage('test.jpg');
 end;
 
-//initialization
-//
-//TSERTTKMarshalAPI.AddPluginTransform('new transform');
+procedure TfrmDebFileEvents.TMSFNCLabelEdit1Accept(Sender: TObject);
+begin
+  if TMSFNCLabelEdit1.Text = 'undo' then
+    TMSFNCLabelEdit1.UndoManager.Undo
+  else if TMSFNCLabelEdit1.Text = 'redo' then
+    TMSFNCLabelEdit1.UndoManager.Redo
+
+end;
+
+procedure TfrmDebFileEvents.TMSFNCLabelEdit1Cancel(Sender: TObject);
+begin
+  // TMSFNCLabelEdit1.UndoManager.Undo;
+end;
+
+
+procedure TfrmDebFileEvents.TMSFNCLabelEdit1EditEnd(Sender: TObject);
+begin
+    TMSFNCLabelEdit1.UndoManager.PushState(TMSFNCLabelEdit1.Text);
+end;
+
+procedure TfrmDebFileEvents.TMSFNCLabelEdit1EditStart(Sender: TObject);
+begin
+     //TMSFNCLabelEdit1.UndoManager.PushState(TMSFNCLabelEdit1.Text);
+end;
 
 end.

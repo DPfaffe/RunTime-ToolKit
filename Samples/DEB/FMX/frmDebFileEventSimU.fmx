@@ -881,6 +881,10 @@ object frmDebFileEvents: TfrmDebFileEvents
       Text = 'TTMSFNCLabelEdit'
       AcceptButtonStroke.Width = 2.000000000000000000
       CancelButtonStroke.Width = 2.000000000000000000
+      OnAccept = TMSFNCLabelEdit1Accept
+      OnCancel = TMSFNCLabelEdit1Cancel
+      OnEditStart = TMSFNCLabelEdit1EditStart
+      OnEditEnd = TMSFNCLabelEdit1EditEnd
     end
     object TMSFNCEditButton1: TTMSFNCEditButton
       Position.X = 132.000000000000000000
@@ -899,7 +903,7 @@ object frmDebFileEvents: TfrmDebFileEvents
     TabOrder = 3
     Panels = <
       item
-        Text = '15:54:59'
+        Text = '05:06:31'
         Style = spsTime
         Alignment = taRightJustify
         Width = 50
