@@ -112,19 +112,10 @@ begin
   StatusBarLoad;
 end;
 
-procedure TFrameFNCChartTool.ExportChartPDF(const AFile: string; const AResult: Boolean);
-const
-  fmt_datetime = 'yyyy/mm/dd hh:nn:ss';
+procedure TFrameFNCChartTool.ShowEditor(Sender: TObject);
 begin
-  if AResult = false then
-    exit;
-  TMSFNCGraphicsPDFIO1.Information.Title := 'Export FNC Chart';
-  TMSFNCGraphicsPDFIO1.ExportObject := FChart;
-  TMSFNCGraphicsPDFIO1.Options.Header := TMSFNCGraphicsPDFIO1.Information.Title;
-  TMSFNCGraphicsPDFIO1.Options.Footer := 'Exported @ ' + FormatDateTime(fmt_datetime, now);
-  if FChart.Width > FChart.height then
-    TMSFNCGraphicsPDFIO1.Options.PageOrientation := TTMSFNCPDFlibPageOrientation.poLandscape;
-  TMSFNCGraphicsPDFIO1.Save(AFile);
+  TMSFNCChartEditorDialog.Execute;
+  LogChartAction('Edit @' + FormatDateTime('hh:nn:ss', now));
 end;
 
 procedure TFrameFNCChartTool.ExportPDF(Sender: TObject);
@@ -142,28 +133,19 @@ begin
   fr := TTMSFNCUtils.SaveFile(fn, txt_extension, ExportChartPDF);
 end;
 
-function TFrameFNCChartTool.CaptureChartImage: integer;
-var
-  bmi: TTMSFNCBitmapItem;
-  lms: TMemoryStream;
+procedure TFrameFNCChartTool.ExportChartPDF(const AFile: string; const AResult: Boolean);
+const
+  fmt_datetime = 'yyyy/mm/dd hh:nn:ss';
 begin
-  lms := TMemoryStream.Create;
-  try
-    FChart.MakeScreenshot.SaveToStream(lms);
-    lms.Position := 0;
-    bmi := TMSFNCBitmapContainer1.Items.Add;
-    bmi.Bitmap.LoadFromStream(lms);
-    result := bmi.Index;
-    TMSFNCImage1.Bitmap := bmi.Bitmap;
-  finally
-    lms.Free;
-  end;
-end;
-
-procedure TFrameFNCChartTool.ShowEditor(Sender: TObject);
-begin
-  TMSFNCChartEditorDialog.Execute;
-  LogChartAction('Edit @' + FormatDateTime('hh:nn:ss', now));
+  if AResult = false then
+    exit;
+  TMSFNCGraphicsPDFIO1.Information.Title := 'Export FNC Chart';
+  TMSFNCGraphicsPDFIO1.ExportObject := FChart;
+  TMSFNCGraphicsPDFIO1.Options.Header := TMSFNCGraphicsPDFIO1.Information.Title;
+  TMSFNCGraphicsPDFIO1.Options.Footer := 'Exported @ ' + FormatDateTime(fmt_datetime, now);
+  if FChart.Width > FChart.height then
+    TMSFNCGraphicsPDFIO1.Options.PageOrientation := TTMSFNCPDFlibPageOrientation.poLandscape;
+  TMSFNCGraphicsPDFIO1.Save(AFile);
 end;
 
 procedure TFrameFNCChartTool.StatusBarLoad;
@@ -190,7 +172,7 @@ begin
   if Assigned(FChart.adapter) then
     if FChart.adapter.Active then
     begin
-      sp.Text := TextGreen('Adapter active');
+      sp.Text := TextGreen('Adapter Active');
       adapter := TTMSFNCChartDatabaseAdapter(FChart.adapter);
       sp := AddPanel;
       if Assigned(adapter.Source.DataSource) then
@@ -212,7 +194,7 @@ begin
         sp.Text := TextRed('DataSource not Assigned')
     end
     else
-      sp.Text := TextRed('Adapter inactive')
+      sp.Text := TextRed('Adapter InActive')
   else
     sp.Text := TextRed('NO Adapter!')
 end;
@@ -233,6 +215,24 @@ begin
     TMSFNCListBox1.ItemIndex := tvi.Index;
   finally
     ts.Free;
+  end;
+end;
+
+function TFrameFNCChartTool.CaptureChartImage: integer;
+var
+  bmi: TTMSFNCBitmapItem;
+  lms: TMemoryStream;
+begin
+  lms := TMemoryStream.Create;
+  try
+    FChart.MakeScreenshot.SaveToStream(lms);
+    lms.Position := 0;
+    bmi := TMSFNCBitmapContainer1.Items.Add;
+    bmi.Bitmap.LoadFromStream(lms);
+    result := bmi.Index;
+    TMSFNCImage1.Bitmap := bmi.Bitmap;
+  finally
+    lms.Free;
   end;
 end;
 
@@ -278,6 +278,13 @@ begin
   end;
 end;
 
+{ TSESITFNCChart }
+
+function TSESITFNCChart.InitToolUI(const AInspectorCVInfo: TSERTTKPluginInspectorCVInfo): TSERTTKPluginToolInstance;
+begin
+  result := TSERTTKPluginFNCChartTool.Create(self, AInspectorCVInfo);
+end;
+
 { TSERTTKPluginFNCChartTool }
 
 function TSERTTKPluginFNCChartTool.DisplayName: string;
@@ -294,13 +301,6 @@ begin
     FChartUITool.AssignChartToEditor(TTMSFNCChart(self.ToolInfo.AppComponent));
   Toolbar.NewButton('Show Editor', FChartUITool.ShowEditor);
   Toolbar.NewButton('Save to PDF', FChartUITool.ExportPDF);
-end;
-
-{ TSESITFNCChart }
-
-function TSESITFNCChart.InitToolUI(const AInspectorCVInfo: TSERTTKPluginInspectorCVInfo): TSERTTKPluginToolInstance;
-begin
-  result := TSERTTKPluginFNCChartTool.Create(self, AInspectorCVInfo);
 end;
 
 initialization

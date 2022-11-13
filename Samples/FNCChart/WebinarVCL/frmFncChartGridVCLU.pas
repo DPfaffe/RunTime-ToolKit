@@ -57,6 +57,7 @@ type
       APoint: TTMSFNCChartPoint);
     procedure chartDBAdaptSpiderFieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
     procedure TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+    procedure TMSFNCBarChart1LegendItemClick(Sender: TObject; AIndex: Integer);
   private
     FQuery: TFDQuery;
     /// <summary>
@@ -150,6 +151,23 @@ begin
   UpdateGridColumns;
   UpdateTagData;
   self.Caption := 'FNC Sales Dashboard by SwiftExpat - ' + self.Caption;
+end;
+
+procedure TfrmChartSalesVCL.TMSFNCBarChart1LegendItemClick(Sender: TObject; AIndex: Integer);
+begin
+  if AIndex = 0 then
+  begin
+    TMSFNCBarChart1.Title.Text := 'Olive Oil Sales Month By Year';
+    TMSFNCBarChart1.Title.TextHorizontalAlignment := TTMSFNCGraphicsTextAlign.gtaCenter;
+    TMSFNCBarChart1.Title.Font.Size := 18;
+    TMSFNCBarChart1.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
+  end
+  else if AIndex = 1 then
+  begin
+    fdqSalesChart.Active := false;
+    fdqSalesChart.Active := true;
+    dsSalesSpider.Enabled := false; // error for showing chart inspector capabilities
+  end;
 end;
 
 procedure TfrmChartSalesVCL.TMSFNCSpiderChart1LegendItemClick(Sender: TObject; AIndex: Integer);

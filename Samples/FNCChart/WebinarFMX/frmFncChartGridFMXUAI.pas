@@ -12,7 +12,7 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
+    procedure SpiderLegendClick(Sender: TObject); override;
   end;
 
 var
@@ -20,7 +20,15 @@ var
 
 implementation
 
-uses FMX.RTTK.PT.FNCChartTool; // only needed if using FNC Chart
+uses
+  FMX.SE.RTTK.Marshal,   // necessary to implement the click event in case you close the window
+  FMX.RTTK.PT.FNCChartTool; // only needed if using FNC Chart
 {$R *.fmx}
+{ TfrmFmxChartAppInspector }
+
+procedure TfrmFmxChartAppInspector.SpiderLegendClick(Sender: TObject);
+begin
+  TSERTTKMarshalAPI.ShowMarshal;   //in case you closed the Marshal window
+end;
 
 end.

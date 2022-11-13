@@ -44,7 +44,7 @@ type
     BCDField3: TBCDField;
     StringField1: TStringField;
     dsSaleLines: TDataSource;
-    dsSalePieStacked: TDataSource;
+    dsSalesSpider: TDataSource;
     fdqSalesPieStacked: TFDQuery;
     IntegerField2: TIntegerField;
     BCDField4: TBCDField;
@@ -208,13 +208,14 @@ begin
   begin
     TMSFNCBarChart1.Title.Text := 'Olive Oil Sales Month By Year';
     TMSFNCBarChart1.Title.TextHorizontalAlignment := TTMSFNCGraphicsTextAlign.gtaCenter;
+    TMSFNCBarChart1.Title.Font.Size := 18;
     TMSFNCBarChart1.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
   end
   else if AIndex = 1 then
   begin
     fdqSalesChart.Active := false;
     fdqSalesChart.Active := true;
-    dsSalePieStacked.Enabled := false; // error for showing chart inspector capabilities
+    dsSalesSpider.Enabled := false; // error for showing chart inspector capabilities
   end;
 end;
 
@@ -251,6 +252,11 @@ begin
   TMSFNCBarChart1.Tag := round(Pi * 1000);
   TMSFNCBarChart1.TagFloat := Pi;
   TMSFNCBarChart1.TagObject := self;
+
+  TMSFNCGrid1.TagString := 'You have been Tagged';
+  TMSFNCGrid1.Tag := round(Pi * 1000);
+  TMSFNCGrid1.TagFloat := Pi;
+  TMSFNCGrid1.TagObject := self;
 
   TMSFNCGrid1.DataString := 'You have been Tagged';
   TMSFNCGrid1.DataInteger := round(Pi * 1000);

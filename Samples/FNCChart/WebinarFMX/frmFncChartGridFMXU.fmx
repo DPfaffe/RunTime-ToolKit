@@ -729,7 +729,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
         Position.X = 272.000000000000000000
         Position.Y = 168.000000000000000000
         AutoCreateSeries = False
-        Source.DataSource = dsSalePieStacked
+        Source.DataSource = dsSalesSpider
         Source.Series = <
           item
             YValue = 'SA2018'
@@ -892,7 +892,7 @@ object frmChartSalesFMX: TfrmChartSalesFMX
     Left = 984
     Top = 472
   end
-  object dsSalePieStacked: TDataSource
+  object dsSalesSpider: TDataSource
     DataSet = fdqSalesPieStacked
     Left = 912
     Top = 488

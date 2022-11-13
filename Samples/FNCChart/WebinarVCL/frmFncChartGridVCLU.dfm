@@ -7,11 +7,11 @@ object frmChartSalesVCL: TfrmChartSalesVCL
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -18
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
-  TextHeight = 15
+  TextHeight = 25
   object GridPanel1: TGridPanel
     Left = 0
     Top = 0
@@ -828,6 +828,7 @@ object frmChartSalesVCL: TfrmChartSalesVCL
       DefaultLoadOptions.XValuesFormatString = '%.0f'
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
+      OnLegendItemClick = TMSFNCBarChart1LegendItemClick
       Align = alClient
       TabOrder = 1
       object chartDBAdaptStackedBar: TTMSFNCChartDatabaseAdapter

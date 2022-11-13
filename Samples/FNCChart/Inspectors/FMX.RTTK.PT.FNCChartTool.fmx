@@ -534,8 +534,8 @@ object FrameFNCChartTool: TFrameFNCChartTool
         Size.Height = 437.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        Viewport.Width = 404.000000000000000000
-        Viewport.Height = 433.000000000000000000
+        Viewport.Width = 408.000000000000000000
+        Viewport.Height = 437.000000000000000000
       end
     end
     object TMSFNCPageControl1Page0: TTMSFNCPageControlContainer
