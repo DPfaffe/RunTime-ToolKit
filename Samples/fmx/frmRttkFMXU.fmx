@@ -3,7 +3,7 @@ object frmRTTKFMX: TfrmRTTKFMX
   Top = 0
   Caption = 'RTTK FMX Sample'
   ClientHeight = 480
-  ClientWidth = 318
+  ClientWidth = 380
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -13,7 +13,7 @@ object frmRTTKFMX: TfrmRTTKFMX
   DesignerMasterStyle = 0
   object lytTools: TLayout
     Align = Top
-    Size.Width = 318.000000000000000000
+    Size.Width = 380.000000000000000000
     Size.Height = 24.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
@@ -25,25 +25,45 @@ object frmRTTKFMX: TfrmRTTKFMX
       TabOrder = 0
       Text = 'Marshal'
     end
+    object btnChildForm: TButton
+      Align = Right
+      Position.X = 300.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'btnChildForm'
+      OnClick = btnChildFormClick
+    end
+    object btnNewDM: TButton
+      Align = Right
+      Position.X = 220.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'btnNewDM'
+      OnClick = btnNewDMClick
+    end
   end
   object tcWorkSpace: TTabControl
     Align = Client
-    Size.Width = 318.000000000000000000
+    Size.Width = 380.000000000000000000
     Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 4
     TabOrder = 1
     TabPosition = PlatformDefault
     Sizes = (
-      318s
+      380s
       430s
-      318s
+      380s
       430s
-      318s
+      380s
       430s
-      318s
+      380s
       430s
-      318s
+      380s
       430s)
     object tiLabel: TTabItem
       CustomIcon = <
@@ -224,7 +244,7 @@ object frmRTTKFMX: TfrmRTTKFMX
       ExplicitSize.cy = 26.000000000000000000
       object pnlRTCompButtons: TPanel
         Align = Top
-        Size.Width = 318.000000000000000000
+        Size.Width = 380.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -242,7 +262,7 @@ object frmRTTKFMX: TfrmRTTKFMX
         end
         object btnDeleteMemo: TSpeedButton
           Align = Right
-          Position.X = 238.000000000000000000
+          Position.X = 300.000000000000000000
           Size.Width = 80.000000000000000000
           Size.Height = 33.000000000000000000
           Size.PlatformDefault = False
@@ -260,12 +280,12 @@ object frmRTTKFMX: TfrmRTTKFMX
           'Refresh the form in Marshal')
         Align = Bottom
         Position.Y = 336.000000000000000000
-        Size.Width = 318.000000000000000000
+        Size.Width = 380.000000000000000000
         Size.Height = 94.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
-        Viewport.Width = 314.000000000000000000
-        Viewport.Height = 74.000000000000000000
+        Viewport.Width = 376.000000000000000000
+        Viewport.Height = 90.000000000000000000
       end
     end
     object tiFramed: TTabItem
@@ -283,11 +303,11 @@ object frmRTTKFMX: TfrmRTTKFMX
       ExplicitSize.cy = 26.000000000000000000
       inline FramedFMX1: TFramedFMX
         Align = Client
-        Size.Width = 318.000000000000000000
+        Size.Width = 380.000000000000000000
         Size.Height = 360.000000000000000000
         Size.PlatformDefault = False
         inherited GridPanelLayout1: TGridPanelLayout
-          Size.Width = 318.000000000000000000
+          Size.Width = 380.000000000000000000
           Size.Height = 360.000000000000000000
           ControlCollection = <
             item
@@ -306,19 +326,19 @@ object frmRTTKFMX: TfrmRTTKFMX
               Row = 1
             end>
           inherited Edit1: TEdit
-            Position.X = 29.500000000000000000
+            Position.X = 45.000000000000000000
             Position.Y = 79.000000000000000000
           end
           inherited Button1: TButton
-            Position.X = 198.500000000000000000
+            Position.X = 245.000000000000000000
             Position.Y = 79.000000000000000000
             OnClick = FramedFMX1Button1Click
           end
           inherited FrameSubFramedFXM1: TFrameSubFramedFXM
-            Size.Width = 159.000000000000000000
+            Size.Width = 190.000000000000000000
             Size.Height = 180.000000000000000000
             inherited GridPanelLayout1: TGridPanelLayout
-              Size.Width = 159.000000000000000000
+              Size.Width = 190.000000000000000000
               Size.Height = 180.000000000000000000
               ControlCollection = <
                 item
@@ -342,21 +362,23 @@ object frmRTTKFMX: TfrmRTTKFMX
                   Row = 1
                 end>
               inherited Label1: TLabel
-                Position.X = 14.750000000000000000
+                Position.X = 22.500000000000000000
                 Position.Y = 36.500000000000000000
                 Size.Width = 50.000000000000000000
               end
               inherited Button1: TButton
-                Position.X = 79.500000000000000000
+                Position.X = 117.500000000000000000
                 Position.Y = 34.000000000000000000
+                Size.Width = 50.000000000000000000
+                Size.PlatformDefault = False
               end
               inherited Edit1: TEdit
-                Position.X = 14.750000000000000000
+                Position.X = 22.500000000000000000
                 Position.Y = 124.000000000000000000
                 Size.Width = 50.000000000000000000
               end
               inherited CheckBox1: TCheckBox
-                Position.X = 94.250000000000000000
+                Position.X = 117.500000000000000000
                 Position.Y = 125.500000000000000000
                 Size.Width = 50.000000000000000000
               end
@@ -369,11 +391,11 @@ object frmRTTKFMX: TfrmRTTKFMX
         DataDetectorTypes = []
         Align = Bottom
         Position.Y = 360.000000000000000000
-        Size.Width = 318.000000000000000000
+        Size.Width = 380.000000000000000000
         Size.Height = 70.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
-        Viewport.Width = 314.000000000000000000
+        Viewport.Width = 376.000000000000000000
         Viewport.Height = 66.000000000000000000
       end
     end
@@ -388,15 +410,17 @@ object frmRTTKFMX: TfrmRTTKFMX
       StyleLookup = ''
       TabOrder = 0
       Text = 'SalesData'
+      ExplicitSize.cx = 72.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
       object StringGrid1: TStringGrid
         Align = Client
         CanFocus = True
         ClipChildren = True
-        Size.Width = 318.000000000000000000
+        Size.Width = 380.000000000000000000
         Size.Height = 430.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        Viewport.Width = 298.000000000000000000
+        Viewport.Width = 376.000000000000000000
         Viewport.Height = 405.000000000000000000
       end
     end

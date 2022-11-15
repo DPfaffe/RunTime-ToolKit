@@ -208,7 +208,7 @@ begin
   begin
     TMSFNCBarChart1.Title.Text := 'Olive Oil Sales Month By Year';
     TMSFNCBarChart1.Title.TextHorizontalAlignment := TTMSFNCGraphicsTextAlign.gtaCenter;
-    TMSFNCBarChart1.Title.Font.Size := 18;
+    TMSFNCBarChart1.Title.Font.Size := round(18 * TTMSFNCUtils.GetDPIScale(TMSFNCBarChart1)); //scale for PPI
     TMSFNCBarChart1.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
   end
   else if AIndex = 1 then

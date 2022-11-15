@@ -30,13 +30,39 @@ object frmRTTKVCL: TfrmRTTKVCL
       Caption = 'Marshal'
       TabOrder = 0
     end
+    object btnChildForm: TButton
+      Left = 559
+      Top = 1
+      Width = 75
+      Height = 20
+      Align = alRight
+      Caption = 'Child Form'
+      TabOrder = 1
+      OnClick = btnChildFormClick
+      ExplicitLeft = 280
+      ExplicitTop = 0
+      ExplicitHeight = 25
+    end
+    object btnRuntimeDM: TButton
+      Left = 484
+      Top = 1
+      Width = 75
+      Height = 20
+      Align = alRight
+      Caption = 'Runtime DM'
+      TabOrder = 2
+      OnClick = btnRuntimeDMClick
+      ExplicitLeft = 280
+      ExplicitTop = 0
+      ExplicitHeight = 25
+    end
   end
   object pcWorkSpace: TPageControl
     Left = 0
     Top = 22
     Width = 635
     Height = 314
-    ActivePage = tsIfDef
+    ActivePage = tsRunTimeComp
     Align = alClient
     TabOrder = 1
     object tsLabel: TTabSheet
@@ -296,13 +322,13 @@ object frmRTTKVCL: TfrmRTTKVCL
               ExplicitWidth = 625
               ExplicitHeight = 97
               inherited Label1: TLabel
-                Left = 141
+                Left = 117
                 Top = 18
-                Width = 31
+                Width = 79
                 Height = 13
                 ExplicitLeft = 141
                 ExplicitTop = 18
-                ExplicitWidth = 31
+                ExplicitWidth = 79
                 ExplicitHeight = 13
               end
               inherited Button1: TButton

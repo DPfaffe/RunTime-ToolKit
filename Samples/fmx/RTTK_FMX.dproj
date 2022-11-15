@@ -314,6 +314,15 @@
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
+        <DCCReference Include="dmRttkFMXncU.pas">
+            <Form>dmAtRuntime</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="frmChildFormFMXU.pas">
+            <Form>frmChildFormFMX</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -385,6 +394,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Win32\Release\RTTK_FMX.exe" Configuration="Release" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win32\Release\RTTK_FMX.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>RTTK_FMX.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask, frmFramedVCLU, System.Actions, Vcl.ActnList,
-  Data.DB, Vcl.Grids, Vcl.DBGrids;
+  Data.DB, Vcl.Grids, Vcl.DBGrids, frmChildFormU, dmRttkVCLncU;
 
 type
 
@@ -68,6 +68,8 @@ type
     Action1: TAction;
     Action2: TAction;
     ControlAction1: TControlAction;
+    btnChildForm: TButton;
+    btnRuntimeDM: TButton;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnAddMemoClick(Sender: TObject);
@@ -79,10 +81,14 @@ type
     procedure FramedTestVCL1Button1Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure Action1Execute(Sender: TObject);
+    procedure btnChildFormClick(Sender: TObject);
+    procedure btnRuntimeDMClick(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
     FStallThread: TStallThread;
     FLeakRoot: TLeakParent;
+    FChildForm: TfrmChildForm;
+    FRunTimeDm: TdmAtRuntime;
   public
     { Public declarations }
   end;
@@ -109,7 +115,7 @@ end;
 
 procedure TfrmRTTKVCL.Action1Execute(Sender: TObject);
 begin
-   memoRTCompFooter.Lines.Add('Shutdown Stalled');
+  memoRTCompFooter.Lines.Add('Shutdown Stalled');
 end;
 
 procedure TfrmRTTKVCL.btnAddMemoClick(Sender: TObject);
@@ -122,6 +128,19 @@ begin
   for s in memoRTCompFooter.Lines do
     FRuntimeMemo.Lines.Add('Copy of : ' + s);
   btnDeleteMemo.Enabled := true;
+end;
+
+procedure TfrmRTTKVCL.btnChildFormClick(Sender: TObject);
+begin
+  if FChildForm = nil then
+    FChildForm := TfrmChildForm.Create(Application);
+  FChildForm.Show;
+end;
+
+procedure TfrmRTTKVCL.btnRuntimeDMClick(Sender: TObject);
+begin
+  if FRunTimeDm = nil then
+    FRunTimeDm := TdmAtRuntime.Create(Application);
 end;
 
 procedure TfrmRTTKVCL.btnDeleteMemoClick(Sender: TObject);
@@ -153,7 +172,7 @@ end;
 
 procedure TfrmRTTKVCL.Edit1Change(Sender: TObject);
 begin
-// empty method
+  // empty method
 end;
 
 procedure TfrmRTTKVCL.FormActivate(Sender: TObject);

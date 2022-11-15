@@ -6,7 +6,9 @@ uses
   frmRttkFMXU in 'frmRttkFMXU.pas' {frmRTTKFMX},
   dmRttkFMXU in 'dmRttkFMXU.pas' {dmRTTK: TDataModule},
   frmFramedFMXU in 'frmFramedFMXU.pas' {FramedFMX: TFrame},
-  frmSubFramedFMXU in 'frmSubFramedFMXU.pas' {FrameSubFramedFXM: TFrame};
+  frmSubFramedFMXU in 'frmSubFramedFMXU.pas' {FrameSubFramedFXM: TFrame},
+  dmRttkFMXncU in 'dmRttkFMXncU.pas' {dmAtRuntime: TDataModule},
+  frmChildFormFMXU in 'frmChildFormFMXU.pas' {frmChildFormFMX};
 
 {$R *.res}
 

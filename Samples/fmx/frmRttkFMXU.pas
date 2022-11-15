@@ -8,8 +8,8 @@ uses
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
   FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
   Generics.Collections, frmFramedFMXU, System.Actions, FMX.ActnList, System.Rtti, FMX.Grid.Style, Data.Bind.Components,
-  Data.Bind.DBScope, FMX.Grid, Data.Bind.EngExt, Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs,
-  Fmx.Bind.Editors, Data.Bind.Grid;
+  Data.Bind.DBScope, FMX.Grid, Data.Bind.EngExt, FMX.Bind.DBEngExt, FMX.Bind.Grid, System.Bindings.Outputs,
+  FMX.Bind.Editors, Data.Bind.Grid, frmChildFormFMXU, dmRttkFMXncU;
 
 type
   TStallThread = class(TThread)
@@ -79,6 +79,8 @@ type
     StringGrid1: TStringGrid;
     BindingsList1: TBindingsList;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    btnChildForm: TButton;
+    btnNewDM: TButton;
     procedure btnMarshalClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure lblAppHelpClick(Sender: TObject);
@@ -90,11 +92,15 @@ type
     procedure cbStallShutdownChange(Sender: TObject);
     procedure FramedFMX1Button1Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
+    procedure btnChildFormClick(Sender: TObject);
+    procedure btnNewDMClick(Sender: TObject);
   private
     FRuntimeMemo: TMemo;
     FDemoObject: TDemoObject;
     FStallThread: TStallThread;
     FLeakRoot: TLeakParent;
+    FChildForm: TfrmChildFormFMX;
+    FDMRunTime: TdmAtRuntime;
     procedure TagDataSet;
   public
     { Public declarations }
@@ -215,6 +221,19 @@ begin
   FDemoObject := TDemoObject.Create;
   FDemoObject.Demostring := 'Object of tag string';
   Edit1.TagObject := FDemoObject;
+end;
+
+procedure TfrmRTTKFMX.btnChildFormClick(Sender: TObject);
+begin
+  if FChildForm = nil then
+    FChildForm := TfrmChildFormFMX.Create(Application);
+  FChildForm.Show;
+end;
+
+procedure TfrmRTTKFMX.btnNewDMClick(Sender: TObject);
+begin
+  if FDMRunTime = nil then
+    FDMRunTime := TdmAtRuntime.Create(Application);
 end;
 
 procedure TfrmRTTKFMX.btnDeleteMemoClick(Sender: TObject);
