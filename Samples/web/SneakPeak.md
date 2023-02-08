@@ -1,6 +1,8 @@
 # Sneak Peek - Marshal support for TMS Web Core
 
-I took on the request to provide Marshal in the TMS WEB core environment and wanted to give a preivew of what is to come. The interface is the same as VCL and FMX thanks to the TMS FNC UI Pack controls used.
+In a recent webinar, a user requested Marshal for the TMS WEB Core environment. Most of the migration is complete and I have prepared a demo to preview Marshal, the interface remains the same thanks to the FNC UI Pack controls.  I also share some resources found during migration and a summary of the migration approach.
+
+Marshal, an instrumentation SDK, provides an interface to debug and modify components at runtime. Structure navigation of forms, data modules and components is provided using an FNC TreeView control. Debug component instance details using Object Plus, a customized TMS FNC Object inspector, or register a plugin inspector based on class type. Learn more about Marshal at [https://swiftexpat.com](https://swiftexpat.com)
 
 Marshal is available at the top of the demo (bootstrap) project for a test drive here, [Sneak Peek Marshal](https://swiftexpat.github.io/RunTime-ToolKit/MarshalDemo_Web/MarshalDemo.html) , source code is available in the GitHub repo to review the implemenation.
 
@@ -15,7 +17,7 @@ Planned release for Web Core is 2nd week February 2023 to allow feedback to dete
 
 ## Resources for Migration
 
-Here are some resources that I found most important to getting through migration.
+Here are some resources that I found most important to getting through migration:
 
 ### Null & NIL
 

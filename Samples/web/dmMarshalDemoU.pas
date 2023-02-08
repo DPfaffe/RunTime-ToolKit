@@ -10,7 +10,7 @@ type
   public
     VideoID: string;
     Title: string;
-    Decription: string;
+    Description: string;
   end;
 
   TdmMarshalDemo = class(TWebDataModule)
@@ -72,7 +72,7 @@ function TdmMarshalDemo.CurrentVideo: TDemoVideo;
 begin
   result := TDemoVideo.Create;
   result.VideoID := cdsVideos.FieldByName('VideoID').AsString;
-  result.Decription := cdsVideos.FieldByName('Description').AsString;
+  result.Description := cdsVideos.FieldByName('Description').AsString;
   result.Title := cdsVideos.FieldByName('Title').AsString;
 end;
 

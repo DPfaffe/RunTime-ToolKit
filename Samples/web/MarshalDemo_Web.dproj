@@ -93,7 +93,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <TMSWebDefines>$(TMSWebDefines);RTTK</TMSWebDefines>
-        <TMSWebSourcePaths>$(TMSWebSourcePaths);C:\Repos\Work\RTTK_Constable\Source</TMSWebSourcePaths>
+        <TMSWebSourcePaths>$(TMSWebSourcePaths);C:\Users\Coder\AppData\Roaming\RTTK\Source\src</TMSWebSourcePaths>
         <TMSWebBrowser>4</TMSWebBrowser>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -108,9 +108,8 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <TMSWebDefines>$(TMSWebDefines);RTTK</TMSWebDefines>
-        <TMSWebSourcePaths>$(TMSWebSourcePaths);C:\Repos\Work\RTTK_Constable\Source</TMSWebSourcePaths>
+        <TMSWebSourcePaths>$(TMSWebSourcePaths);C:\Users\Coder\AppData\Roaming\RTTK\Source\src</TMSWebSourcePaths>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <TMSWebOptimization>1</TMSWebOptimization>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -136,13 +135,18 @@
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="frameMarshalDemoYoutubeU.pas">
-            <Form>frmYouTubeCard</Form>
+        <DCCReference Include="frmMarshalExerciseU.pas">
+            <Form>frmMarshalExercise</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TWebForm</DesignClass>
+        </DCCReference>
+        <DCCReference Include="frameMarshalDemoCardBlogRefU.pas">
+            <Form>frmCardBlogRef</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="frameMarshalDemoYouTubeVideoU.pas">
-            <Form>frmYouTubeVideo</Form>
+        <DCCReference Include="frameMarshalDemoCardBlogVideoU.pas">
+            <Form>frmCardBlogVideo</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>

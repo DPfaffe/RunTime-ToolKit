@@ -7,8 +7,9 @@ uses
   dmMarshalDemoU in 'dmMarshalDemoU.pas' {dmMarshalDemo: TWebDataModule},
   frameMarshalDemoTopU in 'frameMarshalDemoTopU.pas' {frameMarshalDemoTopLevel: TFrame},
   frameMarshalDemoSubU in 'frameMarshalDemoSubU.pas' {FrameMarshalSubFrame: TFrame},
-  frameMarshalDemoYoutubeU in 'frameMarshalDemoYoutubeU.pas' {frmYouTubeCard: TFrame},
-  frameMarshalDemoYouTubeVideoU in 'frameMarshalDemoYouTubeVideoU.pas' {frmYouTubeVideo: TFrame};
+  frmMarshalExerciseU in 'frmMarshalExerciseU.pas' {frmMarshalExercise: TWebForm} {*.html},
+  frameMarshalDemoCardBlogRefU in 'frameMarshalDemoCardBlogRefU.pas' {frmCardBlogRef: TFrame},
+  frameMarshalDemoCardBlogVideoU in 'frameMarshalDemoCardBlogVideoU.pas' {frmCardBlogVideo: TFrame};
 
 {$R *.res}
 
@@ -16,6 +17,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmMarshalDemo, dmMarshalDemo);
-  Application.CreateForm(TfrmMarshalDemo, frmMarshalDemo);
+  Application.CreateForm(TfrmMarshalExercise, frmMarshalExercise);
   Application.Run;
 end.
