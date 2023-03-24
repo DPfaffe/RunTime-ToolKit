@@ -16,9 +16,6 @@ object frmCardBlogRef: TfrmCardBlogRef
     Align = alTop
     ElementPosition = epRelative
     Role = ''
-    ExplicitLeft = 320
-    ExplicitTop = 240
-    ExplicitWidth = 100
   end
   object wdivCardBody: TWebHTMLDiv
     Left = 0
@@ -34,10 +31,6 @@ object frmCardBlogRef: TfrmCardBlogRef
     HTML.Strings = (
       'Card Body')
     Role = ''
-    ExplicitLeft = 320
-    ExplicitTop = 240
-    ExplicitWidth = 100
-    ExplicitHeight = 40
   end
   object wdivCardFooter: TWebHTMLDiv
     Left = 0
@@ -53,8 +46,5 @@ object frmCardBlogRef: TfrmCardBlogRef
     HTML.Strings = (
       'Default Footer')
     Role = ''
-    ExplicitLeft = 320
-    ExplicitTop = 240
-    ExplicitWidth = 100
   end
 end

@@ -31,16 +31,16 @@ begin
   wdivCardHeader.html.Add(AVideo.Title);
   wdivCardFooter.html.Clear;
   wdivCardFooter.html.Add(AVideo.Description);
-  wdivCardBody.html.clear;
+  wdivCardBody.html.Clear;
   LoadVideoFrame(AVideo);
-  end;
+end;
 
 procedure TfrmCardBlogRef.LoadVideoFrame(const AVideo: TDemoVideo);
 var
- FBlogVideo :TfrmCardBlogVideo;
+  FBlogVideo: TfrmCardBlogVideo;
 begin
   try
-    FBlogVideo :=TfrmCardBlogVideo.Create(self);
+    FBlogVideo := TfrmCardBlogVideo.Create(self);
     FBlogVideo.Align := alClient;
     FBlogVideo.Parent := wdivCardBody;
     FBlogVideo.ElementClassName := 'ratio ratio-16x9';

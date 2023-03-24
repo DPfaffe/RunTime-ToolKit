@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl,
-  FMX.Objects, FMX.SE.RTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
+  FMX.Objects, FMX.SERTTK.DT.Marshal, System.DateUtils, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo,
   Generics.Collections, frmFramedFMXU, System.Actions, FMX.ActnList, System.Rtti, FMX.Grid.Style, Data.Bind.Components,
   Data.Bind.DBScope, FMX.Grid, Data.Bind.EngExt, FMX.Bind.DBEngExt, FMX.Bind.Grid, System.Bindings.Outputs,
   FMX.Bind.Editors, Data.Bind.Grid, frmChildFormFMXU, dmRttkFMXncU;
@@ -116,7 +116,7 @@ implementation
 uses
   dmRttkFMXU,
   // {$IFDEF DEBUG}
-  FMX.SE.RTTK.Marshal
+  FMX.SERTTK.Marshal
   // {$ENDIF}
     ;
 

@@ -216,14 +216,13 @@ object frmMarshalDemo: TfrmMarshalDemo
             object WebLabel1: TWebLabel
               Left = 0
               Top = 0
-              Width = 1244
+              Width = 255
               Height = 34
               Align = alTop
               Alignment = taCenter
               Caption = 'Design Time Frames'
               HeightPercent = 100.000000000000000000
               WidthPercent = 100.000000000000000000
-              ExplicitWidth = 255
             end
             object wpFrameHost: TWebPanel
               Left = 0
