@@ -29,9 +29,9 @@ implementation
 {$R *.dfm}
 
 uses
-  Vcl.SE.RTTK.Marshal, // Required for Marshal
+  Vcl.SERTTK.Marshal, // Required for Marshal
   Vcl.RTTK.PT.FNCChartTool, // only needed if using FNC Chart
-  Vcl.SERTTK.MarshalCV; // only needed for Marshal options
+  Vcl.SERTTK.MarshalTypes; // only needed for Marshal options
 
 const
   marshal_show_clicks = 2;
@@ -61,10 +61,10 @@ var
 begin
   if ClickCountShow(TControl(Sender)) then
   begin
-    lMarshalOptions := TSERTTKMarshalOptions.Create(true);
+    lMarshalOptions := MarshalMV.MarshalOptions;
     lMarshalOptions.FormWidth := 1024;
     lMarshalOptions.FormHeight := 720;
-    TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
+    TSERTTKMarshalAPI.ShowMarshal;
   end;
 end;
 

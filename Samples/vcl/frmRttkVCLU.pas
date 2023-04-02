@@ -191,7 +191,7 @@ end;
 
 procedure TfrmRTTKVCL.FormDestroy(Sender: TObject);
 begin
-  FStallThread.Free;
+  //FStallThread.Free;
   OutputDebugString('VCL form destroyed');
 end;
 

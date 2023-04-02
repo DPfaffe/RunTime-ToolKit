@@ -383,6 +383,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     FormWidth = 960
     FormHeight = 720
     StartupDelay = 250
+    ShowOnStartup = False
     Left = 492
     Top = 118
   end

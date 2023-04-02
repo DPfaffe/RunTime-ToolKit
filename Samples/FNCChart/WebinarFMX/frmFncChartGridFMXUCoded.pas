@@ -29,9 +29,9 @@ var
 implementation
 
 uses
-  FMX.SE.RTTK.Marshal, // Required for Marshal
+  FMX.SERTTK.Marshal, // Required for Marshal
   FMX.RTTK.PT.FNCChartTool, // only needed if using FNC Chart
-  FMX.SERTTK.MarshalCV; // only needed for Marshal options
+  FMX.SERTTK.MarshalTypes; // only needed for Marshal options
 
 const
   marshal_show_clicks = 2;
@@ -67,10 +67,10 @@ var
 begin
   if ClickCountShow(TFMXObject(Sender)) then
   begin
-    lMarshalOptions := TSERTTKMarshalOptions.Create(true);
+    lMarshalOptions := MarshalMV.MarshalOptions;
     lMarshalOptions.FormWidth := 1024;
     lMarshalOptions.FormHeight := 720;
-    TSERTTKMarshalAPI.ShowMarshal(lMarshalOptions);
+    TSERTTKMarshalAPI.ShowMarshal;
   end;
 end;
 

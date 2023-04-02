@@ -4,7 +4,8 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, frmFncChartGridFMXU, FMX.SE.RTTK.DT.Marshal;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, frmFncChartGridFMXU,
+  FMX.SERTTK.DT.Marshal;
 
 type
   TfrmFmxChartAppInspector = class(TfrmChartSalesFMX)
@@ -21,7 +22,7 @@ var
 implementation
 
 uses
-  FMX.SE.RTTK.Marshal,   // necessary to implement the click event in case you close the window
+  FMX.SERTTK.Marshal,   // necessary to implement the click event in case you close the window
   FMX.RTTK.PT.FNCChartTool; // only needed if using FNC Chart
 {$R *.fmx}
 { TfrmFmxChartAppInspector }
