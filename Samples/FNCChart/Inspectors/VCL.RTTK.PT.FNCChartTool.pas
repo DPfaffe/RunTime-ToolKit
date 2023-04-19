@@ -60,7 +60,7 @@ implementation
 
 {$R *.dfm}
 
-uses VCL.SERTTK.Registry, VCL.SE.Logger, System.IOUtils, System.JSON, VCL.TMSFNCChartDatabaseAdapter;
+uses  VCL.SEFNC.Logger, System.IOUtils, System.JSON, VCL.TMSFNCChartDatabaseAdapter;
 
 { TFrameFNCChartTool }
 
@@ -226,7 +226,7 @@ end;
 procedure TSETransformFNCChart.ExecTransform;
 begin
   try // add tool reference class to the Inspectors list
-    RepoComponent.ToolAdd(TSESITFNCChart.Create(RepoComponent));
+    RepoItem.ToolAdd(TSESITFNCChart.Create(RepoItem));
   except
     on E: Exception do
       Logger.Debug(E.Message)

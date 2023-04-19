@@ -116,13 +116,16 @@ end;
 procedure TdmRTTK.DataModuleDestroy(Sender: TObject);
 begin
   OutputDebugString('DataModule destroyed');
+  ClientDataSetSalesInfo.Close;
+  FDMemTable.Close;      //comment to simulate bad shutdown
+  FDSQLiteFunctionXmY.Active := false;
   FDConnection.Close;
   { This is to simulate a slow closing database and ensure Deputy continues to poll }
-  if FStallTime > 0 then
-  begin
-    TThread.Sleep(FStallTime);
-    OutputDebugString('Destroy after thread sleep');
-  end;
+//  if FStallTime > 0 then
+//  begin
+//    TThread.Sleep(FStallTime);
+//    OutputDebugString('Destroy after thread sleep');
+//  end;
 
 end;
 

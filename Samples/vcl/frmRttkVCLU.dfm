@@ -39,9 +39,6 @@ object frmRTTKVCL: TfrmRTTKVCL
       Caption = 'Child Form'
       TabOrder = 1
       OnClick = btnChildFormClick
-      ExplicitLeft = 280
-      ExplicitTop = 0
-      ExplicitHeight = 25
     end
     object btnRuntimeDM: TButton
       Left = 484
@@ -52,9 +49,6 @@ object frmRTTKVCL: TfrmRTTKVCL
       Caption = 'Runtime DM'
       TabOrder = 2
       OnClick = btnRuntimeDMClick
-      ExplicitLeft = 280
-      ExplicitTop = 0
-      ExplicitHeight = 25
     end
   end
   object pcWorkSpace: TPageControl
@@ -62,7 +56,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     Top = 22
     Width = 635
     Height = 314
-    ActivePage = tsRunTimeComp
+    ActivePage = tsIfDef
     Align = alClient
     TabOrder = 1
     object tsLabel: TTabSheet
@@ -78,7 +72,7 @@ object frmRTTKVCL: TfrmRTTKVCL
           Left = 1
           Top = 1
           Width = 235
-          Height = 55
+          Height = 39
           Align = alLeft
           Caption = 'Fox Jump Status'
           Font.Charset = DEFAULT_CHARSET
@@ -87,7 +81,6 @@ object frmRTTKVCL: TfrmRTTKVCL
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          ExplicitHeight = 39
         end
         object Edit1: TEdit
           Left = 0
@@ -390,6 +383,7 @@ object frmRTTKVCL: TfrmRTTKVCL
     FormWidth = 960
     FormHeight = 720
     StartupDelay = 250
+    ShowOnStartup = False
     Left = 492
     Top = 118
   end

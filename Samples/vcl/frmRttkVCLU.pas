@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.SE.RTTK.DT.Marshal, Vcl.Buttons, Generics.Collections, Vcl.Mask, frmFramedVCLU, System.Actions, Vcl.ActnList,
-  Data.DB, Vcl.Grids, Vcl.DBGrids, frmChildFormU, dmRttkVCLncU;
+  Vcl.Buttons, Generics.Collections, Vcl.Mask, frmFramedVCLU, System.Actions, Vcl.ActnList,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, frmChildFormU, dmRttkVCLncU, VCL.SERTTK.DT.Marshal;
 
 type
 
@@ -102,7 +102,7 @@ implementation
 
 uses
 {$IFDEF DEBUG}
-  Vcl.SE.RTTK.Marshal,
+  Vcl.SERTTK.Marshal,
 {$ENDIF}
   dmRTTKVCLU;
 
@@ -191,7 +191,7 @@ end;
 
 procedure TfrmRTTKVCL.FormDestroy(Sender: TObject);
 begin
-  FStallThread.Free;
+  //FStallThread.Free;
   OutputDebugString('VCL form destroyed');
 end;
 

@@ -63,7 +63,7 @@ uses {$IFDEF RTTK}WEBLib.SERTTK.Marshal, {$ENDIF} dmMarshalDemoU;
 procedure TfrmMarshalDemo.btnMarshalClick(Sender: TObject);
 begin
 {$IFDEF RTTK}
-  TSERTTKMarshalAPI.ShowConstable;
+  TSERTTKMarshalAPI.ShowMarshal;
 {$ENDIF}
 end;
 

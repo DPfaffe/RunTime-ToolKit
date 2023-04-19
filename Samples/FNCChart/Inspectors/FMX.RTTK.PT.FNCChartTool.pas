@@ -101,7 +101,7 @@ implementation
 
 {$R *.fmx}
 
-uses FMX.SERTTK.Registry, FMX.SE.Logger, System.IOUtils, System.JSON, FMX.TMSFNCChartDatabaseAdapter;
+uses  FMX.SEFNC.Logger, System.IOUtils, System.JSON, FMX.TMSFNCChartDatabaseAdapter;
 
 procedure TFrameFNCChartTool.AssignChartToEditor(AChart: TTMSFNCChart);
 begin
@@ -271,7 +271,7 @@ end;
 procedure TSETransformFNCChart.ExecTransform;
 begin
   try // add tool reference class to the Inspectors list
-    RepoComponent.ToolAdd(TSESITFNCChart.Create(RepoComponent));
+    RepoItem.ToolAdd(TSESITFNCChart.Create(RepoItem));
   except
     on E: Exception do
       Logger.Debug(E.Message)
